@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using SharpDox.Plugins.Html.Steps;
-using SharpDox.Plugins.Html.Templates.Sites;
 using SharpDox.Model.Repository;
 using SharpDox.Sdk.Exporter;
 using SharpDox.Plugins.Html.Templates.Strings;
@@ -10,6 +9,7 @@ namespace SharpDox.Plugins.Html
 {
     public class HtmlExporter : IExporter
     {
+        public event Action<string> OnRequirementsWarning;
         public event Action<string> OnStepMessage;
         public event Action<int> OnStepProgress;
 
@@ -17,6 +17,8 @@ namespace SharpDox.Plugins.Html
 	    {
             HtmlStrings = strings;
 	    }
+
+        public bool CheckRequirements() { return true; }
 
         public void Export(SDRepository repository, string outputPath)
         {
