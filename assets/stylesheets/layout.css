@@ -1,6 +1,7 @@
 .container {
-  width: 1200px;
-  margin: auto;
+    width: 1150px;
+    padding: 0 25px;
+    margin: auto;
 }
 
 #pagecontent{
@@ -8,8 +9,8 @@
 }
 
 #content {
-  margin-top: 75px;
-  margin-bottom: 50px;
+    margin-top: 75px;
+    margin-bottom: 50px;
 }
 
 #topbar{
@@ -50,7 +51,6 @@
 
 #docname h1{
 	margin:0;
-	margin-top:5px;
 }
 
 #documentation {
@@ -58,7 +58,7 @@
 }
 
 #documentation-wrapper #header {
-    height: 110px;
+    height: 105px;
 }
 
 .typesite{

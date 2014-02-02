@@ -6,6 +6,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="SharpDox.Model.Repository" #>
 <#@ import namespace="SharpDox.Model.Repository.Members" #>
+<#@ import namespace="SharpDox.Model.Documentation.Token" #>
 <#@ import namespace="SharpDox.Sdk.Config" #>
 <#@ import namespace="SharpDox.Sdk" #>
 <#@ import namespace="SharpDox.UML" #>
@@ -91,6 +92,36 @@
 							<#= new Markdown().Transform(typeParameter.Value.ToMarkdown()) #>
 						</div>
 					<# } #>
+				</div>
+			<# } #>
+
+			<# if(SDMember.Documentation[CurrentLanguage].SeeAlsos.Count > 0) { #>
+				<h3 class="box-title"><#= Strings.SeeAlso #></h3>
+				<div class="list-box">
+					<ul>
+					<# foreach(var sdToken in SDMember.Documentation[CurrentLanguage].SeeAlsos) 
+					{ 
+						var seeAlso = (SDSeeToken)sdToken;
+						if(!string.IsNullOrEmpty(seeAlso.DeclaringType))
+						{
+							var identifier = string.Format("{0}.{1}", seeAlso.DeclaringType, seeAlso.Name);
+							var sdMember = Repository.GetMemberByIdentifier(identifier);
+							if(sdMember != null)
+                            {
+								#> <li><a href="../type/<#= sdMember.DeclaringType.Guid #>.html#<#= sdMember.Guid #>"><#= sdMember.Name #></a></li> <#
+                            }
+						}
+						else
+						{
+							var identifier = string.Format("{0}.{1}", seeAlso.Namespace, seeAlso.Name);
+							var sdType = Repository.GetTypeByIdentifier(identifier);
+							if(sdType != null)
+                            {
+								#> <li><a href="../type/<#= sdType.Guid #>.html"><#= sdType.Fullname #></a></li> <#
+                            }
+						} 
+					} #>
+					</ul>
 				</div>
 			<# } #>
 

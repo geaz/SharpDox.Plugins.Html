@@ -6,6 +6,7 @@
         string By { get; }
         string Back { get; }
         string Description { get; }
+        string SeeAlso { get; }
         string BaseType { get; }
         string Implements { get; }
         string Types { get; }

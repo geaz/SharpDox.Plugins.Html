@@ -6,6 +6,7 @@
         public string By { get { return "von"; } }
         public string Back { get { return "zurück"; } }
         public string Description { get { return "Beschreibung"; } }
+        public string SeeAlso { get { return "Siehe auch"; } }
         public string Types { get { return "Typen"; } }
         public string BaseType { get { return "Basistyp"; } }
         public string Implements { get { return "Implementiert"; } }
