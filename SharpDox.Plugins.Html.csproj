@@ -602,9 +602,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\stylesheets\elements.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="assets\stylesheets\markdown.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -632,16 +629,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="assets\js\vendor\jquery.panzoom.min.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="assets\stylesheets\vs.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="assets\js\vendor\highlight.pack.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

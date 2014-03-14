@@ -20,24 +20,20 @@
         <title><#= Repository.ProjectInfo.ProjectName #></title>
         <meta name="viewport" content="width=device-width">
 
-		<link rel="stylesheet" type="text/css" href="stylesheets/reset.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/font.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/font-awesome.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/typography.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/layout.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/elements.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/markdown.css" />
-		<link rel="stylesheet" type="text/css" href="stylesheets/vs.css" />
+		<link rel="stylesheet" type="text/css" href="../stylesheets/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../stylesheets/font.css" />
+		<link rel="stylesheet" type="text/css" href="../stylesheets/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../stylesheets/typography.css" />		
+		<link rel="stylesheet" type="text/css" href="../stylesheets/markdown.css" />
+		<link rel="stylesheet" type="text/css" href="../stylesheets/layout.css" />
 
 		<script src="js/vendor/jquery.js"></script>
-		<script src="js/vendor/highlight.pack.js"></script>
 		<script src="js/NavTree.js"></script>
 		<script src="js/Parent.js"></script>
 
 		<script>
 			var backString = "<#= Strings.Back #>";
 			var descString = "<#= Strings.Description #>";
-			hljs.initHighlightingOnLoad();
 		</script>
     </head>
     <body>        
@@ -49,33 +45,27 @@
             </div>
         </header>
 
-        <section id="content" class="container">
-            
-			<div id="sidebar">
-				<div id="docname">
-					<# if (String.IsNullOrEmpty(Repository.ProjectInfo.LogoPath))
-					{#>
-						<a href="index.html" class="pagelink"><h1><#= Repository.ProjectInfo.ProjectName #></h1></a>
-					<#}
-					else
-					{#>
-						<a href="index.html" class="pagelink"><img src="<#= Path.GetFileName(Repository.ProjectInfo.LogoPath) #>" title="<#= Repository.ProjectInfo.ProjectName #>"/></a>
-					<#}#>
-				</div>
+		<div id="sidebar">
+			<div id="docname">
+				<# if (String.IsNullOrEmpty(Repository.ProjectInfo.LogoPath))
+				{#>
+					<a href="index.html" class="pagelink"><h1><#= Repository.ProjectInfo.ProjectName #></h1></a>
+				<#}
+				else
+				{#>
+					<a href="index.html" class="pagelink"><img src="<#= Path.GetFileName(Repository.ProjectInfo.LogoPath) #>" title="<#= Repository.ProjectInfo.ProjectName #>"/></a>
+				<#}#>
+			</div>
     
-				<div id="navigation-container">
-					<ul id="navigation">
-					</ul>
-				</div>				
-			</div>
+			<div id="navigation-container">
+				<ul id="navigation">
+				</ul>
+			</div>				
+		</div>
 
-			<div id="documentation">
-
-				<iframe id="docFrame" frameborder="0" width="100%" src="article/home.html"></iframe>
-
-			</div>
-
-        </section>
+        <div id="content">            
+			<iframe id="docframe" frameborder="0" width="100%" src="article/home.html"></iframe>
+        </div>
 
 		<div id="navdata" style="display:none;">
 			<#= NavJson #>

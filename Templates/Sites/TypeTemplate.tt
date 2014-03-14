@@ -26,22 +26,17 @@
 		<link rel="stylesheet" type="text/css" href="../stylesheets/reset.css" />
 		<link rel="stylesheet" type="text/css" href="../stylesheets/font.css" />
 		<link rel="stylesheet" type="text/css" href="../stylesheets/font-awesome.css" />
-		<link rel="stylesheet" type="text/css" href="../stylesheets/typography.css" />
-		<link rel="stylesheet" type="text/css" href="../stylesheets/layout.css" />
-		<link rel="stylesheet" type="text/css" href="../stylesheets/elements.css" />
+		<link rel="stylesheet" type="text/css" href="../stylesheets/typography.css" />		
 		<link rel="stylesheet" type="text/css" href="../stylesheets/markdown.css" />
-		<link rel="stylesheet" type="text/css" href="../stylesheets/vs.css" />
+		<link rel="stylesheet" type="text/css" href="../stylesheets/layout.css" />
 
 		<script src="../js/vendor/jquery.js"></script>
 		<script src="../js/vendor/jquery.mousewheel.js"></script>
 		<script src="../js/vendor/jquery.panzoom.min.js"></script>
 		<script src="../js/vendor/jquery.hashchange.min.js"></script>
-		<script src="../js/vendor/highlight.pack.js"></script>
 
 		<script src="../js/SVGPan.js"></script>
 		<script src="../js/MemberNav.js"></script>
-
-		<script>hljs.initHighlightingOnLoad();</script>
     </head>
     <body>        
         

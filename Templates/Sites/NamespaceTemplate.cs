@@ -23,7 +23,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+    #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
     public partial class NamespaceTemplate : NamespaceTemplateBase
     {
@@ -54,14 +54,14 @@ namespace SharpDox.Plugins.Html.Templates.Sites
         <meta http-equiv=""X-UA-Compatible"" content=""IE=edge,chrome=1"">
         <title>");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Repository.ProjectInfo.ProjectName));
             
             #line default
             #line hidden
             this.Write(" - ");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace.Fullname));
             
             #line default
@@ -72,280 +72,274 @@ namespace SharpDox.Plugins.Html.Templates.Sites
 		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/reset.css"" />
 		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/font.css"" />
 		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/font-awesome.css"" />
-		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/typography.css"" />
-		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/layout.css"" />
-		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/elements.css"" />
+		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/typography.css"" />		
 		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/markdown.css"" />
-		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/vs.css"" />
+		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/layout.css"" />
 
 		<script src=""../js/vendor/jquery.js""></script>
-		<script src=""../js/vendor/highlight.pack.js""></script>
 		<script src=""../js/Iframe.js""></script>
-
-		<script>hljs.initHighlightingOnLoad();</script>
     </head>
     <body>        
        
-	   <div id=""documentation-wrapper"">
-			<div id=""header"">
-				<h2 class=""type-title"">");
+	   <div id=""header"">
+			<h2 class=""type-title"">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace.Fullname));
             
             #line default
             #line hidden
-            this.Write("</h2>\n\t\t\t\t<span class=\"namespace-title\">Assembly: ");
+            this.Write("</h2>\n\t\t\t<span class=\"namespace-title\">Assembly: ");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace.Assemblyname));
             
             #line default
             #line hidden
-            this.Write("</span>\n\t\t\t</div>\n\t\t\t<div id=\"pagecontent\">\n\t\t\t\t\t\n\t\t\t\t");
+            this.Write("</span>\n\t\t</div>\n\t\t<div id=\"pagecontent\">\n\t\t\t\t\t\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  if(Namespace.Description.Count != 0 && Namespace.Description.ContainsKey(CurrentLanguage)) { 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t<h3 class=\"box-title first-heading\">");
+            this.Write("\n\t\t\t\t<h3 class=\"box-title first-heading\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Description));
             
             #line default
             #line hidden
-            this.Write("</h3>\n\t\t\t\t\t<div class=\"divider\">\n\t\t\t\t\t<span></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"" +
-                    "text-box markdown\">\n\t\t\t\t\t\t");
+            this.Write("</h3>\n\t\t\t\t<div class=\"divider\">\n\t\t\t\t<span></span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"text" +
+                    "-box markdown\">\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
 	var template = new Templater(Repository, Namespace.Description[CurrentLanguage]); 
-							var helper = new Helper(Repository);
-							var namespaceDescription = template.TransformText(helper.TransformLinkToken); 
+						var helper = new Helper(Repository);
+						var namespaceDescription = template.TransformText(helper.TransformLinkToken); 
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t\t\t\t\t");
+            this.Write("\n\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(namespaceDescription)));
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t</div>\n\t\t\t\t\t<h3 class=\"box-title\">");
+            this.Write("\n\t\t\t\t</div>\n\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Types));
             
             #line default
             #line hidden
-            this.Write("</h3>\n\n\t\t\t\t");
+            this.Write("</h3>\n\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  } else { 
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t\t\t\t<h3 class=\"box-title first-heading\">");
+            this.Write("\n\n\t\t\t\t<h3 class=\"box-title first-heading\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Types));
             
             #line default
             #line hidden
-            this.Write("</h3>\n\t\t\t\t\t<div class=\"divider\">\n\t\t\t\t\t<span></span>\n\t\t\t\t\t</div>\n\n\t\t\t\t");
+            this.Write("</h3>\n\t\t\t\t<div class=\"divider\">\n\t\t\t\t<span></span>\n\t\t\t\t</div>\n\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t\t\t<div class=\"table-box\">\n\t\t\t\t\t<table>\n\t\t\t\t\t\t<thead>\n\t\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t\t<td>" +
-                    "</td>\n\t\t\t\t\t\t\t\t<td>Name</td>\n\t\t\t\t\t\t\t\t<td>Description</td>\n\t\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t</th" +
-                    "ead>\n\t\t\t\t\t\t<tbody>\t\t\t\n\n\t\t\t\t\t\t\t");
+            this.Write("\n\n\t\t\t<div class=\"table-box\">\n\t\t\t\t<table>\n\t\t\t\t\t<thead>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td></td>" +
+                    "\n\t\t\t\t\t\t\t<td>Name</td>\n\t\t\t\t\t\t\t<td>Description</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n\t\t\t\t" +
+                    "\t<tbody>\t\t\t\n\n\t\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  var even = false; 
-							foreach(var type in Namespace.Types) { 
-								var sdType = (SDType)Repository.GetTypeByIdentifier(type.Identifier); 
+						foreach(var type in Namespace.Types) { 
+							var sdType = (SDType)Repository.GetTypeByIdentifier(type.Identifier); 
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t\t\t\t\t\t\t<tr ");
+            this.Write("\n\n\t\t\t\t\t\t\t<tr ");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  if(even) { even = false; 
             
             #line default
             #line hidden
             this.Write(" class=\"even\" ");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  } else { even = true; } 
             
             #line default
             #line hidden
-            this.Write(">\n\t\t\t\t\t\t\t\t\t<td class=\"iconColumn\">\n\t\t\t\t\t\t\t\t\t\t<img alt=\"Class-Icon\" src=\"../images" +
-                    "/icons/Class_");
+            this.Write(">\n\t\t\t\t\t\t\t\t<td class=\"iconColumn\">\n\t\t\t\t\t\t\t\t\t<img alt=\"Class-Icon\" src=\"../images/i" +
+                    "cons/Class_");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Accessibility));
             
             #line default
             #line hidden
-            this.Write(".png\">\n\t\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t\t<a title=\"");
+            this.Write(".png\">\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t\t<a title=\"");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Name));
             
             #line default
             #line hidden
             this.Write("\" href=\"../type/");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Guid));
             
             #line default
             #line hidden
             this.Write(".html\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Name));
             
             #line default
             #line hidden
-            this.Write("</a>\n\t\t\t\t\t\t\t\t\t</td>\t\n\t\t\t\t\t\t\t\t\t<td class=\"markdown\">\n\t\t\t\t\t\t\t\t\t\t");
+            this.Write("</a>\n\t\t\t\t\t\t\t\t</td>\t\n\t\t\t\t\t\t\t\t<td class=\"markdown\">\n\t\t\t\t\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  if(sdType.Documentation.ContainsKey(CurrentLanguage)) { 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t\t\t\t\t\t\t\t\t");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(sdType.Documentation[CurrentLanguage].Summary.ToString())));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(sdType.Documentation[CurrentLanguage].Summary.ToString())));
+            
+            #line default
+            #line hidden
+            this.Write("\n\t\t\t\t\t\t\t\t\t");
+            
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t\t</tr>\n\n\t\t\t\t\t\t\t");
+            this.Write("\n\t\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t</tr>\n\n\t\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t\t\t\t\t</tbody>\n\t\t\t\t\t</table>\n\t\t\t\t</div>\n\n\t\t\t\t");
+            this.Write("\n\n\t\t\t\t\t</tbody>\n\t\t\t\t</table>\n\t\t\t</div>\n\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  if(Namespace.Uses.Count > 0) { 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t<h3 class=\"box-title\">");
+            this.Write("\n\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Uses));
             
             #line default
             #line hidden
-            this.Write("</h3>\n\t\t\t\t\t<div class=\"list-box\">\n\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t");
+            this.Write("</h3>\n\t\t\t\t<div class=\"list-box\">\n\t\t\t\t\t<ul>\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  foreach(var use in Namespace.Uses) { 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t\t\t<li><a href=\"../namespace/");
+            this.Write("\n\t\t\t\t\t\t<li><a href=\"../namespace/");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(use.Guid));
             
             #line default
             #line hidden
             this.Write(".html\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(use.Fullname));
             
             #line default
             #line hidden
-            this.Write("</a></li>\n\t\t\t\t\t\t");
+            this.Write("</a></li>\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</div>\n\t\t\t\t");
+            this.Write("\n\t\t\t\t\t</ul>\n\t\t\t\t</div>\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t\t\t");
+            this.Write("\n\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  if(Namespace.UsedBy.Count > 0) { 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t<h3 class=\"box-title\">");
+            this.Write("\n\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Strings.UsedBy));
             
             #line default
             #line hidden
-            this.Write("</h3>\n\t\t\t\t\t<div class=\"list-box\">\n\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t");
+            this.Write("</h3>\n\t\t\t\t<div class=\"list-box\">\n\t\t\t\t\t<ul>\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  foreach(var used in Namespace.UsedBy) { 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t\t\t<li><a href=\"../namespace/");
+            this.Write("\n\t\t\t\t\t\t<li><a href=\"../namespace/");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(used.Guid));
             
             #line default
             #line hidden
             this.Write(".html\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(used.Fullname));
             
             #line default
             #line hidden
-            this.Write("</a></li>\n\t\t\t\t\t\t");
+            this.Write("</a></li>\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</div>\n\t\t\t\t");
+            this.Write("\n\t\t\t\t\t</ul>\n\t\t\t\t</div>\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t\t</div>\n\t\t</div>\n\t   \n    </body>\n</html>\n\n");
+            this.Write("\n\n\t\t</div>\n\t   \n    </body>\n</html>\n\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\NamespaceTemplate.tt"
+        #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  public IStrings Strings { get; set; }
 	public string CurrentLanguage { get; set; }
 	public SDRepository Repository { get; set; }

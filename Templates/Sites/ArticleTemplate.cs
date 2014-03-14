@@ -24,7 +24,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\ArticleTemplate.tt"
+    #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
     public partial class ArticleTemplate : ArticleTemplateBase
     {
@@ -56,7 +56,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
         <meta http-equiv=""X-UA-Compatible"" content=""IE=edge,chrome=1"">
         <title>");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\ArticleTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Repository.ProjectInfo.ProjectName));
             
             #line default
@@ -67,79 +67,73 @@ namespace SharpDox.Plugins.Html.Templates.Sites
 		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/reset.css"" />
 		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/font.css"" />
 		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/font-awesome.css"" />
-		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/typography.css"" />
-		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/layout.css"" />
-		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/elements.css"" />
+		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/typography.css"" />		
 		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/markdown.css"" />
-		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/vs.css"" />
+		<link rel=""stylesheet"" type=""text/css"" href=""../stylesheets/layout.css"" />
 
 		<script src=""../js/vendor/jquery.js""></script>
-		<script src=""../js/vendor/highlight.pack.js""></script>
 		<script src=""../js/Iframe.js""></script>
-
-		<script>hljs.initHighlightingOnLoad();</script>
     </head>
     <body>        
         
-		<div id=""documentation-wrapper"">
-			<div id=""header"">
-				<h2 class=""type-title"">");
+		<div id=""header"">
+			<h2 class=""type-title"">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\ArticleTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Article.Title));
             
             #line default
             #line hidden
-            this.Write("</h2>\n\t\t\t\t");
+            this.Write("</h2>\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\ArticleTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
  if(!string.IsNullOrEmpty(Repository.ProjectInfo.VersionNumber)) { 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t<span class=\"namespace-title\">Version ");
+            this.Write("\n\t\t\t\t<span class=\"namespace-title\">Version ");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\ArticleTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Repository.ProjectInfo.VersionNumber));
             
             #line default
             #line hidden
-            this.Write("</span>\n\t\t\t\t");
+            this.Write("</span>\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\ArticleTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t</div>\n\t\t\t<div id=\"pagecontent\">\n\n\t\t\t\t<h3 class=\"box-title first-heading\">");
+            this.Write("\n\t\t</div>\n\t\t<div id=\"pagecontent\">\n\n\t\t\t<h3 class=\"box-title first-heading\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\ArticleTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Article));
             
             #line default
             #line hidden
-            this.Write("</h3>\n\t\t\t\t<div class=\"divider\">\n\t\t\t\t<span></span>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"tex" +
-                    "t-box markdown\">\n\t\t\t\t\t");
+            this.Write("</h3>\n\t\t\t<div class=\"divider\">\n\t\t\t<span></span>\n\t\t\t</div>\n\n\t\t\t<div class=\"text-bo" +
+                    "x markdown\">\n\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\ArticleTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
 	var template = new Templater(Repository, Article.Content); 
-						var helper = new Helper(Repository);
-						var article = template.TransformText(helper.TransformLinkToken); 
+					var helper = new Helper(Repository);
+					var article = template.TransformText(helper.TransformLinkToken); 
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t\t\t\t");
+            this.Write("\n\n\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\ArticleTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(article)));
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t</div>\n\n\t\t\t</div>\n\t\t</div>\n\n    </body>\n</html>\n\n");
+            this.Write("\n\t\t\t</div>\n\n\t\t</div>\t\n\n    </body>\n</html>\n\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Sites\ArticleTemplate.tt"
+        #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
 	public SDRepository Repository { get; set; }
 	public SDArticle Article { get; set; } 
 	public IStrings Strings { get; set; } 

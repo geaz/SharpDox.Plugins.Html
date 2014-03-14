@@ -14,22 +14,22 @@ function onHashChange(){
 		activeDiv = $(window.location.hash);
 
 		$(window.location.hash).show();
-		resize();
+		changed(window.location.hash);
 	} else {
 		if(activeDiv != undefined) activeDiv.hide();
 		activeDiv = $("#typeIndex");
 
 		$("#typeIndex").show();
-		resize();
+		changed();
 	}
 }
 
-function resize(){
+function changed(displayedMember){
     var body = document.body,
     html = document.documentElement,
-    height = body.offsetHeight + 75;
+    height = body.offsetHeight + 50;
     if(height === 0){
-        height = html.offsetHeight + 75;
+        height = html.offsetHeight + 50;
     }
-    parent.postMessage({'action':'RESIZE', 'height':height}, '*');
+    parent.postMessage({'height' : height, 'displayMember': displayedMember}, '*');
 }

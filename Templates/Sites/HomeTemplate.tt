@@ -24,43 +24,36 @@
 		<link rel="stylesheet" type="text/css" href="../stylesheets/reset.css" />
 		<link rel="stylesheet" type="text/css" href="../stylesheets/font.css" />
 		<link rel="stylesheet" type="text/css" href="../stylesheets/font-awesome.css" />
-		<link rel="stylesheet" type="text/css" href="../stylesheets/typography.css" />
-		<link rel="stylesheet" type="text/css" href="../stylesheets/layout.css" />
-		<link rel="stylesheet" type="text/css" href="../stylesheets/elements.css" />
+		<link rel="stylesheet" type="text/css" href="../stylesheets/typography.css" />		
 		<link rel="stylesheet" type="text/css" href="../stylesheets/markdown.css" />
-		<link rel="stylesheet" type="text/css" href="../stylesheets/vs.css" />
+		<link rel="stylesheet" type="text/css" href="../stylesheets/layout.css" />
 
 		<script src="../js/vendor/jquery.js"></script>
-		<script src="../js/vendor/highlight.pack.js"></script>
 		<script src="../js/Iframe.js"></script>
-
-		<script>hljs.initHighlightingOnLoad();</script>
     </head>
     <body>        
         
-		<div id="documentation-wrapper">
-			<div id="header">
-				<h2 class="type-title"><#= Strings.By #> <#= Repository.ProjectInfo.Author != null ? Repository.ProjectInfo.Author : string.Empty #></h2>
-				<# if(!string.IsNullOrEmpty(Repository.ProjectInfo.VersionNumber)) { #>
-					<span class="namespace-title">Version <#= Repository.ProjectInfo.VersionNumber != null ? Repository.ProjectInfo.VersionNumber : string.Empty #></span>
+		<div id="header">
+			<h2 class="type-title"><#= Strings.By #> <#= Repository.ProjectInfo.Author != null ? Repository.ProjectInfo.Author : string.Empty #></h2>
+			<# if(!string.IsNullOrEmpty(Repository.ProjectInfo.VersionNumber)) { #>
+				<span class="namespace-title">Version <#= Repository.ProjectInfo.VersionNumber != null ? Repository.ProjectInfo.VersionNumber : string.Empty #></span>
+			<# } #>
+		</div>
+		<div id="pagecontent">
+					
+			<h3 class="box-title first-heading"><#= Strings.Description #></h3>
+			<div class="divider">
+			<span></span>
+			</div>
+
+			<div class="text-box markdown">
+				<# if(Repository.ProjectInfo.Description.Count > 0 && Repository.ProjectInfo.Description.ContainsKey(CurrentLanguage)) { #>
+					<#= new Markdown().Transform(Repository.ProjectInfo.Description[CurrentLanguage]) #>
+				<# } else if(Repository.ProjectInfo.Description.Count > 0) { #>
+					<#= new Markdown().Transform(Repository.ProjectInfo.Description["default"]) #>
 				<# } #>
 			</div>
-			<div id="pagecontent">
-					
-				<h3 class="box-title first-heading"><#= Strings.Description #></h3>
-				<div class="divider">
-				<span></span>
-				</div>
 
-				<div class="text-box markdown">
-					<# if(Repository.ProjectInfo.Description.Count > 0 && Repository.ProjectInfo.Description.ContainsKey(CurrentLanguage)) { #>
-						<#= new Markdown().Transform(Repository.ProjectInfo.Description[CurrentLanguage]) #>
-					<# } else if(Repository.ProjectInfo.Description.Count > 0) { #>
-						<#= new Markdown().Transform(Repository.ProjectInfo.Description["default"]) #>
-					<# } #>
-				</div>
-
-			</div>
 		</div>
 
     </body>

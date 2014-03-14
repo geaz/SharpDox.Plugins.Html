@@ -30,20 +30,22 @@ function loadNav(navIndex){
 			nav.append('<li><a class="pagelink" onClick="loadNav(\'' + [navIndex, key].join(".") + '\')" href="#"><i class="icon-chevron-sign-right"></i> <p>' + value["title"] + '</p></a></li>');
 		}
 		else if(value["type"] == "link"){
-			nav.append('<li><a class="pagelink" onClick="SetDocSite(\'article/' + value["title"].replace(new RegExp(' ', 'g'), '_') + '.html\')" href="#"><i class="icon-link"></i> <p>' + value["title"] + '</p></a></li>');
+			var navUrl = 'article/' + value["title"].replace(new RegExp(' ', 'g'), '_') + '.html';
+			nav.append('<li><a class="pagelink" onClick="SetDocSite(\'' + navUrl + '\')" href="#' + navUrl + '"><i class="icon-link"></i> <p>' + value["title"] + '</p></a></li>');
 		}
 		else if(value["type"] == "namespaceLink"){
 			nav.append('<li><a class="pagelink" onClick="loadNav(\'' + [navIndex, key].join(".") + '\'); SetDocSite(\'namespace/' + value["guid"] + '.html\')" href="#"><i class="icon-chevron-sign-right"></i> <p>' + value["title"] + '</p></a></li>');
 		}
 		else if(value["type"] == "typeLink"){
-			nav.append('<li><a class="pagelink" href="#" onClick="SetDocSite(\'type/' + value["guid"] + '.html\')"><i class="icon-link"></i> <p>' + value["title"] + '</p></a></li>');
+			var navUrl = 'type/' + value["guid"] + '.html';
+			nav.append('<li><a class="pagelink" href="#' + navUrl + '" onClick="SetDocSite(\'' + navUrl + '\')"><i class="icon-link"></i> <p>' + value["title"] + '</p></a></li>');
 		}
 	});
 	
 	initNavWrap();
 }
 
-function SetDocSite(url){
+function SetDocSite(url){	
 	$("#docFrame").attr('src', url);
 }
 

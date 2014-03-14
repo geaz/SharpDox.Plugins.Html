@@ -9,5 +9,5 @@ function resize(){
     if(height === 0){
         height = html.offsetHeight + 50;
     }
-    parent.postMessage({'action':'RESIZE', 'height':height}, '*');
+    parent.postMessage(height, '*');
 }
