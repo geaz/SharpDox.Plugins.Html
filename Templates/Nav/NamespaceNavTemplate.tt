@@ -9,8 +9,10 @@
 
 <#  for (int i = 0; i < Namespace.Types.Count; i++)
 	{ 
-		var sdType = Namespace.Types[i]; #>
-		<#= string.Format("{{\"type\":\"typeLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}}", sdType.Name, sdType.Guid) #>
+		var sdType = Namespace.Types[i]; 
+		var typeNavTemplate = new TypeNavTemplate { SDType = sdType };
+		var typeNavString = typeNavTemplate.TransformText().Trim(); #>	
+		<#= string.Format("{{\"type\":\"typeLink\", \"title\":\"{0}\", \"guid\":\"{1}\", \"children\":[{2}]}}", sdType.Name, sdType.Guid, typeNavString.Remove(typeNavString.Length - 1)) #>
 <#		if(i != Namespace.Types.Count - 1) #> , <#
 	}	#>
 

@@ -1,0 +1,111 @@
+#content{
+    margin-left: 300px;
+    padding: 25px;
+}
+
+#sidebar {
+    background: #3F72DB;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 300px;
+}
+
+#sidebar a {
+    color: #FFFFFF;
+}
+
+#sidebar a:hover {
+    color: #F58026;
+}
+
+#docname {
+    margin: 50px 0;
+    max-height: 100px;
+    text-align: center;
+}
+
+#pagetitle{
+    background: #2862db;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+#pagetitle p{
+    margin: 0;
+    padding: 0;
+}
+
+#backLinkWrapper a i, #navigation li a i{
+    float:right;
+    margin: 4px 5px 0 0;
+}
+
+#backLinkWrapper a p, #navigation li a p {
+    margin: 0 20px;
+    min-width:240px;
+}
+
+#backLinkWrapper a, #navigation li a, #navigtaion li a:visited{
+    display:inline-block;
+    min-width: 280px;
+    padding: 10px;
+    background: #4985FF;
+}
+
+#navigation li a:hover{
+    background: #F58026;
+    color: white;
+}
+
+#backLinkWrapper a i{
+    float:left;
+}
+
+#backLinkWrapper a{
+    background: #3F72DB;
+}
+
+#backLinkWrapper a:hover{
+    background: #25427F;
+    color: white;
+}
+
+/* IFRAME */
+#header{
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+
+.type-title {
+    margin: 0;
+}
+
+.namespace-title {
+    display: block;
+    font-family: OpenSansLight;
+    font-size: 10pt;
+    margin-top: 5px;
+}
+
+.box-title {
+    margin: 0;
+}
+
+.divider {
+    background-color: #DADADA;
+    border-bottom: 1px solid #FFFFFF;
+    height: 1px;
+    margin: 0.5em 0 1.5em;
+}
+
+.divider span {
+    background-color: #F58026;
+    display: block;
+    height: 1px;
+    overflow: hidden;
+    width: 50px;
+}

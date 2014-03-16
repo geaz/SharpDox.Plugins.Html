@@ -75,6 +75,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Templates\Nav\TypeNavTemplate.cs">
+      <DependentUpon>TypeNavTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Templates\Nav\NamespaceNavTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -230,6 +235,10 @@
     <None Include="Templates\Nav\ApiNavTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiNavTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\Nav\TypeNavTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TypeNavTemplate.cs</LastGenOutput>
     </None>
     <None Include="Templates\Nav\NamespaceNavTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

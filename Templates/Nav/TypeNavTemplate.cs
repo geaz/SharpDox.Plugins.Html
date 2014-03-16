@@ -7,7 +7,7 @@
 //     der Code erneut generiert wird.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace SharpDox.Plugins.Html.Templates.Sites
+namespace SharpDox.Plugins.Html.Templates.Nav
 {
     using System.Linq;
     using System.Text;
@@ -15,18 +15,15 @@ namespace SharpDox.Plugins.Html.Templates.Sites
     using SharpDox.Model.Repository;
     using SharpDox.Model.Documentation;
     using SharpDox.Sdk.Config;
-    using SharpDox.Sdk;
-    using MarkdownSharp;
-    using SharpDox.Plugins.Html.Templates.Strings;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\HomeTemplate.tt"
+    #line 1 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\TypeNavTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "11.0.0.0")]
-    public partial class HomeTemplate : HomeTemplateBase
+    public partial class TypeNavTemplate : TypeNavTemplateBase
     {
 #line hidden
         /// <summary>
@@ -34,135 +31,98 @@ namespace SharpDox.Plugins.Html.Templates.Sites
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write(@" 
-
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class=""no-js lt-ie9 lt-ie8 lt-ie7""> <![endif]-->
-<!--[if IE 7]>         <html class=""no-js lt-ie9 lt-ie8""> <![endif]-->
-<!--[if IE 8]>         <html class=""no-js lt-ie9""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class=""no-js""> <!--<![endif]-->
-    <head>
-        <meta charset=""utf-8"">
-        <meta http-equiv=""X-UA-Compatible"" content=""IE=edge,chrome=1"">
-        <title>");
+            this.Write("\r\n");
             
-            #line 1 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\HomeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Repository.ProjectInfo.ProjectName));
+            #line 10 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\TypeNavTemplate.tt"
+  foreach(var sdField in SDType.Fields)
+	{	
             
             #line default
             #line hidden
-            this.Write(@"</title>
-        <meta name=""viewport"" content=""width=device-width"">
-
-		<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/reset.css"" />
-		<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/font.css"" />
-		<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/font-awesome.css"" />
-		<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/typography.css"" />		
-		<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/markdown.css"" />
-		<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/layout.css"" />
-
-		<script src=""../assets/js/vendor/jquery.js""></script>
-		<script src=""../assets/js/Iframe.js""></script>
-    </head>
-    <body>        
-        
-		<div id=""header"">
-			<h2 class=""type-title"">");
+            this.Write(" \r\n\t\t");
             
-            #line 9 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\HomeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Strings.By));
+            #line 12 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\TypeNavTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{{\"type\":\"fieldLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}}", sdField.Name, sdField.Guid)));
             
             #line default
             #line hidden
-            this.Write(" ");
+            this.Write(", \r\n");
             
-            #line 9 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\HomeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Repository.ProjectInfo.Author != null ? Repository.ProjectInfo.Author : string.Empty));
-            
-            #line default
-            #line hidden
-            this.Write("</h2>\n\t\t\t");
-            
-            #line 9 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\HomeTemplate.tt"
- if(!string.IsNullOrEmpty(Repository.ProjectInfo.VersionNumber)) { 
+            #line 13 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\TypeNavTemplate.tt"
+	}	
+	foreach(var sdEvent in SDType.Events)
+    {	
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t<span class=\"namespace-title\">Version ");
+            this.Write("\t\t");
             
-            #line 9 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\HomeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Repository.ProjectInfo.VersionNumber != null ? Repository.ProjectInfo.VersionNumber : string.Empty));
-            
-            #line default
-            #line hidden
-            this.Write("</span>\n\t\t\t");
-            
-            #line 9 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\HomeTemplate.tt"
- } 
+            #line 16 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\TypeNavTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{{\"type\":\"eventLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}}", sdEvent.Name, sdEvent.Guid)));
             
             #line default
             #line hidden
-            this.Write("\n\t\t</div>\n\t\t<div id=\"pagecontent\">\n\t\t\t\t\t\n\t\t\t<h3 class=\"box-title first-heading\">");
+            this.Write(", \r\n");
             
-            #line 9 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\HomeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Description));
-            
-            #line default
-            #line hidden
-            this.Write("</h3>\n\t\t\t<div class=\"divider\">\n\t\t\t<span></span>\n\t\t\t</div>\n\n\t\t\t<div class=\"text-bo" +
-                    "x markdown\">\n\t\t\t\t");
-            
-            #line 9 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\HomeTemplate.tt"
- if(Repository.ProjectInfo.Description.Count > 0 && Repository.ProjectInfo.Description.ContainsKey(CurrentLanguage)) { 
+            #line 17 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\TypeNavTemplate.tt"
+	}
+	foreach(var sdConstructor in SDType.Constructors)
+	{	
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t");
+            this.Write("\t\t");
             
-            #line 9 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\HomeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(Repository.ProjectInfo.Description[CurrentLanguage])));
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t\t");
-            
-            #line 9 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\HomeTemplate.tt"
- } else if(Repository.ProjectInfo.Description.Count > 0) { 
+            #line 20 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\TypeNavTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{{\"type\":\"methodLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}}", sdConstructor.Name, sdConstructor.Guid)));
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t");
+            this.Write(", \r\n");
             
-            #line 9 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\HomeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(Repository.ProjectInfo.Description["default"])));
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t\t");
-            
-            #line 9 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\HomeTemplate.tt"
- } 
+            #line 21 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\TypeNavTemplate.tt"
+	}
+	foreach(var sdMethod in SDType.Methods)
+    {	
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t</div>\n\n\t\t</div>\n\n    </body>\n</html>\n\n");
+            this.Write("\t\t");
+            
+            #line 24 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\TypeNavTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{{\"type\":\"methodLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}}", sdMethod.Name, sdMethod.Guid)));
+            
+            #line default
+            #line hidden
+            this.Write(", \r\n");
+            
+            #line 25 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\TypeNavTemplate.tt"
+	}	
+	foreach(var sdProperty in SDType.Properties)
+	{	
+            
+            #line default
+            #line hidden
+            this.Write("\t\t");
+            
+            #line 28 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\TypeNavTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{{\"type\":\"propertyLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}}", sdProperty.Name, sdProperty.Guid)));
+            
+            #line default
+            #line hidden
+            this.Write(", \r\n");
+            
+            #line 29 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\TypeNavTemplate.tt"
+	}	
+            
+            #line default
+            #line hidden
+            this.Write("\t\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 9 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\HomeTemplate.tt"
-	public string CurrentLanguage { get; set; }
-	public SDRepository Repository { get; set; }
-	public IStrings Strings { get; set; } 
+        #line 31 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\TypeNavTemplate.tt"
+	public SDType SDType { get; set; } 
         
         #line default
         #line hidden
@@ -175,7 +135,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "11.0.0.0")]
-    public class HomeTemplateBase
+    public class TypeNavTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;
