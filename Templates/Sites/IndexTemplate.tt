@@ -57,12 +57,10 @@
 				<#}#>
 			</div>
     
-			<div id="navigation-container">
-                <div id="pagetitle"></div>
-                <div id="backLinkWrapper"></div>
-                <div id="descLinkWrapper"></div>
-                <ul id="navigation"></ul>
-			</div>			
+			<div id="pagetitle"></div>
+            <div id="backLinkWrapper"></div>
+            <div id="descLinkWrapper"></div>
+            <ul id="navigation"></ul>	
 		</div>
 
         <div id="content">            

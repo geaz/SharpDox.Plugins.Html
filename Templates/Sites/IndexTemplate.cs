@@ -150,12 +150,10 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write(@"
 			</div>
     
-			<div id=""navigation-container"">
-                <div id=""pagetitle""></div>
-                <div id=""backLinkWrapper""></div>
-                <div id=""descLinkWrapper""></div>
-                <ul id=""navigation""></ul>
-			</div>			
+			<div id=""pagetitle""></div>
+            <div id=""backLinkWrapper""></div>
+            <div id=""descLinkWrapper""></div>
+            <ul id=""navigation""></ul>	
 		</div>
 
         <div id=""content"">            
@@ -165,7 +163,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
 		<div id=""navdata"" style=""display:none;"">
 			");
             
-            #line 15 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\IndexTemplate.tt"
+            #line 13 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(NavJson));
             
             #line default
@@ -174,7 +172,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 15 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\IndexTemplate.tt"
+        #line 13 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\IndexTemplate.tt"
  public string CurrentLanguage { get; set; }
 	public IStrings Strings { get; set; }
 	public SDRepository Repository { get; set; } 

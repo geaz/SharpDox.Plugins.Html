@@ -53,7 +53,7 @@ function loadNav(navIndex) {
         }
     });
 
-    initNavWrap();
+    //initNavWrap();
 }
 
 function SetDocSite(url) {
@@ -75,7 +75,7 @@ function GetNav(navIndexKey) {
 function initNavWrap() {
     var items = $("#sidebar #navigation li a p");
     $.each(items, function (key, val) {
-        var lineBreaks = $(val).width() / 240;
+        var lineBreaks = $(val).width() / 225;
         if (lineBreaks > 1) {
             var parent = $(val).parent();
             var splittedText = $(val).html().split(".");
@@ -93,7 +93,7 @@ function createNewParagraph(parent, splittedText, textIndex) {
     var newIndex = splittedText.length - 1;
     parent.append(newP);
     for (var i = splittedText.length - 1; i >= textIndex; i--) {
-        if (newP.width() > 240) {
+        if (newP.width() > 225) {
             newP.html(joinFromTillIndex(splittedText, textIndex, i));
 
             if (i + 1 != splittedText.length) {

@@ -5,11 +5,12 @@
 
 #sidebar {
     background: #3F72DB;
-    height: 100%;
     left: 0;
     position: fixed;
     top: 0;
     width: 300px;
+    height: 100%;
+    overflow:hidden;
 }
 
 #sidebar a {
@@ -39,6 +40,12 @@
     padding: 0;
 }
 
+#navigation{
+    height: 70%;
+    overflow-y:auto;
+    overflow-x: hidden;
+}
+
 #backLinkWrapper a i, #navigation li a i{
     float:right;
     margin: 4px 5px 0 0;
@@ -46,13 +53,14 @@
 
 #backLinkWrapper a p, #navigation li a p {
     margin: 0 20px;
-    min-width:240px;
+    width: 200px;
+    word-wrap: break-word;
 }
 
 #backLinkWrapper a, #navigation li a, #navigtaion li a:visited{
     display:inline-block;
-    min-width: 280px;
-    padding: 10px;
+    min-width: 265px;
+    padding: 10px 25px 10px 10px;
     background: #4985FF;
 }
 
