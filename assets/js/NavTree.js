@@ -57,7 +57,7 @@ function loadNav(navIndex) {
 }
 
 function SetDocSite(url) {
-    $("#docFrame").attr('src', url);
+    $("#docframe").attr('src', url);
 }
 
 function GetNav(navIndexKey) {

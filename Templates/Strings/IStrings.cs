@@ -13,7 +13,7 @@
         string Name { get; }
         string Assembly { get; }
         string Namespace { get; }
-        string Navigation { get; }
+        string Home { get; }
         string DeclaringType { get; }
         string Summary { get; }
         string Syntax { get; }

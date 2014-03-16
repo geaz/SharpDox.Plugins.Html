@@ -14,7 +14,7 @@
         public string Assembly { get { return "Assembly"; } }
         public string DeclaringType { get { return "Declaringtype"; } }
         public string Namespace { get { return "Namespace"; } }
-        public string Navigation { get { return "Navigation"; } }
+        public string Home { get { return "Home"; } }
         public string Summary { get { return "Summary"; } }
         public string Syntax { get { return "Syntax"; } }
         public string Remarks { get { return "Remarks"; } }

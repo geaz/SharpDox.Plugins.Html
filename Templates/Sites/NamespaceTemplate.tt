@@ -20,15 +20,15 @@
         <title><#= Repository.ProjectInfo.ProjectName #> - <#= Namespace.Fullname #></title>
         <meta name="viewport" content="width=device-width">
 
-		<link rel="stylesheet" type="text/css" href="../stylesheets/reset.css" />
-		<link rel="stylesheet" type="text/css" href="../stylesheets/font.css" />
-		<link rel="stylesheet" type="text/css" href="../stylesheets/font-awesome.css" />
-		<link rel="stylesheet" type="text/css" href="../stylesheets/typography.css" />		
-		<link rel="stylesheet" type="text/css" href="../stylesheets/markdown.css" />
-		<link rel="stylesheet" type="text/css" href="../stylesheets/layout.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/font.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/typography.css" />		
+		<link rel="stylesheet" type="text/css" href="../assets/css/markdown.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/layout.css" />
 
-		<script src="../js/vendor/jquery.js"></script>
-		<script src="../js/Iframe.js"></script>
+		<script src="../assets/js/vendor/jquery.js"></script>
+		<script src="../assets/js/Iframe.js"></script>
     </head>
     <body>        
        
