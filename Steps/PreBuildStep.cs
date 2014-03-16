@@ -12,6 +12,7 @@ namespace SharpDox.Plugins.Html.Steps
             CreateFolder(htmlExporter.OutputPath, "namespace");
             CreateFolder(htmlExporter.OutputPath, "type");
             CreateFolder(htmlExporter.OutputPath, "article");
+            CreateFolder(htmlExporter.OutputPath, "assets");
 
             htmlExporter.CurrentStep = new CreateArticleStep();
         }

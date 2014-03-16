@@ -12,9 +12,9 @@ namespace SharpDox.Plugins.Html.Steps
         {
             htmlExporter.ExecuteOnStepProgress(40);
 
-            CopyAssets(htmlExporter, Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), "assets"), htmlExporter.OutputPath);
-            CopyDiagrams(htmlExporter, htmlExporter.OutputPath);
-            CopyImages(htmlExporter, htmlExporter.Repository.Images, htmlExporter.OutputPath);
+            CopyAssets(htmlExporter, Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), "assets"), Path.Combine(htmlExporter.OutputPath, "assets"));
+            CopyDiagrams(htmlExporter, Path.Combine(htmlExporter.OutputPath, "assets"));
+            CopyImages(htmlExporter, htmlExporter.Repository.Images, Path.Combine(htmlExporter.OutputPath, "assets"));
             CopyImage(htmlExporter, htmlExporter.Repository.ProjectInfo.LogoPath, htmlExporter.OutputPath);
 
             htmlExporter.CurrentStep = new CreateHtmlStep();
@@ -41,12 +41,15 @@ namespace SharpDox.Plugins.Html.Steps
 
         private void CopyDiagrams(HtmlExporter htmlExporter, string outputPath)
         {
+            var diagramPath = Path.Combine(outputPath, "images", "diagrams");
+            Directory.CreateDirectory(diagramPath);
+
             foreach (var sdType in htmlExporter.Repository.GetAllTypes())
             {
                 if(!sdType.IsClassDiagramEmpty())
                 {
                     htmlExporter.ExecuteOnStepMessage(string.Format(htmlExporter.HtmlStrings.CopyingFile, sdType.Guid + ".png"));
-                    sdType.GetClassDiagram().ToPng(Path.Combine(outputPath, "images", "diagrams", sdType.Guid + ".png"));
+                    sdType.GetClassDiagram().ToPng(Path.Combine(diagramPath, sdType.Guid + ".png"));
                 }
             }
 
@@ -55,7 +58,7 @@ namespace SharpDox.Plugins.Html.Steps
                 if (!sdMethod.IsSequenceDiagramEmpty())
                 {
                     htmlExporter.ExecuteOnStepMessage(string.Format(htmlExporter.HtmlStrings.CopyingFile, sdMethod.Guid + ".png"));
-                    sdMethod.GetSequenceDiagram(htmlExporter.Repository.GetAllTypes()).ToPng(Path.Combine(outputPath, "images", "diagrams", sdMethod.Guid + ".png"));
+                    sdMethod.GetSequenceDiagram(htmlExporter.Repository.GetAllTypes()).ToPng(Path.Combine(diagramPath, sdMethod.Guid + ".png"));
                 }
             }
         }

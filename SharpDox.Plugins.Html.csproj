@@ -12,6 +12,8 @@
     <AssemblyName>SharpDox.Plugins.Html</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -295,7 +297,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\stylesheets\reset.css">
+    <None Include="assets\css\reset.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -591,18 +593,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\stylesheets\font.css">
+    <None Include="assets\css\font.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="assets\stylesheets\layout.css">
+    <None Include="assets\css\layout.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="assets\stylesheets\typography.css">
+    <None Include="assets\css\typography.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\stylesheets\markdown.css">
+    <None Include="assets\css\markdown.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -612,7 +614,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\stylesheets\font-awesome.css">
+    <None Include="assets\css\font-awesome.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -657,6 +659,7 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
