@@ -16,7 +16,7 @@
 		var sdType = Namespace.Types[i]; 
 		var typeNavTemplate = new TypeNavTemplate { SDType = sdType, Strings = Strings };
 		var typeNavString = typeNavTemplate.TransformText().Trim(); #>	
-		<#= string.Format("<li data-jstree='{{\"icon\":\"icon-chevron-sign-right\"}}'><a href=\"#type/{0}.html\" id=\"nav-{0}\">{1}</a></li>", sdType.Guid, sdType.Name, typeNavString.Remove(typeNavString.Length - 1)) #>
+		<#= string.Format("<li><a href=\"#type/{0}.html\" id=\"nav-{0}\"><i class=\"icon-chevron-sign-right\"></i> {1}</a></li>", sdType.Guid, sdType.Name, typeNavString.Remove(typeNavString.Length - 1)) #>
 <#	}	#>
 
 </ul>

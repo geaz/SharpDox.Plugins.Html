@@ -17,7 +17,7 @@ for (int i = 0; i < sdNamespaces.Count; i++)
 { 
 	var sdNamespace = sdNamespaces[i];
 	var namespaceNavTemplate = new NamespaceNavTemplate { Namespace = sdNamespace, Strings = Strings }; #>	
-	<#= string.Format("<li data-jstree='{{\"icon\":\"icon-chevron-sign-right\"}}'><a href=\"#namespace/{0}.html\" id=\"nav-{0}\">{1}</a>{2}</li>", sdNamespace.Guid, sdNamespace.Fullname, namespaceNavTemplate.TransformText()) #>
+	<#= string.Format("<li><a href=\"#namespace/{0}.html\" id=\"nav-{0}\"><i class=\"icon-chevron-sign-right\"></i> {1}</a>{2}</li>", sdNamespace.Guid, sdNamespace.Fullname, namespaceNavTemplate.TransformText()) #>
 <# } #>
 
 </ul>
