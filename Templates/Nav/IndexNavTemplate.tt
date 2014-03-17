@@ -9,7 +9,7 @@
 <#@ import namespace="MarkdownSharp" #> 
 <#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
 
-[{"title":"<#= Strings.Home #>", "children":[
+<ul>
 
 <# if(Repository.Articles.Count > 0) {
 		var articles = Repository.Articles.ContainsKey(CurrentLanguage) ? Repository.Articles[CurrentLanguage] : Repository.Articles["default"];
@@ -19,28 +19,26 @@
 
 			if (article.Content == "SDDoc")
 			{ #>		
-				<# var apiNavTemplate = new ApiNavTemplate { Repository = Repository }; #>						
-				<#= string.Format("{{\"type\":\"api\", \"title\":\"{0}\", \"children\":[{1}]}}", article.Title, apiNavTemplate.TransformText()) #>
+				<# var apiNavTemplate = new ApiNavTemplate { Repository = Repository, Strings = Strings }; #>						
+				<#= string.Format("<li data-jstree='{{\"icon\":\"icon-chevron-sign-right\"}}'><a href=\"#api\" id=\"nav-api\">{0}</a>{1}</li>", article.Title, apiNavTemplate.TransformText()) #>
 			<# }
 			else if (!string.IsNullOrEmpty(article.Content))
 			{ #>
-				<# var articleNavTemplate = new ArticleNavTemplate { Article = article, Repository = Repository }; #>		
-				<#= string.Format("{{\"type\":\"link\", \"title\":\"{0}\", \"children\":[{1}]}}", article.Title, articleNavTemplate.TransformText()) #>
+				<# var articleNavTemplate = new ArticleNavTemplate { Article = article, Repository = Repository, Strings = Strings }; #>		
+				<#= string.Format("<li data-jstree='{{\"icon\":\"icon-link\"}}'><a href=\"#article/{0}.html\" id=\"nav-{0}\">{1}</a>{2}</li>", article.Guid, article.Title, articleNavTemplate.TransformText()) #>
 			<# }
 			else
 			{ #>
-				<# var articleNavTemplate = new ArticleNavTemplate { Article = article, Repository = Repository }; #>
-				<#= string.Format("{{\"type\":\"placeholder\", \"title\":\"{0}\", \"children\":[{1}]}}", article.Title, articleNavTemplate.TransformText()) #>
+				<# var articleNavTemplate = new ArticleNavTemplate { Article = article, Repository = Repository, Strings = Strings }; #>
+				<#= string.Format("<li data-jstree='{{\"icon\":\"icon-chevron-sign-right\"}}'><a href=\"#\" id=\"nav-placeholder\">{0}</a>{1}</li>", article.Title, articleNavTemplate.TransformText()) #>
 			<# }
-
-			if(i != articles.Count - 1) #> , <#
 		}
 	} else {
 		var apiNavTemplate = new ApiNavTemplate { Repository = Repository }; #>
 		<#= apiNavTemplate.TransformText() #>
 <# } #>
 
-]}]
+</ul>
 
 <#+	public SDRepository Repository { get; set; }
 	public string CurrentLanguage { get; set; }

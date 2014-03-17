@@ -6,26 +6,54 @@
 <#@ import namespace="SharpDox.Model.Repository" #>
 <#@ import namespace="SharpDox.Model.Documentation" #>
 <#@ import namespace="SharpDox.Sdk.Config" #>
+<#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
 
-<#  foreach(var sdField in SDType.Fields)
-	{	#> 
-		<#= string.Format("{{\"type\":\"fieldLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}}", sdField.Name, sdField.Guid) #>, 
-<#	}	
+<ul>
+
+<#  var fields = string.Empty;
+	var events = string.Empty;
+	var constructors = string.Empty;
+	var methods = string.Empty;
+	var properties = string.Empty;
+
+	foreach(var sdField in SDType.Fields)
+	{	
+		fields += string.Format("{{\"type\":\"fieldLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}},", sdField.Name, sdField.Guid);
+	}	
 	foreach(var sdEvent in SDType.Events)
-    {	#>
-		<#= string.Format("{{\"type\":\"eventLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}}", sdEvent.Name, sdEvent.Guid) #>, 
-<#	}
+    {	
+		events += string.Format("{{\"type\":\"eventLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}},", sdEvent.Name, sdEvent.Guid);
+	}
 	foreach(var sdConstructor in SDType.Constructors)
-	{	#>
-		<#= string.Format("{{\"type\":\"methodLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}}", sdConstructor.Name, sdConstructor.Guid) #>, 
-<#	}
+	{
+		methods += string.Format("{{\"type\":\"methodLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}},", sdConstructor.Name, sdConstructor.Guid);
+	}
 	foreach(var sdMethod in SDType.Methods)
-    {	#>
-		<#= string.Format("{{\"type\":\"methodLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}}", sdMethod.Name, sdMethod.Guid) #>, 
-<#	}	
+    {	
+		methods += string.Format("{{\"type\":\"methodLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}},", sdMethod.Name, sdMethod.Guid);
+	}	
 	foreach(var sdProperty in SDType.Properties)
-	{	#>
-		<#= string.Format("{{\"type\":\"propertyLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}}", sdProperty.Name, sdProperty.Guid) #>, 
-<#	}	#>	
+	{
+		properties += string.Format("{{\"type\":\"propertyLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}},", sdProperty.Name, sdProperty.Guid);
+	}	#>	
 
-<#+	public SDType SDType { get; set; } #>
+<# if(SDType.Fields.Count > 0) { #>
+	<#= string.Format("{{\"type\":\"placeholder\", \"title\":\"{0}\", \"children\":[{1}]}},", Strings.Fields, fields.Trim().Remove(fields.Length -1)) #>
+<# } #>
+
+<# if(SDType.Events.Count > 0) { #>
+	<#= string.Format("{{\"type\":\"placeholder\", \"title\":\"{0}\", \"children\":[{1}]}},", Strings.Events, events.Trim().Remove(events.Length -1)) #>
+<# } #>
+
+<# if(SDType.Constructors.Count > 0 || SDType.Methods.Count > 0) { #>
+	<#= string.Format("{{\"type\":\"placeholder\", \"title\":\"{0}\", \"children\":[{1}]}},", Strings.Methods, methods.Trim().Remove(methods.Length -1)) #>
+<# } #>
+
+<# if(SDType.Properties.Count > 0) { #>
+	<#= string.Format("{{\"type\":\"placeholder\", \"title\":\"{0}\", \"children\":[{1}]}},", Strings.Properties, properties.Trim().Remove(properties.Length -1)) #>
+<# } #>
+
+</ul>
+
+<#+	public SDType SDType { get; set; } 
+	public IStrings Strings { get; set; }#>

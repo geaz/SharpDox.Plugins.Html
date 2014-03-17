@@ -17,18 +17,18 @@ namespace SharpDox.Plugins.Html
             var link = string.Empty;
             if (linkType == "image")
             {
-                link = string.Format("../{0}s/{1}", linkType, identifier);
+                link = string.Format("../assets/{0}s/{1}", linkType, identifier);
             }
             else if(linkType == "type" || linkType == "namespace")
             {
                 link = string.Format("../{0}/{1}.html", linkType, guid);
             }
-            else if (guid != Guid.Empty)
+            else if (guid != Guid.Empty) // Member
             {
                 var member = _repository.GetMemberByIdentifier(identifier);
                 link = string.Format("../{0}/{1}.html#{2}", "type", member.DeclaringType.Guid, guid);
             }
-            else
+            else // Article
             {
                 link = string.Format("../{0}/{1}.html", linkType, identifier.Replace(' ', '_'));
             }

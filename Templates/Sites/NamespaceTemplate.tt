@@ -32,11 +32,11 @@
     </head>
     <body>        
        
-	   <div id="header">
+	   <div class="header">
 			<h2 class="type-title"><#= Namespace.Fullname #></h2>
 			<span class="namespace-title">Assembly: <#= Namespace.Assemblyname #></span>
 		</div>
-		<div id="pagecontent">
+		<div class="pagecontent">
 					
 			<# if(Namespace.Description.Count != 0 && Namespace.Description.ContainsKey(CurrentLanguage)) { #>
 				<h3 class="box-title first-heading"><#= Strings.Description #></h3>
@@ -78,7 +78,7 @@
 
 							<tr <# if(even) { even = false; #> class="even" <# } else { even = true; } #>>
 								<td class="iconColumn">
-									<img alt="Class-Icon" src="../images/icons/Class_<#= sdType.Accessibility #>.png">
+									<img alt="Class-Icon" src="../assets/images/icons/Class_<#= sdType.Accessibility #>.png">
 								</td>
 								<td>
 									<a title="<#= sdType.Name #>" href="../type/<#= sdType.Guid #>.html"><#= sdType.Name #></a>

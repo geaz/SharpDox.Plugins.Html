@@ -16,13 +16,14 @@ namespace SharpDox.Plugins.Html.Templates.Nav
     using SharpDox.Model.Documentation;
     using SharpDox.Sdk.Config;
     using MarkdownSharp;
+    using SharpDox.Plugins.Html.Templates.Strings;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ApiNavTemplate.tt"
+    #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\ApiNavTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
     public partial class ApiNavTemplate : ApiNavTemplateBase
     {
@@ -40,47 +41,40 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             this.Write("\n");
             this.Write("\n");
             this.Write("\n");
-            this.Write(" \n\n");
+            this.Write(" \n");
+            this.Write(" \n\n<ul>\n\n");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ApiNavTemplate.tt"
+            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\ApiNavTemplate.tt"
   
 var sdNamespaces = Repository.GetAllNamespaces();
 for (int i = 0; i < sdNamespaces.Count; i++)
 { 
 	var sdNamespace = sdNamespaces[i];
-	var namespaceNavTemplate = new NamespaceNavTemplate { Namespace = sdNamespace }; 
+	var namespaceNavTemplate = new NamespaceNavTemplate { Namespace = sdNamespace, Strings = Strings }; 
             
             #line default
             #line hidden
             this.Write("\t\n\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ApiNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{{\"type\":\"namespaceLink\", \"title\":\"{0}\", \"guid\":\"{1}\", \"children\":[{2}]}}", sdNamespace.Fullname, sdNamespace.Guid, namespaceNavTemplate.TransformText())));
+            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\ApiNavTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-chevron-sign-right\"}}'><a href=\"#namespace/{0}.html\" id=\"nav-{0}\">{1}</a>{2}</li>", sdNamespace.Guid, sdNamespace.Fullname, namespaceNavTemplate.TransformText())));
             
             #line default
             #line hidden
             this.Write("\n");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ApiNavTemplate.tt"
- 
-	if(i != sdNamespaces.Count - 1) 
+            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\ApiNavTemplate.tt"
+ } 
             
             #line default
             #line hidden
-            this.Write(" , ");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ApiNavTemplate.tt"
-
-} 
-            
-            #line default
-            #line hidden
-            this.Write("\n\n");
+            this.Write("\n\n</ul>\n\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ApiNavTemplate.tt"
-	public SDRepository Repository { get; set; } 
+        #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\ApiNavTemplate.tt"
+	public SDRepository Repository { get; set; }
+	public IStrings Strings { get; set; } 
         
         #line default
         #line hidden

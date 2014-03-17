@@ -24,8 +24,8 @@ namespace SharpDox.Plugins.Html.Steps
 
         private void CreateHtml(HtmlExporter htmlExporter, SDRepository repository, IStrings strings, string docLanguage, string outputPath)
         {
-            var navJson = GetNavJson(repository, strings, docLanguage);
-            var indexTemplate = new IndexTemplate { Repository = repository, Strings = strings, CurrentLanguage = docLanguage, NavJson = navJson };
+            var navigation = GetNavigation(repository, strings, docLanguage);
+            var indexTemplate = new IndexTemplate { Repository = repository, Strings = strings, CurrentLanguage = docLanguage, Navigation = navigation };
             File.WriteAllText(Path.Combine(outputPath, "index.html"), indexTemplate.TransformText());
 
             var homeTemplate = new HomeTemplate { Repository = repository, Strings = strings, CurrentLanguage = docLanguage };
@@ -57,7 +57,7 @@ namespace SharpDox.Plugins.Html.Steps
             }
         }
 
-        private string GetNavJson(SDRepository repository, IStrings strings, string currentLanguage)
+        private string GetNavigation(SDRepository repository, IStrings strings, string currentLanguage)
         {
             var indexNavTemplate = new IndexNavTemplate { Repository = repository, Strings = strings, CurrentLanguage = currentLanguage };
             var indexNav = indexNavTemplate.TransformText().Trim();

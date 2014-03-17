@@ -6,14 +6,20 @@
 <#@ import namespace="SharpDox.Model.Repository" #>
 <#@ import namespace="SharpDox.Model.Documentation" #>
 <#@ import namespace="SharpDox.Sdk.Config" #>
+<#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
 
+<ul>
+
+<#= string.Format("<li><a href=\"#namespace/{0}.html\" id=\"nav-{0}\"><i class=\"icon-link\"></i> <p>{1}</p></a></li>", Namespace.Guid, Namespace.Fullname) #>
 <#  for (int i = 0; i < Namespace.Types.Count; i++)
 	{ 
 		var sdType = Namespace.Types[i]; 
-		var typeNavTemplate = new TypeNavTemplate { SDType = sdType };
+		var typeNavTemplate = new TypeNavTemplate { SDType = sdType, Strings = Strings };
 		var typeNavString = typeNavTemplate.TransformText().Trim(); #>	
-		<#= string.Format("{{\"type\":\"typeLink\", \"title\":\"{0}\", \"guid\":\"{1}\", \"children\":[{2}]}}", sdType.Name, sdType.Guid, typeNavString.Remove(typeNavString.Length - 1)) #>
-<#		if(i != Namespace.Types.Count - 1) #> , <#
-	}	#>
+		<#= string.Format("<li data-jstree='{{\"icon\":\"icon-chevron-sign-right\"}}'><a href=\"#type/{0}.html\" id=\"nav-{0}\">{1}</a></li>", sdType.Guid, sdType.Name, typeNavString.Remove(typeNavString.Length - 1)) #>
+<#	}	#>
 
-<#+	public SDNamespace Namespace { get; set; } #>
+</ul>
+
+<#+	public SDNamespace Namespace { get; set; } 
+	public IStrings Strings { get; set; } #>

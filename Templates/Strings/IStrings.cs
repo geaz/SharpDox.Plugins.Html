@@ -28,5 +28,10 @@
         string PanZoom { get; }
         string Article { get; }
         string Members { get; }
+        string Fields { get; }
+        string Methods { get; }
+        string Events { get; }
+        string Properties { get; }
+        string ClassDiagram { get; }
     }
 }

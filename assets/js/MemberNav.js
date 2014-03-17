@@ -31,5 +31,5 @@ function changed(displayedMember){
     if(height === 0){
         height = html.offsetHeight + 50;
     }
-    parent.postMessage({'height' : height, 'displayMember': displayedMember}, '*');
+    parent.postMessage(height, '*');
 }

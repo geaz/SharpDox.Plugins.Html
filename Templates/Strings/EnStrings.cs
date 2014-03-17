@@ -28,5 +28,10 @@
         public string PanZoom { get { return "Drag to pan - Use Mousewheel to zoom"; } }
         public string Article { get { return "Article"; } }
         public string Members { get { return "Members"; } }
+        public string Fields { get { return "Fields"; } }
+        public string Methods { get { return "Methods"; } }
+        public string Properties { get { return "Properties"; } }
+        public string Events { get { return "Events"; } }
+        public string ClassDiagram { get { return "Classdiagram"; } }
     }
 }

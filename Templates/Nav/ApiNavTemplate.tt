@@ -7,16 +7,20 @@
 <#@ import namespace="SharpDox.Model.Documentation" #>
 <#@ import namespace="SharpDox.Sdk.Config" #>
 <#@ import namespace="MarkdownSharp" #> 
+<#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
+
+<ul>
 
 <#  
 var sdNamespaces = Repository.GetAllNamespaces();
 for (int i = 0; i < sdNamespaces.Count; i++)
 { 
 	var sdNamespace = sdNamespaces[i];
-	var namespaceNavTemplate = new NamespaceNavTemplate { Namespace = sdNamespace }; #>	
-	<#= string.Format("{{\"type\":\"namespaceLink\", \"title\":\"{0}\", \"guid\":\"{1}\", \"children\":[{2}]}}", sdNamespace.Fullname, sdNamespace.Guid, namespaceNavTemplate.TransformText()) #>
-<# 
-	if(i != sdNamespaces.Count - 1) #> , <#
-} #>
+	var namespaceNavTemplate = new NamespaceNavTemplate { Namespace = sdNamespace, Strings = Strings }; #>	
+	<#= string.Format("<li data-jstree='{{\"icon\":\"icon-chevron-sign-right\"}}'><a href=\"#namespace/{0}.html\" id=\"nav-{0}\">{1}</a>{2}</li>", sdNamespace.Guid, sdNamespace.Fullname, namespaceNavTemplate.TransformText()) #>
+<# } #>
 
-<#+	public SDRepository Repository { get; set; } #>
+</ul>
+
+<#+	public SDRepository Repository { get; set; }
+	public IStrings Strings { get; set; } #>

@@ -14,12 +14,12 @@
 <#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
 
 <div id="<#= SDMember.Guid #>" class="typesite">
-	<div id="header">
+	<div class="header">
 		<h2 class="type-title"><#= SDMember.Name #></h2>
 		<span class="namespace-title"><#= Strings.DeclaringType #>: <#= SDType.Fullname #></span>
 	</div>
 
-	<div id="pagecontent">
+	<div class="pagecontent">
 
 		<h3 class="box-title first-heading"><#= Strings.Syntax #></h3>
 		<div class="divider">
@@ -128,7 +128,7 @@
 		<# } #>
 
 		<# if(SDMember is SDMethod && !((SDMethod)SDMember).IsSequenceDiagramEmpty()) { #>
-			<div id="sd-sequence-diagram">
+			<div id="sd-sequence-diagram" class="svgpan">
 				<#	var sequenceSvg = ((SDMethod)SDMember).GetSequenceDiagram(Repository.GetAllTypes()).ToSvg(530);
 					var template = new Templater(Repository, sequenceSvg); 
 					var helper = new Helper(Repository); #>

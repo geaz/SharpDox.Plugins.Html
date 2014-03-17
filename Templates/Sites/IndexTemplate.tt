@@ -37,14 +37,6 @@
 		</script>
     </head>
     <body>        
-        <header id="topbar"> 
-            <div class="container">
-                <a class="logo" href="http://sharpdox.de" target="_blank" title="sharpDox">
-                    <img src="images/logo-small.png" alt="sharpDox" />
-                </a>
-            </div>
-        </header>
-
 		<div id="sidebar">
 			<div id="docname">
 				<# if (String.IsNullOrEmpty(Repository.ProjectInfo.LogoPath))
@@ -60,16 +52,14 @@
 			<div id="pagetitle"></div>
             <div id="backLinkWrapper"></div>
             <div id="descLinkWrapper"></div>
-            <ul id="navigation"></ul>	
+            <div id="navigation">
+				<#= Navigation #>
+			</div>	
 		</div>
 
         <div id="content">            
 			<iframe id="docframe" frameborder="0" width="100%" src="article/home.html"></iframe>
         </div>
-
-		<div id="navdata" style="display:none;">
-			<#= NavJson #>
-		</div>
 
     </body>
 </html>
@@ -77,4 +67,4 @@
 <#+ public string CurrentLanguage { get; set; }
 	public IStrings Strings { get; set; }
 	public SDRepository Repository { get; set; } 
-	public string NavJson { get; set; } #>
+	public string Navigation { get; set; } #>

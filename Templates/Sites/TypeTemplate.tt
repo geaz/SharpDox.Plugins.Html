@@ -42,22 +42,13 @@
         
 		<div id="documentation-wrapper">
 
-			<# if(!SDType.IsClassDiagramEmpty()) { #>
-				<div id="sd-class-diagram">
-					<#	var svg = SDType.GetClassDiagram().ToSvg(270);
-						var template = new Templater(Repository, svg); 
-						var helper = new Helper(Repository); #>
-					<#= template.TransformText(helper.TransformLinkToken) #>
-				</div>
-			<# } #>
-
 			<div id="typeIndex" class="typesite">
-				<div id="header">
+				<div class="header">
 					<h2 class="type-title"><#= SDType.Name #></h2>
 					<span class="namespace-title">Namespace: <#= SDType.Namespace.Fullname #></span>
 				</div>
 
-				<div id="pagecontent">
+				<div class="pagecontent">
 
 					<h3 class="box-title first-heading"><#= Strings.Syntax #></h3>
 					<div class="divider">
@@ -234,7 +225,7 @@
 
 									<tr <# if(even) { even = false; #> class="even" <# } else { even = true; } #>>
 										<td class="iconColumn">
-											<img alt="Field-Icon" src="../images/icons/Field_<#= sdField.Accessibility #>.png">
+											<img alt="Field-Icon" src="../assets/images/icons/Field_<#= sdField.Accessibility #>.png">
 										</td>
 										<td>
 											<a title="<#= sdField.Name #>" href="../type/<#= SDType.Guid #>.html#<#= sdField.Guid #>"><#= sdField.Name #></a>
@@ -251,7 +242,7 @@
 
 									<tr <# if(even) { even = false; #> class="even" <# } else { even = true; } #>>
 										<td class="iconColumn">
-											<img alt="Event-Icon" src="../images/icons/Event_<#= sdEvent.Accessibility #>.png">
+											<img alt="Event-Icon" src="../assets/images/icons/Event_<#= sdEvent.Accessibility #>.png">
 										</td>
 										<td>
 											<a title="<#= sdEvent.Name #>" href="../type/<#= SDType.Guid #>.html#<#= sdEvent.Guid #>"><#= sdEvent.Name #></a>
@@ -268,7 +259,7 @@
 
 									<tr <# if(even) { even = false; #> class="even" <# } else { even = true; } #>>
 										<td class="iconColumn">
-											<img alt="Constructor-Icon" src="../images/icons/Method_<#= sdConstructor.Accessibility #>.png">
+											<img alt="Constructor-Icon" src="../assets/images/icons/Method_<#= sdConstructor.Accessibility #>.png">
 										</td>
 										<td>
 											<a title="<#= sdConstructor.Name #>" href="../type/<#= SDType.Guid #>.html#<#= sdConstructor.Guid #>"><#= sdConstructor.Name #></a>
@@ -285,7 +276,7 @@
 
 									<tr <# if(even) { even = false; #> class="even" <# } else { even = true; } #>>
 										<td class="iconColumn">
-											<img alt="Method-Icon" src="../images/icons/Method_<#= sdMethod.Accessibility #>.png">
+											<img alt="Method-Icon" src="../assets/images/icons/Method_<#= sdMethod.Accessibility #>.png">
 										</td>
 										<td>
 											<a title="<#= sdMethod.Name #>" href="../type/<#= SDType.Guid #>.html#<#= sdMethod.Guid #>"><#= sdMethod.Name #></a>
@@ -302,7 +293,7 @@
 
 									<tr <# if(even) { even = false; #> class="even" <# } else { even = true; } #>>
 										<td class="iconColumn">
-											<img alt="Property-Icon" src="../images/icons/Properties_<#= sdProperty.Accessibility #>.png">
+											<img alt="Property-Icon" src="../assets/images/icons/Properties_<#= sdProperty.Accessibility #>.png">
 										</td>
 										<td>
 											<a title="<#= sdProperty.Name #>" href="../type/<#= SDType.Guid #>.html#<#= sdProperty.Guid #>"><#= sdProperty.Name #></a>
@@ -318,6 +309,18 @@
 							</tbody>
 						</table>
 					</div>
+
+					<h3 class="box-title"><#= Strings.ClassDiagram #></h3>
+					<# if(!SDType.IsClassDiagramEmpty()) { #>
+						<div id="sd-class-diagram" class="svgpan">
+							<#	var svg = SDType.GetClassDiagram().ToSvg(500);
+								var template = new Templater(Repository, svg); 
+								var helper = new Helper(Repository); #>
+							<#= template.TransformText(helper.TransformLinkToken) #>
+						</div>
+						<div class="legend"><p><#= Strings.PanZoom #></p></div>
+					<# } #>
+
 				</div>
 			</div>
 

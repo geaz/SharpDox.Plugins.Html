@@ -35,6 +35,9 @@ function loadNav(navIndex) {
     if (tmpNav["type"] == "namespaceLink") {
         nav.append('<li><a class="sd-menudescription" onClick="SetDocSite(\'namespace/' + tmpNav["guid"] + '.html\')" href="#"><i class="icon-file-text-alt"></i> <p>' + descString + '</p></a></li>');
     }
+    else if(tmpNav["type"] == "typeLink"){
+        nav.append('<li><a class="sd-menudescription" onClick="SetDocSite(\'type/' + tmpNav["guid"] + '.html\')" href="#"><i class="icon-file-text-alt"></i> <p>' + descString + '</p></a></li>');
+    }
 
     $.each(tmpNav["children"], function (key, value) {
         if (value["type"] == "placeholder" || value["type"] == "api") {
@@ -49,11 +52,12 @@ function loadNav(navIndex) {
         }
         else if (value["type"] == "typeLink") {
             var navUrl = 'type/' + value["guid"] + '.html';
-            nav.append('<li><a class="pagelink" href="#' + navUrl + '" onClick="SetDocSite(\'' + navUrl + '\')"><i class="icon-link"></i> <p>' + value["title"] + '</p></a></li>');
+            nav.append('<li><a class="pagelink" href="#' + navUrl + '" onClick="loadNav(\'' + [navIndex, key].join(".") + '\'); SetDocSite(\'' + navUrl + '\')"><i class="icon-link"></i> <p>' + value["title"] + '</p></a></li>');
+        }
+        else{ //Member
+            nav.append('<li><a class="memberlink" href="#" onClick=""><i class="icon-link"></i> <p>' + value["title"] + '</p></a></li>');
         }
     });
-
-    //initNavWrap();
 }
 
 function SetDocSite(url) {
@@ -70,51 +74,4 @@ function GetNav(navIndexKey) {
     });
 
     return tmpNav;
-}
-
-function initNavWrap() {
-    var items = $("#sidebar #navigation li a p");
-    $.each(items, function (key, val) {
-        var lineBreaks = $(val).width() / 225;
-        if (lineBreaks > 1) {
-            var parent = $(val).parent();
-            var splittedText = $(val).html().split(".");
-            var textIndex = 0;
-            $(val).remove();
-            for (var i = 0; i < lineBreaks; i++) {
-                textIndex = createNewParagraph(parent, splittedText, textIndex);
-            }
-        }
-    });
-}
-
-function createNewParagraph(parent, splittedText, textIndex) {
-    var newP = $("<p>" + joinFromTillIndex(splittedText, textIndex, splittedText.length - 1) + "</p>");
-    var newIndex = splittedText.length - 1;
-    parent.append(newP);
-    for (var i = splittedText.length - 1; i >= textIndex; i--) {
-        if (newP.width() > 225) {
-            newP.html(joinFromTillIndex(splittedText, textIndex, i));
-
-            if (i + 1 != splittedText.length) {
-                newP.html(newP.html() + ".");
-            }
-
-            newIndex = i;
-        }
-        else {
-            break;
-        }
-    }
-    newIndex++;
-    return newIndex;
-}
-
-function joinFromTillIndex(array, from, till) {
-    var text = "";
-    for (var i = from; i <= till; i++) {
-        text += array[i] + ".";
-    }
-    text = text.substring(0, text.length - 1);
-    return text;
 }

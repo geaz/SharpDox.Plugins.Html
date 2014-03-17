@@ -25,6 +25,9 @@ function OnLoadPage(event) {
         }
 
         iframe.height(parseInt(height));
+        $('#docframe').contents().find('.header').each(function(key, value){
+            value.height($('#docname').height());
+        });
     }
 
     window.scrollTo(0, 0);

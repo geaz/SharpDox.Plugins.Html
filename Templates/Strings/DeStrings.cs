@@ -28,5 +28,10 @@
         public string PanZoom { get { return "Verschieben: Diagram halten und ziehen - Zoomen: Mausrad benutzen"; } }
         public string Article { get { return "Artikel"; } }
         public string Members { get { return "Mitglieder"; } }
+        public string Fields { get { return "Felder"; } }
+        public string Methods { get { return "Methoden"; } }
+        public string Properties { get { return "Eigenschaften"; } }
+        public string Events { get { return "Ereignisse"; } }
+        public string ClassDiagram { get { return "Klassendiagramm"; } }
     }
 }

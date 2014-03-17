@@ -15,13 +15,14 @@ namespace SharpDox.Plugins.Html.Templates.Nav
     using SharpDox.Model.Repository;
     using SharpDox.Model.Documentation;
     using SharpDox.Sdk.Config;
+    using SharpDox.Plugins.Html.Templates.Strings;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ArticleNavTemplate.tt"
+    #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\ArticleNavTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
     public partial class ArticleNavTemplate : ArticleNavTemplateBase
     {
@@ -38,9 +39,10 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             this.Write("\n");
             this.Write("\n");
             this.Write("\n");
-            this.Write("\n\n");
+            this.Write("\n");
+            this.Write(" \n\n<ul>\n\n");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ArticleNavTemplate.tt"
+            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\ArticleNavTemplate.tt"
   for (int i = 0; i < Article.Children.Count; i++)
 	{
 		var article = Article.Children[i];
@@ -52,21 +54,21 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             #line hidden
             this.Write("\t\t\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ArticleNavTemplate.tt"
- var apiNavTemplate = new ApiNavTemplate { Repository = Repository }; 
+            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\ArticleNavTemplate.tt"
+ var apiNavTemplate = new ApiNavTemplate { Repository = Repository, Strings = Strings }; 
             
             #line default
             #line hidden
             this.Write("\t\t\t\t\t\t\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ArticleNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{{\"type\":\"api\", \"title\":\"{0}\", \"children\":[{1}]}}", article.Title, apiNavTemplate.TransformText())));
+            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\ArticleNavTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-chevron-sign-right\"}}'><a href=\"#api\" id=\"nav-api\">{0}</a>{1}</li>", article.Title, apiNavTemplate.TransformText())));
             
             #line default
             #line hidden
             this.Write("\n\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ArticleNavTemplate.tt"
+            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\ArticleNavTemplate.tt"
  }
 		else if (!string.IsNullOrEmpty(article.Content))
 		{ 
@@ -75,21 +77,21 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             #line hidden
             this.Write("\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ArticleNavTemplate.tt"
- var articleNavTemplate = new ArticleNavTemplate { Article = article, Repository = Repository }; 
+            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\ArticleNavTemplate.tt"
+ var articleNavTemplate = new ArticleNavTemplate { Article = article, Repository = Repository, Strings = Strings }; 
             
             #line default
             #line hidden
             this.Write("\t\t\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ArticleNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{{\"type\":\"link\", \"title\":\"{0}\", \"children\":[{1}]}}", article.Title, articleNavTemplate.TransformText())));
+            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\ArticleNavTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-link\"}}'><a href=\"#article/{0}.html\" id=\"nav-{0}\">{1}</a>{2}</li>", article.Guid, article.Title, articleNavTemplate.TransformText())));
             
             #line default
             #line hidden
             this.Write("\n\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ArticleNavTemplate.tt"
+            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\ArticleNavTemplate.tt"
  }
 		else
 		{ 
@@ -98,42 +100,34 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             #line hidden
             this.Write("\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ArticleNavTemplate.tt"
- var articleNavTemplate = new ArticleNavTemplate { Article = article, Repository = Repository }; 
+            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\ArticleNavTemplate.tt"
+ var articleNavTemplate = new ArticleNavTemplate { Article = article, Repository = Repository, Strings = Strings }; 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ArticleNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{{\"type\":\"placeholder\", \"title\":\"{0}\", \"children\":[{1}]}}", article.Title, articleNavTemplate.TransformText())));
+            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\ArticleNavTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-chevron-sign-right\"}}'><a href=\"#\" id=\"nav-placeholder\">{0}</a>{1}</li>", article.Title, articleNavTemplate.TransformText())));
             
             #line default
             #line hidden
             this.Write("\n\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ArticleNavTemplate.tt"
+            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\ArticleNavTemplate.tt"
  }
-
-		if(i != Article.Children.Count - 1) 
-            
-            #line default
-            #line hidden
-            this.Write(" , ");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ArticleNavTemplate.tt"
-
 	} 
             
             #line default
             #line hidden
-            this.Write("\n\n");
+            this.Write("\n\n</ul>\n\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\ZP620933\Downloads\sharpDox-dev\Plugins\HtmlExporter\Templates\Nav\ArticleNavTemplate.tt"
+        #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\ArticleNavTemplate.tt"
 	public SDArticle Article { get; set; }
-	public SDRepository Repository { get; set; } 
+	public SDRepository Repository { get; set; }
+	public IStrings Strings { get; set; } 
         
         #line default
         #line hidden

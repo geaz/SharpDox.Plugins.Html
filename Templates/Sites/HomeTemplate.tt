@@ -33,13 +33,13 @@
     </head>
     <body>        
         
-		<div id="header">
+		<div class="header">
 			<h2 class="type-title"><#= Strings.By #> <#= Repository.ProjectInfo.Author != null ? Repository.ProjectInfo.Author : string.Empty #></h2>
 			<# if(!string.IsNullOrEmpty(Repository.ProjectInfo.VersionNumber)) { #>
 				<span class="namespace-title">Version <#= Repository.ProjectInfo.VersionNumber != null ? Repository.ProjectInfo.VersionNumber : string.Empty #></span>
 			<# } #>
 		</div>
-		<div id="pagecontent">
+		<div class="pagecontent">
 					
 			<h3 class="box-title first-heading"><#= Strings.Description #></h3>
 			<div class="divider">
