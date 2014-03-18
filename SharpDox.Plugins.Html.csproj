@@ -664,7 +664,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\js\index.js" />
+    <None Include="assets\js\index.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

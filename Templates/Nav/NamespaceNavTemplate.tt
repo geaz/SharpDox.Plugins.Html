@@ -9,8 +9,9 @@
 <#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
 
 <ul class="navigation-sub">
+
 <#= string.Format("<li class=\"navigation-back\"><a href=\"#\"><i class=\"icon-chevron-sign-left\"></i> <p>{0}</p></a></li>", Strings.Back) #>
-<#= string.Format("<li data-link=\"{0}\"><a href=\"#namespace/{0}.html\" id=\"nav-{0}\"><i class=\"icon-link\"></i> <p>{1}</p></a></li>", Namespace.Guid, Strings.Description) #>
+<#= string.Format("<li><a href=\"#{0}\" id=\"nav-{0}\"><i class=\"icon-link\"></i> <p>{1}</p></a></li>", Namespace.Guid, Strings.Description) #>
 
 <#  for (int i = 0; i < Namespace.Types.Count; i++)
 	{ 
