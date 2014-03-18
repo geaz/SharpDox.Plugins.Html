@@ -8,30 +8,35 @@
 <#@ import namespace="SharpDox.Sdk.Config" #>
 <#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
 
-<ul>
+<#  if(Article.Children.Count > 0) { #>
+		<ul class="navigation-sub">
+		<li class="navigation-back"><a href="#"><i class="icon-chevron-sign-left"></i> <p><#= Strings.Back #></p> </a></li>	
+<#	}
 
-<#  for (int i = 0; i < Article.Children.Count; i++)
+	for (int i = 0; i < Article.Children.Count; i++)
 	{
 		var article = Article.Children[i];
 
 		if (article.Content == "SDDoc")
 		{ #>		
 			<# var apiNavTemplate = new ApiNavTemplate { Repository = Repository, Strings = Strings }; #>						
-			<#= string.Format("<li><a href=\"#api\" id=\"nav-api\"><i class=\"icon-chevron-sign-right\"></i> {0}</a>{1}</li>", article.Title, apiNavTemplate.TransformText()) #>
+			<#= string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a>{1}</li>", article.Title, apiNavTemplate.TransformText()) #>
 		<# }
 		else if (!string.IsNullOrEmpty(article.Content))
 		{ #>
 			<# var articleNavTemplate = new ArticleNavTemplate { Article = article, Repository = Repository, Strings = Strings }; #>		
-			<#= string.Format("<li><a href=\"#article/{0}.html\" id=\"nav-{0}\"><i class=\"icon-link\"></i> {1}</a>{2}</li>", article.Guid, article.Title, articleNavTemplate.TransformText()) #>
+			<#= string.Format("<li data-url=\"{0}\" data-type=\"article\"><a href=\"#{0}\" id=\"nav-{0}\"><i class=\"icon-link\"></i> <p>{1}</p></a>{2}</li>", article.Guid, article.Title, articleNavTemplate.TransformText()) #>
 		<# }
 		else
 		{ #>
 			<# var articleNavTemplate = new ArticleNavTemplate { Article = article, Repository = Repository, Strings = Strings }; #>
-			<#= string.Format("<li><a href=\"#\" id=\"nav-placeholder\"><i class=\"icon-chevron-sign-right\"></i> {0}</a>{1}</li>", article.Title, articleNavTemplate.TransformText()) #>
+			<#= string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a>{2}</li>", article.Guid, article.Title, articleNavTemplate.TransformText()) #>
 		<# }
-	} #>
+	} 
 
-</ul>
+	if(Article.Children.Count > 0) { #>
+		</ul>	
+<#	}	#>
 
 <#+	public SDArticle Article { get; set; }
 	public SDRepository Repository { get; set; }

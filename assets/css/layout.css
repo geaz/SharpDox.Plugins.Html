@@ -1,3 +1,7 @@
+.index{
+	height: 100%;
+}
+
 #content{
     margin-left: 300px;
     padding: 25px;
@@ -5,12 +9,9 @@
 
 #sidebar {
     background: #3F72DB;
-    left: 0;
-    position: fixed;
-    top: 0;
     width: 300px;
-    height: 100%;
-    overflow:hidden;
+	float:left;
+	min-height: 100%;
 }
 
 #sidebar a {
@@ -40,24 +41,22 @@
     padding: 0;
 }
 
-#navigation{
-    height: 70%;
-    overflow-y:auto;
-    overflow-x: hidden;
+#navigation-root, .navigation-sub {
+  display: none;
 }
 
-#backLinkWrapper a i, #navigation li a i{
+.navigation-back a i, #navigation li a i{
     float:right;
     margin: 4px 5px 0 0;
 }
 
-#backLinkWrapper a p, #navigation li a p {
+.navigation-back a p, #navigation li a p {
     margin: 0 20px;
     width: 200px;
     word-wrap: break-word;
 }
 
-#backLinkWrapper a, #navigation li a, #navigtaion li a:visited{
+.navigation-back a, #navigation li a, #navigtaion li a:visited{
     display:inline-block;
     min-width: 265px;
     padding: 10px 25px 10px 10px;
@@ -69,17 +68,17 @@
     color: white;
 }
 
-#backLinkWrapper a i{
-    float:left;
+.navigation-back a i{
+    float:left!important;
 }
 
-#backLinkWrapper a{
-    background: #3F72DB;
+.navigation-back a{
+    background: #3F72DB!important;
 }
 
-#backLinkWrapper a:hover{
-    background: #25427F;
-    color: white;
+.navigation-back a:hover{
+    background: #25427F!important;
+    color: white!important;
 }
 
 /* IFRAME */

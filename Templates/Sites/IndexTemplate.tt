@@ -9,7 +9,7 @@
 <#@ import namespace="MarkdownSharp" #>
 <#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
 
-<!DOCTYPE html>
+<html class="index">
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -28,7 +28,10 @@
         <link rel="stylesheet" type="text/css" href="assets/css/layout.css" />
 
 		<script src="assets/js/vendor/jquery.js"></script>
-		<script src="assets/js/NavTree.js"></script>
+		<script src="assets/js/vendor/jquery.hashchange.min.js"></script>
+
+		<script src="assets/js/NavigationController.js"></script>
+		<script src="assets/js/index.js"></script>
         <script src="assets/js/Parent.js"></script>
 
 		<script>
@@ -36,7 +39,7 @@
 			var descString = "<#= Strings.Description #>";
 		</script>
     </head>
-    <body>        
+    <body class="index">        
 		<div id="sidebar">
 			<div id="docname">
 				<# if (String.IsNullOrEmpty(Repository.ProjectInfo.LogoPath))
@@ -49,9 +52,7 @@
 				<#}#>
 			</div>
     
-			<div id="pagetitle"></div>
-            <div id="backLinkWrapper"></div>
-            <div id="descLinkWrapper"></div>
+			<div id="pagetitle"><#= Strings.Home #></div>
             <div id="navigation">
 				<#= Navigation #>
 			</div>	

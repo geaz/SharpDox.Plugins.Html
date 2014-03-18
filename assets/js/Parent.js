@@ -5,7 +5,7 @@ $(document).ready(function () {
         window.addEventListener("message", OnLoadPage, false);
     }
 
-    HashLoad();
+    //HashLoad();
 });
 
 function OnLoadPage(event) {
@@ -25,9 +25,6 @@ function OnLoadPage(event) {
         }
 
         iframe.height(parseInt(height));
-        $('#docframe').contents().find('.header').each(function(key, value){
-            value.height($('#docname').height());
-        });
     }
 
     window.scrollTo(0, 0);
@@ -35,9 +32,9 @@ function OnLoadPage(event) {
 
 function HashLoad() {
     if (window.location.hash != '' && window.location.hash != '#') {
-        SetDocSite(window.location.hash.slice(1));
+      //  SetDocSite(window.location.hash.slice(1));
     }
     else {
-        SetDocSite('article/home.html');
+       // SetDocSite('article/home.html');
     }
 }

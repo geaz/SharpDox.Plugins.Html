@@ -9,18 +9,22 @@
 <#@ import namespace="MarkdownSharp" #> 
 <#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
 
-<ul>
+<#	if(Repository.Articles.Count > 0) { #>
+		<ul class="navigation-sub">
+		<li class="navigation-back"><a href="#"><i class="icon-chevron-sign-left"></i> <p><#= Strings.Back #></p> </a></li>	
+<#	}
 
-<#  
-var sdNamespaces = Repository.GetAllNamespaces();
-for (int i = 0; i < sdNamespaces.Count; i++)
-{ 
-	var sdNamespace = sdNamespaces[i];
-	var namespaceNavTemplate = new NamespaceNavTemplate { Namespace = sdNamespace, Strings = Strings }; #>	
-	<#= string.Format("<li><a href=\"#namespace/{0}.html\" id=\"nav-{0}\"><i class=\"icon-chevron-sign-right\"></i> {1}</a>{2}</li>", sdNamespace.Guid, sdNamespace.Fullname, namespaceNavTemplate.TransformText()) #>
-<# } #>
+	var sdNamespaces = Repository.GetAllNamespaces();
+	for (int i = 0; i < sdNamespaces.Count; i++)
+	{ 
+		var sdNamespace = sdNamespaces[i];
+		var namespaceNavTemplate = new NamespaceNavTemplate { Namespace = sdNamespace, Strings = Strings }; #>	
+		<#= string.Format("<li data-url=\"{0}\" data-type=\"namespace\"><a href=\"#{0}\" id=\"nav-{0}\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a>{2}</li>", sdNamespace.Guid, sdNamespace.Fullname, namespaceNavTemplate.TransformText()) #>
+<#	} 
 
-</ul>
+	if(Repository.Articles.Count > 0) { #>
+		<ul/>
+<#	} #>
 
 <#+	public SDRepository Repository { get; set; }
 	public IStrings Strings { get; set; } #>
