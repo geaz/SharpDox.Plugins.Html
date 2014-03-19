@@ -8,7 +8,7 @@
 <#@ import namespace="SharpDox.Sdk.Config" #>
 <#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
 
-<ul>
+<ul class="navigation-sub">
 
 <#  var fields = string.Empty;
 	var events = string.Empty;
@@ -18,39 +18,39 @@
 
 	foreach(var sdField in SDType.Fields)
 	{	
-		fields += string.Format("{{\"type\":\"fieldLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}},", sdField.Name, sdField.Guid);
+		fields += string.Format("<li data-url=\"{0}?{1}\" data-type=\"member\"><a href=\"#{0}?{1}\"><i class=\"icon-link\"></i> <p>{2}</p></a></li>", SDType.Guid, sdField.Guid, sdField.Name);
 	}	
 	foreach(var sdEvent in SDType.Events)
     {	
-		events += string.Format("{{\"type\":\"eventLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}},", sdEvent.Name, sdEvent.Guid);
+		events += string.Format("<li data-url=\"{0}?{1}\" data-type=\"member\"><a href=\"#{0}?{1}\"><i class=\"icon-link\"></i> <p>{2}</p></a></li>", SDType.Guid, sdEvent.Guid, sdEvent.Name);
 	}
 	foreach(var sdConstructor in SDType.Constructors)
 	{
-		methods += string.Format("{{\"type\":\"methodLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}},", sdConstructor.Name, sdConstructor.Guid);
+		methods += string.Format("<li data-url=\"{0}?{1}\" data-type=\"member\"><a href=\"#{0}?{1}\"><i class=\"icon-link\"></i> <p>{2}</p></a></li>", SDType.Guid, sdConstructor.Guid, sdConstructor.Name);
 	}
 	foreach(var sdMethod in SDType.Methods)
     {	
-		methods += string.Format("{{\"type\":\"methodLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}},", sdMethod.Name, sdMethod.Guid);
+		methods += string.Format("<li data-url=\"{0}?{1}\" data-type=\"member\"><a href=\"#{0}?{1}\"><i class=\"icon-link\"></i> <p>{2}</p></a></li>", SDType.Guid, sdMethod.Guid, sdMethod.Name);
 	}	
 	foreach(var sdProperty in SDType.Properties)
 	{
-		properties += string.Format("{{\"type\":\"propertyLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}},", sdProperty.Name, sdProperty.Guid);
+		properties += string.Format("<li data-url=\"{0}?{1}\" data-type=\"member\"><a href=\"#{0}?{1}\"><i class=\"icon-link\"></i> <p>{2}</p></a></li>", SDType.Guid, sdProperty.Guid, sdProperty.Name);
 	}	#>	
 
 <# if(SDType.Fields.Count > 0) { #>
-	<#= string.Format("{{\"type\":\"placeholder\", \"title\":\"{0}\", \"children\":[{1}]}},", Strings.Fields, fields.Trim().Remove(fields.Length -1)) #>
+	<#= string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a> <ul class=\"navigation-sub\">{1}</ul></li>", Strings.Fields, fields.Trim()) #>
 <# } #>
 
 <# if(SDType.Events.Count > 0) { #>
-	<#= string.Format("{{\"type\":\"placeholder\", \"title\":\"{0}\", \"children\":[{1}]}},", Strings.Events, events.Trim().Remove(events.Length -1)) #>
+	<#= string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a> <ul class=\"navigation-sub\">{1}</ul></li>", Strings.Events, events.Trim()) #>
 <# } #>
 
 <# if(SDType.Constructors.Count > 0 || SDType.Methods.Count > 0) { #>
-	<#= string.Format("{{\"type\":\"placeholder\", \"title\":\"{0}\", \"children\":[{1}]}},", Strings.Methods, methods.Trim().Remove(methods.Length -1)) #>
+	<#= string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a> <ul class=\"navigation-sub\">{1}</ul></li>", Strings.Methods, methods.Trim()) #>
 <# } #>
 
 <# if(SDType.Properties.Count > 0) { #>
-	<#= string.Format("{{\"type\":\"placeholder\", \"title\":\"{0}\", \"children\":[{1}]}},", Strings.Properties, properties.Trim().Remove(properties.Length -1)) #>
+	<#= string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a> <ul class=\"navigation-sub\">{1}</ul></li>", Strings.Properties, properties.Trim()) #>
 <# } #>
 
 </ul>

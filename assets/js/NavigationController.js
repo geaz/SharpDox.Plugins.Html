@@ -48,14 +48,18 @@ NavigationController.prototype = {
 			this.initNav();
 		}	
 		
-		if(type != null){
+		if(type == "member"){
+			var splitted = dataUrl.split('?');
+			this.setDocSite('type/' + splitted[0] + '.html#' + splitted[1]);
+		}
+		else if(type != null){
 			this.setDocSite(type + "/" + dataUrl + ".html");
 		}
 	},
 	
 	initNav: function(){
 		var that = this;
-		$('#navigation li').has('ul[class="navigation-sub"]').click(function () {	
+		$('#navigation>ul>li').has('ul[class="navigation-sub"]').click(function () {	
 			var newNav = $(this).children('ul').clone(true);
 			newNav.show();
 			

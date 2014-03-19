@@ -16,9 +16,8 @@
 <#  for (int i = 0; i < Namespace.Types.Count; i++)
 	{ 
 		var sdType = Namespace.Types[i]; 
-		var typeNavTemplate = new TypeNavTemplate { SDType = sdType, Strings = Strings };
-		var typeNavString = typeNavTemplate.TransformText().Trim(); #>	
-		<#= string.Format("<li><a href=\"#{0}\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a></li>", sdType.Guid, sdType.Name, typeNavString.Remove(typeNavString.Length - 1)) #>
+		var typeNavTemplate = new TypeNavTemplate { SDType = sdType, Strings = Strings }; #>	
+		<#= string.Format("<li data-url=\"{0}\" data-type=\"type\"><a href=\"#{0}\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a> {2}</li>", sdType.Guid, sdType.Name, typeNavTemplate.TransformText()) #>
 <#	}	#>
 
 </ul>

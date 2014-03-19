@@ -40,15 +40,15 @@
     </head>
     <body>        
         
-		<div id="documentation-wrapper">
+		<div id="frame-content">
 
 			<div id="typeIndex" class="typesite">
-				<div class="header">
+				<div class="sub-header">
 					<h2 class="type-title"><#= SDType.Name #></h2>
 					<span class="namespace-title">Namespace: <#= SDType.Namespace.Fullname #></span>
 				</div>
 
-				<div class="pagecontent">
+				<div class="sub-content">
 
 					<h3 class="box-title first-heading"><#= Strings.Syntax #></h3>
 					<div class="divider">

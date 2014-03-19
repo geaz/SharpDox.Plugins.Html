@@ -14,12 +14,12 @@
 <#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
 
 <div id="<#= SDMember.Guid #>" class="typesite">
-	<div class="header">
+	<div class="sub-header">
 		<h2 class="type-title"><#= SDMember.Name #></h2>
 		<span class="namespace-title"><#= Strings.DeclaringType #>: <#= SDType.Fullname #></span>
 	</div>
 
-	<div class="pagecontent">
+	<div class="sub-content">
 
 		<h3 class="box-title first-heading"><#= Strings.Syntax #></h3>
 		<div class="divider">

@@ -57,7 +57,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\" class=\"typesite\">\n\t<div class=\"header\">\n\t\t<h2 class=\"type-title\">");
+            this.Write("\" class=\"typesite\">\n\t<div class=\"sub-header\">\n\t\t<h2 class=\"type-title\">");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(SDMember.Name));
@@ -78,7 +78,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("</span>\n\t</div>\n\n\t<div class=\"pagecontent\">\n\n\t\t<h3 class=\"box-title first-heading" +
+            this.Write("</span>\n\t</div>\n\n\t<div class=\"sub-content\">\n\n\t\t<h3 class=\"box-title first-heading" +
                     "\">");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"

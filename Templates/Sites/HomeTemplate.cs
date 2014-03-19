@@ -76,7 +76,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
     </head>
     <body>        
         
-		<div class=""header"">
+		<div id=""frame-header"">
 			<h2 class=""type-title"">");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
@@ -112,8 +112,8 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\n\t\t</div>\n\t\t<div class=\"pagecontent\">\n\t\t\t\t\t\n\t\t\t<h3 class=\"box-title first-heading" +
-                    "\">");
+            this.Write("\n\t\t</div>\n\t\t<div id=\"frame-content\">\n\t\t\t\t\t\n\t\t\t<h3 class=\"box-title first-heading\"" +
+                    ">");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Description));

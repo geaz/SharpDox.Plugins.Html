@@ -92,10 +92,10 @@ namespace SharpDox.Plugins.Html.Templates.Sites
     </head>
     <body>        
         
-		<div id=""documentation-wrapper"">
+		<div id=""frame-content"">
 
 			<div id=""typeIndex"" class=""typesite"">
-				<div class=""header"">
+				<div class=""sub-header"">
 					<h2 class=""type-title"">");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\TypeTemplate.tt"
@@ -110,7 +110,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("</span>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"pagecontent\">\n\n\t\t\t\t\t<h3 class=\"box-title firs" +
+            this.Write("</span>\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"sub-content\">\n\n\t\t\t\t\t<h3 class=\"box-title firs" +
                     "t-heading\">");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\TypeTemplate.tt"

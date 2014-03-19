@@ -22,7 +22,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
+    #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
     public partial class TypeNavTemplate : TypeNavTemplateBase
     {
@@ -40,9 +40,9 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             this.Write("\n");
             this.Write("\n");
             this.Write("\n");
-            this.Write(" \n\n<ul>\n\n");
+            this.Write(" \n\n<ul class=\"navigation-sub\">\n\n");
             
-            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
   var fields = string.Empty;
 	var events = string.Empty;
 	var constructors = string.Empty;
@@ -51,107 +51,107 @@ namespace SharpDox.Plugins.Html.Templates.Nav
 
 	foreach(var sdField in SDType.Fields)
 	{	
-		fields += string.Format("{{\"type\":\"fieldLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}},", sdField.Name, sdField.Guid);
+		fields += string.Format("<li data-url=\"{0}?{1}\" data-type=\"member\"><a href=\"#{0}?{1}\"><i class=\"icon-link\"></i> <p>{2}</p></a></li>", SDType.Guid, sdField.Guid, sdField.Name);
 	}	
 	foreach(var sdEvent in SDType.Events)
     {	
-		events += string.Format("{{\"type\":\"eventLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}},", sdEvent.Name, sdEvent.Guid);
+		events += string.Format("<li data-url=\"{0}?{1}\" data-type=\"member\"><a href=\"#{0}?{1}\"><i class=\"icon-link\"></i> <p>{2}</p></a></li>", SDType.Guid, sdEvent.Guid, sdEvent.Name);
 	}
 	foreach(var sdConstructor in SDType.Constructors)
 	{
-		methods += string.Format("{{\"type\":\"methodLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}},", sdConstructor.Name, sdConstructor.Guid);
+		methods += string.Format("<li data-url=\"{0}?{1}\" data-type=\"member\"><a href=\"#{0}?{1}\"><i class=\"icon-link\"></i> <p>{2}</p></a></li>", SDType.Guid, sdConstructor.Guid, sdConstructor.Name);
 	}
 	foreach(var sdMethod in SDType.Methods)
     {	
-		methods += string.Format("{{\"type\":\"methodLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}},", sdMethod.Name, sdMethod.Guid);
+		methods += string.Format("<li data-url=\"{0}?{1}\" data-type=\"member\"><a href=\"#{0}?{1}\"><i class=\"icon-link\"></i> <p>{2}</p></a></li>", SDType.Guid, sdMethod.Guid, sdMethod.Name);
 	}	
 	foreach(var sdProperty in SDType.Properties)
 	{
-		properties += string.Format("{{\"type\":\"propertyLink\", \"title\":\"{0}\", \"guid\":\"{1}\"}},", sdProperty.Name, sdProperty.Guid);
+		properties += string.Format("<li data-url=\"{0}?{1}\" data-type=\"member\"><a href=\"#{0}?{1}\"><i class=\"icon-link\"></i> <p>{2}</p></a></li>", SDType.Guid, sdProperty.Guid, sdProperty.Name);
 	}	
             
             #line default
             #line hidden
             this.Write("\t\n\n");
             
-            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
  if(SDType.Fields.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t");
             
-            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{{\"type\":\"placeholder\", \"title\":\"{0}\", \"children\":[{1}]}},", Strings.Fields, fields.Trim().Remove(fields.Length -1))));
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a> <ul class=\"navigation-sub\">{1}</ul></li>", Strings.Fields, fields.Trim())));
             
             #line default
             #line hidden
             this.Write("\n");
             
-            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n");
             
-            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
  if(SDType.Events.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t");
             
-            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{{\"type\":\"placeholder\", \"title\":\"{0}\", \"children\":[{1}]}},", Strings.Events, events.Trim().Remove(events.Length -1))));
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a> <ul class=\"navigation-sub\">{1}</ul></li>", Strings.Events, events.Trim())));
             
             #line default
             #line hidden
             this.Write("\n");
             
-            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n");
             
-            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
  if(SDType.Constructors.Count > 0 || SDType.Methods.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t");
             
-            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{{\"type\":\"placeholder\", \"title\":\"{0}\", \"children\":[{1}]}},", Strings.Methods, methods.Trim().Remove(methods.Length -1))));
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a> <ul class=\"navigation-sub\">{1}</ul></li>", Strings.Methods, methods.Trim())));
             
             #line default
             #line hidden
             this.Write("\n");
             
-            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n");
             
-            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
  if(SDType.Properties.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t");
             
-            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{{\"type\":\"placeholder\", \"title\":\"{0}\", \"children\":[{1}]}},", Strings.Properties, properties.Trim().Remove(properties.Length -1))));
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a> <ul class=\"navigation-sub\">{1}</ul></li>", Strings.Properties, properties.Trim())));
             
             #line default
             #line hidden
             this.Write("\n");
             
-            #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
  } 
             
             #line default
@@ -160,7 +160,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "D:\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
+        #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
 	public SDType SDType { get; set; } 
 	public IStrings Strings { get; set; }
         

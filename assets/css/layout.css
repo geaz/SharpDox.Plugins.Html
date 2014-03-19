@@ -1,5 +1,5 @@
-.index{
-	height: 100%;
+.bg{
+	background: url('../images/bg.png') repeat-y;
 }
 
 #content{
@@ -8,10 +8,8 @@
 }
 
 #sidebar {
-    background: #3F72DB;
     width: 300px;
 	float:left;
-	min-height: 100%;
 }
 
 #sidebar a {
@@ -82,7 +80,7 @@
 }
 
 /* IFRAME */
-.header{
+#frame-header, .sub-header{
     margin-top: 25px;
     margin-bottom: 65px;
 }

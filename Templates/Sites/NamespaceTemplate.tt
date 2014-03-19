@@ -32,11 +32,11 @@
     </head>
     <body>        
        
-	   <div class="header">
+	   <div id="frame-header">
 			<h2 class="type-title"><#= Namespace.Fullname #></h2>
 			<span class="namespace-title">Assembly: <#= Namespace.Assemblyname #></span>
 		</div>
-		<div class="pagecontent">
+		<div id="frame-content">
 					
 			<# if(Namespace.Description.Count != 0 && Namespace.Description.ContainsKey(CurrentLanguage)) { #>
 				<h3 class="box-title first-heading"><#= Strings.Description #></h3>

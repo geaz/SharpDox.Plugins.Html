@@ -74,7 +74,6 @@ namespace SharpDox.Plugins.Html.Templates.Sites
 
 		<script src=""assets/js/NavigationController.js""></script>
 		<script src=""assets/js/index.js""></script>
-        <script src=""assets/js/Parent.js""></script>
 
 		<script>
 			var backString = """);
@@ -91,8 +90,8 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\";\n\t\t</script>\n    </head>\n    <body class=\"index\">        \n\t\t<div id=\"sidebar\">\n" +
-                    "\t\t\t<div id=\"docname\">\n\t\t\t\t");
+            this.Write("\";\n\t\t</script>\n    </head>\n    <body class=\"bg\">        \n\t\t<div id=\"sidebar\">\n\t\t\t" +
+                    "<div id=\"docname\">\n\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\IndexTemplate.tt"
  if (String.IsNullOrEmpty(Repository.ProjectInfo.LogoPath))

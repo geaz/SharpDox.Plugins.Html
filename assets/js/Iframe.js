@@ -2,12 +2,10 @@ $(window).on("load", function () {
     resize();
 });
 
+$(window).on("resize", function() {
+	resize();
+});
+
 function resize(){
-    var body = document.body,
-    html = document.documentElement,
-    height = body.offsetHeight + 50;
-    if(height === 0){
-        height = html.offsetHeight + 50;
-    }
-    parent.postMessage(height, '*');
+    parent.postMessage($('#frame-content').outerHeight(true) + 155, '*');
 }

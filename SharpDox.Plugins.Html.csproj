@@ -649,11 +649,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\js\Parent.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="assets\js\MemberNav.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -665,6 +660,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\js\index.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\images\bg.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

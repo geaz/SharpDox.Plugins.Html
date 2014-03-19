@@ -32,14 +32,13 @@
 
 		<script src="assets/js/NavigationController.js"></script>
 		<script src="assets/js/index.js"></script>
-        <script src="assets/js/Parent.js"></script>
 
 		<script>
 			var backString = "<#= Strings.Back #>";
 			var descString = "<#= Strings.Description #>";
 		</script>
     </head>
-    <body class="index">        
+    <body class="bg">        
 		<div id="sidebar">
 			<div id="docname">
 				<# if (String.IsNullOrEmpty(Repository.ProjectInfo.LogoPath))

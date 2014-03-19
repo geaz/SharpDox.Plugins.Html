@@ -81,7 +81,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
     </head>
     <body>        
        
-	   <div class=""header"">
+	   <div id=""frame-header"">
 			<h2 class=""type-title"">");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
@@ -96,7 +96,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("</span>\n\t\t</div>\n\t\t<div class=\"pagecontent\">\n\t\t\t\t\t\n\t\t\t");
+            this.Write("</span>\n\t\t</div>\n\t\t<div id=\"frame-content\">\n\t\t\t\t\t\n\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  if(Namespace.Description.Count != 0 && Namespace.Description.ContainsKey(CurrentLanguage)) { 
