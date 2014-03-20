@@ -11,13 +11,17 @@
   list-style-type: decimal;
   margin-left: 20px;
 }
+.markdown ul{
+	margin: 0 0 1.5em;
+}
 .markdown ul li:before {
   content: "\f138";
   font-family: 'FontAwesome';
-  margin-right: 5px;
+  margin-left: -1.2em;
 }
 .markdown ul li {
   margin-bottom: 5px;
+  padding-left: 1.2em;
 }
 .markdown blockquote {
   background: #f6f5f1;
