@@ -10,7 +10,6 @@
 
 <#  if(Article.Children.Count > 0) { #>
 		<ul class="navigation-sub">
-		<li class="navigation-back"><a href="#"><i class="icon-chevron-sign-left"></i> <p><#= Strings.Back #></p> </a></li>	
 <#	}
 
 	for (int i = 0; i < Article.Children.Count; i++)
@@ -20,7 +19,7 @@
 		if (article.Content == "SDDoc")
 		{ #>		
 			<# var apiNavTemplate = new ApiNavTemplate { Repository = Repository, Strings = Strings }; #>						
-			<#= string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a>{1}</li>", article.Title, apiNavTemplate.TransformText()) #>
+			<#= string.Format("<li data-url=\"{0}\" data-type=\"placeholder\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a>{2}</li>", article.Guid, article.Title, apiNavTemplate.TransformText()) #>
 		<# }
 		else if (!string.IsNullOrEmpty(article.Content))
 		{ #>
@@ -30,7 +29,7 @@
 		else
 		{ #>
 			<# var articleNavTemplate = new ArticleNavTemplate { Article = article, Repository = Repository, Strings = Strings }; #>
-			<#= string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a>{2}</li>", article.Guid, article.Title, articleNavTemplate.TransformText()) #>
+			<#= string.Format("<li data-url=\"{0}\" data-type=\"placeholder\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a>{2}</li>", article.Guid, article.Title, articleNavTemplate.TransformText()) #>
 		<# }
 	} 
 

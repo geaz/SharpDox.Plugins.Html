@@ -11,7 +11,6 @@
 
 <#	if(Repository.Articles.Count > 0) { #>
 		<ul class="navigation-sub">
-		<li class="navigation-back"><a href="#"><i class="icon-chevron-sign-left"></i> <p><#= Strings.Back #></p> </a></li>	
 <#	}
 
 	var sdNamespaces = Repository.GetAllNamespaces();

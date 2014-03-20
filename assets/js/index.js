@@ -16,20 +16,15 @@
 function OnLoadPage(event) {
     var iframe = $('#docframe');
     if (event.data != null) {
-        if (window.location.hash != "") {
-            window.location.hash = window.location.hash.split('#')[1];
-        }
-
-        if (event.data.displayMember != null) {
-            var displayedMember = event.data.displayMember;
-            window.location.hash = window.location.hash.split('#')[1] + '#' + displayedMember.slice(1);
-            heigh = event.data.height;
-        }
-        else {
-            height = event.data;
-        }
-
-		iframe.height(parseInt(height));		
+		if(event.data.toString().indexOf('#') > -1){
+			if(window.location.hash != event.data && event.data != '#home'){
+				window.location.hash = event.data;
+			}
+		}
+		else{
+			var height = event.data;
+			iframe.height(parseInt(height));	
+		}		
     }
     window.scrollTo(0, 0);
 }

@@ -64,7 +64,8 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("</h2>\n\t\t<span class=\"namespace-title\">");
+            this.Write("</h2>\n\t\t\n\t\t<div class=\"divider\">\n\t\t<span></span>\n\t\t</div>\n\t\t\n\t\t<span class=\"names" +
+                    "pace-title\">");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Strings.DeclaringType));
@@ -86,8 +87,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("</h3>\n\t\t<div class=\"divider\">\n\t\t\t<span></span>\n\t\t</div>\n\t\t<div class=\"syntax-box\"" +
-                    ">\n\t\t\t<pre class=\"wrap-pre\"><code>");
+            this.Write("</h3>\n\t\t\n\t\t<div class=\"syntax-box\">\n\t\t\t<pre class=\"wrap-pre\"><code>");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(WebUtility.HtmlEncode(SDMember.Syntax)));

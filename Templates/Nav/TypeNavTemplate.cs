@@ -40,7 +40,14 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             this.Write("\n");
             this.Write("\n");
             this.Write("\n");
-            this.Write(" \n\n<ul class=\"navigation-sub\">\n\n");
+            this.Write(" \n\n<ul class=\"navigation-sub\">\n\n\t");
+            
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li><a href=\"#{0}\" id=\"nav-{0}\"><i class=\"icon-link\"></i> <p>{1}</p></a></li>", SDType.Guid, Strings.Description)));
+            
+            #line default
+            #line hidden
+            this.Write("\n\n");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
   var fields = string.Empty;
@@ -82,7 +89,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             this.Write("\n\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a> <ul class=\"navigation-sub\">{1}</ul></li>", Strings.Fields, fields.Trim())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-url=\"{0}{1}\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a> <ul class=\"navigation-sub\">{2}</ul></li>", SDType.Guid, Strings.Fields, fields.Trim())));
             
             #line default
             #line hidden
@@ -103,7 +110,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             this.Write("\n\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a> <ul class=\"navigation-sub\">{1}</ul></li>", Strings.Events, events.Trim())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-url=\"{0}{1}\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a> <ul class=\"navigation-sub\">{2}</ul></li>", SDType.Guid, Strings.Events, events.Trim())));
             
             #line default
             #line hidden
@@ -124,7 +131,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             this.Write("\n\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a> <ul class=\"navigation-sub\">{1}</ul></li>", Strings.Methods, methods.Trim())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-url=\"{0}{1}\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a> <ul class=\"navigation-sub\">{2}</ul></li>", SDType.Guid, Strings.Methods, methods.Trim())));
             
             #line default
             #line hidden
@@ -145,7 +152,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             this.Write("\n\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\TypeNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a> <ul class=\"navigation-sub\">{1}</ul></li>", Strings.Properties, properties.Trim())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-url=\"{0}{1}\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a> <ul class=\"navigation-sub\">{2}</ul></li>", SDType.Guid, Strings.Properties, properties.Trim())));
             
             #line default
             #line hidden

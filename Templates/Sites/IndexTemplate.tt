@@ -30,6 +30,8 @@
 		<script src="assets/js/vendor/jquery.js"></script>
 		<script src="assets/js/vendor/jquery.hashchange.min.js"></script>
 
+		<script src="assets/js/HistoryEntry.js"></script>
+		<script src="assets/js/HistoryController.js"></script>
 		<script src="assets/js/NavigationController.js"></script>
 		<script src="assets/js/index.js"></script>
 
@@ -52,6 +54,9 @@
 			</div>
     
 			<div id="pagetitle"><#= Strings.Home #></div>
+			<div id="backlink-wrapper">
+				<a id="backlink" href="#" title="<#= Strings.Back #>"><i class="icon-chevron-sign-left"></i> <p><#= Strings.Back #></p></a>
+			</div>
             <div id="navigation">
 				<#= Navigation #>
 			</div>	
@@ -60,6 +65,8 @@
         <div id="content">            
 			<iframe id="docframe" frameborder="0" width="100%" src="article/home.html"></iframe>
         </div>
+
+		<div id="historybar-wrapper"><i class="icon-code-fork historyicon firsticon"></i><ul id="historybar"></ul></div>
 
     </body>
 </html>

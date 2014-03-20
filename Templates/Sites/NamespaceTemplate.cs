@@ -77,7 +77,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
 		<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/layout.css"" />
 
 		<script src=""../assets/js/vendor/jquery.js""></script>
-		<script src=""../assets/js/Iframe.js""></script>
+		<script src=""../assets/js/iframe.js""></script>
     </head>
     <body>        
        
@@ -89,14 +89,15 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("</h2>\n\t\t\t<span class=\"namespace-title\">Assembly: ");
+            this.Write("</h2>\n\n\t\t\t<div class=\"divider\">\n\t\t\t<span></span>\n\t\t\t</div>\n\n\t\t\t<span class=\"names" +
+                    "pace-title\">Assembly: ");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace.Assemblyname));
             
             #line default
             #line hidden
-            this.Write("</span>\n\t\t</div>\n\t\t<div id=\"frame-content\">\n\t\t\t\t\t\n\t\t\t");
+            this.Write("</span>\n\t\t</div>\n\n\t\t<div id=\"frame-content\">\n\t\t\t\t\t\n\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  if(Namespace.Description.Count != 0 && Namespace.Description.ContainsKey(CurrentLanguage)) { 
@@ -110,8 +111,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("</h3>\n\t\t\t\t<div class=\"divider\">\n\t\t\t\t<span></span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"text" +
-                    "-box markdown\">\n\t\t\t\t\t");
+            this.Write("</h3>\n\t\t\t\t\n\t\t\t\t<div class=\"text-box markdown\">\n\t\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
 	var template = new Templater(Repository, Namespace.Description[CurrentLanguage]); 
@@ -148,7 +148,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("</h3>\n\t\t\t\t<div class=\"divider\">\n\t\t\t\t<span></span>\n\t\t\t\t</div>\n\n\t\t\t");
+            this.Write("</h3>\n\n\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\NamespaceTemplate.tt"
  } 

@@ -16,15 +16,18 @@
 <div id="<#= SDMember.Guid #>" class="typesite">
 	<div class="sub-header">
 		<h2 class="type-title"><#= SDMember.Name #></h2>
+		
+		<div class="divider">
+		<span></span>
+		</div>
+		
 		<span class="namespace-title"><#= Strings.DeclaringType #>: <#= SDType.Fullname #></span>
 	</div>
 
 	<div class="sub-content">
 
 		<h3 class="box-title first-heading"><#= Strings.Syntax #></h3>
-		<div class="divider">
-			<span></span>
-		</div>
+		
 		<div class="syntax-box">
 			<pre class="wrap-pre"><code><#= WebUtility.HtmlEncode(SDMember.Syntax) #></code></pre>
 		</div>

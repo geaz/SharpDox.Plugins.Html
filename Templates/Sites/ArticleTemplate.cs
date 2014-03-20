@@ -72,7 +72,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
 		<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/layout.css"" />
 
 		<script src=""../assets/js/vendor/jquery.js""></script>
-		<script src=""../assets/js/Iframe.js""></script>
+		<script src=""../assets/js/iframe.js""></script>
     </head>
     <body>        
         
@@ -84,7 +84,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("</h2>\n\t\t\t");
+            this.Write("</h2>\n\t\t\t\n\t\t\t<div class=\"divider\">\n\t\t\t<span></span>\n\t\t\t</div>\n\t\t\t\n\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
  if(!string.IsNullOrEmpty(Repository.ProjectInfo.VersionNumber)) { 
@@ -105,15 +105,8 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\n\t\t</div>\n\t\t<div id=\"frame-content\">\n\n\t\t\t<h3 class=\"box-title first-heading\">");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Article));
-            
-            #line default
-            #line hidden
-            this.Write("</h3>\n\t\t\t<div class=\"divider\">\n\t\t\t<span></span>\n\t\t\t</div>\n\n\t\t\t<div class=\"text-bo" +
-                    "x markdown\">\n\t\t\t\t");
+            this.Write("\n\t\t</div>\n\n\t\t<div id=\"frame-content\">\n\n\t\t\t<div class=\"text-box markdown no-margin" +
+                    "\">\n\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
 	var template = new Templater(Repository, Article.Content); 

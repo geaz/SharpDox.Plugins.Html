@@ -72,6 +72,8 @@ namespace SharpDox.Plugins.Html.Templates.Sites
 		<script src=""assets/js/vendor/jquery.js""></script>
 		<script src=""assets/js/vendor/jquery.hashchange.min.js""></script>
 
+		<script src=""assets/js/HistoryEntry.js""></script>
+		<script src=""assets/js/HistoryController.js""></script>
 		<script src=""assets/js/NavigationController.js""></script>
 		<script src=""assets/js/index.js""></script>
 
@@ -143,16 +145,41 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("</div>\n            <div id=\"navigation\">\n\t\t\t\t");
+            this.Write("</div>\n\t\t\t<div id=\"backlink-wrapper\">\n\t\t\t\t<a id=\"backlink\" href=\"#\" title=\"");
+            
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\IndexTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Back));
+            
+            #line default
+            #line hidden
+            this.Write("\"><i class=\"icon-chevron-sign-left\"></i> <p>");
+            
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\IndexTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Back));
+            
+            #line default
+            #line hidden
+            this.Write("</p></a>\n\t\t\t</div>\n            <div id=\"navigation\">\n\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Navigation));
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t</div>\t\n\t\t</div>\n\n        <div id=\"content\">            \n\t\t\t<iframe id=\"docfr" +
-                    "ame\" frameborder=\"0\" width=\"100%\" src=\"article/home.html\"></iframe>\n        </di" +
-                    "v>\n\n    </body>\n</html>\n\n");
+            this.Write(@"
+			</div>	
+		</div>
+
+        <div id=""content"">            
+			<iframe id=""docframe"" frameborder=""0"" width=""100%"" src=""article/home.html""></iframe>
+        </div>
+
+		<div id=""historybar-wrapper""><i class=""icon-code-fork historyicon firsticon""></i><ul id=""historybar""></ul></div>
+
+    </body>
+</html>
+
+");
             return this.GenerationEnvironment.ToString();
         }
         

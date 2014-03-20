@@ -66,7 +66,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             this.Write("\t\t\t\t\t\t\n\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\IndexNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a>{1}</li>", article.Title, apiNavTemplate.TransformText())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-url=\"{0}\" data-type=\"placeholder\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a>{2}</li>", article.Guid, article.Title, apiNavTemplate.TransformText())));
             
             #line default
             #line hidden
@@ -112,7 +112,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             this.Write("\n\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\IndexNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a>{2}</li>", article.Guid, article.Title, articleNavTemplate.TransformText())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-url=\"{0}\" data-type=\"placeholder\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a>{2}</li>", article.Guid, article.Title, articleNavTemplate.TransformText())));
             
             #line default
             #line hidden

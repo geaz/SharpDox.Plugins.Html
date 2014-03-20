@@ -88,7 +88,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
 		<script src=""../assets/js/vendor/jquery.hashchange.min.js""></script>
 
 		<script src=""../assets/js/SVGPan.js""></script>
-		<script src=""../assets/js/MemberNav.js""></script>
+		<script src=""../assets/js/typeIframe.js""></script>
     </head>
     <body>        
         
@@ -103,7 +103,8 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("</h2>\n\t\t\t\t\t<span class=\"namespace-title\">Namespace: ");
+            this.Write("</h2>\n\n\t\t\t\t\t<div class=\"divider\">\n\t\t\t\t\t<span></span>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<span clas" +
+                    "s=\"namespace-title\">Namespace: ");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(SDType.Namespace.Fullname));
@@ -118,8 +119,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("</h3>\n\t\t\t\t\t<div class=\"divider\">\n\t\t\t\t\t\t<span></span>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=" +
-                    "\"syntax-box\">\n\t\t\t\t\t\t<pre class=\"wrap-pre\"><code>");
+            this.Write("</h3>\n\t\t\t\t\t\n\t\t\t\t\t<div class=\"syntax-box\">\n\t\t\t\t\t\t<pre class=\"wrap-pre\"><code>");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(WebUtility.HtmlEncode(SDType.Syntax)));

@@ -28,21 +28,25 @@
 		<link rel="stylesheet" type="text/css" href="../assets/css/layout.css" />
 
 		<script src="../assets/js/vendor/jquery.js"></script>
-		<script src="../assets/js/Iframe.js"></script>
+		<script src="../assets/js/iframe.js"></script>
     </head>
     <body>        
        
 	   <div id="frame-header">
 			<h2 class="type-title"><#= Namespace.Fullname #></h2>
+
+			<div class="divider">
+			<span></span>
+			</div>
+
 			<span class="namespace-title">Assembly: <#= Namespace.Assemblyname #></span>
 		</div>
+
 		<div id="frame-content">
 					
 			<# if(Namespace.Description.Count != 0 && Namespace.Description.ContainsKey(CurrentLanguage)) { #>
 				<h3 class="box-title first-heading"><#= Strings.Description #></h3>
-				<div class="divider">
-				<span></span>
-				</div>
+				
 				<div class="text-box markdown">
 					<#	var template = new Templater(Repository, Namespace.Description[CurrentLanguage]); 
 						var helper = new Helper(Repository);
@@ -55,9 +59,6 @@
 			<# } else { #>
 
 				<h3 class="box-title first-heading"><#= Strings.Types #></h3>
-				<div class="divider">
-				<span></span>
-				</div>
 
 			<# } #>
 

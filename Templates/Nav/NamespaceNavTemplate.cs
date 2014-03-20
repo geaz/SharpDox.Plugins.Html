@@ -43,13 +43,6 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             this.Write(" \n\n<ul class=\"navigation-sub\">\n\n");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\NamespaceNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li class=\"navigation-back\"><a href=\"#\"><i class=\"icon-chevron-sign-left\"></i> <p>{0}</p></a></li>", Strings.Back)));
-            
-            #line default
-            #line hidden
-            this.Write("\n");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\NamespaceNavTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li><a href=\"#{0}\" id=\"nav-{0}\"><i class=\"icon-link\"></i> <p>{1}</p></a></li>", Namespace.Guid, Strings.Description)));
             
             #line default

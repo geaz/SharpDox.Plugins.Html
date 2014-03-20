@@ -43,18 +43,18 @@
   display: none;
 }
 
-.navigation-back a i, #navigation li a i{
+#backlink-wrapper a i, #navigation li a i{
     float:right;
     margin: 4px 5px 0 0;
 }
 
-.navigation-back a p, #navigation li a p {
+#backlink-wrapper a p, #navigation li a p {
     margin: 0 20px;
     width: 200px;
     word-wrap: break-word;
 }
 
-.navigation-back a, #navigation li a, #navigtaion li a:visited{
+#backlink-wrapper a, #navigation li a, #navigtaion li a:visited{
     display:inline-block;
     min-width: 265px;
     padding: 10px 25px 10px 10px;
@@ -66,23 +66,69 @@
     color: white;
 }
 
-.navigation-back a i{
+#backlink-wrapper{
+    display:none;
+}
+
+#backlink-wrapper a i{
     float:left!important;
 }
 
-.navigation-back a{
+#backlink-wrapper a{
     background: #3F72DB!important;
 }
 
-.navigation-back a:hover{
+#backlink-wrapper a:hover{
     background: #25427F!important;
     color: white!important;
 }
 
+#historybar-wrapper{
+	display: none;
+	position: fixed;
+	bottom:0;
+	left:0;
+	right:0;
+	background:black;
+	color: #E5E5E5;	
+}
+
+#historybar {
+	white-space: nowrap;
+	overflow-x: hidden;
+}
+
+#historybar li{
+	display:inline-block
+}
+
+.historyentry{
+	padding: 15px;
+	display: inline-block;
+	background: #292929;
+}
+
+.historyentry:hover{
+	background: #F58026;
+	color: white;
+}
+
+.historyicon{
+	padding: 15px 20px; 
+	background: #404040;
+	display: inline-block;
+}
+
+.firsticon{
+	float:left;
+	border-right: 1px solid black;
+}
+
 /* IFRAME */
 #frame-header, .sub-header{
+	text-align:center;
     margin-top: 25px;
-    margin-bottom: 65px;
+    margin-bottom: 50px;
 }
 
 .type-title {
@@ -93,7 +139,7 @@
     display: block;
     font-family: OpenSansLight;
     font-size: 10pt;
-    margin-top: 5px;
+    margin:0;
 }
 
 .box-title {
@@ -104,7 +150,7 @@
     background-color: #DADADA;
     border-bottom: 1px solid #FFFFFF;
     height: 1px;
-    margin: 0.5em 0 1.5em;
+    margin: 10px 0;
 }
 
 .divider span {
@@ -112,10 +158,11 @@
     display: block;
     height: 1px;
     overflow: hidden;
-    width: 50px;
+    width: 400px;
+	margin:auto;
 }
 
-.list-box, .doc-box, .text-box, .table-box {
+.list-box, .doc-box, .text-box, .table-box , .syntax-box{
     margin: 25px 0 25px 25px;
 }
 
@@ -135,11 +182,12 @@
 
 .syntax-box {
     background: #F6F5F1;
-    margin-bottom: 25px;
-    margin-top: -22px;
     padding: 5px;
     border:1px solid #DADADA;
-    border-top:none;
+}
+
+.no-margin{
+	margin:0;
 }
 
 #sd-sequence-diagram, #sd-class-diagram {

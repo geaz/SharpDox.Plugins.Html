@@ -36,7 +36,7 @@
 		<script src="../assets/js/vendor/jquery.hashchange.min.js"></script>
 
 		<script src="../assets/js/SVGPan.js"></script>
-		<script src="../assets/js/MemberNav.js"></script>
+		<script src="../assets/js/typeIframe.js"></script>
     </head>
     <body>        
         
@@ -45,15 +45,18 @@
 			<div id="typeIndex" class="typesite">
 				<div class="sub-header">
 					<h2 class="type-title"><#= SDType.Name #></h2>
+
+					<div class="divider">
+					<span></span>
+					</div>
+
 					<span class="namespace-title">Namespace: <#= SDType.Namespace.Fullname #></span>
 				</div>
 
 				<div class="sub-content">
 
 					<h3 class="box-title first-heading"><#= Strings.Syntax #></h3>
-					<div class="divider">
-						<span></span>
-					</div>
+					
 					<div class="syntax-box">
 						<pre class="wrap-pre"><code><#= WebUtility.HtmlEncode(SDType.Syntax) #></code></pre>
 					</div>

@@ -72,12 +72,26 @@ namespace SharpDox.Plugins.Html.Templates.Sites
 		<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/layout.css"" />
 
 		<script src=""../assets/js/vendor/jquery.js""></script>
-		<script src=""../assets/js/Iframe.js""></script>
+		<script src=""../assets/js/iframe.js""></script>
     </head>
     <body>        
         
 		<div id=""frame-header"">
 			<h2 class=""type-title"">");
+            
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Repository.ProjectInfo.ProjectName));
+            
+            #line default
+            #line hidden
+            this.Write("</h2>\n\t\t\t\n\t\t\t<div class=\"divider\">\n\t\t\t<span></span>\n\t\t\t</div>\n\t\t\t\n\t\t\t");
+            
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
+ if(!string.IsNullOrEmpty(Repository.ProjectInfo.VersionNumber)) { 
+            
+            #line default
+            #line hidden
+            this.Write("\n\t\t\t\t<span class=\"namespace-title\">\n\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Strings.By));
@@ -91,37 +105,22 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("</h2>\n\t\t\t");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
- if(!string.IsNullOrEmpty(Repository.ProjectInfo.VersionNumber)) { 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t\t<span class=\"namespace-title\">Version ");
+            this.Write(" - Version ");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Repository.ProjectInfo.VersionNumber != null ? Repository.ProjectInfo.VersionNumber : string.Empty));
             
             #line default
             #line hidden
-            this.Write("</span>\n\t\t\t");
+            this.Write("\n\t\t\t\t</span>\n\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\n\t\t</div>\n\t\t<div id=\"frame-content\">\n\t\t\t\t\t\n\t\t\t<h3 class=\"box-title first-heading\"" +
-                    ">");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Description));
-            
-            #line default
-            #line hidden
-            this.Write("</h3>\n\t\t\t<div class=\"divider\">\n\t\t\t<span></span>\n\t\t\t</div>\n\n\t\t\t<div class=\"text-bo" +
-                    "x markdown\">\n\t\t\t\t");
+            this.Write("\n\t\t</div>\n\n\t\t<div id=\"frame-content\">\t\t\t\n\n\t\t\t<div class=\"text-box markdown no-mar" +
+                    "gin\">\n\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
  if(Repository.ProjectInfo.Description.Count > 0 && Repository.ProjectInfo.Description.ContainsKey(CurrentLanguage)) { 

@@ -10,6 +10,8 @@
 
 <ul class="navigation-sub">
 
+	<#= string.Format("<li><a href=\"#{0}\" id=\"nav-{0}\"><i class=\"icon-link\"></i> <p>{1}</p></a></li>", SDType.Guid, Strings.Description) #>
+
 <#  var fields = string.Empty;
 	var events = string.Empty;
 	var constructors = string.Empty;
@@ -38,19 +40,19 @@
 	}	#>	
 
 <# if(SDType.Fields.Count > 0) { #>
-	<#= string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a> <ul class=\"navigation-sub\">{1}</ul></li>", Strings.Fields, fields.Trim()) #>
+	<#= string.Format("<li data-url=\"{0}{1}\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a> <ul class=\"navigation-sub\">{2}</ul></li>", SDType.Guid, Strings.Fields, fields.Trim()) #>
 <# } #>
 
 <# if(SDType.Events.Count > 0) { #>
-	<#= string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a> <ul class=\"navigation-sub\">{1}</ul></li>", Strings.Events, events.Trim()) #>
+	<#= string.Format("<li data-url=\"{0}{1}\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a> <ul class=\"navigation-sub\">{2}</ul></li>", SDType.Guid, Strings.Events, events.Trim()) #>
 <# } #>
 
 <# if(SDType.Constructors.Count > 0 || SDType.Methods.Count > 0) { #>
-	<#= string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a> <ul class=\"navigation-sub\">{1}</ul></li>", Strings.Methods, methods.Trim()) #>
+	<#= string.Format("<li data-url=\"{0}{1}\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a> <ul class=\"navigation-sub\">{2}</ul></li>", SDType.Guid, Strings.Methods, methods.Trim()) #>
 <# } #>
 
 <# if(SDType.Properties.Count > 0) { #>
-	<#= string.Format("<li><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{0}</p></a> <ul class=\"navigation-sub\">{1}</ul></li>", Strings.Properties, properties.Trim()) #>
+	<#= string.Format("<li data-url=\"{0}{1}\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a> <ul class=\"navigation-sub\">{2}</ul></li>", SDType.Guid, Strings.Properties, properties.Trim()) #>
 <# } #>
 
 </ul>
