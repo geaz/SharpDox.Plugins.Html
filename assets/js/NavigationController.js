@@ -1,7 +1,7 @@
 var NavigationController = function() {
 	this._oldHash = "";
 	this._historyController = new HistoryController();
-	this._navigationRoot = $('#navigation-root').clone(true);
+	this._navigationRoot = $('#navigation-data').clone(true);
 }
 
 NavigationController.prototype = {
@@ -37,11 +37,11 @@ NavigationController.prototype = {
 				
 		if(childNav.length == 0){
 			var newNav = this._navigationRoot.find('li[data-url="' + dataUrl + '"]').parent().clone(true);
-			this.updateBackButton(navItem.parent().parent());
+			this.updateBackButtonAndTitle(navItem.parent().parent());
 		}
 		else{
 			var newNav = childNav.clone(true);
-			this.updateBackButton(navItem);
+			this.updateBackButtonAndTitle(navItem);
 		}
 		
 		if(newNav != null && newNav.length > 0){
@@ -71,7 +71,7 @@ NavigationController.prototype = {
 			$('#navigation').empty();
 			$('#navigation').append(newNav);
 						
-			that.updateBackButton(that._navigationRoot.find('li[data-url="' + $(this).attr('data-url') + '"]'));
+			that.updateBackButtonAndTitle(that._navigationRoot.find('li[data-url="' + $(this).attr('data-url') + '"]'));
 			that.initNav();
 		});
 	},
@@ -80,21 +80,31 @@ NavigationController.prototype = {
 		$("#docframe").attr('src', site);
 	},
 
-	setNavigationTitle: function(title){
-		$('#pagetitle').html(title);
+	setNavigationTitle: function(navItem){
+		var type = navItem.attr('data-type');
+		var parent = navItem.parent();
+		if((parent != null && parent.is('ul') && !parent.is('#navigation-data')) || 
+			(parent.is('#navigation-data') && type == "placeholder")){
+			
+		}
+		
+		
 	},
 	
-	updateBackButton: function(navItem){	
+	updateBackButtonAndTitle: function(navItem){	
 		var visible = false;
 		var type = navItem.attr('data-type');
 		var parent = navItem.parent(); 
-		if((parent != null && parent.is('ul') && !parent.is('#navigation-root')) || 
-			(parent.is('#navigation-root') && type == "placeholder")){	
+		if((parent != null && parent.is('ul') && !parent.is('#navigation-data')) || 
+			(parent.is('#navigation-data') && type == "placeholder")){	
+			
+			$('#pagetitle').html(navItem.children('a').children('p').text());
+			
 			visible = true;
 			var that = this;
 			$('#backlink').off('click');
 			$('#backlink').on('click', function(){
-				that.updateBackButton(parent.parent());
+				that.updateBackButtonAndTitle(parent.parent());
 				
 				var newNav = parent.clone(true);
 				newNav.show();
@@ -104,6 +114,9 @@ NavigationController.prototype = {
 				
 				that.initNav();
 			});
+		}
+		else{
+			$('#pagetitle').html(homeString);
 		}
 		
 		if(visible && !$('#backlink-wrapper').is(':visible')){

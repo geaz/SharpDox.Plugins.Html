@@ -33,14 +33,17 @@
 		<script src="assets/js/HistoryEntry.js"></script>
 		<script src="assets/js/HistoryController.js"></script>
 		<script src="assets/js/NavigationController.js"></script>
+		<script src="assets/js/SearchEntry.js"></script>
+		<script src="assets/js/SearchController.js"></script>
 		<script src="assets/js/index.js"></script>
 
 		<script>
 			var backString = "<#= Strings.Back #>";
 			var descString = "<#= Strings.Description #>";
+			var homeString = "<#= Strings.Home #>";
 		</script>
     </head>
-    <body class="bg">        
+    <body class="bg">    		    
 		<div id="sidebar">
 			<div id="docname">
 				<# if (String.IsNullOrEmpty(Repository.ProjectInfo.LogoPath))
@@ -57,8 +60,7 @@
 			<div id="backlink-wrapper">
 				<a id="backlink" href="#" title="<#= Strings.Back #>"><i class="icon-chevron-sign-left"></i> <p><#= Strings.Back #></p></a>
 			</div>
-            <div id="navigation">
-				<#= Navigation #>
+            <div id="navigation">				
 			</div>	
 		</div>
 
@@ -66,7 +68,18 @@
 			<iframe id="docframe" frameborder="0" width="100%" src="article/home.html"></iframe>
         </div>
 
-		<div id="historybar-wrapper"><i class="icon-code-fork historyicon firsticon"></i><ul id="historybar"></ul></div>
+		<div id="historybar-wrapper">
+			<i class="icon-code-fork historyicon firsticon"></i>
+			<ul id="historybar"></ul>
+		</div>
+
+		<div id="search-wrapper">
+			<div id="search-result-wrapper" onblur="searchController.hide()"><div id="search-result"></div></div>
+			<i class="icon-search"></i>
+			<input type="text" id="search-field" onfocus="searchController.search(this.value)" onblur="searchController.hide()" onkeyup="searchController.search(this.value)"/>
+		</div>
+
+		<#= Navigation #>
 
     </body>
 </html>

@@ -42,7 +42,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             this.Write("\n");
             this.Write("\n");
             this.Write(" \n");
-            this.Write(" \n\n<ul id=\"navigation-root\">\n\n");
+            this.Write(" \n\n<ul id=\"navigation-data\">\n\n");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\IndexNavTemplate.tt"
  if(Repository.Articles.Count > 0) {

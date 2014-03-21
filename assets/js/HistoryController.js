@@ -21,9 +21,11 @@ HistoryController.prototype = {
 		entry.show('fast');		
 		
 		if(this.history.length > 1 && !$('#historybar-wrapper').is(':visible')){
-			$('#historybar-wrapper').show('slow');
-			$('#sidebar').css('margin-bottom', '45px');
-			$('#content').css('margin-bottom', '45px');
+			$('#historybar-wrapper').show();
+			$('#historybar-wrapper').animate({'bottom': '0'});
+			$('#search-wrapper').animate({'bottom': '44px'});
+			$('#sidebar').css('margin-bottom', '44px');
+			$('#content').css('margin-bottom', '44px');
 		}
 		
 		if($('#historybar').get(0).scrollWidth > $('#historybar').width()){

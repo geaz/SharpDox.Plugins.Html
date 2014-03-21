@@ -9,6 +9,7 @@
         navigationController.loadDataUrl(window.location.hash.slice(1));
     });	
 	
+	window.searchController = new SearchController();
 	var navigationController = new NavigationController();
 	navigationController.init(window.location.hash.slice(1));
 });

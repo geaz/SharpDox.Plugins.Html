@@ -9,7 +9,7 @@
 <#@ import namespace="MarkdownSharp" #> 
 <#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
 
-<ul id="navigation-root">
+<ul id="navigation-data">
 
 <# if(Repository.Articles.Count > 0) {
 		var articles = Repository.Articles.ContainsKey(CurrentLanguage) ? Repository.Articles[CurrentLanguage] : Repository.Articles["default"];

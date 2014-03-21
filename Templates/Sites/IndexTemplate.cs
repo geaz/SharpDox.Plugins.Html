@@ -75,6 +75,8 @@ namespace SharpDox.Plugins.Html.Templates.Sites
 		<script src=""assets/js/HistoryEntry.js""></script>
 		<script src=""assets/js/HistoryController.js""></script>
 		<script src=""assets/js/NavigationController.js""></script>
+		<script src=""assets/js/SearchEntry.js""></script>
+		<script src=""assets/js/SearchController.js""></script>
 		<script src=""assets/js/index.js""></script>
 
 		<script>
@@ -92,8 +94,15 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\";\n\t\t</script>\n    </head>\n    <body class=\"bg\">        \n\t\t<div id=\"sidebar\">\n\t\t\t" +
-                    "<div id=\"docname\">\n\t\t\t\t");
+            this.Write("\";\n\t\t\tvar homeString = \"");
+            
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\IndexTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Home));
+            
+            #line default
+            #line hidden
+            this.Write("\";\n\t\t</script>\n    </head>\n    <body class=\"bg\">    \t\t    \n\t\t<div id=\"sidebar\">\n\t" +
+                    "\t\t<div id=\"docname\">\n\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\IndexTemplate.tt"
  if (String.IsNullOrEmpty(Repository.ProjectInfo.LogoPath))
@@ -159,14 +168,9 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("</p></a>\n\t\t\t</div>\n            <div id=\"navigation\">\n\t\t\t\t");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\IndexTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Navigation));
-            
-            #line default
-            #line hidden
-            this.Write(@"
+            this.Write(@"</p></a>
+			</div>
+            <div id=""navigation"">				
 			</div>	
 		</div>
 
@@ -174,12 +178,25 @@ namespace SharpDox.Plugins.Html.Templates.Sites
 			<iframe id=""docframe"" frameborder=""0"" width=""100%"" src=""article/home.html""></iframe>
         </div>
 
-		<div id=""historybar-wrapper""><i class=""icon-code-fork historyicon firsticon""></i><ul id=""historybar""></ul></div>
+		<div id=""historybar-wrapper"">
+			<i class=""icon-code-fork historyicon firsticon""></i>
+			<ul id=""historybar""></ul>
+		</div>
 
-    </body>
-</html>
+		<div id=""search-wrapper"">
+			<div id=""search-result-wrapper"" onblur=""searchController.hide()""><div id=""search-result""></div></div>
+			<i class=""icon-search""></i>
+			<input type=""text"" id=""search-field"" onfocus=""searchController.search(this.value)"" onblur=""searchController.hide()"" onkeyup=""searchController.search(this.value)""/>
+		</div>
 
-");
+		");
+            
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\IndexTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Navigation));
+            
+            #line default
+            #line hidden
+            this.Write("\n\n    </body>\n</html>\n\n");
             return this.GenerationEnvironment.ToString();
         }
         
