@@ -56,9 +56,10 @@
 				<#}#>
 			</div>
     
-			<div id="pagetitle"><#= Strings.Home #></div>
-			<div id="backlink-wrapper">
-				<a id="backlink" href="#" title="<#= Strings.Back #>"><i class="icon-chevron-sign-left"></i> <p><#= Strings.Back #></p></a>
+			<div id="pagetitle">Version <#= Repository.ProjectInfo.VersionNumber != null ? Repository.ProjectInfo.VersionNumber : string.Empty #></div>
+			<div id="backnavigation-wrapper">
+                <ul id="backnavigation">                
+                </ul>
 			</div>
             <div id="navigation">				
 			</div>	
