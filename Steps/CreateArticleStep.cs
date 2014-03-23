@@ -33,7 +33,7 @@ namespace SharpDox.Plugins.Html.Steps
             if (!string.IsNullOrEmpty(article.Content) && article.Content != "SDDoc")
             {
                 var articleTemplate = new ArticleTemplate { Repository = repository, Article = article, Strings = strings };
-                File.WriteAllText(Path.Combine(outputPath, "article", string.Format("{0}.html", article.Guid)), articleTemplate.TransformText());
+                File.WriteAllText(Path.Combine(outputPath, "article", string.Format("{0}.html", article.Title.Replace(' ', '-'))), articleTemplate.TransformText());
             }
 
             if (article.Content != "SDDoc")

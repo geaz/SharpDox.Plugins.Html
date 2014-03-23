@@ -10,13 +10,13 @@
 
 <ul class="navigation-sub">
 
-<#= string.Format("<li><a href=\"#{0}\" id=\"nav-{0}\"><i class=\"icon-link\"></i> <p>{1}</p></a></li>", Namespace.Guid, Strings.Description) #>
+<#= string.Format("<li><a href=\"#{0}\" id=\"nav-{0}\"><i class=\"icon-link\"></i> <p>{1}</p></a></li>", Namespace.Fullname, Strings.Description) #>
 
 <#  for (int i = 0; i < Namespace.Types.Count; i++)
 	{ 
 		var sdType = Namespace.Types[i]; 
 		var typeNavTemplate = new TypeNavTemplate { SDType = sdType, Strings = Strings }; #>	
-		<#= string.Format("<li data-url=\"{0}\" data-type=\"type\"><a href=\"#{0}\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a> {2}</li>", sdType.Guid, sdType.Name, typeNavTemplate.TransformText()) #>
+		<#= string.Format("<li data-url=\"{0}\" data-type=\"type\"><a href=\"#{0}\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a> {2}</li>", sdType.Identifier, sdType.Name, typeNavTemplate.TransformText()) #>
 <#	}	#>
 
 </ul>

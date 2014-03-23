@@ -82,7 +82,7 @@
 									<img alt="Class-Icon" src="../assets/images/icons/Class_<#= sdType.Accessibility #>.png">
 								</td>
 								<td>
-									<a title="<#= sdType.Name #>" href="../type/<#= sdType.Guid #>.html"><#= sdType.Name #></a>
+									<a title="<#= sdType.Name #>" href="../type/<#= sdType.Identifier #>.html"><#= sdType.Name #></a>
 								</td>	
 								<td class="markdown">
 									<# if(sdType.Documentation.ContainsKey(CurrentLanguage)) { #>

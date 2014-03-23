@@ -111,7 +111,7 @@
 							var sdMember = Repository.GetMemberByIdentifier(identifier);
 							if(sdMember != null)
                             {
-								#> <li><a href="../type/<#= sdMember.DeclaringType.Guid #>.html#<#= sdMember.Guid #>"><#= sdMember.Name #></a></li> <#
+								#> <li><a href="../type/<#= sdMember.DeclaringType.Identifier #>.html#<#= sdMember.Guid #>"><#= sdMember.Name #></a></li> <#
                             }
 						}
 						else
@@ -120,7 +120,7 @@
 							var sdType = Repository.GetTypeByIdentifier(identifier);
 							if(sdType != null)
                             {
-								#> <li><a href="../type/<#= sdType.Guid #>.html"><#= sdType.Fullname #></a></li> <#
+								#> <li><a href="../type/<#= sdType.Identifier #>.html"><#= sdType.Fullname #></a></li> <#
                             }
 						} 
 					} #>

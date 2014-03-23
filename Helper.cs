@@ -21,12 +21,12 @@ namespace SharpDox.Plugins.Html
             }
             else if(linkType == "type" || linkType == "namespace")
             {
-                link = string.Format("../{0}/{1}.html", linkType, guid);
+                link = string.Format("../{0}/{1}.html", linkType, identifier);
             }
             else if (guid != Guid.Empty) // Member
             {
                 var member = _repository.GetMemberByIdentifier(identifier);
-                link = string.Format("../{0}/{1}.html#{2}", "type", member.DeclaringType.Guid, guid);
+                link = string.Format("../{0}/{1}.html#{2}", "type", member.DeclaringType.Identifier, guid);
             }
             else // Article
             {

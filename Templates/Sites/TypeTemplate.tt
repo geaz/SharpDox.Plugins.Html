@@ -69,7 +69,7 @@
 								if(baseType.IsProjectStranger) { #>
 									<li><#= baseType.Fullname #></a></li>
 								<# } else { #>
-									<li><a href="../type/<#= baseType.Guid #>.html"><#= baseType.Fullname #></a></li>
+									<li><a href="../type/<#= baseType.Identifier #>.html"><#= baseType.Fullname #></a></li>
 								<# } #>
 							<# } #>
 							</ul>
@@ -84,7 +84,7 @@
 								if(implementedInterface.IsProjectStranger) { #>
 									<li><#= implementedInterface.Fullname #></a></li>
 								<# } else { #>
-									<li><a href="../type/<#= implementedInterface.Guid #>.html"><#= implementedInterface.Fullname #></a></li>
+									<li><a href="../type/<#= implementedInterface.Identifier #>.html"><#= implementedInterface.Fullname #></a></li>
 								<# } #>
 							<# } #>
 							</ul>
@@ -170,7 +170,7 @@
 										var sdMember = Repository.GetMemberByIdentifier(identifier);
 										if(sdMember != null)
                                         {
-											#> <li><a href="../type/<#= sdMember.DeclaringType.Guid #>.html#<#= sdMember.Guid #>"><#= sdMember.Name #></a></li> <#
+											#> <li><a href="../type/<#= sdMember.DeclaringType.Identifier #>.html#<#= sdMember.Guid #>"><#= sdMember.Name #></a></li> <#
                                         }
 									}
 									else
@@ -179,7 +179,7 @@
 										var sdType = Repository.GetTypeByIdentifier(identifier);
 										if(sdType != null)
                                         {
-											#> <li><a href="../type/<#= sdType.Guid #>.html"><#= sdType.Fullname #></a></li> <#
+											#> <li><a href="../type/<#= sdType.Identifier #>.html"><#= sdType.Fullname #></a></li> <#
                                         }
 									} 
 								} #>
@@ -194,7 +194,7 @@
 						<div class="list-box">
 							<ul>
 							<# foreach(var use in SDType.Uses) { #>
-								<li><a href="../type/<#= use.Guid #>.html"><#= use.Name #></a></li>
+								<li><a href="../type/<#= use.Identifier #>.html"><#= use.Name #></a></li>
 							<# } #>
 							</ul>
 						</div>
@@ -205,7 +205,7 @@
 						<div class="list-box">
 							<ul>
 							<# foreach(var used in SDType.UsedBy) { #>
-								<li><a href="../type/<#= used.Guid #>.html"><#= used.Name #></a></li>
+								<li><a href="../type/<#= used.Identifier #>.html"><#= used.Name #></a></li>
 							<# } #>
 							</ul>
 						</div>
@@ -231,7 +231,7 @@
 											<img alt="Field-Icon" src="../assets/images/icons/Field_<#= sdField.Accessibility #>.png">
 										</td>
 										<td>
-											<a title="<#= sdField.Name #>" href="../type/<#= SDType.Guid #>.html#<#= sdField.Guid #>"><#= sdField.Name #></a>
+											<a title="<#= sdField.Name #>" href="../type/<#= SDType.Identifier #>.html#<#= sdField.Guid #>"><#= sdField.Name #></a>
 										</td>	
 										<td class="markdown">
 											<# if(sdField.Documentation.ContainsKey(CurrentLanguage)) { #>
@@ -248,7 +248,7 @@
 											<img alt="Event-Icon" src="../assets/images/icons/Event_<#= sdEvent.Accessibility #>.png">
 										</td>
 										<td>
-											<a title="<#= sdEvent.Name #>" href="../type/<#= SDType.Guid #>.html#<#= sdEvent.Guid #>"><#= sdEvent.Name #></a>
+											<a title="<#= sdEvent.Name #>" href="../type/<#= SDType.Identifier #>.html#<#= sdEvent.Guid #>"><#= sdEvent.Name #></a>
 										</td>	
 										<td class="markdown">
 											<# if(sdEvent.Documentation.ContainsKey(CurrentLanguage)) { #>
@@ -265,7 +265,7 @@
 											<img alt="Constructor-Icon" src="../assets/images/icons/Method_<#= sdConstructor.Accessibility #>.png">
 										</td>
 										<td>
-											<a title="<#= sdConstructor.Name #>" href="../type/<#= SDType.Guid #>.html#<#= sdConstructor.Guid #>"><#= sdConstructor.Name #></a>
+											<a title="<#= sdConstructor.Name #>" href="../type/<#= SDType.Identifier #>.html#<#= sdConstructor.Guid #>"><#= sdConstructor.Name #></a>
 										</td>	
 										<td class="markdown">
 											<# if(sdConstructor.Documentation.ContainsKey(CurrentLanguage)) { #>
@@ -282,7 +282,7 @@
 											<img alt="Method-Icon" src="../assets/images/icons/Method_<#= sdMethod.Accessibility #>.png">
 										</td>
 										<td>
-											<a title="<#= sdMethod.Name #>" href="../type/<#= SDType.Guid #>.html#<#= sdMethod.Guid #>"><#= sdMethod.Name #></a>
+											<a title="<#= sdMethod.Name #>" href="../type/<#= SDType.Identifier #>.html#<#= sdMethod.Guid #>"><#= sdMethod.Name #></a>
 										</td>	
 										<td class="markdown">
 											<# if(sdMethod.Documentation.ContainsKey(CurrentLanguage)) { #>
@@ -299,7 +299,7 @@
 											<img alt="Property-Icon" src="../assets/images/icons/Properties_<#= sdProperty.Accessibility #>.png">
 										</td>
 										<td>
-											<a title="<#= sdProperty.Name #>" href="../type/<#= SDType.Guid #>.html#<#= sdProperty.Guid #>"><#= sdProperty.Name #></a>
+											<a title="<#= sdProperty.Name #>" href="../type/<#= SDType.Identifier #>.html#<#= sdProperty.Guid #>"><#= sdProperty.Name #></a>
 										</td>	
 										<td class="markdown">
 											<# if(sdProperty.Documentation.ContainsKey(CurrentLanguage)) { #>

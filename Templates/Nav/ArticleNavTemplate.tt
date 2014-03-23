@@ -19,17 +19,17 @@
 		if (article.Content == "SDDoc")
 		{ #>		
 			<# var apiNavTemplate = new ApiNavTemplate { Repository = Repository, Strings = Strings }; #>						
-			<#= string.Format("<li data-url=\"{0}\" data-type=\"placeholder\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a>{2}</li>", article.Guid, article.Title, apiNavTemplate.TransformText()) #>
+			<#= string.Format("<li data-url=\"{0}\" data-type=\"placeholder\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a>{2}</li>", article.Title.Replace(' ', '-'), article.Title, apiNavTemplate.TransformText()) #>
 		<# }
 		else if (!string.IsNullOrEmpty(article.Content))
 		{ #>
 			<# var articleNavTemplate = new ArticleNavTemplate { Article = article, Repository = Repository, Strings = Strings }; #>		
-			<#= string.Format("<li data-url=\"{0}\" data-type=\"article\"><a href=\"#{0}\" id=\"nav-{0}\"><i class=\"icon-link\"></i> <p>{1}</p></a>{2}</li>", article.Guid, article.Title, articleNavTemplate.TransformText()) #>
+			<#= string.Format("<li data-url=\"{0}\" data-type=\"article\"><a href=\"#{0}\" id=\"nav-{0}\"><i class=\"icon-link\"></i> <p>{1}</p></a>{2}</li>", article.Title.Replace(' ', '-'), article.Title, articleNavTemplate.TransformText()) #>
 		<# }
 		else
 		{ #>
 			<# var articleNavTemplate = new ArticleNavTemplate { Article = article, Repository = Repository, Strings = Strings }; #>
-			<#= string.Format("<li data-url=\"{0}\" data-type=\"placeholder\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a>{2}</li>", article.Guid, article.Title, articleNavTemplate.TransformText()) #>
+			<#= string.Format("<li data-url=\"{0}\" data-type=\"placeholder\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a>{2}</li>", article.Title.Replace(' ', '-'), article.Title, articleNavTemplate.TransformText()) #>
 		<# }
 	} 
 
