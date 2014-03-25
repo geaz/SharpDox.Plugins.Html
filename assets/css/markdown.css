@@ -1,5 +1,7 @@
 .markdown img {
-  width: 100%;
+    display: block;
+    margin: auto;
+    max-width: 100%;
 }
 .markdown strong {
   font-weight: bold;
