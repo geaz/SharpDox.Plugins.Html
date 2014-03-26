@@ -102,7 +102,7 @@
 				<div class="list-box">
 					<ul>
 					<# foreach(var use in Namespace.Uses) { #>
-						<li><a href="../namespace/<#= use.Guid #>.html"><#= use.Fullname #></a></li>
+						<li><a href="../namespace/<#= use.Fullname #>.html"><#= use.Fullname #></a></li>
 					<# } #>
 					</ul>
 				</div>
@@ -113,7 +113,7 @@
 				<div class="list-box">
 					<ul>
 					<# foreach(var used in Namespace.UsedBy) { #>
-						<li><a href="../namespace/<#= used.Guid #>.html"><#= used.Fullname #></a></li>
+						<li><a href="../namespace/<#= used.Fullname #>.html"><#= used.Fullname #></a></li>
 					<# } #>
 					</ul>
 				</div>
