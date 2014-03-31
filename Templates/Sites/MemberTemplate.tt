@@ -13,7 +13,7 @@
 <#@ import namespace="MarkdownSharp" #>
 <#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
 
-<div id="<#= SDMember.Guid #>" class="typesite">
+<div id="<#= SDMember.InternalIdentifier #>" class="typesite">
 	<div class="sub-header">
 		<h2 class="type-title"><#= SDMember.Name #></h2>
 		
@@ -111,7 +111,7 @@
 							var sdMember = Repository.GetMemberByIdentifier(identifier);
 							if(sdMember != null)
                             {
-								#> <li><a href="../type/<#= sdMember.DeclaringType.Identifier #>.html#<#= sdMember.Guid #>"><#= sdMember.Name #></a></li> <#
+								#> <li><a href="../type/<#= sdMember.DeclaringType.Identifier #>.html#<#= sdMember.InternalIdentifier #>"><#= sdMember.Name #></a></li> <#
                             }
 						}
 						else

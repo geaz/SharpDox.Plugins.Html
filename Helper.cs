@@ -1,11 +1,13 @@
 ﻿using SharpDox.Model.Repository;
+using SharpDox.Model.Repository.Members;
 using System;
+using System.Collections.Generic;
 
 namespace SharpDox.Plugins.Html
 {
     public class Helper
     {
-        private SDRepository _repository;
+        private readonly SDRepository _repository;
 
         public Helper(SDRepository repository)
         {
@@ -26,7 +28,7 @@ namespace SharpDox.Plugins.Html
             else if (guid != Guid.Empty) // Member
             {
                 var member = _repository.GetMemberByIdentifier(identifier);
-                link = string.Format("../{0}/{1}.html#{2}", "type", member.DeclaringType.Identifier, guid);
+                link = string.Format("../{0}/{1}.html#{2}", "type", member.DeclaringType.Identifier, member.InternalIdentifier);
             }
             else // Article
             {
