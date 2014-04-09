@@ -20,30 +20,54 @@
         <title><#= Repository.ProjectInfo.ProjectName #> - <#= Namespace.Fullname #></title>
         <meta name="viewport" content="width=device-width">
 
-		<link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
-		<link rel="stylesheet" type="text/css" href="../assets/css/font.css" />
-		<link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.css" />
-		<link rel="stylesheet" type="text/css" href="../assets/css/typography.css" />		
-		<link rel="stylesheet" type="text/css" href="../assets/css/markdown.css" />
-		<link rel="stylesheet" type="text/css" href="../assets/css/layout.css" />
+		<# #if DEBUG #>
+			<link rel="stylesheet" type="text/css" href="../assets/css/0-reset.css" />
+			<link rel="stylesheet" type="text/css" href="../assets/css/1-font.css" />
+			<link rel="stylesheet" type="text/css" href="../assets/css/1-font-awesome.css" />
+			<link rel="stylesheet" type="text/css" href="../assets/css/2-typography.css" />		
+			<link rel="stylesheet" type="text/css" href="../assets/css/3-markdown.css" />	
+			<link rel="stylesheet" type="text/css" href="../assets/css/3-dropdown.css" />			
+			<link rel="stylesheet" type="text/css" href="../assets/css/3-tree.css" />
+			<link rel="stylesheet" type="text/css" href="../assets/css/layout.css" />
+		
+			<script src="../assets/js/vendor/0-jquery.js"></script>
+			<script src="../assets/js/vendor/1-jquery-ui.custom.min.js"></script>	
+			<script src="../assets/js/vendor/1-jquery.dropdown.min.js"></script>			
+			<script src="../assets/js/vendor/1-jquery.layout.min.js"></script>
+			<script src="../assets/js/vendor/2-jquery.print.js"></script>
 
-		<script src="../assets/js/vendor/jquery.js"></script>
-		<script src="../assets/js/iframe.js"></script>
+			<script src="../assets/js/frame/iframe.js"></script>
+		<# #else #>
+			<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+			<script src="../assets/js/vendor.js"></script>
+			<script src="../assets/js/frame.js"></script>
+		<# #endif #>
+
     </head>
     <body>        
        
-	   <div id="frame-header">
-			<h2 class="type-title"><#= Namespace.Fullname #></h2>
+	    <div id="dropdown-1" class="dropdown dropdown-tip">
+			<ul class="dropdown-menu">
+				<# foreach(var type in Namespace.Types) { 
 
-			<div class="divider">
-			<span></span>
-			</div>
+					var sdType = (SDType)Repository.GetTypeByIdentifier(type.Identifier); #>
+					<li><a href="../type/<#= sdType.ShortIdentifier #>.html"><img alt="Class-Icon" src="../assets/images/icons/Class_<#= sdType.Accessibility #>.png"> <#= sdType.Name #></a></li>
 
-			<span class="namespace-title">Assembly: <#= Namespace.Assemblyname #></span>
+				<# } #>
+			</ul>
 		</div>
-
-		<div id="frame-content">
-					
+	   
+	    <div class="ui-layout-north">
+			<div class="toolbar">
+				<a href="#" data-dropdown="#dropdown-1" class="button"><img src="../assets/images/icons/Class_public.png"/> <#= Strings.Types #> <span class="info">(<#= Namespace.Types.Count #>)</span> <i class="icon-caret-down"></i></a>
+				<div class="right">
+					<span class="toolbar-info"> Assembly: <#= Namespace.Assemblyname #></span>
+					<a href="#" id="print-button" class="button" title="<#= Strings.Print #>"><i class="icon-print"></i></a>
+				</div>
+			</div>
+		</div>
+        
+		<div class="ui-layout-center">
 			<# if(Namespace.Description.Count != 0 && Namespace.Description.ContainsKey(CurrentLanguage)) { #>
 				<h3 class="box-title first-heading"><#= Strings.Description #></h3>
 				
@@ -82,7 +106,7 @@
 									<img alt="Class-Icon" src="../assets/images/icons/Class_<#= sdType.Accessibility #>.png">
 								</td>
 								<td>
-									<a title="<#= sdType.Name #>" href="../type/<#= sdType.Identifier #>.html"><#= sdType.Name #></a>
+									<a title="<#= sdType.Name #>" href="../type/<#= sdType.ShortIdentifier #>.html"><#= sdType.Name #></a>
 								</td>	
 								<td class="markdown">
 									<# if(sdType.Documentation.ContainsKey(CurrentLanguage)) { #>
@@ -118,7 +142,6 @@
 					</ul>
 				</div>
 			<# } #>
-
 		</div>
 	   
     </body>

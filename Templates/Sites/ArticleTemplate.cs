@@ -61,54 +61,47 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write(@"</title>
-        <meta name=""viewport"" content=""width=device-width"">
+            this.Write("</title>\n        <meta name=\"viewport\" content=\"width=device-width\">\n\n\t\t");
+            
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
+ #if DEBUG 
+            
+            #line default
+            #line hidden
+            this.Write(@"
+			<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/0-reset.css"" />
+			<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/1-font.css"" />
+			<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/1-font-awesome.css"" />
+			<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/2-typography.css"" />		
+			<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/3-markdown.css"" />			
+			<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/3-tree.css"" />
+			<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/layout.css"" />
 
-		<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/reset.css"" />
-		<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/font.css"" />
-		<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/font-awesome.css"" />
-		<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/typography.css"" />		
-		<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/markdown.css"" />
-		<link rel=""stylesheet"" type=""text/css"" href=""../assets/css/layout.css"" />
+			<script src=""../assets/js/vendor/0-jquery.js""></script>
+			<script src=""../assets/js/vendor/1-jquery-ui.custom.min.js""></script>	
+			<script src=""../assets/js/vendor/1-jquery.layout.min.js""></script>	
 
-		<script src=""../assets/js/vendor/jquery.js""></script>
-		<script src=""../assets/js/iframe.js""></script>
-    </head>
-    <body>        
-        
-		<div id=""frame-header"">
-			<h2 class=""type-title"">");
+			<script src=""../assets/js/frame/iframe.js""></script>
+		");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Article.Title));
+            #line 2 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
+ #else 
             
             #line default
             #line hidden
-            this.Write("</h2>\n\t\t\t\n\t\t\t<div class=\"divider\">\n\t\t\t<span></span>\n\t\t\t</div>\n\t\t\t\n\t\t\t");
+            this.Write("\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/css/style.css\" />\n\t\t\t<" +
+                    "script src=\"../assets/js/vendor.js\"></script>\n\t\t\t<script src=\"../assets/js/frame" +
+                    ".js\"></script>\n\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
- if(!string.IsNullOrEmpty(Repository.ProjectInfo.VersionNumber)) { 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t\t<span class=\"namespace-title\">Version ");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Repository.ProjectInfo.VersionNumber));
+            #line 2 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
+ #endif 
             
             #line default
             #line hidden
-            this.Write("</span>\n\t\t\t");
+            this.Write("\n\n    </head>\n    <body>      \t\n\t\t<div class=\"ui-layout-center\">\n\t\t\t<div class=\"t" +
+                    "ext-box markdown no-margin\">\n\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
- } 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t</div>\n\n\t\t<div id=\"frame-content\">\n\n\t\t\t<div class=\"text-box markdown no-margin" +
-                    "\">\n\t\t\t\t");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
+            #line 2 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
 	var template = new Templater(Repository, Article.Content); 
 					var helper = new Helper(Repository);
 					var article = template.TransformText(helper.TransformLinkToken); 
@@ -117,16 +110,16 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write("\n\n\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
+            #line 2 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(article)));
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t</div>\n\n\t\t</div>\t\n\n    </body>\n</html>\n\n");
+            this.Write("\n\t\t\t</div>\n\t\t</div> \n    </body>\n</html>\n\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
+        #line 2 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
 	public SDRepository Repository { get; set; }
 	public SDArticle Article { get; set; } 
 	public IStrings Strings { get; set; } 

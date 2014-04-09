@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EcmaScript.NET">
+      <HintPath>packages\EcmaScript.Net.1.0.1.0\lib\net20\EcmaScript.NET.dll</HintPath>
+    </Reference>
     <Reference Include="MarkdownSharp">
       <HintPath>packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
     </Reference>
@@ -54,17 +57,26 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Yahoo.Yui.Compressor">
+      <HintPath>packages\YUICompressor.NET.2.4.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper.cs" />
+    <Compile Include="HtmlConfig.cs" />
     <Compile Include="HtmlStrings.cs" />
     <Compile Include="HtmlExporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps\CreateArticleStep.cs" />
-    <Compile Include="Steps\CopyStep.cs" />
+    <Compile Include="Steps\AssetsStep.cs" />
     <Compile Include="Steps\CreateHtmlStep.cs" />
     <Compile Include="Steps\PreBuildStep.cs" />
     <Compile Include="Steps\Step.cs" />
+    <Compile Include="Templates\Css1.cs">
+      <DependentUpon>Css.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Templates\Nav\ArticleNavTemplate.cs">
       <DependentUpon>ArticleNavTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -72,11 +84,6 @@
     </Compile>
     <Compile Include="Templates\Nav\ApiNavTemplate.cs">
       <DependentUpon>ApiNavTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\Nav\TypeNavTemplate.cs">
-      <DependentUpon>TypeNavTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -228,6 +235,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="Templates\Css.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Css1.cs</LastGenOutput>
+    </None>
     <None Include="Templates\Nav\ArticleNavTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ArticleNavTemplate.cs</LastGenOutput>
@@ -235,10 +246,6 @@
     <None Include="Templates\Nav\ApiNavTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiNavTemplate.cs</LastGenOutput>
-    </None>
-    <None Include="Templates\Nav\TypeNavTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>TypeNavTemplate.cs</LastGenOutput>
     </None>
     <None Include="Templates\Nav\NamespaceNavTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -306,7 +313,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\css\reset.css">
+    <None Include="assets\css\0-reset.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -592,7 +599,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\js\NavigationController.js">
+    <None Include="assets\js\app\NavigationController.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -602,18 +609,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\css\font.css">
+    <None Include="assets\css\1-font.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="assets\css\layout.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="assets\css\typography.css">
+    <None Include="assets\css\2-typography.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\css\markdown.css">
+    <None Include="assets\css\3-markdown.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -623,66 +630,78 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\css\font-awesome.css">
+    <None Include="assets\css\1-font-awesome.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\js\vendor\jquery.js">
+    <None Include="assets\js\vendor\0-jquery.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\js\SVGPan.js">
+    <None Include="assets\js\frame\SVGPan.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="assets\js\vendor\jquery.mousewheel.js">
+    <None Include="assets\js\vendor\1-jquery.mousewheel.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="assets\js\vendor\jquery.panzoom.min.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="assets\js\iframe.js">
+    <None Include="assets\js\vendor\1-jquery.panzoom.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\js\vendor\jquery.hashchange.min.js">
+    <None Include="assets\js\frame\iframe.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\js\index.js">
+    <None Include="assets\js\vendor\1-jquery.hashchange.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\images\bg.png">
+    <None Include="assets\js\app\index.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\js\typeIframe.js">
+    <None Include="assets\images\32px.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="assets\images\40px.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="assets\css\3-tree.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="assets\js\vendor\1-jquery-ui.custom.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="assets\js\vendor\1-jquery.layout.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="assets\js\vendor\1-jstree.min.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\js\HistoryController.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="assets\js\HistoryEntry.js">
+    <None Include="assets\images\throbber.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\js\SearchController.js">
+    <None Include="assets\css\3-dropdown.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\js\SearchEntry.js">
+    <None Include="assets\js\vendor\1-jquery.dropdown.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\js\vendor\2-jquery.print.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

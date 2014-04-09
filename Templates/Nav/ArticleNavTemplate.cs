@@ -47,7 +47,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             
             #line default
             #line hidden
-            this.Write("\n\t\t<ul class=\"navigation-sub\">\n");
+            this.Write("\n\t\t<ul>\n");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\ArticleNavTemplate.tt"
 	}
@@ -72,7 +72,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             this.Write("\t\t\t\t\t\t\n\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\ArticleNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-url=\"{0}\" data-type=\"placeholder\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a>{2}</li>", dataUrl, article.Title, apiNavTemplate.TransformText())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-code\"}}' id=\"node-article/{0}\">{1} {2}</li>", dataUrl, article.Title, apiNavTemplate.TransformText())));
             
             #line default
             #line hidden
@@ -95,7 +95,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             this.Write("\t\t\n\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\ArticleNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-url=\"{0}\" data-type=\"article\"><a href=\"#{0}\" id=\"nav-{0}\"><i class=\"icon-link\"></i> <p>{1}</p></a>{2}</li>", dataUrl, article.Title, articleNavTemplate.TransformText())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-file-text\"}}' id=\"node-article/{0}\"><a href=\"#article/{0}\">{1}</a>{2}</li>", dataUrl, article.Title, articleNavTemplate.TransformText())));
             
             #line default
             #line hidden
@@ -118,7 +118,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             this.Write("\n\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\ArticleNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-url=\"{0}\" data-type=\"placeholder\"><a href=\"#\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a>{2}</li>", dataUrl, article.Title, articleNavTemplate.TransformText())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-folder-close\"}}' id=\"node-article/{0}\">{1} {2}</li>", dataUrl, article.Title, articleNavTemplate.TransformText())));
             
             #line default
             #line hidden

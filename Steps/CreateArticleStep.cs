@@ -25,7 +25,7 @@ namespace SharpDox.Plugins.Html.Steps
                 }
             }
 
-            htmlExporter.CurrentStep = new CopyStep();
+            htmlExporter.CurrentStep = new AssetsStep();
         }
 
         private void CreateArticle(SDArticle article, SDRepository repository, IStrings strings, string outputPath)

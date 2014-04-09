@@ -33,5 +33,8 @@
         public string Properties { get { return "Eigenschaften"; } }
         public string Events { get { return "Ereignisse"; } }
         public string ClassDiagram { get { return "Klassendiagramm"; } }
+        public string GeneratedBy { get { return "Erstellt mit"; } }
+        public string ExpandAll { get { return "Alle ausklappen"; } }
+        public string Print { get { return "Drucken"; } }
     }
 }

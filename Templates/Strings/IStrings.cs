@@ -33,5 +33,8 @@
         string Events { get; }
         string Properties { get; }
         string ClassDiagram { get; }
+        string GeneratedBy { get; }
+        string ExpandAll { get; }
+        string Print { get; }
     }
 }

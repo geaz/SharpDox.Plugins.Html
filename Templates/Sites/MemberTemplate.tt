@@ -13,58 +13,68 @@
 <#@ import namespace="MarkdownSharp" #>
 <#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
 
-<div id="<#= SDMember.InternalIdentifier #>" class="typesite">
-	<div class="sub-header">
-		<h2 class="type-title"><#= SDMember.Name #></h2>
-		
-		<div class="divider">
-		<span></span>
-		</div>
-		
-		<span class="namespace-title"><#= Strings.DeclaringType #>: <#= SDType.Fullname #></span>
-	</div>
+<#
+	var imgurl = string.Empty;
+	var name = SDMember.Name;
+	if(SDMember is SDField){
+		imgurl = "../assets/images/icons/Field_" + SDMember.Accessibility + ".png";
+	}
+	else if(SDMember is SDEvent){
+		imgurl = "../assets/images/icons/Event_" + SDMember.Accessibility + ".png";
+	}
+	else if(SDMember is SDMethod){
+		imgurl = "../assets/images/icons/Method_" + SDMember.Accessibility + ".png";
+		name = ((SDMethod)SDMember).Signature;
+	}
+	else if(SDMember is SDProperty){
+		imgurl = "../assets/images/icons/Properties_" + SDMember.Accessibility + ".png";
+	}
+#>
 
-	<div class="sub-content">
-
-		<h3 class="box-title first-heading"><#= Strings.Syntax #></h3>
-		
-		<div class="syntax-box">
-			<pre class="wrap-pre"><code><#= WebUtility.HtmlEncode(SDMember.Syntax) #></code></pre>
-		</div>
-        
+<div id="<#= SDMember.ShortIdentifier #>" class="member">
+	<div class="member-header">		
+		<a href="#"><i class="icon-caret-right"></i><img src="<#= imgurl #>"/> <p><#= name #></p></a>
 		<# if(SDMember.Documentation.Count > 0) { #>
-
 			<# if(SDMember.Documentation[CurrentLanguage].Summary.Count > 0) { #>
-				<h3 class="box-title"><#= Strings.Summary #></h3>
-				<div class="doc-box markdown">
+				<div class="summary markdown">
 					<#= new Markdown().Transform(SDMember.Documentation[CurrentLanguage].Summary.ToMarkdown()) #>
 				</div>
 			<# } #>
+		<# } #>
+	</div>
 
+	<div class="member-content">
+
+		<div class="syntax-box">
+			<pre class="wrap-pre"><code><#= WebUtility.HtmlEncode(SDMember.Syntax) #></code></pre>
+		</div>		
+        
+		<# if(SDMember.Documentation.Count > 0) { #>
+		
 			<# if(SDMember.Documentation[CurrentLanguage].Remarks.Count > 0) { #>
-				<h3 class="box-title"><#= Strings.Remarks #></h3>
-				<div class="doc-box markdown">
+				<p class="member-box-title"><#= Strings.Remarks #></p>
+				<div class="member-doc-box markdown">
 					<#= new Markdown().Transform(SDMember.Documentation[CurrentLanguage].Remarks.ToMarkdown()) #>
 				</div>
 			<# } #>
 
 			<# if(SDMember.Documentation[CurrentLanguage].Example.Count > 0) { #>
-				<h3 class="box-title"><#= Strings.Example #></h3>
-				<div class="doc-box markdown">
+				<p class="member-box-title"><#= Strings.Example #></p>
+				<div class="member-doc-box markdown">
 					<#= new Markdown().Transform(SDMember.Documentation[CurrentLanguage].Example.ToMarkdown()) #>
 				</div>
 			<# } #>
 
 			<# if(SDMember.Documentation[CurrentLanguage].Returns.Count > 0) { #>
-				<h3 class="box-title"><#= Strings.Returns #></h3>
-				<div class="doc-box">
+				<p class="member-box-title"><#= Strings.Returns #></p>
+				<div class="member-doc-box">
 					<#= new Markdown().Transform(SDMember.Documentation[CurrentLanguage].Returns.ToMarkdown()) #>
 				</div>
 			<# } #>
 
 			<# if(SDMember.Documentation[CurrentLanguage].Exceptions.Count > 0) { #>
-				<h3 class="box-title"><#= Strings.Exceptions #></h3>
-				<div class="doc-box markdown">
+				<p class="member-box-title"><#= Strings.Exceptions #></p>
+				<div class="member-doc-box markdown">
 					<# foreach(var exception in SDMember.Documentation[CurrentLanguage].Exceptions) { #>
 						<p><#= exception.Key #></p>
 						<div class="inline">
@@ -75,8 +85,8 @@
 			<# } #>
 
 			<# if(SDMember.Documentation[CurrentLanguage].Params.Count > 0) { #>
-				<h3 class="box-title"><#= Strings.Parameters #></h3>
-				<div class="doc-box markdown">
+				<p class="member-box-title"><#= Strings.Parameters #></p>
+				<div class="member-doc-box markdown">
 					<# foreach(var parameter in SDMember.Documentation[CurrentLanguage].Params) { #>
 						<p><#= parameter.Key #></p>
 						<div class="inline">
@@ -87,8 +97,8 @@
 			<# } #>
 
 			<# if(SDMember.Documentation[CurrentLanguage].TypeParams.Count > 0) { #>
-				<h3 class="box-title"><#= Strings.TypeParameters #></h3>
-				<div class="doc-box markdown">
+				<p class="member-box-title"><#= Strings.TypeParameters #></p>
+				<div class="member-doc-box markdown">
 					<# foreach(var typeParameter in SDMember.Documentation[CurrentLanguage].TypeParams) { #>
 						<p><#= typeParameter.Key #></p>
 						<div class="inline">
@@ -99,7 +109,7 @@
 			<# } #>
 
 			<# if(SDMember.Documentation[CurrentLanguage].SeeAlsos.Count > 0) { #>
-				<h3 class="box-title"><#= Strings.SeeAlso #></h3>
+				<p class="member-box-title"><#= Strings.SeeAlso #></p>
 				<div class="list-box">
 					<ul>
 					<# foreach(var sdToken in SDMember.Documentation[CurrentLanguage].SeeAlsos) 
@@ -111,7 +121,7 @@
 							var sdMember = Repository.GetMemberByIdentifier(identifier);
 							if(sdMember != null)
                             {
-								#> <li><a href="../type/<#= sdMember.DeclaringType.Identifier #>.html#<#= sdMember.InternalIdentifier #>"><#= sdMember.Name #></a></li> <#
+								#> <li><a href="../type/<#= sdMember.DeclaringType.ShortIdentifier #>.html#<#= sdMember.ShortIdentifier #>"><#= sdMember.Name #></a></li> <#
                             }
 						}
 						else
@@ -120,7 +130,7 @@
 							var sdType = Repository.GetTypeByIdentifier(identifier);
 							if(sdType != null)
                             {
-								#> <li><a href="../type/<#= sdType.Identifier #>.html"><#= sdType.Fullname #></a></li> <#
+								#> <li><a href="../type/<#= sdType.ShortIdentifier #>.html"><#= sdType.Fullname #></a></li> <#
                             }
 						} 
 					} #>

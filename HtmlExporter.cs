@@ -13,9 +13,10 @@ namespace SharpDox.Plugins.Html
         public event Action<string> OnStepMessage;
         public event Action<int> OnStepProgress;
 
-        public HtmlExporter(HtmlStrings strings)
+        public HtmlExporter(HtmlStrings strings, HtmlConfig htmlConfig)
 	    {
             HtmlStrings = strings;
+            HtmlConfig = htmlConfig;
 	    }
 
         public bool CheckRequirements() { return true; }
@@ -80,6 +81,8 @@ namespace SharpDox.Plugins.Html
         internal SDRepository Repository { get; private set; }
 
         internal HtmlStrings HtmlStrings { get; private set; }
+
+        internal HtmlConfig HtmlConfig { get; private set; }
 
         internal IStrings CurrentStrings { get; private set; }
 

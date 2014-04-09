@@ -20,6 +20,7 @@
   content: "\f138";
   font-family: 'FontAwesome';
   margin-left: -1.2em;
+  margin-right: 5px;
 }
 .markdown ul li {
   margin-bottom: 5px;
@@ -49,7 +50,7 @@
 .markdown .inline-code{
   background: #f6f5f1;
   border: 1px solid #dadada;
-  padding: 5px;
+  padding: 1px;
   font-family: monospace;
 }
 .markdown pre p {

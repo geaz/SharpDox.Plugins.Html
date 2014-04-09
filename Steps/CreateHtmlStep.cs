@@ -52,7 +52,7 @@ namespace SharpDox.Plugins.Html.Steps
                         SDType = type,
                         Repository = repository
                     };
-                    File.WriteAllText(Path.Combine(outputPath, "type", type.Identifier + ".html"), typeTemplate.TransformText());
+                    File.WriteAllText(Path.Combine(outputPath, "type", type.ShortIdentifier + ".html"), typeTemplate.TransformText());
                 }
             }
         }

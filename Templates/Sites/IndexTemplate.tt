@@ -20,68 +20,52 @@
         <title><#= Repository.ProjectInfo.ProjectName #></title>
         <meta name="viewport" content="width=device-width">
 
-		<link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
-		<link rel="stylesheet" type="text/css" href="assets/css/font.css" />
-		<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" />
-		<link rel="stylesheet" type="text/css" href="assets/css/typography.css" />		
-		<link rel="stylesheet" type="text/css" href="assets/css/markdown.css" />
-        <link rel="stylesheet" type="text/css" href="assets/css/layout.css" />
+		<# #if DEBUG #>
+			<link rel="stylesheet" type="text/css" href="assets/css/0-reset.css" />
+			<link rel="stylesheet" type="text/css" href="assets/css/1-font.css" />
+			<link rel="stylesheet" type="text/css" href="assets/css/1-font-awesome.css" />
+			<link rel="stylesheet" type="text/css" href="assets/css/2-typography.css" />		
+			<link rel="stylesheet" type="text/css" href="assets/css/3-markdown.css" />			
+			<link rel="stylesheet" type="text/css" href="assets/css/3-tree.css" />
+			<link rel="stylesheet" type="text/css" href="assets/css/layout.css" />
+			<link rel="stylesheet" type="text/css" href="assets/css/dynamic.css" />
 
-		<script src="assets/js/vendor/jquery.js"></script>
-		<script src="assets/js/vendor/jquery.hashchange.min.js"></script>
-
-		<script src="assets/js/HistoryEntry.js"></script>
-		<script src="assets/js/HistoryController.js"></script>
-		<script src="assets/js/NavigationController.js"></script>
-		<script src="assets/js/SearchEntry.js"></script>
-		<script src="assets/js/SearchController.js"></script>
-		<script src="assets/js/index.js"></script>
+			<script src="assets/js/vendor/0-jquery.js"></script>
+			<script src="assets/js/vendor/1-jquery-ui.custom.min.js"></script>	
+			<script src="assets/js/vendor/1-jquery.layout.min.js"></script>	
+			<script src="assets/js/vendor/1-jstree.min.js"></script>	
+			<script src="assets/js/vendor/1-jquery.hashchange.min.js"></script>
+		
+			<script src="assets/js/app/NavigationController.js"></script>
+			<script src="assets/js/app/index.js"></script>
+		<# #else #>
+			<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+			<script src="assets/js/vendor.js"></script>
+			<script src="assets/js/app.js"></script>
+		<# #endif #>
 
 		<script>
-			var backString = "<#= Strings.Back #>";
-			var descString = "<#= Strings.Description #>";
 			var homeString = "<#= Strings.Home #>";
 		</script>
+
     </head>
-    <body class="bg">    		    
-		<div id="sidebar">
-			<div id="docname">
-				<# if (String.IsNullOrEmpty(Repository.ProjectInfo.LogoPath))
-				{#>
-					<a href="index.html" class="pagelink"><h1><#= Repository.ProjectInfo.ProjectName #></h1></a>
-				<#}
-				else
-				{#>
-					<a href="index.html" class="pagelink"><img src="<#= Path.GetFileName(Repository.ProjectInfo.LogoPath) #>" title="<#= Repository.ProjectInfo.ProjectName #>"/></a>
-				<#}#>
-			</div>
-    
-			<div id="pagetitle">Version <#= Repository.ProjectInfo.VersionNumber != null ? Repository.ProjectInfo.VersionNumber : string.Empty #></div>
-			<div id="backnavigation-wrapper">
-                <ul id="backnavigation">                
-                </ul>
-			</div>
-            <div id="navigation">				
-			</div>	
+    <body>   
+		<div class="ui-layout-north">
+			<# if (String.IsNullOrEmpty(Repository.ProjectInfo.LogoPath))
+			{#>
+				<h1 id="title"><a href="index.html"><#= Repository.ProjectInfo.ProjectName #></a></h1>
+			<#}
+			else
+			{#>
+				<a href="index.html"><img id="title" src="<#= Path.GetFileName(Repository.ProjectInfo.LogoPath) #>" title="<#= Repository.ProjectInfo.ProjectName #>"/></a>
+			<#}#>
+			<div id="subtitle"><p><#= Strings.Home #></p></div>
 		</div>
-
-        <div id="content">            
-			<iframe id="docframe" frameborder="0" width="100%" src="article/home.html"></iframe>
-        </div>
-
-		<div id="historybar-wrapper">
-			<i class="icon-code-fork historyicon firsticon"></i>
-			<ul id="historybar"></ul>
+        <div class="ui-layout-south"><#= Repository.ProjectInfo.ProjectName #> <#= Repository.ProjectInfo.VersionNumber != null ? Repository.ProjectInfo.VersionNumber : string.Empty #> <#= Repository.ProjectInfo.Author != null ? Strings.By + " " +Repository.ProjectInfo.Author : string.Empty #> - <#= Strings.GeneratedBy #> <a href="http://sharpDox.de" target="_blank">sharpDox</a></div>
+        <div id="navigation" class="ui-layout-west">
+			<#= Navigation #>
 		</div>
-
-		<div id="search-wrapper">
-			<div id="search-result-wrapper" onblur="searchController.hide()"><div id="search-result"></div></div>
-			<i class="icon-search"></i>
-			<input type="text" id="search-field" onfocus="searchController.search(this.value)" onblur="searchController.hide()" onkeyup="searchController.search(this.value)"/>
-		</div>
-
-		<#= Navigation #>
-
+		<iframe id="content" class="ui-layout-center" frameborder="0" width="100%" src="article/home.html"></iframe>
     </body>
 </html>
 

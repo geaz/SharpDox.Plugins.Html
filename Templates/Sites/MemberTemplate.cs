@@ -50,72 +50,66 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n");
             this.Write("\n");
             this.Write("\n");
-            this.Write(" \n\n<div id=\"");
+            this.Write(" \n\n");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(SDMember.InternalIdentifier));
+
+	var imgurl = string.Empty;
+	var name = SDMember.Name;
+	if(SDMember is SDField){
+		imgurl = "../assets/images/icons/Field_" + SDMember.Accessibility + ".png";
+	}
+	else if(SDMember is SDEvent){
+		imgurl = "../assets/images/icons/Event_" + SDMember.Accessibility + ".png";
+	}
+	else if(SDMember is SDMethod){
+		imgurl = "../assets/images/icons/Method_" + SDMember.Accessibility + ".png";
+		name = ((SDMethod)SDMember).Signature;
+	}
+	else if(SDMember is SDProperty){
+		imgurl = "../assets/images/icons/Properties_" + SDMember.Accessibility + ".png";
+	}
+
             
             #line default
             #line hidden
-            this.Write("\" class=\"typesite\">\n\t<div class=\"sub-header\">\n\t\t<h2 class=\"type-title\">");
+            this.Write("\n\n<div id=\"");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(SDMember.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(SDMember.ShortIdentifier));
             
             #line default
             #line hidden
-            this.Write("</h2>\n\t\t\n\t\t<div class=\"divider\">\n\t\t<span></span>\n\t\t</div>\n\t\t\n\t\t<span class=\"names" +
-                    "pace-title\">");
+            this.Write("\" class=\"member\">\n\t<div class=\"member-header\">\t\t\n\t\t<a href=\"#\"><i class=\"icon-car" +
+                    "et-right\"></i><img src=\"");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Strings.DeclaringType));
+            this.Write(this.ToStringHelper.ToStringWithCulture(imgurl));
             
             #line default
             #line hidden
-            this.Write(": ");
+            this.Write("\"/> <p>");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(SDType.Fullname));
+            this.Write(this.ToStringHelper.ToStringWithCulture(name));
             
             #line default
             #line hidden
-            this.Write("</span>\n\t</div>\n\n\t<div class=\"sub-content\">\n\n\t\t<h3 class=\"box-title first-heading" +
-                    "\">");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Syntax));
-            
-            #line default
-            #line hidden
-            this.Write("</h3>\n\t\t\n\t\t<div class=\"syntax-box\">\n\t\t\t<pre class=\"wrap-pre\"><code>");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(WebUtility.HtmlEncode(SDMember.Syntax)));
-            
-            #line default
-            #line hidden
-            this.Write("</code></pre>\n\t\t</div>\n        \n\t\t");
+            this.Write("</p></a>\n\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
  if(SDMember.Documentation.Count > 0) { 
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t\t");
+            this.Write("\n\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
  if(SDMember.Documentation[CurrentLanguage].Summary.Count > 0) { 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t<h3 class=\"box-title\">");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Summary));
-            
-            #line default
-            #line hidden
-            this.Write("</h3>\n\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t");
+            this.Write("\n\t\t\t\t<div class=\"summary markdown\">\n\t\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(SDMember.Documentation[CurrentLanguage].Summary.ToMarkdown())));
@@ -129,21 +123,43 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t\t");
+            this.Write("\n\t\t");
+            
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\n\t</div>\n\n\t<div class=\"member-content\">\n\n\t\t<div class=\"syntax-box\">\n\t\t\t<pre class" +
+                    "=\"wrap-pre\"><code>");
+            
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(WebUtility.HtmlEncode(SDMember.Syntax)));
+            
+            #line default
+            #line hidden
+            this.Write("</code></pre>\n\t\t</div>\t\t\n        \n\t\t");
+            
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+ if(SDMember.Documentation.Count > 0) { 
+            
+            #line default
+            #line hidden
+            this.Write("\n\t\t\n\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
  if(SDMember.Documentation[CurrentLanguage].Remarks.Count > 0) { 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t<h3 class=\"box-title\">");
+            this.Write("\n\t\t\t\t<p class=\"member-box-title\">");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Remarks));
             
             #line default
             #line hidden
-            this.Write("</h3>\n\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t");
+            this.Write("</p>\n\t\t\t\t<div class=\"member-doc-box markdown\">\n\t\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(SDMember.Documentation[CurrentLanguage].Remarks.ToMarkdown())));
@@ -164,14 +180,14 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t<h3 class=\"box-title\">");
+            this.Write("\n\t\t\t\t<p class=\"member-box-title\">");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Example));
             
             #line default
             #line hidden
-            this.Write("</h3>\n\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t");
+            this.Write("</p>\n\t\t\t\t<div class=\"member-doc-box markdown\">\n\t\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(SDMember.Documentation[CurrentLanguage].Example.ToMarkdown())));
@@ -192,14 +208,14 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t<h3 class=\"box-title\">");
+            this.Write("\n\t\t\t\t<p class=\"member-box-title\">");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Returns));
             
             #line default
             #line hidden
-            this.Write("</h3>\n\t\t\t\t<div class=\"doc-box\">\n\t\t\t\t\t");
+            this.Write("</p>\n\t\t\t\t<div class=\"member-doc-box\">\n\t\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(SDMember.Documentation[CurrentLanguage].Returns.ToMarkdown())));
@@ -220,14 +236,14 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t<h3 class=\"box-title\">");
+            this.Write("\n\t\t\t\t<p class=\"member-box-title\">");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Exceptions));
             
             #line default
             #line hidden
-            this.Write("</h3>\n\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t");
+            this.Write("</p>\n\t\t\t\t<div class=\"member-doc-box markdown\">\n\t\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
  foreach(var exception in SDMember.Documentation[CurrentLanguage].Exceptions) { 
@@ -269,14 +285,14 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t<h3 class=\"box-title\">");
+            this.Write("\n\t\t\t\t<p class=\"member-box-title\">");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Strings.Parameters));
             
             #line default
             #line hidden
-            this.Write("</h3>\n\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t");
+            this.Write("</p>\n\t\t\t\t<div class=\"member-doc-box markdown\">\n\t\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
  foreach(var parameter in SDMember.Documentation[CurrentLanguage].Params) { 
@@ -318,14 +334,14 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t<h3 class=\"box-title\">");
+            this.Write("\n\t\t\t\t<p class=\"member-box-title\">");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Strings.TypeParameters));
             
             #line default
             #line hidden
-            this.Write("</h3>\n\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t");
+            this.Write("</p>\n\t\t\t\t<div class=\"member-doc-box markdown\">\n\t\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
  foreach(var typeParameter in SDMember.Documentation[CurrentLanguage].TypeParams) { 
@@ -367,14 +383,14 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t<h3 class=\"box-title\">");
+            this.Write("\n\t\t\t\t<p class=\"member-box-title\">");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Strings.SeeAlso));
             
             #line default
             #line hidden
-            this.Write("</h3>\n\t\t\t\t<div class=\"list-box\">\n\t\t\t\t\t<ul>\n\t\t\t\t\t");
+            this.Write("</p>\n\t\t\t\t<div class=\"list-box\">\n\t\t\t\t\t<ul>\n\t\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
  foreach(var sdToken in SDMember.Documentation[CurrentLanguage].SeeAlsos) 
@@ -393,14 +409,14 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write(" <li><a href=\"../type/");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdMember.DeclaringType.Identifier));
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdMember.DeclaringType.ShortIdentifier));
             
             #line default
             #line hidden
             this.Write(".html#");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdMember.InternalIdentifier));
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdMember.ShortIdentifier));
             
             #line default
             #line hidden
@@ -430,7 +446,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write(" <li><a href=\"../type/");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Identifier));
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.ShortIdentifier));
             
             #line default
             #line hidden

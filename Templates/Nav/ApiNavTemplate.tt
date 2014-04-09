@@ -10,7 +10,7 @@
 <#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
 
 <#	if(Repository.Articles.Count > 0) { #>
-		<ul class="navigation-sub">
+		<ul>
 <#	}
 
 	var sdNamespaces = Repository.GetAllNamespaces();
@@ -18,7 +18,7 @@
 	{ 
 		var sdNamespace = sdNamespaces[i];
 		var namespaceNavTemplate = new NamespaceNavTemplate { Namespace = sdNamespace, Strings = Strings }; #>	
-		<#= string.Format("<li data-url=\"{0}\" data-type=\"namespace\"><a href=\"#{0}\" id=\"nav-{0}\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a>{2}</li>", sdNamespace.Fullname, sdNamespace.Fullname, namespaceNavTemplate.TransformText()) #>
+		<#= string.Format("<li data-jstree='{{\"icon\":\"./assets/images/icons/Namespace_public.png\"}}' id=\"node-namespace/{0}\"><a href=\"#namespace/{0}\">{0}</a> {1}</li>", sdNamespace.Fullname, namespaceNavTemplate.TransformText()) #>
 <#	} 
 
 	if(Repository.Articles.Count > 0) { #>

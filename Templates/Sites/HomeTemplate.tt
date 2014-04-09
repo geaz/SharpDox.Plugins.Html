@@ -21,34 +21,29 @@
         <title><#= Repository.ProjectInfo.ProjectName #></title>
         <meta name="viewport" content="width=device-width">
 
-		<link rel="stylesheet" type="text/css" href="../assets/css/reset.css" />
-		<link rel="stylesheet" type="text/css" href="../assets/css/font.css" />
-		<link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.css" />
-		<link rel="stylesheet" type="text/css" href="../assets/css/typography.css" />		
-		<link rel="stylesheet" type="text/css" href="../assets/css/markdown.css" />
-		<link rel="stylesheet" type="text/css" href="../assets/css/layout.css" />
+		<# #if DEBUG #>
+			<link rel="stylesheet" type="text/css" href="../assets/css/0-reset.css" />
+			<link rel="stylesheet" type="text/css" href="../assets/css/1-font.css" />
+			<link rel="stylesheet" type="text/css" href="../assets/css/1-font-awesome.css" />
+			<link rel="stylesheet" type="text/css" href="../assets/css/2-typography.css" />		
+			<link rel="stylesheet" type="text/css" href="../assets/css/3-markdown.css" />			
+			<link rel="stylesheet" type="text/css" href="../assets/css/3-tree.css" />
+			<link rel="stylesheet" type="text/css" href="../assets/css/layout.css" />
 
-		<script src="../assets/js/vendor/jquery.js"></script>
-		<script src="../assets/js/iframe.js"></script>
+			<script src="../assets/js/vendor/0-jquery.js"></script>
+			<script src="../assets/js/vendor/1-jquery-ui.custom.min.js"></script>	
+			<script src="../assets/js/vendor/1-jquery.layout.min.js"></script>	
+
+			<script src="../assets/js/frame/iframe.js"></script>
+		<# #else #>
+			<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+			<script src="../assets/js/vendor.js"></script>
+			<script src="../assets/js/frame.js"></script>
+		<# #endif #>
+
     </head>
     <body>        
-        
-		<div id="frame-header">
-			<h2 class="type-title"><#= Repository.ProjectInfo.ProjectName #></h2>
-			
-			<div class="divider">
-			<span></span>
-			</div>
-			
-			<# if(!string.IsNullOrEmpty(Repository.ProjectInfo.VersionNumber)) { #>
-				<span class="namespace-title">
-				<#= Strings.By #> <#= Repository.ProjectInfo.Author != null ? Repository.ProjectInfo.Author : string.Empty #> - Version <#= Repository.ProjectInfo.VersionNumber != null ? Repository.ProjectInfo.VersionNumber : string.Empty #>
-				</span>
-			<# } #>
-		</div>
-
-		<div id="frame-content">			
-
+       <div class="ui-layout-center">
 			<div class="text-box markdown no-margin">
 				<# if(Repository.ProjectInfo.Description.Count > 0 && Repository.ProjectInfo.Description.ContainsKey(CurrentLanguage)) { #>
 					<#= new Markdown().Transform(Repository.ProjectInfo.Description[CurrentLanguage]) #>
@@ -56,9 +51,7 @@
 					<#= new Markdown().Transform(Repository.ProjectInfo.Description["default"]) #>
 				<# } #>
 			</div>
-
 		</div>
-
     </body>
 </html>
 

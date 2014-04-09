@@ -8,15 +8,12 @@
 <#@ import namespace="SharpDox.Sdk.Config" #>
 <#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
 
-<ul class="navigation-sub">
-
-<#= string.Format("<li><a href=\"#{0}\" id=\"nav-{0}\"><i class=\"icon-link\"></i> <p>{1}</p></a></li>", Namespace.Fullname, Strings.Description) #>
+<ul>
 
 <#  for (int i = 0; i < Namespace.Types.Count; i++)
 	{ 
-		var sdType = Namespace.Types[i]; 
-		var typeNavTemplate = new TypeNavTemplate { SDType = sdType, Strings = Strings }; #>	
-		<#= string.Format("<li data-url=\"{0}\" data-type=\"type\"><a href=\"#{0}\"><i class=\"icon-chevron-sign-right\"></i> <p>{1}</p></a> {2}</li>", sdType.Identifier, sdType.Name, typeNavTemplate.TransformText()) #>
+		var sdType = Namespace.Types[i]; #>	
+		<#= string.Format("<li data-jstree='{{\"icon\":\"./assets/images/icons/Class_{0}.png\"}}' id=\"node-type/{1}\"><a href=\"#type/{1}\">{2}</a></li>", sdType.Accessibility, sdType.ShortIdentifier, sdType.Name) #>
 <#	}	#>
 
 </ul>

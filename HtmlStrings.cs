@@ -4,6 +4,11 @@ namespace SharpDox.Plugins.Html
 {
     public class HtmlStrings : ILocalStrings
     {
+        private string _html = "Html";
+        private string _headerBackground = "Header Background";
+        private string _subheaderBackground = "Subheader Background";
+        private string _color = "Header Font Color";
+
         private string _creatingFolders = "Creating Folders";
         private string _creatingNavigation = "Creating navigation files";
         private string _createFilesForNamespace = "Creating files for namespace";
@@ -12,6 +17,30 @@ namespace SharpDox.Plugins.Html
         private string _description = @"This exporter creates a html documentation. Useable on the local filesystem and on a webserver. It supports multilanguage documentation, articles and namespace descriptions.";
 
         public string DisplayName { get { return "HtmlExporter"; } }
+
+        public string Html
+        {
+            get { return _html; }
+            set { _html = value; }
+        }
+
+        public string HeaderBackground
+        {
+            get { return _headerBackground; }
+            set { _headerBackground = value; }
+        }
+
+        public string SubHeaderBackground
+        {
+            get { return _subheaderBackground; }
+            set { _subheaderBackground = value; }
+        }
+
+        public string Color
+        {
+            get { return _color; }
+            set { _color = value; }
+        }
 
         public string CreatingFolders
         {
