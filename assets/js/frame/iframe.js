@@ -6,6 +6,16 @@ $(document).ready(function () {
             resizable: false
         }
     });
+	
+	if(window.location.hash != ""){
+		$(window.location.hash).effect("highlight", {}, 3000);
+	}
+	
+	$('.dropdown-menu a').click(function() {
+		$($(this).attr('href')).effect("highlight", {}, 3000);
+		window.location.hash = $(this).attr('href');
+		postUrl();
+	});
 
 	$('.member-header').click(function(){
 		$(this).next().slideToggle();		
@@ -41,7 +51,12 @@ $(document).ready(function () {
 function postUrl(){	
 	var splittedUrl = window.location.toString().split('/');
 	var site = splittedUrl[splittedUrl.length - 2] + "/" + splittedUrl[splittedUrl.length - 1];
-	var siteUrl = '#' + site.substring(0, site.length - 5);
+	var splittedSite = site.split('#');
+	var siteUrl = '#' + splittedSite[0].substring(0, splittedSite[0].length - 5);
 
+	if(splittedSite.length == 2){
+		siteUrl += '?' + splittedSite[1];
+	}
+	
     parent.postMessage(siteUrl, '*');
 }

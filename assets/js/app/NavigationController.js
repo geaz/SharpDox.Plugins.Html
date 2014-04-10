@@ -10,9 +10,12 @@ NavigationController.prototype = {
         $('#navigation').jstree();
 		$("#navigation").bind("select_node.jstree", function (e, data) {
 			var href = data.instance.get_node(data.node, true).children('a').attr('href');
-			if(href != "#") {
+			if(href != "#" && !doNotLoad) {
 				that._title.html(data.node.text);
 				document.location = href;
+			}
+			else{
+				doNotLoad = false;
 			}
 			
 			if(data.node.parent != "#")
@@ -27,14 +30,24 @@ NavigationController.prototype = {
 		this.setDocSite(url);
     },
 
-    setDocSite: function (site) {
+    setDocSite: function (site) {	
 		if(site == "home") {
 			this.selectNode('node-' + homeString);
 			$("#content").attr('src', "article/home.html");
 		}
 		else if(site != "") {
-			this.selectNode('node-' + site);
-			$("#content").attr('src', site + ".html");		
+			
+			var splitted = site.split('?');
+			if(splitted.length == 2){
+				site = splitted[0] + ".html#" + splitted[1];
+			}
+			else{
+				site = splitted[0] + ".html";
+			}
+			
+			doNotLoad = true;
+			this.selectNode('node-' + splitted[0]);
+			$("#content").attr('src', site);		
 		}
     },
 	

@@ -17,6 +17,7 @@ namespace SharpDox.Plugins.Html.Steps
 
             #if DEBUG
                 var dynamicCss = new Css { HtmlConfig = htmlExporter.HtmlConfig };
+                EnsureFolder(Path.Combine(htmlExporter.OutputPath, "assets", "css"));
                 File.WriteAllText(Path.Combine(htmlExporter.OutputPath, "assets", "css", "dynamic.css"), dynamicCss.TransformText());
 
                 CopyFolder(htmlExporter, Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), "assets", "css"), Path.Combine(htmlExporter.OutputPath, "assets", "css"));
@@ -39,10 +40,7 @@ namespace SharpDox.Plugins.Html.Steps
 
         private void CopyFolder(HtmlExporter htmlExporter, string input, string output)
         {
-            if (!Directory.Exists(output))
-            {
-                Directory.CreateDirectory(output);
-            }
+            EnsureFolder(output);
 
             var files = Directory.EnumerateFiles(input);
             foreach (var file in files)
@@ -60,11 +58,7 @@ namespace SharpDox.Plugins.Html.Steps
         private void CopyCompressedCss(HtmlExporter htmlExporter, string input, string output)
         {
             htmlExporter.ExecuteOnStepMessage(string.Format(htmlExporter.HtmlStrings.CopyingFile, "style.css"));
-
-            if (!Directory.Exists(output))
-            {
-                Directory.CreateDirectory(output);
-            }
+            EnsureFolder(output);
 
             var completeCss = string.Empty;
             var files = Directory.EnumerateFiles(input);
@@ -85,11 +79,7 @@ namespace SharpDox.Plugins.Html.Steps
         private void CopyCompressedJs(HtmlExporter htmlExporter, string input, string output, string compressedFileName)
         {
             htmlExporter.ExecuteOnStepMessage(string.Format(htmlExporter.HtmlStrings.CopyingFile, compressedFileName));
-
-            if (!Directory.Exists(output))
-            {
-                Directory.CreateDirectory(output);
-            }
+            EnsureFolder(output);
 
             var completeJs = string.Empty;
             var files = Directory.EnumerateFiles(input);
@@ -139,6 +129,14 @@ namespace SharpDox.Plugins.Html.Steps
             {
                 htmlExporter.ExecuteOnStepMessage(string.Format(htmlExporter.HtmlStrings.CopyingFile, Path.GetFileName(imagePath)));
                 File.Copy(imagePath, Path.Combine(outputPath, Path.GetFileName(imagePath)), true);
+            }
+        }
+
+        private void EnsureFolder(string pathToFolder)
+        {
+            if (!Directory.Exists(pathToFolder))
+            {
+                Directory.CreateDirectory(pathToFolder);
             }
         }
     }

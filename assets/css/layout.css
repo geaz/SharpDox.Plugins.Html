@@ -1,4 +1,10 @@
 /* Layout */
+.ui-layout-mask {
+    background-color: #666;
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* for IE */
+}
+
 .ui-outer{
     padding: 10px;
 	overflow: auto;

@@ -17,6 +17,7 @@ $(document).ready(function () {
     });	
 
 	$('body').layout({ 
+		center__maskIframesOnResize: true,
         defaults: {
             paneClass: "ui-outer",
             resizerClass: "ui-outer-resizer",
