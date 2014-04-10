@@ -53,11 +53,11 @@
 		<div class="ui-layout-north">
 			<# if (String.IsNullOrEmpty(Repository.ProjectInfo.LogoPath))
 			{#>
-				<h1 id="title"><a href="index.html"><#= Repository.ProjectInfo.ProjectName #></a></h1>
+				<h1 id="sitetitle"><a href="index.html"><#= Repository.ProjectInfo.ProjectName #></a></h1>
 			<#}
 			else
 			{#>
-				<a href="index.html"><img id="title" src="<#= Path.GetFileName(Repository.ProjectInfo.LogoPath) #>" title="<#= Repository.ProjectInfo.ProjectName #>"/></a>
+				<a href="index.html"><img id="sitetitle" src="<#= Path.GetFileName(Repository.ProjectInfo.LogoPath) #>" title="<#= Repository.ProjectInfo.ProjectName #>"/></a>
 			<#}#>
 			<div id="subtitle"><p><#= Strings.Home #></p></div>
 		</div>
