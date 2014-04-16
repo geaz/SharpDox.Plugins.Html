@@ -85,7 +85,7 @@ namespace SharpDox.Plugins.Html.Steps
             var files = Directory.EnumerateFiles(input);
             foreach (var file in files)
             {
-                completeJs += File.ReadAllText(file) + " ";                
+                completeJs += File.ReadAllText(file) + "; ";                
             }
 
             File.WriteAllText(Path.Combine(output, compressedFileName), new JavaScriptCompressor().Compress(completeJs));
