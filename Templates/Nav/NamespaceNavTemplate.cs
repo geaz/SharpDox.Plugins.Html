@@ -52,7 +52,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             this.Write("\t\n\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Nav\NamespaceNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"./assets/images/icons/Class_{0}.png\"}}' id=\"node-type/{1}\"><a href=\"#type/{1}\">{2}</a></li>", sdType.Accessibility, sdType.ShortIdentifier, sdType.Name)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"./assets/images/icons/{0}_{1}.png\"}}' id=\"node-type/{2}\"><a href=\"#type/{2}\">{3}</a></li>", sdType.Kind, sdType.Accessibility, sdType.ShortIdentifier, sdType.Name)));
             
             #line default
             #line hidden

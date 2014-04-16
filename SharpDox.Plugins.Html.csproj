@@ -573,25 +573,25 @@
     <None Include="assets\images\icons\Properties_shortcut.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="assets\images\icons\Structure_friend.png">
+    <None Include="assets\images\icons\Struct_friend.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="assets\images\icons\Structure_internal.png">
+    <None Include="assets\images\icons\Struct_internal.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="assets\images\icons\Structure_private.png">
+    <None Include="assets\images\icons\Struct_private.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="assets\images\icons\Structure_protected.png">
+    <None Include="assets\images\icons\Struct_protected.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="assets\images\icons\Structure_public.png">
+    <None Include="assets\images\icons\Struct_public.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="assets\images\icons\Structure_sealed.png">
+    <None Include="assets\images\icons\Struct_sealed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="assets\images\icons\Structure_shortcut.png">
+    <None Include="assets\images\icons\Struct_shortcut.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -702,6 +702,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\js\vendor\2-jquery.print.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\css\vs.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="assets\js\vendor\highlight.pack.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

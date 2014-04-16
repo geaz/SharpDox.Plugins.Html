@@ -13,7 +13,7 @@
 <#  for (int i = 0; i < Namespace.Types.Count; i++)
 	{ 
 		var sdType = Namespace.Types[i]; #>	
-		<#= string.Format("<li data-jstree='{{\"icon\":\"./assets/images/icons/Class_{0}.png\"}}' id=\"node-type/{1}\"><a href=\"#type/{1}\">{2}</a></li>", sdType.Accessibility, sdType.ShortIdentifier, sdType.Name) #>
+		<#= string.Format("<li data-jstree='{{\"icon\":\"./assets/images/icons/{0}_{1}.png\"}}' id=\"node-type/{2}\"><a href=\"#type/{2}\">{3}</a></li>", sdType.Kind, sdType.Accessibility, sdType.ShortIdentifier, sdType.Name) #>
 <#	}	#>
 
 </ul>

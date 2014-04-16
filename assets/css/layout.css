@@ -68,6 +68,10 @@
 	font-size: 3.0em;
 }
 
+#sitetitle a{
+	color: white;
+}
+
 #subtitle{
 	padding: 10px;
 	font-family: 'OpenSansSemiBold';

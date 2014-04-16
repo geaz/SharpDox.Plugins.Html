@@ -29,10 +29,12 @@
 			<link rel="stylesheet" type="text/css" href="../assets/css/3-markdown.css" />			
 			<link rel="stylesheet" type="text/css" href="../assets/css/3-tree.css" />
 			<link rel="stylesheet" type="text/css" href="../assets/css/layout.css" />
+			<link rel="stylesheet" type="text/css" href="../assets/css/vs.css" />
 
 			<script src="../assets/js/vendor/0-jquery.js"></script>
 			<script src="../assets/js/vendor/1-jquery-ui.custom.min.js"></script>	
 			<script src="../assets/js/vendor/1-jquery.layout.min.js"></script>	
+			<script src="../assets/js/vendor/highlight.pack.js"></script>
 
 			<script src="../assets/js/frame/iframe.js"></script>
 		<# #else #>
@@ -40,6 +42,8 @@
 			<script src="../assets/js/vendor.js"></script>
 			<script src="../assets/js/frame.js"></script>
 		<# #endif #>
+
+		<script>hljs.initHighlightingOnLoad();</script>
 
     </head>
     <body>      	
