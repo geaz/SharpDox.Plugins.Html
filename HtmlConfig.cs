@@ -21,6 +21,7 @@ namespace SharpDox.Plugins.Html
         private string _headerBackground;
         private string _subheaderBackground;
         private string _color;
+        private bool _disableSequenceDiagrams;
 
         [Name(typeof(HtmlStrings), "HeaderBackground")]
         [ConfigEditor(EditorType.Colorpicker)]
@@ -55,6 +56,17 @@ namespace SharpDox.Plugins.Html
             {
                 _color = value;
                 OnPropertyChanged("Color");
+            }
+        }
+
+        [Name(typeof(HtmlStrings), "DisableSequenceDiagrams")]
+        public bool DisableSequenceDiagrams
+        {
+            get { return _disableSequenceDiagrams; }
+            set
+            {
+                _disableSequenceDiagrams = value;
+                OnPropertyChanged("DisableSequenceDiagrams");
             }
         }
 

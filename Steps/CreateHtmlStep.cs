@@ -50,7 +50,8 @@ namespace SharpDox.Plugins.Html.Steps
                         Strings = strings,
                         CurrentLanguage = type.Documentation.ContainsKey(docLanguage) ? docLanguage : "default",
                         SDType = type,
-                        Repository = repository
+                        Repository = repository,
+                        Config = htmlExporter.HtmlConfig
                     };
                     File.WriteAllText(Path.Combine(outputPath, "type", type.ShortIdentifier + ".html"), typeTemplate.TransformText());
                 }

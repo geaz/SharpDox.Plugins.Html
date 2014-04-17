@@ -39,7 +39,7 @@ namespace SharpDox.Plugins.Html
             }
             else // Article
             {
-                link = string.Format("../{0}/{1}.html", linkType, identifier.Replace(' ', '_'));
+                link = string.Format("../{0}/{1}.html", linkType, identifier);
             }
             return link;
         }

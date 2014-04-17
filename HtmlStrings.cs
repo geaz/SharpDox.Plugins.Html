@@ -8,14 +8,14 @@ namespace SharpDox.Plugins.Html
         private string _headerBackground = "Header Background";
         private string _subheaderBackground = "Subheader Background";
         private string _color = "Header Font Color";
+        private string _disableSequenceDiagrams = "Disable sequence diagrams";
 
         private string _creatingFolders = "Creating Folders";
         private string _creatingNavigation = "Creating navigation files";
         private string _createFilesForNamespace = "Creating files for namespace";
         private string _creatingArticle = "Creating article: {0}";
         private string _copyingFile = "Copying File: {0}";
-        private string _description = @"This exporter creates a html documentation. Useable on the local filesystem and on a webserver. It supports multilanguage documentation, articles and namespace descriptions.";
-
+        
         public string DisplayName { get { return "HtmlExporter"; } }
 
         public string Html
@@ -40,6 +40,12 @@ namespace SharpDox.Plugins.Html
         {
             get { return _color; }
             set { _color = value; }
+        }
+
+        public string DisableSequenceDiagrams
+        {
+            get { return _disableSequenceDiagrams; }
+            set { _disableSequenceDiagrams = value; }
         }
 
         public string CreatingFolders
@@ -70,12 +76,6 @@ namespace SharpDox.Plugins.Html
         {
             get { return _copyingFile; }
             set { _copyingFile = value; }
-        }
-
-        public string Description
-        {
-            get { return _description; }
-            set { _description = value; }
         }
     }
 }

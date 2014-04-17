@@ -51,17 +51,37 @@
         
 		<# if(SDMember.Documentation.Count > 0) { #>
 		
-			<# if(SDMember.Documentation[CurrentLanguage].Remarks.Count > 0) { #>
-				<p class="member-box-title"><#= Strings.Remarks #></p>
+			<# if(SDMember.Documentation[CurrentLanguage].Params.Count > 0) { #>
+				<p class="member-box-title"><#= Strings.Parameters #></p>
 				<div class="member-doc-box markdown">
-					<#= new Markdown().Transform(SDMember.Documentation[CurrentLanguage].Remarks.ToMarkdown()) #>
+					<# foreach(var parameter in SDMember.Documentation[CurrentLanguage].Params) { #>
+						<p class="key"><#= parameter.Key #></p>
+						
+						<# if(SDMember is SDMethod){ 
+								var sdParam = ((SDMethod)SDMember).Parameters.SingleOrDefault(s => s.Name == parameter.Key);
+								if(sdParam != null) { #>
+									
+									<small><#= sdParam.ParamType.Name #></small>
+
+								<# }
+						} #>						
+						
+						<div class="inline">
+							<#= new Markdown().Transform(parameter.Value.ToMarkdown()) #>
+						</div>
+					<# } #>
 				</div>
 			<# } #>
 
-			<# if(SDMember.Documentation[CurrentLanguage].Example.Count > 0) { #>
-				<p class="member-box-title"><#= Strings.Example #></p>
+			<# if(SDMember.Documentation[CurrentLanguage].TypeParams.Count > 0) { #>
+				<p class="member-box-title"><#= Strings.TypeParameters #></p>
 				<div class="member-doc-box markdown">
-					<#= new Markdown().Transform(SDMember.Documentation[CurrentLanguage].Example.ToMarkdown()) #>
+					<# foreach(var typeParameter in SDMember.Documentation[CurrentLanguage].TypeParams) { #>
+						<p class="key"><#= typeParameter.Key #></p>						
+						<div class="inline">
+							<#= new Markdown().Transform(typeParameter.Value.ToMarkdown()) #>
+						</div>
+					<# } #>
 				</div>
 			<# } #>
 
@@ -76,7 +96,7 @@
 				<p class="member-box-title"><#= Strings.Exceptions #></p>
 				<div class="member-doc-box markdown">
 					<# foreach(var exception in SDMember.Documentation[CurrentLanguage].Exceptions) { #>
-						<p><#= exception.Key #></p>
+						<p class="key"><#= exception.Key #></p>
 						<div class="inline">
 							<#= new Markdown().Transform(exception.Value.ToMarkdown()) #>
 						</div>
@@ -84,30 +104,20 @@
 				</div>
 			<# } #>
 
-			<# if(SDMember.Documentation[CurrentLanguage].Params.Count > 0) { #>
-				<p class="member-box-title"><#= Strings.Parameters #></p>
+			<# if(SDMember.Documentation[CurrentLanguage].Remarks.Count > 0) { #>
+				<p class="member-box-title"><#= Strings.Remarks #></p>
 				<div class="member-doc-box markdown">
-					<# foreach(var parameter in SDMember.Documentation[CurrentLanguage].Params) { #>
-						<p><#= parameter.Key #></p>
-						<div class="inline">
-							<#= new Markdown().Transform(parameter.Value.ToMarkdown()) #>
-						</div>
-					<# } #>
+					<#= new Markdown().Transform(SDMember.Documentation[CurrentLanguage].Remarks.ToMarkdown()) #>
 				</div>
 			<# } #>
 
-			<# if(SDMember.Documentation[CurrentLanguage].TypeParams.Count > 0) { #>
-				<p class="member-box-title"><#= Strings.TypeParameters #></p>
+			<# if(SDMember.Documentation[CurrentLanguage].Example.Count > 0) { #>
+				<p class="member-box-title"><#= Strings.Example #></p>
 				<div class="member-doc-box markdown">
-					<# foreach(var typeParameter in SDMember.Documentation[CurrentLanguage].TypeParams) { #>
-						<p><#= typeParameter.Key #></p>
-						<div class="inline">
-							<#= new Markdown().Transform(typeParameter.Value.ToMarkdown()) #>
-						</div>
-					<# } #>
+					<#= new Markdown().Transform(SDMember.Documentation[CurrentLanguage].Example.ToMarkdown()) #>
 				</div>
 			<# } #>
-
+						
 			<# if(SDMember.Documentation[CurrentLanguage].SeeAlsos.Count > 0) { #>
 				<p class="member-box-title"><#= Strings.SeeAlso #></p>
 				<div class="list-box">
@@ -140,7 +150,7 @@
 
 		<# } #>
 
-		<# if(SDMember is SDMethod && !((SDMethod)SDMember).IsSequenceDiagramEmpty()) { #>
+		<# if(SDMember is SDMethod && !((SDMethod)SDMember).IsSequenceDiagramEmpty() && !Config.DisableSequenceDiagrams) { #>
 			<div id="sd-sequence-diagram" class="svgpan">
 				<#	var sequenceSvg = ((SDMethod)SDMember).GetSequenceDiagram(Repository.GetAllTypes()).ToSvg(530);
 					var template = new Templater(Repository, sequenceSvg); 
@@ -153,7 +163,8 @@
 	</div>
 </div>
 
-<#+ public IStrings Strings { get; set; }
+<#+ public HtmlConfig Config { get; set; }
+	public IStrings Strings { get; set; }
 	public string CurrentLanguage { get; set; }
 	public SDRepository Repository { get; set; }
     public SDType SDType { get; set; }

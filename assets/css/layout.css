@@ -55,7 +55,7 @@
 }
 
 .ui-inner-center{
-	padding: 15px;
+	padding: 10px 25px;
 	overflow: auto;
 }
 
@@ -246,19 +246,20 @@
 
 .member-content{
 	display:none;
+	padding: 15px;
 }
 
 .member-content .syntax-box{
-	margin: 5px 35px;
+	margin: 0 35px;
 }
 
 .member-box-title{
-	margin: 5px 35px;
-	font-family: 'OpenSansSemiBold';
+	margin: 10px 35px;
+	font-family: 'OpenSansSemiBold';	
 }
 
 .member-doc-box{
-	margin: 5px 35px;
+	margin: 0px 65px;
 }
 
 .member-doc-box p, .member-doc-box pre{
@@ -266,7 +267,18 @@
 }
 
 .member-doc-box .inline{
-	margin: 0 25px;
+	margin: 0 35px 15px;
+}
+
+.member-doc-box small{
+	margin: 0 35px;
+	font-size: 0.7em;
+	font-family: 'OpenSansSemiBold';
+	color: gray;
+}
+
+.member-doc-box .key{
+	font-style: italic;
 }
 
 .box-title {
@@ -301,17 +313,27 @@
 	margin:0;
 }
 
-#sd-sequence-diagram, #sd-class-diagram {
+.right-margin{
+	margin-right: 300px;
+}
+
+#sd-class-diagram{
+	float:right;
+	width: 300px;
+	text-align:center;
+}
+
+#sd-sequence-diagram {
     border: 1px solid #DADADA;
     height: 350px;
     padding: 5px;
     position: relative;
-    margin: 0 35px;
+    margin: 15px 35px 0;
 }
 
 .legend p {
     font-size: 0.8em;
-    margin: 0px 25px 25px 25px;
+    margin: 0px 35px 35px 35px;
 }
 
 ul {
