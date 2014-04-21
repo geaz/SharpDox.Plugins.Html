@@ -17,17 +17,17 @@
 	var imgurl = string.Empty;
 	var name = SDMember.Name;
 	if(SDMember is SDField){
-		imgurl = "../assets/images/icons/Field_" + SDMember.Accessibility + ".png";
+		imgurl = "../assets/images/icons/field_" + SDMember.Accessibility + ".png";
 	}
 	else if(SDMember is SDEvent){
-		imgurl = "../assets/images/icons/Event_" + SDMember.Accessibility + ".png";
+		imgurl = "../assets/images/icons/event_" + SDMember.Accessibility + ".png";
 	}
 	else if(SDMember is SDMethod){
-		imgurl = "../assets/images/icons/Method_" + SDMember.Accessibility + ".png";
+		imgurl = "../assets/images/icons/method_" + SDMember.Accessibility + ".png";
 		name = ((SDMethod)SDMember).Signature;
 	}
 	else if(SDMember is SDProperty){
-		imgurl = "../assets/images/icons/Properties_" + SDMember.Accessibility + ".png";
+		imgurl = "../assets/images/icons/properties_" + SDMember.Accessibility + ".png";
 	}
 #>
 

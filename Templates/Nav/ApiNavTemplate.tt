@@ -18,7 +18,7 @@
 	{ 
 		var sdNamespace = sdNamespaces[i];
 		var namespaceNavTemplate = new NamespaceNavTemplate { Namespace = sdNamespace, Strings = Strings }; #>	
-		<#= string.Format("<li data-jstree='{{\"icon\":\"./assets/images/icons/Namespace_public.png\"}}' id=\"node-namespace/{0}\"><a href=\"#namespace/{0}\">{0}</a> {1}</li>", sdNamespace.Fullname, namespaceNavTemplate.TransformText()) #>
+		<#= string.Format("<li data-jstree='{{\"icon\":\"./assets/images/icons/namespace_public.png\"}}' id=\"node-namespace/{0}\"><a href=\"#namespace/{0}\">{0}</a> {1}</li>", sdNamespace.Fullname, namespaceNavTemplate.TransformText()) #>
 <#	} 
 
 	if(Repository.Articles.Count > 0) { #>

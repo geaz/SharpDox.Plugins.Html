@@ -62,7 +62,7 @@
 			<ul class="dropdown-menu">
 				<# foreach(var sdField in SDType.Fields) { #>
 
-					<li><a href="#<#= sdField.ShortIdentifier #>"><img alt="Field-Icon" src="../assets/images/icons/Field_<#= sdField.Accessibility #>.png"> <#= sdField.Name #></a></li>
+					<li><a href="#<#= sdField.ShortIdentifier #>"><img alt="Field-Icon" src="../assets/images/icons/field_<#= sdField.Accessibility #>.png"> <#= sdField.Name #></a></li>
 
 				<# } #>
 			</ul>
@@ -72,7 +72,7 @@
 			<ul class="dropdown-menu">
 				<# foreach(var sdEvent in SDType.Events) { #>
 
-					<li><a href="#<#= sdEvent.ShortIdentifier #>"><img alt="Event-Icon" src="../assets/images/icons/Event_<#= sdEvent.Accessibility #>.png"> <#= sdEvent.Name #></a></li>
+					<li><a href="#<#= sdEvent.ShortIdentifier #>"><img alt="Event-Icon" src="../assets/images/icons/event_<#= sdEvent.Accessibility #>.png"> <#= sdEvent.Name #></a></li>
 
 				<# } #>
 			</ul>
@@ -82,13 +82,13 @@
 			<ul class="dropdown-menu">
 				<# foreach(var sdConstructor in SDType.Constructors) {  #>
 
-					<li><a href="#<#= sdConstructor.ShortIdentifier #>"><img alt="Method-Icon" src="../assets/images/icons/Method_<#= sdConstructor.Accessibility #>.png"> <#= sdConstructor.Signature #></a></li>
+					<li><a href="#<#= sdConstructor.ShortIdentifier #>"><img alt="Method-Icon" src="../assets/images/icons/method_<#= sdConstructor.Accessibility #>.png"> <#= sdConstructor.Signature #></a></li>
 
 				<# } #>
 
 				<# foreach(var sdMethod in SDType.Methods) {  #>
 
-					<li><a href="#<#= sdMethod.ShortIdentifier #>"><img alt="Method-Icon" src="../assets/images/icons/Method_<#= sdMethod.Accessibility #>.png"> <#= sdMethod.Signature #></a></li>
+					<li><a href="#<#= sdMethod.ShortIdentifier #>"><img alt="Method-Icon" src="../assets/images/icons/method_<#= sdMethod.Accessibility #>.png"> <#= sdMethod.Signature #></a></li>
 
 				<# } #>
 			</ul>
@@ -98,7 +98,7 @@
 			<ul class="dropdown-menu">
 				<# foreach(var sdProperty in SDType.Properties) { #>
 
-					<li><a href="#<#= sdProperty.ShortIdentifier #>"><img alt="Property-Icon" src="../assets/images/icons/Properties_<#= sdProperty.Accessibility #>.png"> <#= sdProperty.Name #></a></li>
+					<li><a href="#<#= sdProperty.ShortIdentifier #>"><img alt="Property-Icon" src="../assets/images/icons/properties_<#= sdProperty.Accessibility #>.png"> <#= sdProperty.Name #></a></li>
 
 				<# } #>
 			</ul>
@@ -109,13 +109,13 @@
 			<div class="toolbar">
 
 				<# if(SDType.Fields.Count > 0) { #>
-					<a href="#" data-dropdown="#dropdown-1" class="button"><img src="../assets/images/icons/Field_public.png"/> <#= Strings.Fields #> <span class="info">(<#= SDType.Fields.Count #>)</span> <i class="icon-caret-down"></i></a>
+					<a href="#" data-dropdown="#dropdown-1" class="button"><img src="../assets/images/icons/field_public.png"/> <#= Strings.Fields #> <span class="info">(<#= SDType.Fields.Count #>)</span> <i class="icon-caret-down"></i></a>
 				<# } if(SDType.Events.Count > 0) { #>
-					<a href="#" data-dropdown="#dropdown-2" class="button"><img src="../assets/images/icons/Class_public.png"/> <#= Strings.Events #> <span class="info">(<#= SDType.Events.Count #>)</span> <i class="icon-caret-down"></i></a>
+					<a href="#" data-dropdown="#dropdown-2" class="button"><img src="../assets/images/icons/class_public.png"/> <#= Strings.Events #> <span class="info">(<#= SDType.Events.Count #>)</span> <i class="icon-caret-down"></i></a>
 				<# } if(SDType.Methods.Count > 0 || SDType.Constructors.Count > 0) { #>
-					<a href="#" data-dropdown="#dropdown-3" class="button"><img src="../assets/images/icons/Method_public.png"/> <#= Strings.Methods #> <span class="info">(<#= SDType.Constructors.Count + SDType.Methods.Count #>)</span> <i class="icon-caret-down"></i></a>
+					<a href="#" data-dropdown="#dropdown-3" class="button"><img src="../assets/images/icons/method_public.png"/> <#= Strings.Methods #> <span class="info">(<#= SDType.Constructors.Count + SDType.Methods.Count #>)</span> <i class="icon-caret-down"></i></a>
 				<# } if(SDType.Properties.Count > 0) { #>
-					<a href="#" data-dropdown="#dropdown-4" class="button"><img src="../assets/images/icons/Properties_public.png"/> <#= Strings.Properties #> <span class="info">(<#= SDType.Properties.Count #>)</span> <i class="icon-caret-down"></i></a>
+					<a href="#" data-dropdown="#dropdown-4" class="button"><img src="../assets/images/icons/properties_public.png"/> <#= Strings.Properties #> <span class="info">(<#= SDType.Properties.Count #>)</span> <i class="icon-caret-down"></i></a>
 				<# } #>
 
 				<div class="right">
