@@ -38,9 +38,9 @@
 
 			<script src="../assets/js/frame/iframe.js"></script>
 		<# #else #>
-			<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
-			<script src="../assets/js/vendor.js"></script>
-			<script src="../assets/js/frame.js"></script>
+			<link rel="stylesheet" type="text/css" href="../assets/css/style.css?version=0931" />
+			<script src="../assets/js/vendor.js?version=0931"></script>
+			<script src="../assets/js/frame.js?version=0931"></script>
 		<# #endif #>
 
 		<script>hljs.initHighlightingOnLoad();</script>

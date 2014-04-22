@@ -1,12 +1,7 @@
 ﻿$(document).ready(function(){
-	$('.svgpan svg').panzoom();
-	
-	$('.svgpan svg').parent().on('mousewheel.focal', function( e ) {
-		e.preventDefault();
-		var delta = e.delta || e.originalEvent.wheelDelta;
-		var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
-		$($(this).children()[0]).panzoom('zoom', zoomOut, {
-			increment: 0.1
-		});
+	$.each($('.svgpan'), function(index, value){
+		var id = $(value).attr('id');
+		id = "#" + id + " svg";
+		svgPanZoom.init({ 'selector': id, 'minZoom': 0.1 });
 	});
 });

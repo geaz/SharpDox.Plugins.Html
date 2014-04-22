@@ -151,8 +151,8 @@
 		<# } #>
 
 		<# if(SDMember is SDMethod && !((SDMethod)SDMember).IsSequenceDiagramEmpty() && !Config.DisableSequenceDiagrams) { #>
-			<div id="sd-sequence-diagram" class="svgpan">
-				<#	var sequenceSvg = ((SDMethod)SDMember).GetSequenceDiagram(Repository.GetAllTypes()).ToSvg(530);
+			<div id="<#= SDMember.Name #>-diagram" class="sd-sequence-diagram svgpan">
+				<#	var sequenceSvg = ((SDMethod)SDMember).GetSequenceDiagram(Repository.GetAllTypes()).ToSvg();
 					var template = new Templater(Repository, sequenceSvg); 
 					var helper = new Helper(Repository); #>
 				<#= template.TransformText(helper.TransformLinkToken) #>

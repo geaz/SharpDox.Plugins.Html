@@ -84,52 +84,52 @@ namespace SharpDox.Plugins.Html.Templates.Sites
 			<script src=""../assets/js/frame/iframe.js""></script>
 		");
             
-            #line 2 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
  #else 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/css/style.css\" />\n\t\t\t<" +
-                    "script src=\"../assets/js/vendor.js\"></script>\n\t\t\t<script src=\"../assets/js/frame" +
-                    ".js\"></script>\n\t\t");
+            this.Write("\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/css/style.css?version=" +
+                    "0931\" />\n\t\t\t<script src=\"../assets/js/vendor.js?version=0931\"></script>\n\t\t\t<scri" +
+                    "pt src=\"../assets/js/frame.js?version=0931\"></script>\n\t\t");
             
-            #line 2 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
  #endif 
             
             #line default
             #line hidden
-            this.Write("\n\n    </head>\n    <body>        \r\n       <div class=\"ui-layout-center\">\n\t\t\t<div c" +
-                    "lass=\"text-box markdown no-margin\">\n\t\t\t\t");
+            this.Write("\n\n    </head>\n    <body>        \n       <div class=\"ui-layout-center\">\n\t\t\t<div cl" +
+                    "ass=\"text-box markdown no-margin\">\n\t\t\t\t");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
  if(Repository.ProjectInfo.Description.Count > 0 && Repository.ProjectInfo.Description.ContainsKey(CurrentLanguage)) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(Repository.ProjectInfo.Description[CurrentLanguage])));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
  } else if(Repository.ProjectInfo.Description.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(Repository.ProjectInfo.Description["default"])));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
  } 
             
             #line default
@@ -138,7 +138,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
+        #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\HomeTemplate.tt"
 	public string CurrentLanguage { get; set; }
 	public SDRepository Repository { get; set; }
 	public IStrings Strings { get; set; } 

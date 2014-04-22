@@ -47,9 +47,9 @@
 			<script src="../assets/js/frame/SVGPan.js"></script>
 			<script src="../assets/js/frame/iframe.js"></script>
 		<# #else #>
-			<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
-			<script src="../assets/js/vendor.js"></script>
-			<script src="../assets/js/frame.js"></script>
+			<link rel="stylesheet" type="text/css" href="../assets/css/style.css?version=0931" />
+			<script src="../assets/js/vendor.js?version=0931"></script>
+			<script src="../assets/js/frame.js?version=0931"></script>
 		<# #endif #>
 
 		<script>hljs.initHighlightingOnLoad();</script>
@@ -127,19 +127,8 @@
 		</div>
         
 		<div class="ui-layout-center">
-			
-			<#	var marginClass = string.Empty;
-				if(!SDType.IsClassDiagramEmpty()) { 
-				marginClass = "right-margin"; #>
-				<div id="sd-class-diagram">
-					<#	var svg = SDType.GetClassDiagram().ToSvg(250);
-						var template = new Templater(Repository, svg); 
-						var helper = new Helper(Repository); #>
-					<#= template.TransformText(helper.TransformLinkToken) #>
-				</div>
-			<# } #>
 
-			<div class="<#= marginClass #>">
+			<div>
 				<h3 class="box-title first-heading"><#= Strings.Syntax #></h3>					
 				<div class="syntax-box">
 					<pre class="wrap-pre"><code><#= WebUtility.HtmlEncode(SDType.Syntax) #></code></pre>
@@ -370,6 +359,17 @@
 						}; #>
 						<#= memberTemplate.TransformText() #>
 					<# } #>
+				<# } #>
+
+				<#	if(!SDType.IsClassDiagramEmpty()) {  #>
+					<h3 class="box-title"><#= Strings.ClassDiagram #></h3>
+					<div id="sd-class-diagram" class="svgpan">
+						<#	var svg = SDType.GetClassDiagram().ToSvg();
+							var template = new Templater(Repository, svg); 
+							var helper = new Helper(Repository); #>
+						<#= template.TransformText(helper.TransformLinkToken) #>
+					</div>
+					<div class="legend"><p><#= Strings.PanZoom #></p></div>
 				<# } #>
 			</div>
 		</div>

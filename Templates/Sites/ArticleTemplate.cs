@@ -91,9 +91,9 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/css/style.css\" />\n\t\t\t<" +
-                    "script src=\"../assets/js/vendor.js\"></script>\n\t\t\t<script src=\"../assets/js/frame" +
-                    ".js\"></script>\n\t\t");
+            this.Write("\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/css/style.css?version=" +
+                    "0931\" />\n\t\t\t<script src=\"../assets/js/vendor.js?version=0931\"></script>\n\t\t\t<scri" +
+                    "pt src=\"../assets/js/frame.js?version=0931\"></script>\n\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\ArticleTemplate.tt"
  #endif 
