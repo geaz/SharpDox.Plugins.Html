@@ -3,6 +3,7 @@ HeaderBackground = Header Hintergrund
 SubHeaderBackground = Subheader Hintergrund
 Color = Header Schriftfarbe
 DisableSequenceDiagrams = Deaktiviere Sequenzdiagramme
+FooterLine = Fußzeile
 CreatingFolders = Erstelle Ordner
 CreateFilesForNamespace = Erstelle Dateien für Namensraum
 CreatingNavigation = Erstelle Navigationsdateien
