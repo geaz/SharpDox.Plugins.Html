@@ -25,7 +25,7 @@ namespace SharpDox.Plugins.Html.Steps
         private void CreateHtml(HtmlExporter htmlExporter, SDRepository repository, IStrings strings, string docLanguage, string outputPath)
         {
             var navigation = GetNavigation(repository, strings, docLanguage);
-            var indexTemplate = new IndexTemplate { Repository = repository, Strings = strings, CurrentLanguage = docLanguage, Navigation = navigation };
+            var indexTemplate = new IndexTemplate { Repository = repository, Strings = strings, CurrentLanguage = docLanguage, Navigation = navigation, FooterLine = htmlExporter.HtmlConfig.FooterLine };
             File.WriteAllText(Path.Combine(outputPath, "index.html"), indexTemplate.TransformText());
 
             var homeTemplate = new HomeTemplate { Repository = repository, Strings = strings, CurrentLanguage = docLanguage };
@@ -44,7 +44,6 @@ namespace SharpDox.Plugins.Html.Steps
 
                 foreach (var type in nameSpace.Types)
                 {
-                    type.SortMembers();
                     var typeTemplate = new TypeTemplate
                     {
                         Strings = strings,

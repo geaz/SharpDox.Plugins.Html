@@ -22,6 +22,7 @@ namespace SharpDox.Plugins.Html
         private string _subheaderBackground;
         private string _color;
         private bool _disableSequenceDiagrams;
+        private string _footerLine;
 
         [Name(typeof(HtmlStrings), "HeaderBackground")]
         [ConfigEditor(EditorType.Colorpicker)]
@@ -67,6 +68,18 @@ namespace SharpDox.Plugins.Html
             {
                 _disableSequenceDiagrams = value;
                 OnPropertyChanged("DisableSequenceDiagrams");
+            }
+        }
+
+        [Name(typeof(HtmlStrings), "FooterLine")]
+        [ConfigEditor(EditorType.Markdown)]
+        public string FooterLine
+        {
+            get { return _footerLine; }
+            set
+            {
+                _footerLine = value;
+                OnPropertyChanged("FooterLine");
             }
         }
 

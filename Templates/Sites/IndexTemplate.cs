@@ -159,7 +159,15 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("</p></div>\n\t\t</div>\n        <div class=\"ui-layout-south\">");
+            this.Write("</p></div>\n\t\t</div>\n        <div class=\"ui-layout-south\">\n\t\t\t<div class=\"user-foo" +
+                    "ter markdown\">\n\t\t\t\t");
+            
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\IndexTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(FooterLine)));
+            
+            #line default
+            #line hidden
+            this.Write("\n\t\t\t</div>\n\t\t\t<div class=\"sd-footer\">\n\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Repository.ProjectInfo.ProjectName));
@@ -187,8 +195,8 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write(" <a href=\"http://sharpDox.de\" target=\"_blank\">sharpDox</a></div>\n        <div id=" +
-                    "\"navigation\" class=\"ui-layout-west\">\n\t\t\t");
+            this.Write(" <a href=\"http://sharpDox.de\" target=\"_blank\">sharpDox</a>\n\t\t\t</div>\n\t\t</div>\n   " +
+                    "     <div id=\"navigation\" class=\"ui-layout-west\">\n\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Navigation));
@@ -201,7 +209,8 @@ namespace SharpDox.Plugins.Html.Templates.Sites
         }
         
         #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\IndexTemplate.tt"
- public string CurrentLanguage { get; set; }
+ public string FooterLine { get; set; }
+	public string CurrentLanguage { get; set; }
 	public IStrings Strings { get; set; }
 	public SDRepository Repository { get; set; } 
 	public string Navigation { get; set; } 

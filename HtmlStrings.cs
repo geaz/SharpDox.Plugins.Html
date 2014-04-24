@@ -9,6 +9,7 @@ namespace SharpDox.Plugins.Html
         private string _subheaderBackground = "Subheader Background";
         private string _color = "Header Font Color";
         private string _disableSequenceDiagrams = "Disable sequence diagrams";
+        private string _footerLine = "Footer Line";
 
         private string _creatingFolders = "Creating Folders";
         private string _creatingNavigation = "Creating navigation files";
@@ -46,6 +47,12 @@ namespace SharpDox.Plugins.Html
         {
             get { return _disableSequenceDiagrams; }
             set { _disableSequenceDiagrams = value; }
+        }
+        
+        public string FooterLine
+        {
+            get { return _footerLine; }
+            set { _footerLine = value; }
         }
 
         public string CreatingFolders

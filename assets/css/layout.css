@@ -46,7 +46,20 @@
     background: #f8f8f8;
     font-size: 0.7em;
     color: gray;
-    text-align:right;
+}
+
+.ui-outer-south .sd-footer{
+	float:right;
+	text-align:right;
+}
+
+.ui-outer-south .user-footer{
+	float:left;
+	text-align:left;
+}
+
+.ui-outer-south .user-footer p{
+	margin: 0;
 }
 
 .ui-inner-north h2{

@@ -61,7 +61,14 @@
 			<#}#>
 			<div id="subtitle"><p><#= Strings.Home #></p></div>
 		</div>
-        <div class="ui-layout-south"><#= Repository.ProjectInfo.ProjectName #> <#= Repository.ProjectInfo.VersionNumber != null ? Repository.ProjectInfo.VersionNumber : string.Empty #> <#= Repository.ProjectInfo.Author != null ? Strings.By + " " +Repository.ProjectInfo.Author : string.Empty #> - <#= Strings.GeneratedBy #> <a href="http://sharpDox.de" target="_blank">sharpDox</a></div>
+        <div class="ui-layout-south">
+			<div class="user-footer markdown">
+				<#= new Markdown().Transform(FooterLine) #>
+			</div>
+			<div class="sd-footer">
+				<#= Repository.ProjectInfo.ProjectName #> <#= Repository.ProjectInfo.VersionNumber != null ? Repository.ProjectInfo.VersionNumber : string.Empty #> <#= Repository.ProjectInfo.Author != null ? Strings.By + " " +Repository.ProjectInfo.Author : string.Empty #> - <#= Strings.GeneratedBy #> <a href="http://sharpDox.de" target="_blank">sharpDox</a>
+			</div>
+		</div>
         <div id="navigation" class="ui-layout-west">
 			<#= Navigation #>
 		</div>
@@ -69,7 +76,8 @@
     </body>
 </html>
 
-<#+ public string CurrentLanguage { get; set; }
+<#+ public string FooterLine { get; set; }
+	public string CurrentLanguage { get; set; }
 	public IStrings Strings { get; set; }
 	public SDRepository Repository { get; set; } 
 	public string Navigation { get; set; } #>
