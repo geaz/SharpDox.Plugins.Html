@@ -36,5 +36,6 @@
         string GeneratedBy { get; }
         string ExpandAll { get; }
         string Print { get; }
+        string ConstValue { get; }
     }
 }

@@ -36,5 +36,6 @@
         public string GeneratedBy { get { return "Erstellt mit"; } }
         public string ExpandAll { get { return "Alle ausklappen"; } }
         public string Print { get { return "Drucken"; } }
+        public string ConstValue { get { return "Konstanter Wert"; } }
     }
 }
