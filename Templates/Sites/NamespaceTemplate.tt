@@ -68,6 +68,7 @@
 					<span class="toolbar-info"> Assembly: <#= Namespace.Assemblyname #></span>
 					<a href="#" id="print-button" class="button" title="<#= Strings.Print #>"><i class="icon-print"></i></a>
 				</div>
+				<div style="clear:both;"></div>
 			</div>
 		</div>
         

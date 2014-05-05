@@ -123,6 +123,7 @@
 					<a href="#" id="expand-all-button" class="button"><i class="icon-align-justify" title="<#= Strings.ExpandAll #>"></i></a>
 					<a href="#" id="print-button" class="button"><i class="icon-print" title="<#= Strings.Print #>"></i></a>
 				</div>
+				<div style="clear:both;"></div>
 			</div>
 		</div>
         
