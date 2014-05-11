@@ -1,17 +1,15 @@
-﻿using SharpDox.Model.Repository;
-using SharpDox.Model.Repository.Members;
+﻿using SharpDox.Model;
 using System;
-using System.Collections.Generic;
 
 namespace SharpDox.Plugins.Html
 {
     public class Helper
     {
-        private readonly SDRepository _repository;
+        private readonly SDProject _sdProject;
 
-        public Helper(SDRepository repository)
+        public Helper(SDProject sdProject)
         {
-            _repository = repository;
+            _sdProject = sdProject;
         }
 
         public string TransformLinkToken(string linkType, Guid guid, string identifier)
@@ -27,13 +25,13 @@ namespace SharpDox.Plugins.Html
             }
             else if(linkType == "type")
             {
-                var sdType = _repository.GetTypeByIdentifier(identifier);
+                var sdType = _sdProject.GetTypeByIdentifier(identifier);
                 if(sdType != null)
                     link = string.Format("../{0}/{1}.html", "type", sdType.ShortIdentifier);
             }
             else if (guid != Guid.Empty) // Member
             {
-                var sdMember = _repository.GetMemberByIdentifier(identifier);
+                var sdMember = _sdProject.GetMemberByIdentifier(identifier);
                 if (sdMember != null)
                     link = string.Format("../{0}/{1}.html#{2}", "type", sdMember.DeclaringType.ShortIdentifier, sdMember.ShortIdentifier);
             }

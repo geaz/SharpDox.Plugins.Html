@@ -1,9 +1,10 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.IO;
+using SharpDox.Model;
 using SharpDox.Plugins.Html.Steps;
-using SharpDox.Model.Repository;
-using SharpDox.Sdk.Exporter;
 using SharpDox.Plugins.Html.Templates.Strings;
+using SharpDox.Sdk.Exporter;
+using System;
 
 namespace SharpDox.Plugins.Html
 {
@@ -13,37 +14,42 @@ namespace SharpDox.Plugins.Html
         public event Action<string> OnStepMessage;
         public event Action<int> OnStepProgress;
 
-        public HtmlExporter(HtmlStrings strings, HtmlConfig htmlConfig)
+        private readonly HtmlStrings _htmlStrings;
+        private readonly HtmlConfig _htmlConfig;
+        
+        public HtmlExporter(HtmlStrings htmlStrings, HtmlConfig htmlConfig)
 	    {
-            HtmlStrings = strings;
-            HtmlConfig = htmlConfig;
+            _htmlStrings = htmlStrings;
+            _htmlConfig = htmlConfig;
 	    }
 
         public bool CheckRequirements() { return true; }
 
-        public void Export(SDRepository repository, string outputPath)
+        public void Export(SDProject sdProject, string outputPath)
         {
-            foreach (var documentationLanguage in repository.DocumentationLanguages)
+            foreach (var docLanguage in sdProject.DocumentationLanguages)
             {
-                Repository = repository;
-                CurrentLanguage = documentationLanguage;
-                OutputPath = Path.Combine(outputPath, CurrentLanguage);
-                CurrentStrings = GetCurrentStrings();
-                CurrentStep = new PreBuildStep();
+                StepInput.InitStepinput(sdProject, Path.Combine(outputPath, docLanguage), docLanguage, GetCurrentStrings(docLanguage, sdProject.DocLanguage), _htmlStrings, _htmlConfig);
 
-                while (CurrentStep != null)
+                var steps = new List<StepBase>();
+                steps.Add(new PreBuildStep(0, 10));
+                steps.Add(new AssetsStep(10, 25));
+                steps.Add(new CreateArticleStep(25, 50));
+                steps.Add(new CreateHtmlStep(50, 100));
+
+                foreach(var step in steps)
                 {
-                    CurrentStep.ProcessStep(this);
+                    step.OnStepMessage += ExecuteOnStepMessage;
+                    step.OnStepProgress += ExecuteOnStepProgress;
+                    step.RunStep();
                 }
-
-                ExecuteOnStepProgress(100);
             }
         }
 
-        private IStrings GetCurrentStrings()
+        private IStrings GetCurrentStrings(string docLanguage, string defaultLanguage)
         {
             IStrings strings = new EnStrings();
-            if (CurrentLanguage == "de" || (CurrentLanguage == "default" && Repository.ProjectInfo.DocLanguage == "de"))
+            if (docLanguage == "de" || (docLanguage == "default" && defaultLanguage == "de"))
             {
                 strings = new DeStrings();
             }
@@ -55,7 +61,7 @@ namespace SharpDox.Plugins.Html
             var handler = OnStepMessage;
             if (handler != null)
             {
-                handler(string.Format("({0}) - {1}", CurrentLanguage, message));
+                handler(string.Format("({0}) - {1}", StepInput.CurrentLanguage, message));
             }
         }
 
@@ -69,19 +75,5 @@ namespace SharpDox.Plugins.Html
         }
 
         public string ExporterName { get { return "Html"; } }
-
-        internal string OutputPath { get; private set; }
-
-        internal string CurrentLanguage { get; private set; }
-
-        internal SDRepository Repository { get; private set; }
-
-        internal HtmlStrings HtmlStrings { get; private set; }
-
-        internal HtmlConfig HtmlConfig { get; private set; }
-
-        internal IStrings CurrentStrings { get; private set; }
-
-        internal Step CurrentStep { get; set; }
     }
 }

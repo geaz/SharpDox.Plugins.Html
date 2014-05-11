@@ -2,19 +2,18 @@
 
 namespace SharpDox.Plugins.Html.Steps
 {
-    public class PreBuildStep : Step
+    internal class PreBuildStep : StepBase
     {
-        public override void ProcessStep(HtmlExporter htmlExporter)
+        public PreBuildStep(int progressStart, int progressEnd) : base(new StepRange(progressStart, progressEnd)) { }
+
+        public override void RunStep()
         {
-            htmlExporter.ExecuteOnStepProgress(0);
-            htmlExporter.ExecuteOnStepMessage(htmlExporter.HtmlStrings.CreatingFolders);
+            ExecuteOnStepMessage(StepInput.HtmlStrings.CreatingFolders);
 
-            CreateFolder(htmlExporter.OutputPath, "namespace");
-            CreateFolder(htmlExporter.OutputPath, "type");
-            CreateFolder(htmlExporter.OutputPath, "article");
-            CreateFolder(htmlExporter.OutputPath, "assets");
-
-            htmlExporter.CurrentStep = new CreateArticleStep();
+            CreateFolder(StepInput.OutputPath, "namespace");
+            CreateFolder(StepInput.OutputPath, "type");
+            CreateFolder(StepInput.OutputPath, "article");
+            CreateFolder(StepInput.OutputPath, "assets");
         }
 
         public static void CreateFolder(string path, string name)

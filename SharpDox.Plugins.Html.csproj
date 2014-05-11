@@ -71,7 +71,9 @@
     <Compile Include="Steps\AssetsStep.cs" />
     <Compile Include="Steps\CreateHtmlStep.cs" />
     <Compile Include="Steps\PreBuildStep.cs" />
-    <Compile Include="Steps\Step.cs" />
+    <Compile Include="Steps\StepBase.cs" />
+    <Compile Include="Steps\StepInput.cs" />
+    <Compile Include="Steps\StepRange.cs" />
     <Compile Include="Templates\Css1.cs">
       <DependentUpon>Css.tt</DependentUpon>
       <AutoGen>True</AutoGen>

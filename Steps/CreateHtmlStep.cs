@@ -1,65 +1,49 @@
-﻿using System;
-using System.IO;
+﻿using SharpDox.Plugins.Html.Templates.Nav;
 using SharpDox.Plugins.Html.Templates.Sites;
-using SharpDox.Model.Repository;
-using SharpDox.Plugins.Html.Templates.Strings;
-using System.Text;
-using SharpDox.Plugins.Html.Templates.Nav;
-using System.Collections.Generic;
-using SharpDox.Model.Documentation;
+using System;
+using System.IO;
+using System.Linq;
 
 namespace SharpDox.Plugins.Html.Steps
 {
-    public class CreateHtmlStep : Step
+    internal class CreateHtmlStep : StepBase
     {
-        public override void ProcessStep(HtmlExporter htmlExporter)
+        public CreateHtmlStep(int progressStart, int progressEnd) : base(new StepRange(progressStart, progressEnd)) { }
+
+        public override void RunStep()
         {
-            htmlExporter.ExecuteOnStepProgress(50);
+            var navigation = GetNavigation();
+            var indexTemplate = new IndexTemplate { Navigation = navigation };
+            File.WriteAllText(Path.Combine(StepInput.OutputPath, "index.html"), indexTemplate.TransformText());
 
-            CreateHtml(htmlExporter, htmlExporter.Repository, htmlExporter.CurrentStrings, htmlExporter.CurrentLanguage, htmlExporter.OutputPath);
-
-            htmlExporter.ExecuteOnStepProgress(100);
-            htmlExporter.CurrentStep = null;
-        }
-
-        private void CreateHtml(HtmlExporter htmlExporter, SDRepository repository, IStrings strings, string docLanguage, string outputPath)
-        {
-            var navigation = GetNavigation(repository, strings, docLanguage);
-            var indexTemplate = new IndexTemplate { Repository = repository, Strings = strings, CurrentLanguage = docLanguage, Navigation = navigation, FooterLine = htmlExporter.HtmlConfig.FooterLine };
-            File.WriteAllText(Path.Combine(outputPath, "index.html"), indexTemplate.TransformText());
-
-            var homeTemplate = new HomeTemplate { Repository = repository, Strings = strings, CurrentLanguage = docLanguage };
-            File.WriteAllText(Path.Combine(outputPath, "article", "home.html"), homeTemplate.TransformText());
+            var homeTemplate = new HomeTemplate();
+            File.WriteAllText(Path.Combine(StepInput.OutputPath, "article", "home.html"), homeTemplate.TransformText());
 
             var namespaceCount = 0d;
-            var namespaceTotal = repository.GetAllNamespaces().Count;
-            foreach (var nameSpace in repository.GetAllNamespaces())
+            var namespaceTotal = StepInput.SDProject.Repositories.Values.Sum(repository => repository.GetAllNamespaces().Count);
+            foreach (var repository in StepInput.SDProject.Repositories.Values)
             {
-                htmlExporter.ExecuteOnStepProgress(Convert.ToInt16((namespaceCount / namespaceTotal) * 50) + 50);
-                htmlExporter.ExecuteOnStepMessage(htmlExporter.HtmlStrings.CreateFilesForNamespace + ": " + nameSpace.Fullname);
-                namespaceCount++;
-
-                var namespaceTemplate = new NamespaceTemplate { Strings = strings, CurrentLanguage = docLanguage, Namespace = nameSpace, Repository = repository };
-                File.WriteAllText(Path.Combine(outputPath, "namespace", nameSpace.Fullname + ".html"), namespaceTemplate.TransformText());
-
-                foreach (var type in nameSpace.Types)
+                foreach (var nameSpace in repository.GetAllNamespaces())
                 {
-                    var typeTemplate = new TypeTemplate
+                    ExecuteOnStepProgress(Convert.ToInt16((namespaceCount/namespaceTotal)*50) + 50);
+                    ExecuteOnStepMessage(StepInput.HtmlStrings.CreateFilesForNamespace + ": " + nameSpace.Fullname);
+                    namespaceCount++;
+
+                    var namespaceTemplate = new NamespaceTemplate { Namespace = nameSpace };
+                    File.WriteAllText(Path.Combine(StepInput.OutputPath, "namespace", nameSpace.Fullname + ".html"), namespaceTemplate.TransformText());
+
+                    foreach (var type in nameSpace.Types)
                     {
-                        Strings = strings,
-                        CurrentLanguage = type.Documentation.ContainsKey(docLanguage) ? docLanguage : "default",
-                        SDType = type,
-                        Repository = repository,
-                        Config = htmlExporter.HtmlConfig
-                    };
-                    File.WriteAllText(Path.Combine(outputPath, "type", type.ShortIdentifier + ".html"), typeTemplate.TransformText());
+                        var typeTemplate = new TypeTemplate { SDType = type, };
+                        File.WriteAllText(Path.Combine(StepInput.OutputPath, "type", type.ShortIdentifier + ".html"), typeTemplate.TransformText());
+                    }
                 }
             }
         }
 
-        private string GetNavigation(SDRepository repository, IStrings strings, string currentLanguage)
+        private string GetNavigation()
         {
-            var indexNavTemplate = new IndexNavTemplate { Repository = repository, Strings = strings, CurrentLanguage = currentLanguage };
+            var indexNavTemplate = new IndexNavTemplate();
             var indexNav = indexNavTemplate.TransformText().Trim();
 
             return indexNav;

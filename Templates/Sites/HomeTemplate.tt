@@ -1,14 +1,11 @@
 ﻿<#@ template language="C#" #>
 <#@ assembly name="System.Core" #>
+
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="SharpDox.Model.Repository" #>
-<#@ import namespace="SharpDox.Model.Documentation" #>
-<#@ import namespace="SharpDox.Sdk.Config" #>
-<#@ import namespace="SharpDox.Sdk" #>
+<#@ import namespace="SharpDox.Plugins.Html.Steps" #>
 <#@ import namespace="MarkdownSharp" #>
-<#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
 
 <html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -18,7 +15,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title><#= Repository.ProjectInfo.ProjectName #></title>
+        <title><#= StepInput.SDProject.ProjectName #></title>
         <meta name="viewport" content="width=device-width">
 
 		<# #if DEBUG #>
@@ -45,16 +42,12 @@
     <body>        
        <div class="ui-layout-center">
 			<div class="text-box markdown no-margin">
-				<# if(Repository.ProjectInfo.Description.Count > 0 && Repository.ProjectInfo.Description.ContainsKey(CurrentLanguage)) { #>
-					<#= new Markdown().Transform(Repository.ProjectInfo.Description[CurrentLanguage]) #>
-				<# } else if(Repository.ProjectInfo.Description.Count > 0) { #>
-					<#= new Markdown().Transform(Repository.ProjectInfo.Description["default"]) #>
+				<# if(StepInput.SDProject.Description.Count > 0 && StepInput.SDProject.Description.ContainsKey(StepInput.CurrentLanguage)) { #>
+					<#= new Markdown().Transform(StepInput.SDProject.Description[StepInput.CurrentLanguage]) #>
+				<# } else if(StepInput.SDProject.Description.Count > 0) { #>
+					<#= new Markdown().Transform(StepInput.SDProject.Description["default"]) #>
 				<# } #>
 			</div>
 		</div>
     </body>
 </html>
-
-<#+	public string CurrentLanguage { get; set; }
-	public SDRepository Repository { get; set; }
-	public IStrings Strings { get; set; } #>

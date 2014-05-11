@@ -1,10 +1,7 @@
 ﻿using SharpDox.Sdk.Config;
 using SharpDox.Sdk.Config.Attributes;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 
 namespace SharpDox.Plugins.Html
 {

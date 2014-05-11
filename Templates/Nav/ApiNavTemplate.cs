@@ -13,10 +13,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
     using System.Text;
     using System.Collections.Generic;
     using SharpDox.Model.Repository;
-    using SharpDox.Model.Documentation;
-    using SharpDox.Sdk.Config;
-    using MarkdownSharp;
-    using SharpDox.Plugins.Html.Templates.Strings;
+    using SharpDox.Plugins.Html.Steps;
     using System;
     
     /// <summary>
@@ -33,46 +30,46 @@ namespace SharpDox.Plugins.Html.Templates.Nav
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write(" \r\n");
-            this.Write(" \r\n\r\n");
+            this.Write("\r\n");
+            this.Write("\r\n");
             
-            #line 12 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\ApiNavTemplate.tt"
-	if(Repository.Articles.Count > 0) { 
+            #line 10 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\ApiNavTemplate.tt"
+	if(StepInput.SDProject.Articles.Count() > 0) { 
             
             #line default
             #line hidden
             this.Write("\t\t<ul>\r\n");
             
-            #line 14 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\ApiNavTemplate.tt"
+            #line 12 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\ApiNavTemplate.tt"
 	}
 
 	var sdNamespaces = Repository.GetAllNamespaces();
 	for (int i = 0; i < sdNamespaces.Count; i++)
 	{ 
 		var sdNamespace = sdNamespaces[i];
-		var namespaceNavTemplate = new NamespaceNavTemplate { Namespace = sdNamespace, Strings = Strings }; 
+		var namespaceNavTemplate = new NamespaceNavTemplate { Namespace = sdNamespace }; 
             
             #line default
             #line hidden
             this.Write("\t\r\n\t\t");
             
-            #line 21 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\ApiNavTemplate.tt"
+            #line 19 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\ApiNavTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"./assets/images/icons/namespace_public.png\"}}' id=\"node-namespace/{0}\"><a href=\"#namespace/{0}\">{0}</a> {1}</li>", sdNamespace.Fullname, namespaceNavTemplate.TransformText())));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 22 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\ApiNavTemplate.tt"
+            #line 20 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\ApiNavTemplate.tt"
 	} 
 
-	if(Repository.Articles.Count > 0) { 
+	if(StepInput.SDProject.Articles.Count() > 0) { 
             
             #line default
             #line hidden
-            this.Write("\t\t<ul/>\r\n");
+            this.Write("\t\t</ul>\r\n");
             
-            #line 26 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\ApiNavTemplate.tt"
+            #line 24 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\ApiNavTemplate.tt"
 	} 
             
             #line default
@@ -81,9 +78,8 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 28 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\ApiNavTemplate.tt"
-	public SDRepository Repository { get; set; }
-	public IStrings Strings { get; set; } 
+        #line 26 "D:\Github\SharpDox.Plugins.Html\Templates\Nav\ApiNavTemplate.tt"
+ public SDRepository Repository { get; set; } 
         
         #line default
         #line hidden

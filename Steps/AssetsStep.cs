@@ -1,63 +1,58 @@
-﻿using SharpDox.Model.Repository;
-using SharpDox.Plugins.Html.Templates;
-using SharpDox.UML;
+﻿using SharpDox.Plugins.Html.Templates;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using Yahoo.Yui.Compressor;
 
 namespace SharpDox.Plugins.Html.Steps
 {
-    public class AssetsStep : Step
+    internal class AssetsStep : StepBase
     {
-        public override void ProcessStep(HtmlExporter htmlExporter)
+        public AssetsStep(int progressStart, int progressEnd) : base(new StepRange(progressStart, progressEnd)) { }
+
+        public override void RunStep()
         {
-            htmlExporter.ExecuteOnStepProgress(40);
-
             #if DEBUG
-                var dynamicCss = new Css { HtmlConfig = htmlExporter.HtmlConfig };
-                EnsureFolder(Path.Combine(htmlExporter.OutputPath, "assets", "css"));
-                File.WriteAllText(Path.Combine(htmlExporter.OutputPath, "assets", "css", "dynamic.css"), dynamicCss.TransformText());
+                var dynamicCss = new Css { HtmlConfig = StepInput.HtmlConfig };
+                EnsureFolder(Path.Combine(StepInput.OutputPath, "assets", "css"));
+                File.WriteAllText(Path.Combine(StepInput.OutputPath, "assets", "css", "dynamic.css"), dynamicCss.TransformText());
 
-                CopyFolder(htmlExporter, Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), "assets", "css"), Path.Combine(htmlExporter.OutputPath, "assets", "css"));
-                CopyFolder(htmlExporter, Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), "assets", "js"), Path.Combine(htmlExporter.OutputPath, "assets", "js"));
+                CopyFolder(Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "assets", "css"), Path.Combine(StepInput.OutputPath, "assets", "css"));
+                CopyFolder(Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "assets", "js"), Path.Combine(StepInput.OutputPath, "assets", "js"));
             #else
-                CopyCompressedCss(htmlExporter, Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), "assets", "css"), Path.Combine(htmlExporter.OutputPath, "assets", "css"));
-                CopyCompressedJs(htmlExporter, Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), "assets", "js", "vendor"), Path.Combine(htmlExporter.OutputPath, "assets", "js"), "vendor.js");
-                CopyCompressedJs(htmlExporter, Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), "assets", "js", "app"), Path.Combine(htmlExporter.OutputPath, "assets", "js"), "app.js");
-                CopyCompressedJs(htmlExporter, Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), "assets", "js", "frame"), Path.Combine(htmlExporter.OutputPath, "assets", "js"), "frame.js");
+                CopyCompressedCss(Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "assets", "css"), Path.Combine(StepInput.OutputPath, "assets", "css"));
+                CopyCompressedJs(Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "assets", "js", "vendor"), Path.Combine(StepInput.OutputPath, "assets", "js"), "vendor.js");
+                CopyCompressedJs(Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "assets", "js", "app"), Path.Combine(StepInput.OutputPath, "assets", "js"), "app.js");
+                CopyCompressedJs(Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "assets", "js", "frame"), Path.Combine(StepInput.OutputPath, "assets", "js"), "frame.js");
             #endif
 
-            CopyFolder(htmlExporter, Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), "assets", "font"), Path.Combine(htmlExporter.OutputPath, "assets", "font"));
-            CopyFolder(htmlExporter, Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), "assets", "images"), Path.Combine(htmlExporter.OutputPath, "assets", "images"));
-            
-            CopyImages(htmlExporter, htmlExporter.Repository.Images, Path.Combine(htmlExporter.OutputPath, "assets"));
-            CopyImage(htmlExporter, htmlExporter.Repository.ProjectInfo.LogoPath, htmlExporter.OutputPath);
+                CopyFolder(Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "assets", "font"), Path.Combine(StepInput.OutputPath, "assets", "font"));
+                CopyFolder(Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "assets", "images"), Path.Combine(StepInput.OutputPath, "assets", "images"));
 
-            htmlExporter.CurrentStep = new CreateHtmlStep();
+            CopyImages(StepInput.SDProject.Images, Path.Combine(StepInput.OutputPath, "assets"));
+            CopyImage(StepInput.SDProject.LogoPath, StepInput.OutputPath);
         }
 
-        private void CopyFolder(HtmlExporter htmlExporter, string input, string output)
+        private void CopyFolder(string input, string output)
         {
             EnsureFolder(output);
 
             var files = Directory.EnumerateFiles(input);
             foreach (var file in files)
             {
-                htmlExporter.ExecuteOnStepMessage(string.Format(htmlExporter.HtmlStrings.CopyingFile, Path.GetFileName(file)));
+                ExecuteOnStepMessage(string.Format(StepInput.HtmlStrings.CopyingFile, Path.GetFileName(file)));
                 File.Copy(file, Path.Combine(output, Path.GetFileName(file)), true);
             }
 
             foreach (var dir in Directory.EnumerateDirectories(input))
             {
-                CopyFolder(htmlExporter, dir, Path.Combine(output, Path.GetFileName(dir)));
+                CopyFolder(dir, Path.Combine(output, Path.GetFileName(dir)));
             }
         }
 
-        private void CopyCompressedCss(HtmlExporter htmlExporter, string input, string output)
+        private void CopyCompressedCss(string input, string output)
         {
-            htmlExporter.ExecuteOnStepMessage(string.Format(htmlExporter.HtmlStrings.CopyingFile, "style.css"));
+            ExecuteOnStepMessage(string.Format(StepInput.HtmlStrings.CopyingFile, "style.css"));
             EnsureFolder(output);
 
             var completeCss = string.Empty;
@@ -67,18 +62,17 @@ namespace SharpDox.Plugins.Html.Steps
                 completeCss += File.ReadAllText(file);
             }
 
-            var dynamicCss = new Css { HtmlConfig = htmlExporter.HtmlConfig };
+            var dynamicCss = new Css { HtmlConfig = StepInput.HtmlConfig };
             completeCss += dynamicCss.TransformText();
 
-            var compressor = new CssCompressor();
-            compressor.RemoveComments = true;
+            var compressor = new CssCompressor {RemoveComments = true};
 
             File.WriteAllText(Path.Combine(output, "style.css"), compressor.Compress(completeCss));
         }
 
-        private void CopyCompressedJs(HtmlExporter htmlExporter, string input, string output, string compressedFileName)
+        private void CopyCompressedJs(string input, string output, string compressedFileName)
         {
-            htmlExporter.ExecuteOnStepMessage(string.Format(htmlExporter.HtmlStrings.CopyingFile, compressedFileName));
+            ExecuteOnStepMessage(string.Format(StepInput.HtmlStrings.CopyingFile, compressedFileName));
             EnsureFolder(output);
 
             var completeJs = string.Empty;
@@ -115,19 +109,19 @@ namespace SharpDox.Plugins.Html.Steps
             }
         }*/
 
-        private void CopyImages(HtmlExporter htmlExporter, IEnumerable<string> images, string outputPath)
+        private void CopyImages(IEnumerable<string> images, string outputPath)
         {
             foreach (var image in images)
             {
-                CopyImage(htmlExporter, image, Path.Combine(outputPath, "images"));
+                CopyImage(image, Path.Combine(outputPath, "images"));
             }
         }
 
-        private void CopyImage(HtmlExporter htmlExporter, string imagePath, string outputPath)
+        private void CopyImage(string imagePath, string outputPath)
         {
             if (!String.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
             {
-                htmlExporter.ExecuteOnStepMessage(string.Format(htmlExporter.HtmlStrings.CopyingFile, Path.GetFileName(imagePath)));
+                ExecuteOnStepMessage(string.Format(StepInput.HtmlStrings.CopyingFile, Path.GetFileName(imagePath)));
                 File.Copy(imagePath, Path.Combine(outputPath, Path.GetFileName(imagePath)), true);
             }
         }

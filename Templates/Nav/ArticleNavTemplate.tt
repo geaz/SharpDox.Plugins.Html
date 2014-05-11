@@ -1,12 +1,11 @@
 ﻿<#@ template language="C#" #>
 <#@ assembly name="System.Core" #>
+
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="SharpDox.Model.Repository" #>
-<#@ import namespace="SharpDox.Model.Documentation" #>
-<#@ import namespace="SharpDox.Sdk.Config" #>
-<#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
+<#@ import namespace="SharpDox.Model.Documentation.Article" #>
+<#@ import namespace="SharpDox.Plugins.Html.Steps" #>
 
 <#  if(Article.Children.Count > 0) { #>
 		<ul>
@@ -17,19 +16,19 @@
 		var article = Article.Children[i];
 		var dataUrl = string.IsNullOrEmpty(article.Filename) ? Guid.NewGuid().ToString() : article.Filename;
 
-		if (article.Content == "SDDoc")
+		if (article is SDDocPlaceholder)
 		{ #>		
-			<# var apiNavTemplate = new ApiNavTemplate { Repository = Repository, Strings = Strings }; #>						
+			<# var apiNavTemplate = new ApiNavTemplate { Repository = StepInput.SDProject.Repositories[((SDDocPlaceholder)article).SolutionFile] }; #>						
 			<#= string.Format("<li data-jstree='{{\"icon\":\"icon-code\"}}' id=\"node-article/{0}\">{1} {2}</li>", dataUrl, article.Title, apiNavTemplate.TransformText()) #>
 		<# }
 		else if (!string.IsNullOrEmpty(article.Content))
 		{ #>
-			<# var articleNavTemplate = new ArticleNavTemplate { Article = article, Repository = Repository, Strings = Strings }; #>		
+			<# var articleNavTemplate = new ArticleNavTemplate { Article = article }; #>		
 			<#= string.Format("<li data-jstree='{{\"icon\":\"icon-file-text\"}}' id=\"node-article/{0}\"><a href=\"#article/{0}\">{1}</a>{2}</li>", dataUrl, article.Title, articleNavTemplate.TransformText()) #>
 		<# }
 		else
 		{ #>
-			<# var articleNavTemplate = new ArticleNavTemplate { Article = article, Repository = Repository, Strings = Strings }; #>
+			<# var articleNavTemplate = new ArticleNavTemplate { Article = article }; #>
 			<#= string.Format("<li data-jstree='{{\"icon\":\"icon-folder-close\"}}' id=\"node-article/{0}\">{1} {2}</li>", dataUrl, article.Title, articleNavTemplate.TransformText()) #>
 		<# }
 	} 
@@ -38,6 +37,4 @@
 		</ul>	
 <#	}	#>
 
-<#+	public SDArticle Article { get; set; }
-	public SDRepository Repository { get; set; }
-	public IStrings Strings { get; set; } #>
+<#+	public SDArticle Article { get; set; } #>

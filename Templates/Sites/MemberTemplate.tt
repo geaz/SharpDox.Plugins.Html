@@ -1,19 +1,20 @@
 ﻿<#@ template language="C#" #>
 <#@ assembly name="System.Core" #>
+
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Net" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="SharpDox.Model.Repository" #>
-<#@ import namespace="SharpDox.Model.Repository.Members" #>
-<#@ import namespace="SharpDox.Model.Documentation.Token" #>
-<#@ import namespace="SharpDox.Sdk.Config" #>
 <#@ import namespace="SharpDox.Sdk" #>
 <#@ import namespace="SharpDox.UML" #>
+<#@ import namespace="SharpDox.Model.Repository.Members" #>
+<#@ import namespace="SharpDox.Plugins.Html.Steps" #>
+<#@ import namespace="SharpDox.Model.Documentation.Token" #>
 <#@ import namespace="MarkdownSharp" #>
-<#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
 
 <#
+	var currentLanguage = SDMember.Documentation.ContainsKey(StepInput.CurrentLanguage) ? StepInput.CurrentLanguage : "default";
+
 	var imgurl = string.Empty;
 	var name = SDMember.Name;
 	if(SDMember is SDField){
@@ -35,9 +36,9 @@
 	<div class="member-header">		
 		<a href="#"><i class="icon-caret-right"></i><img src="<#= imgurl #>"/> <p><#= name #></p></a>
 		<# if(SDMember.Documentation.Count > 0) { #>
-			<# if(SDMember.Documentation[CurrentLanguage].Summary.Count > 0) { #>
+			<# if(SDMember.Documentation[currentLanguage].Summary.Count > 0) { #>
 				<div class="summary markdown">
-					<#= new Markdown().Transform(SDMember.Documentation[CurrentLanguage].Summary.ToMarkdown()) #>
+					<#= new Markdown().Transform(SDMember.Documentation[currentLanguage].Summary.ToMarkdown()) #>
 				</div>
 			<# } #>
 		<# } #>
@@ -50,7 +51,7 @@
 		</div>		
         
 		<# if(SDMember is SDField){ #>
-			<p class="member-box-title"><#= Strings.ConstValue #></p>
+			<p class="member-box-title"><#= StepInput.DocStrings.ConstValue #></p>
 			<div class="member-doc-box markdown">
 				<#= ((SDField)SDMember).ConstantValue #>
 			</div>
@@ -58,10 +59,10 @@
 
 		<# if(SDMember.Documentation.Count > 0) { #>
 		
-			<# if(SDMember.Documentation[CurrentLanguage].Params.Count > 0) { #>
-				<p class="member-box-title"><#= Strings.Parameters #></p>
+			<# if(SDMember.Documentation[currentLanguage].Params.Count > 0) { #>
+				<p class="member-box-title"><#= StepInput.DocStrings.Parameters #></p>
 				<div class="member-doc-box markdown">
-					<# foreach(var parameter in SDMember.Documentation[CurrentLanguage].Params) { #>
+					<# foreach(var parameter in SDMember.Documentation[currentLanguage].Params) { #>
 						<p class="key"><#= parameter.Key #></p>
 						
 						<# if(SDMember is SDMethod){ 
@@ -80,10 +81,10 @@
 				</div>
 			<# } #>
 
-			<# if(SDMember.Documentation[CurrentLanguage].TypeParams.Count > 0) { #>
-				<p class="member-box-title"><#= Strings.TypeParameters #></p>
+			<# if(SDMember.Documentation[currentLanguage].TypeParams.Count > 0) { #>
+				<p class="member-box-title"><#= StepInput.DocStrings.TypeParameters #></p>
 				<div class="member-doc-box markdown">
-					<# foreach(var typeParameter in SDMember.Documentation[CurrentLanguage].TypeParams) { #>
+					<# foreach(var typeParameter in SDMember.Documentation[currentLanguage].TypeParams) { #>
 						<p class="key"><#= typeParameter.Key #></p>						
 						<div class="inline">
 							<#= new Markdown().Transform(typeParameter.Value.ToMarkdown()) #>
@@ -92,17 +93,17 @@
 				</div>
 			<# } #>
 
-			<# if(SDMember.Documentation[CurrentLanguage].Returns.Count > 0) { #>
-				<p class="member-box-title"><#= Strings.Returns #></p>
+			<# if(SDMember.Documentation[currentLanguage].Returns.Count > 0) { #>
+				<p class="member-box-title"><#= StepInput.DocStrings.Returns #></p>
 				<div class="member-doc-box">
-					<#= new Markdown().Transform(SDMember.Documentation[CurrentLanguage].Returns.ToMarkdown()) #>
+					<#= new Markdown().Transform(SDMember.Documentation[currentLanguage].Returns.ToMarkdown()) #>
 				</div>
 			<# } #>
 
-			<# if(SDMember.Documentation[CurrentLanguage].Exceptions.Count > 0) { #>
-				<p class="member-box-title"><#= Strings.Exceptions #></p>
+			<# if(SDMember.Documentation[currentLanguage].Exceptions.Count > 0) { #>
+				<p class="member-box-title"><#= StepInput.DocStrings.Exceptions #></p>
 				<div class="member-doc-box markdown">
-					<# foreach(var exception in SDMember.Documentation[CurrentLanguage].Exceptions) { #>
+					<# foreach(var exception in SDMember.Documentation[currentLanguage].Exceptions) { #>
 						<p class="key"><#= exception.Key #></p>
 						<div class="inline">
 							<#= new Markdown().Transform(exception.Value.ToMarkdown()) #>
@@ -111,31 +112,31 @@
 				</div>
 			<# } #>
 
-			<# if(SDMember.Documentation[CurrentLanguage].Remarks.Count > 0) { #>
-				<p class="member-box-title"><#= Strings.Remarks #></p>
+			<# if(SDMember.Documentation[currentLanguage].Remarks.Count > 0) { #>
+				<p class="member-box-title"><#= StepInput.DocStrings.Remarks #></p>
 				<div class="member-doc-box markdown">
-					<#= new Markdown().Transform(SDMember.Documentation[CurrentLanguage].Remarks.ToMarkdown()) #>
+					<#= new Markdown().Transform(SDMember.Documentation[currentLanguage].Remarks.ToMarkdown()) #>
 				</div>
 			<# } #>
 
-			<# if(SDMember.Documentation[CurrentLanguage].Example.Count > 0) { #>
-				<p class="member-box-title"><#= Strings.Example #></p>
+			<# if(SDMember.Documentation[currentLanguage].Example.Count > 0) { #>
+				<p class="member-box-title"><#= StepInput.DocStrings.Example #></p>
 				<div class="member-doc-box markdown">
-					<#= new Markdown().Transform(SDMember.Documentation[CurrentLanguage].Example.ToMarkdown()) #>
+					<#= new Markdown().Transform(SDMember.Documentation[currentLanguage].Example.ToMarkdown()) #>
 				</div>
 			<# } #>
 						
-			<# if(SDMember.Documentation[CurrentLanguage].SeeAlsos.Count > 0) { #>
-				<p class="member-box-title"><#= Strings.SeeAlso #></p>
+			<# if(SDMember.Documentation[currentLanguage].SeeAlsos.Count > 0) { #>
+				<p class="member-box-title"><#= StepInput.DocStrings.SeeAlso #></p>
 				<div class="list-box">
 					<ul>
-					<# foreach(var sdToken in SDMember.Documentation[CurrentLanguage].SeeAlsos) 
+					<# foreach(var sdToken in SDMember.Documentation[currentLanguage].SeeAlsos) 
 					{ 
 						var seeAlso = (SDSeeToken)sdToken;
 						if(!string.IsNullOrEmpty(seeAlso.DeclaringType))
 						{
 							var identifier = string.Format("{0}.{1}", seeAlso.DeclaringType, seeAlso.Name);
-							var sdMember = Repository.GetMemberByIdentifier(identifier);
+							var sdMember = StepInput.SDProject.GetMemberByIdentifier(identifier);
 							if(sdMember != null)
                             {
 								#> <li><a href="../type/<#= sdMember.DeclaringType.ShortIdentifier #>.html#<#= sdMember.ShortIdentifier #>"><#= sdMember.Name #></a></li> <#
@@ -144,7 +145,7 @@
 						else
 						{
 							var identifier = string.Format("{0}.{1}", seeAlso.Namespace, seeAlso.Name);
-							var sdType = Repository.GetTypeByIdentifier(identifier);
+							var sdType = StepInput.SDProject.GetTypeByIdentifier(identifier);
 							if(sdType != null)
                             {
 								#> <li><a href="../type/<#= sdType.ShortIdentifier #>.html"><#= sdType.Fullname #></a></li> <#
@@ -157,22 +158,17 @@
 
 		<# } #>
 
-		<# if(SDMember is SDMethod && !((SDMethod)SDMember).IsSequenceDiagramEmpty() && !Config.DisableSequenceDiagrams) { #>
+		<# if(SDMember is SDMethod && !((SDMethod)SDMember).IsSequenceDiagramEmpty() && !StepInput.HtmlConfig.DisableSequenceDiagrams) { #>
 			<div id="<#= SDMember.Name #>-diagram" class="sd-sequence-diagram svgpan">
-				<#	var sequenceSvg = ((SDMethod)SDMember).GetSequenceDiagram(Repository.GetAllTypes()).ToSvg();
-					var template = new Templater(Repository, sequenceSvg); 
-					var helper = new Helper(Repository); #>
+				<#	var sequenceSvg = ((SDMethod)SDMember).GetSequenceDiagram(StepInput.SDProject).ToSvg();
+					var template = new Templater(StepInput.SDProject, sequenceSvg); 
+					var helper = new Helper(StepInput.SDProject); #>
 				<#= template.TransformText(helper.TransformLinkToken) #>
 			</div>
-			<div class="legend"><p><#= Strings.PanZoom #></p></div>
+			<div class="legend"><p><#= StepInput.DocStrings.PanZoom #></p></div>
 		<# } #>
 
 	</div>
 </div>
 
-<#+ public HtmlConfig Config { get; set; }
-	public IStrings Strings { get; set; }
-	public string CurrentLanguage { get; set; }
-	public SDRepository Repository { get; set; }
-    public SDType SDType { get; set; }
-	public SDMember SDMember { get; set; } #>
+<#+ public SDMember SDMember { get; set; } #>

@@ -1,46 +1,42 @@
 ﻿using System.IO;
+using SharpDox.Model.Documentation.Article;
 using SharpDox.Plugins.Html.Templates.Sites;
-using SharpDox.Model.Documentation;
-using SharpDox.Model.Repository;
-using SharpDox.Plugins.Html.Templates.Strings;
 
 namespace SharpDox.Plugins.Html.Steps
 {
-    public class CreateArticleStep : Step
+    internal class CreateArticleStep : StepBase
     {
-        public override void ProcessStep(HtmlExporter htmlExporter)
-        {
-            htmlExporter.ExecuteOnStepProgress(20);
+        public CreateArticleStep(int progressStart, int progressEnd) : base(new StepRange(progressStart, progressEnd)) { }
 
-            if (htmlExporter.Repository.Articles.Count > 0)
+        public override void RunStep()
+        {
+            if (StepInput.SDProject.Articles.Count > 0)
             {
-                var articles = htmlExporter.Repository.Articles.ContainsKey(htmlExporter.CurrentLanguage)
-                    ? htmlExporter.Repository.Articles[htmlExporter.CurrentLanguage]
-                    : htmlExporter.Repository.Articles["default"];
+                var articles = StepInput.SDProject.Articles.ContainsKey(StepInput.CurrentLanguage)
+                    ? StepInput.SDProject.Articles[StepInput.CurrentLanguage]
+                    : StepInput.SDProject.Articles["default"];
 
                 foreach (var article in articles)
                 {
-                    htmlExporter.ExecuteOnStepMessage(string.Format(htmlExporter.HtmlStrings.CreatingArticle, article.Title));
-                    CreateArticle(article, htmlExporter.Repository, htmlExporter.CurrentStrings, htmlExporter.OutputPath);
+                    ExecuteOnStepMessage(string.Format(StepInput.HtmlStrings.CreatingArticle, article.Title));
+                    CreateArticle(article);
                 }
             }
-
-            htmlExporter.CurrentStep = new AssetsStep();
         }
 
-        private void CreateArticle(SDArticle article, SDRepository repository, IStrings strings, string outputPath)
+        private void CreateArticle(SDArticle article)
         {
             if (!string.IsNullOrEmpty(article.Content) && article.Content != "SDDoc")
             {
-                var articleTemplate = new ArticleTemplate { Repository = repository, Article = article, Strings = strings };
-                File.WriteAllText(Path.Combine(outputPath, "article", string.Format("{0}.html", article.Filename)), articleTemplate.TransformText());
+                var articleTemplate = new ArticleTemplate { Article = article };
+                File.WriteAllText(Path.Combine(StepInput.OutputPath, "article", string.Format("{0}.html", article.Filename)), articleTemplate.TransformText());
             }
 
-            if (article.Content != "SDDoc")
+            if (!(article is SDDocPlaceholder))
             {
                 foreach (var child in article.Children)
                 {
-                    CreateArticle(child, repository, strings, outputPath);
+                    CreateArticle(child);
                 }
             }
         }

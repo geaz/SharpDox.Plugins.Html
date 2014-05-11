@@ -1,16 +1,18 @@
 ﻿<#@ template language="C#" #>
 <#@ assembly name="System.Core" #>
+
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Net" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="SharpDox.Model.Repository" #>
-<#@ import namespace="SharpDox.Model.Documentation.Token" #>
-<#@ import namespace="SharpDox.Sdk.Config" #>
 <#@ import namespace="SharpDox.Sdk" #>
 <#@ import namespace="SharpDox.UML" #>
+<#@ import namespace="SharpDox.Model.Repository" #>
+<#@ import namespace="SharpDox.Plugins.Html.Steps" #>
+<#@ import namespace="SharpDox.Model.Documentation.Token" #>
 <#@ import namespace="MarkdownSharp" #>
-<#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
+
+<# var currentLanguage = SDType.Documentation.ContainsKey(StepInput.CurrentLanguage) ? StepInput.CurrentLanguage : "default"; #>
 
 <html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -20,7 +22,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title><#= Repository.ProjectInfo.ProjectName #> - <#= SDType.Name #></title>
+        <title><#= StepInput.SDProject.ProjectName #> - <#= SDType.Name #></title>
         <meta name="viewport" content="width=device-width">
 
 		<# #if DEBUG #>
@@ -109,19 +111,19 @@
 			<div class="toolbar">
 
 				<# if(SDType.Fields.Count > 0) { #>
-					<a href="#" data-dropdown="#dropdown-1" class="button"><img src="../assets/images/icons/field_public.png"/> <#= Strings.Fields #> <span class="info">(<#= SDType.Fields.Count #>)</span> <i class="icon-caret-down"></i></a>
+					<a href="#" data-dropdown="#dropdown-1" class="button"><img src="../assets/images/icons/field_public.png"/> <#= StepInput.DocStrings.Fields #> <span class="info">(<#= SDType.Fields.Count #>)</span> <i class="icon-caret-down"></i></a>
 				<# } if(SDType.Events.Count > 0) { #>
-					<a href="#" data-dropdown="#dropdown-2" class="button"><img src="../assets/images/icons/class_public.png"/> <#= Strings.Events #> <span class="info">(<#= SDType.Events.Count #>)</span> <i class="icon-caret-down"></i></a>
+					<a href="#" data-dropdown="#dropdown-2" class="button"><img src="../assets/images/icons/class_public.png"/> <#= StepInput.DocStrings.Events #> <span class="info">(<#= SDType.Events.Count #>)</span> <i class="icon-caret-down"></i></a>
 				<# } if(SDType.Methods.Count > 0 || SDType.Constructors.Count > 0) { #>
-					<a href="#" data-dropdown="#dropdown-3" class="button"><img src="../assets/images/icons/method_public.png"/> <#= Strings.Methods #> <span class="info">(<#= SDType.Constructors.Count + SDType.Methods.Count #>)</span> <i class="icon-caret-down"></i></a>
+					<a href="#" data-dropdown="#dropdown-3" class="button"><img src="../assets/images/icons/method_public.png"/> <#= StepInput.DocStrings.Methods #> <span class="info">(<#= SDType.Constructors.Count + SDType.Methods.Count #>)</span> <i class="icon-caret-down"></i></a>
 				<# } if(SDType.Properties.Count > 0) { #>
-					<a href="#" data-dropdown="#dropdown-4" class="button"><img src="../assets/images/icons/properties_public.png"/> <#= Strings.Properties #> <span class="info">(<#= SDType.Properties.Count #>)</span> <i class="icon-caret-down"></i></a>
+					<a href="#" data-dropdown="#dropdown-4" class="button"><img src="../assets/images/icons/properties_public.png"/> <#= StepInput.DocStrings.Properties #> <span class="info">(<#= SDType.Properties.Count #>)</span> <i class="icon-caret-down"></i></a>
 				<# } #>
 
 				<div class="right">
 					<span class="toolbar-info"> Namespace: <#= SDType.Namespace.Fullname #></span>
-					<a href="#" id="expand-all-button" class="button"><i class="icon-align-justify" title="<#= Strings.ExpandAll #>"></i></a>
-					<a href="#" id="print-button" class="button"><i class="icon-print" title="<#= Strings.Print #>"></i></a>
+					<a href="#" id="expand-all-button" class="button"><i class="icon-align-justify" title="<#= StepInput.DocStrings.ExpandAll #>"></i></a>
+					<a href="#" id="print-button" class="button"><i class="icon-print" title="<#= StepInput.DocStrings.Print #>"></i></a>
 				</div>
 				<div style="clear:both;"></div>
 			</div>
@@ -130,13 +132,13 @@
 		<div class="ui-layout-center">
 
 			<div>
-				<h3 class="box-title first-heading"><#= Strings.Syntax #></h3>					
+				<h3 class="box-title first-heading"><#= StepInput.DocStrings.Syntax #></h3>					
 				<div class="syntax-box">
 					<pre class="wrap-pre"><code><#= WebUtility.HtmlEncode(SDType.Syntax) #></code></pre>
 				</div>
 
 				<# if(SDType.BaseTypes.Count > 0) { #>
-					<h3 class="box-title"><#= Strings.BaseType #></h3>
+					<h3 class="box-title"><#= StepInput.DocStrings.BaseType #></h3>
 					<div class="list-box">
 						<ul>
 						<# foreach(var baseType in SDType.BaseTypes) { 
@@ -151,7 +153,7 @@
 				<# } #>
 
 				<# if(SDType.ImplementedInterfaces.Count > 0) { #>
-					<h3 class="box-title"><#= Strings.Implements #></h3>
+					<h3 class="box-title"><#= StepInput.DocStrings.Implements #></h3>
 					<div class="list-box">
 						<ul>
 						<# foreach(var implementedInterface in SDType.ImplementedInterfaces) {
@@ -167,38 +169,38 @@
         
 				<# if(SDType.Documentation.Count > 0) { #>
 
-					<# if(SDType.Documentation[CurrentLanguage].Summary.Count > 0) { #>
-						<h3 class="box-title"><#= Strings.Summary #></h3>
+					<# if(SDType.Documentation[currentLanguage].Summary.Count > 0) { #>
+						<h3 class="box-title"><#= StepInput.DocStrings.Summary #></h3>
 						<div class="doc-box markdown">
-							<#= new Markdown().Transform(SDType.Documentation[CurrentLanguage].Summary.ToMarkdown()) #>
+							<#= new Markdown().Transform(SDType.Documentation[currentLanguage].Summary.ToMarkdown()) #>
 						</div>
 					<# } #>
 
-					<# if(SDType.Documentation[CurrentLanguage].Remarks.Count > 0) { #>
-						<h3 class="box-title"><#= Strings.Remarks #></h3>
+					<# if(SDType.Documentation[currentLanguage].Remarks.Count > 0) { #>
+						<h3 class="box-title"><#= StepInput.DocStrings.Remarks #></h3>
 						<div class="doc-box markdown">
-							<#= new Markdown().Transform(SDType.Documentation[CurrentLanguage].Remarks.ToMarkdown()) #>
+							<#= new Markdown().Transform(SDType.Documentation[currentLanguage].Remarks.ToMarkdown()) #>
 						</div>
 					<# } #>
 
-					<# if(SDType.Documentation[CurrentLanguage].Example.Count > 0) { #>
-						<h3 class="box-title"><#= Strings.Example #></h3>
+					<# if(SDType.Documentation[currentLanguage].Example.Count > 0) { #>
+						<h3 class="box-title"><#= StepInput.DocStrings.Example #></h3>
 						<div class="doc-box markdown">
-							<#= new Markdown().Transform(SDType.Documentation[CurrentLanguage].Example.ToMarkdown()) #>
+							<#= new Markdown().Transform(SDType.Documentation[currentLanguage].Example.ToMarkdown()) #>
 						</div>
 					<# } #>
 
-					<# if(SDType.Documentation[CurrentLanguage].Returns.Count > 0) { #>
-						<h3 class="box-title"><#= Strings.Returns #></h3>
+					<# if(SDType.Documentation[currentLanguage].Returns.Count > 0) { #>
+						<h3 class="box-title"><#= StepInput.DocStrings.Returns #></h3>
 						<div class="doc-box markdown">
-							<#= new Markdown().Transform(SDType.Documentation[CurrentLanguage].Returns.ToMarkdown()) #>
+							<#= new Markdown().Transform(SDType.Documentation[currentLanguage].Returns.ToMarkdown()) #>
 						</div>
 					<# } #>
 
-					<# if(SDType.Documentation[CurrentLanguage].Exceptions.Count > 0) { #>
-						<h3 class="box-title"><#= Strings.Exceptions #></h3>
+					<# if(SDType.Documentation[currentLanguage].Exceptions.Count > 0) { #>
+						<h3 class="box-title"><#= StepInput.DocStrings.Exceptions #></h3>
 						<div class="doc-box markdown">
-							<# foreach(var exception in SDType.Documentation[CurrentLanguage].Exceptions) { #>
+							<# foreach(var exception in SDType.Documentation[currentLanguage].Exceptions) { #>
 								<p><#= exception.Key #></p>
 								<div class="inline">
 									<#= new Markdown().Transform(exception.Value.ToMarkdown()) #>
@@ -207,10 +209,10 @@
 						</div>
 					<# } #>
 
-					<# if(SDType.Documentation[CurrentLanguage].Params.Count > 0) { #>
-						<h3 class="box-title"><#= Strings.Parameters #></h3>
+					<# if(SDType.Documentation[currentLanguage].Params.Count > 0) { #>
+						<h3 class="box-title"><#= StepInput.DocStrings.Parameters #></h3>
 						<div class="doc-box markdown">
-							<# foreach(var parameter in SDType.Documentation[CurrentLanguage].Params) { #>
+							<# foreach(var parameter in SDType.Documentation[currentLanguage].Params) { #>
 								<p><#= parameter.Key #></p>
 								<div class="inline">
 									<#= new Markdown().Transform(parameter.Value.ToMarkdown()) #>
@@ -219,10 +221,10 @@
 						</div>
 					<# } #>
 
-					<# if(SDType.Documentation[CurrentLanguage].TypeParams.Count > 0) { #>
-						<h3 class="box-title"><#= Strings.TypeParameters #></h3>
+					<# if(SDType.Documentation[currentLanguage].TypeParams.Count > 0) { #>
+						<h3 class="box-title"><#= StepInput.DocStrings.TypeParameters #></h3>
 						<div class="doc-box markdown">
-							<# foreach(var typeParameter in SDType.Documentation[CurrentLanguage].TypeParams) { #>
+							<# foreach(var typeParameter in SDType.Documentation[currentLanguage].TypeParams) { #>
 								<p><#= typeParameter.Key #></p>
 								<div class="inline">
 									<#= new Markdown().Transform(typeParameter.Value.ToMarkdown()) #>
@@ -231,17 +233,17 @@
 						</div>
 					<# } #>
 
-					<# if(SDType.Documentation[CurrentLanguage].SeeAlsos.Count > 0) { #>
-						<h3 class="box-title"><#= Strings.SeeAlso #></h3>
+					<# if(SDType.Documentation[currentLanguage].SeeAlsos.Count > 0) { #>
+						<h3 class="box-title"><#= StepInput.DocStrings.SeeAlso #></h3>
 						<div class="list-box">
 							<ul>
-							<# foreach(var sdToken in SDType.Documentation[CurrentLanguage].SeeAlsos) 
+							<# foreach(var sdToken in SDType.Documentation[currentLanguage].SeeAlsos) 
 							{ 
 								var seeAlso = (SDSeeToken)sdToken;
 								if(!string.IsNullOrEmpty(seeAlso.DeclaringType))
 								{
 									var identifier = string.Format("{0}.{1}", seeAlso.DeclaringType, seeAlso.Name);
-									var sdMember = Repository.GetMemberByIdentifier(identifier);
+									var sdMember = StepInput.SDProject.GetMemberByIdentifier(identifier);
 									if(sdMember != null)
 									{
 										#> <li><a href="../type/<#= sdMember.DeclaringType.ShortIdentifier #>.html#<#= sdMember.ShortIdentifier #>"><#= sdMember.Name #></a></li> <#
@@ -250,7 +252,7 @@
 								else
 								{
 									var identifier = string.Format("{0}.{1}", seeAlso.Namespace, seeAlso.Name);
-									var sdType = Repository.GetTypeByIdentifier(identifier);
+									var sdType = StepInput.SDProject.GetTypeByIdentifier(identifier);
 									if(sdType != null)
 									{
 										#> <li><a href="../type/<#= sdType.ShortIdentifier #>.html"><#= sdType.Fullname #></a></li> <#
@@ -264,7 +266,7 @@
 				<# } #>
 
 				<# if(SDType.Uses.Count > 0) { #>
-					<h3 class="box-title"><#= Strings.Uses #></h3>
+					<h3 class="box-title"><#= StepInput.DocStrings.Uses #></h3>
 					<div class="list-box">
 						<ul>
 						<# foreach(var use in SDType.Uses) { #>
@@ -275,7 +277,7 @@
 				<# } #>
 
 				<# if(SDType.UsedBy.Count > 0) { #>
-					<h3 class="box-title"><#= Strings.UsedBy #></h3>
+					<h3 class="box-title"><#= StepInput.DocStrings.UsedBy #></h3>
 					<div class="list-box">
 						<ul>
 						<# foreach(var used in SDType.UsedBy) { #>
@@ -286,91 +288,54 @@
 				<# } #>
 
 				<# if(SDType.Fields.Count > 0) { #>
-					<h3 class="box-title"><#= Strings.Fields #></h3>
+					<h3 class="box-title"><#= StepInput.DocStrings.Fields #></h3>
 					<# foreach (var field in SDType.Fields)
 					{
-						var memberTemplate = new MemberTemplate
-						{
-							Strings = Strings,
-							CurrentLanguage = field.Documentation.ContainsKey(CurrentLanguage) ? CurrentLanguage : "default",
-							SDType = SDType,
-							SDMember = field,
-							Repository = Repository
-						}; #>
+						var memberTemplate = new MemberTemplate { SDMember = field }; #>
 						<#= memberTemplate.TransformText() #>
 					<# } #>
 				<# } #>
 
 				<# if(SDType.Events.Count > 0) { #>
-					<h3 class="box-title"><#= Strings.Events #></h3>
+					<h3 class="box-title"><#= StepInput.DocStrings.Events #></h3>
 					<# foreach (var eve in SDType.Events)
 					{
-						var memberTemplate = new MemberTemplate
-						{
-							Strings = Strings,
-							CurrentLanguage = eve.Documentation.ContainsKey(CurrentLanguage) ? CurrentLanguage : "default",
-							SDType = SDType,
-							SDMember = eve,
-							Repository = Repository
-						}; #>
+						var memberTemplate = new MemberTemplate { SDMember = eve }; #>
 						<#= memberTemplate.TransformText() #>
 					<# } #>
 				<# } #>
 
 				<# if(SDType.Methods.Count > 0 || SDType.Constructors.Count > 0) { #>
-					<h3 class="box-title"><#= Strings.Methods #></h3>
+					<h3 class="box-title"><#= StepInput.DocStrings.Methods #></h3>
 					<# foreach (var constructor in SDType.Constructors)
 					{
-						var memberTemplate = new MemberTemplate
-						{
-							Strings = Strings,
-							CurrentLanguage = constructor.Documentation.ContainsKey(CurrentLanguage) ? CurrentLanguage : "default",
-							SDType = SDType,
-							SDMember = constructor,
-							Repository = Repository,
-							Config = Config
-						}; #>
+						var memberTemplate = new MemberTemplate { SDMember = constructor }; #>
 						<#= memberTemplate.TransformText() #>
 					<# } foreach (var method in SDType.Methods)
 					{
-						var memberTemplate = new MemberTemplate
-						{
-							Strings = Strings,
-							CurrentLanguage = method.Documentation.ContainsKey(CurrentLanguage) ? CurrentLanguage : "default",
-							SDType = SDType,
-							SDMember = method,
-							Repository = Repository,
-							Config = Config
-						}; #>
+						var memberTemplate = new MemberTemplate { SDMember = method }; #>
 						<#= memberTemplate.TransformText() #>
 					<#  } #>
 				<# } #>
 
 				<# if(SDType.Properties.Count > 0) { #>
-					<h3 class="box-title"><#= Strings.Properties #></h3>
+					<h3 class="box-title"><#= StepInput.DocStrings.Properties #></h3>
 					<# foreach (var property in SDType.Properties)
 					{
-						var memberTemplate = new MemberTemplate
-						{
-							Strings = Strings,
-							CurrentLanguage = property.Documentation.ContainsKey(CurrentLanguage) ? CurrentLanguage : "default",
-							SDType = SDType,
-							SDMember = property,
-							Repository = Repository
-						}; #>
+						var memberTemplate = new MemberTemplate { SDMember = property }; #>
 						<#= memberTemplate.TransformText() #>
 					<# } #>
 				<# } #>
 
 				<#	if(!SDType.IsClassDiagramEmpty()) {  #>
-					<h3 class="box-title"><#= Strings.ClassDiagram #></h3>
+					<h3 class="box-title"><#= StepInput.DocStrings.ClassDiagram #></h3>
 					<div id="sd-class-diagram" class="svgpan">
 						<#	var svg = SDType.GetClassDiagram().ToSvg();
-							var template = new Templater(Repository, svg); 
-							var helper = new Helper(Repository); #>
+							var template = new Templater(StepInput.SDProject, svg); 
+							var helper = new Helper(StepInput.SDProject); #>
 						<#= template.TransformText(helper.TransformLinkToken) #>
 					</div>
-					<div class="legend"><p><#= Strings.PanZoom #></p></div>
+					<div class="legend"><p><#= StepInput.DocStrings.PanZoom #></p></div>
 				<# } #>
 			</div>
 		</div>
@@ -378,8 +343,4 @@
     </body>
 </html>
 
-<#+ public HtmlConfig Config { get; set; }
-	public IStrings Strings { get; set; }
-	public string CurrentLanguage { get; set; }
-	public SDRepository Repository { get; set; }
-    public SDType SDType { get; set; } #>
+<#+ public SDType SDType { get; set; } #>

@@ -1,12 +1,10 @@
 ﻿<#@ template language="C#" #>
 <#@ assembly name="System.Core" #>
+
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="SharpDox.Model.Repository" #>
-<#@ import namespace="SharpDox.Model.Documentation" #>
-<#@ import namespace="SharpDox.Sdk.Config" #>
-<#@ import namespace="SharpDox.Plugins.Html.Templates.Strings" #> 
+<#@ import namespace="SharpDox.Model.Repository" #> 
 
 <ul>
 
@@ -18,5 +16,4 @@
 
 </ul>
 
-<#+	public SDNamespace Namespace { get; set; } 
-	public IStrings Strings { get; set; } #>
+<#+	public SDNamespace Namespace { get; set; } #>
