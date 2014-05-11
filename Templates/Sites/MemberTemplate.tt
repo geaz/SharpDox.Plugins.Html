@@ -50,7 +50,7 @@
 			<pre class="wrap-pre"><code><#= WebUtility.HtmlEncode(SDMember.Syntax) #></code></pre>
 		</div>		
         
-		<# if(SDMember is SDField){ #>
+		<# if(SDMember is SDField && !string.IsNullOrEmpty(((SDField)SDMember).ConstantValue)){ #>
 			<p class="member-box-title"><#= StepInput.DocStrings.ConstValue #></p>
 			<div class="member-doc-box markdown">
 				<#= ((SDField)SDMember).ConstantValue #>

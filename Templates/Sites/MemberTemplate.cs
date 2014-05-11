@@ -129,7 +129,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("</code></pre>\r\n\t\t</div>\t\t\r\n        \r\n\t\t");
             
             #line 53 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\MemberTemplate.tt"
- if(SDMember is SDField){ 
+ if(SDMember is SDField && !string.IsNullOrEmpty(((SDField)SDMember).ConstantValue)){ 
             
             #line default
             #line hidden
