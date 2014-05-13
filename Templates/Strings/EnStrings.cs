@@ -25,7 +25,7 @@
         public string TypeParameters { get { return "Type Parameters"; } }
         public string Uses { get { return "Uses"; } }
         public string UsedBy { get { return "Used by"; } }
-        public string PanZoom { get { return "Drag to pan - Use Mousewheel to zoom"; } }
+        public string PanZoom { get { return "Drag to pan - Use Mousewheel + Alt to zoom"; } }
         public string Article { get { return "Article"; } }
         public string Members { get { return "Members"; } }
         public string Fields { get { return "Fields"; } }

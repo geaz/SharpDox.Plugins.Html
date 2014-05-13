@@ -25,7 +25,7 @@
         public string TypeParameters { get { return "Typ Parameter"; } }
         public string Uses { get { return "Benutzt"; } }
         public string UsedBy { get { return "Genutzt von"; } }
-        public string PanZoom { get { return "Verschieben: Diagram halten und ziehen - Zoomen: Mausrad benutzen"; } }
+        public string PanZoom { get { return "Verschieben: Diagram halten und ziehen - Zoomen: Alt + Mausrad benutzen"; } }
         public string Article { get { return "Artikel"; } }
         public string Members { get { return "Mitglieder"; } }
         public string Fields { get { return "Felder"; } }

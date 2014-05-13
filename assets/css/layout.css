@@ -258,7 +258,6 @@
 }
 
 .member-content{
-	display:none;
 	padding: 15px;
 }
 
@@ -333,6 +332,7 @@
     position: relative;
     margin: 15px 35px 0;
 	overflow:hidden;
+    resize: vertical;
 }
 
 .sd-sequence-diagram svg, #sd-class-diagram svg{
