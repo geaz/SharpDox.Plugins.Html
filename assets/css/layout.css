@@ -11,7 +11,7 @@
 }
 
 .ui-outer-center{
-    padding: 0px;
+    padding: 0px!important;
 }
 
 .ui-outer-north{
@@ -67,8 +67,8 @@
     margin:0;
 }
 
-.ui-inner-center{
-	padding: 10px 25px;
+.ui-layout-center{
+	padding: 25px;
 	overflow: auto;
 }
 
