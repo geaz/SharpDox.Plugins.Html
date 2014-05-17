@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using SharpDox.Model;
+﻿using SharpDox.Model;
 using SharpDox.Plugins.Html.Steps;
 using SharpDox.Plugins.Html.Templates.Strings;
 using SharpDox.Sdk.Exporter;
 using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace SharpDox.Plugins.Html
 {
@@ -13,6 +13,9 @@ namespace SharpDox.Plugins.Html
         public event Action<string> OnRequirementsWarning;
         public event Action<string> OnStepMessage;
         public event Action<int> OnStepProgress;
+
+        private double _docCount;
+        private double _docIndex;
 
         private readonly HtmlStrings _htmlStrings;
         private readonly HtmlConfig _htmlConfig;
@@ -27,6 +30,8 @@ namespace SharpDox.Plugins.Html
 
         public void Export(SDProject sdProject, string outputPath)
         {
+            _docCount = sdProject.DocumentationLanguages.Count;
+            _docIndex = 1;
             foreach (var docLanguage in sdProject.DocumentationLanguages)
             {
                 StepInput.InitStepinput(sdProject, Path.Combine(outputPath, docLanguage), docLanguage, GetCurrentStrings(docLanguage, sdProject.DocLanguage), _htmlStrings, _htmlConfig);
@@ -43,6 +48,8 @@ namespace SharpDox.Plugins.Html
                     step.OnStepProgress += ExecuteOnStepProgress;
                     step.RunStep();
                 }
+
+                _docIndex++;
             }
         }
 
@@ -70,7 +77,7 @@ namespace SharpDox.Plugins.Html
             var handler = OnStepProgress;
             if (handler != null)
             {
-                handler(progress);
+                handler((int)((progress / _docCount) * _docIndex));
             }
         }
 

@@ -65,7 +65,27 @@
 				<#= new Markdown().Transform(StepInput.HtmlConfig.FooterLine) #>
 			</div>
 			<div class="sd-footer">
-				<#= StepInput.SDProject.ProjectName #> <#= StepInput.SDProject.VersionNumber != null ? StepInput.SDProject.VersionNumber : string.Empty #> <#= StepInput.SDProject.Author != null ? StepInput.DocStrings.By + " " + StepInput.SDProject.Author : string.Empty #> - <#= StepInput.DocStrings.GeneratedBy #> <a href="http://sharpDox.de" target="_blank">sharpDox</a>
+				<#	var project = string.Empty;
+					if(!string.IsNullOrEmpty(StepInput.SDProject.ProjectUrl))
+					{	
+						project = "<a href=\"" + StepInput.SDProject.ProjectUrl + "\" target=\"_blank\">" + StepInput.SDProject.ProjectName + "</a>";
+					}
+					else
+					{
+						project = StepInput.SDProject.ProjectName;
+					} 
+					
+					var author = string.Empty;
+					if(!string.IsNullOrEmpty(StepInput.SDProject.AuthorUrl) && !string.IsNullOrEmpty(StepInput.SDProject.Author))
+					{	
+						author = StepInput.DocStrings.By + " <a href=\"" + StepInput.SDProject.AuthorUrl + "\" target=\"_blank\">" + StepInput.SDProject.Author + "</a>";
+					}
+					else if(!string.IsNullOrEmpty(StepInput.SDProject.Author))
+					{
+						author = StepInput.DocStrings.By + " " + StepInput.SDProject.Author;
+					} #>
+
+				 <#= project #> <#= StepInput.SDProject.VersionNumber != null ? StepInput.SDProject.VersionNumber : string.Empty #> <#= author #> - <#= StepInput.DocStrings.GeneratedBy #> <a href="http://sharpDox.de" target="_blank">sharpDox</a>
 			</div>
 		</div>
         <div id="navigation" class="ui-layout-west">
