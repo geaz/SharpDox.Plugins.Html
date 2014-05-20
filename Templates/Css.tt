@@ -13,7 +13,7 @@
     background: <#= HtmlConfig.HeaderBackground #>;
 }
 
-#title a{
+#sitetitle a{
 	color: <#= HtmlConfig.Color #>;
 }
 

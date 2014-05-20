@@ -19,7 +19,7 @@ namespace SharpDox.Plugins.Html.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Css.tt"
+    #line 1 "D:\Github\SharpDox.Plugins.Html\Templates\Css.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
     public partial class Css : CssBase
     {
@@ -29,51 +29,46 @@ namespace SharpDox.Plugins.Html.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write(" \n\n.ui-outer-north{\r\n    background: ");
+            this.Write(" \r\n\r\n.ui-outer-north{\r\n    background: ");
             
-            #line 2 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Css.tt"
+            #line 9 "D:\Github\SharpDox.Plugins.Html\Templates\Css.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(HtmlConfig.HeaderBackground));
             
             #line default
             #line hidden
-            this.Write(";\r\n}\n\n.ui-outer-resizer-north{\r\n    background: ");
+            this.Write(";\r\n}\r\n\r\n.ui-outer-resizer-north{\r\n    background: ");
             
-            #line 4 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Css.tt"
+            #line 13 "D:\Github\SharpDox.Plugins.Html\Templates\Css.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(HtmlConfig.HeaderBackground));
             
             #line default
             #line hidden
-            this.Write(";\r\n}\n\n#title a{\r\n\tcolor: ");
+            this.Write(";\r\n}\r\n\r\n#sitetitle a{\r\n\tcolor: ");
             
-            #line 6 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Css.tt"
+            #line 17 "D:\Github\SharpDox.Plugins.Html\Templates\Css.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(HtmlConfig.Color));
             
             #line default
             #line hidden
-            this.Write(";\r\n}\n\n#subtitle{\r\n\tbackground: ");
+            this.Write(";\r\n}\r\n\r\n#subtitle{\r\n\tbackground: ");
             
-            #line 8 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Css.tt"
+            #line 21 "D:\Github\SharpDox.Plugins.Html\Templates\Css.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(HtmlConfig.SubHeaderBackground));
             
             #line default
             #line hidden
-            this.Write(";\n\tcolor: ");
+            this.Write(";\r\n\tcolor: ");
             
-            #line 8 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Css.tt"
+            #line 22 "D:\Github\SharpDox.Plugins.Html\Templates\Css.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(HtmlConfig.Color));
             
             #line default
             #line hidden
-            this.Write(";\n}\n\n");
+            this.Write(";\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 8 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Css.tt"
+        #line 25 "D:\Github\SharpDox.Plugins.Html\Templates\Css.tt"
 	public HtmlConfig HtmlConfig { get; set; } 
         
         #line default
