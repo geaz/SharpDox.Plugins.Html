@@ -39,14 +39,18 @@ namespace SharpDox.Plugins.Html
                 var steps = new List<StepBase>();
                 steps.Add(new PreBuildStep(0, 10));
                 steps.Add(new AssetsStep(10, 25));
-                steps.Add(new CreateArticleStep(25, 50));
-                steps.Add(new CreateHtmlStep(50, 100));
+                steps.Add(new CreateArticleStep(25, 40));
+                steps.Add(new CreateHtmlStep(40, 100));
 
                 foreach(var step in steps)
                 {
+                    ExecuteOnStepProgress(step.StepRange.ProgressStart);
+
                     step.OnStepMessage += ExecuteOnStepMessage;
                     step.OnStepProgress += ExecuteOnStepProgress;
                     step.RunStep();
+
+                    ExecuteOnStepProgress(step.StepRange.ProgressEnd);
                 }
 
                 _docIndex++;

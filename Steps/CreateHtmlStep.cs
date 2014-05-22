@@ -25,7 +25,7 @@ namespace SharpDox.Plugins.Html.Steps
             {
                 foreach (var nameSpace in repository.GetAllNamespaces())
                 {
-                    ExecuteOnStepProgress(Convert.ToInt16((namespaceCount/namespaceTotal)*50) + 50);
+                    ExecuteOnStepProgress((int)((namespaceCount / namespaceTotal) * 100));
                     ExecuteOnStepMessage(StepInput.HtmlStrings.CreateFilesForNamespace + ": " + nameSpace.Fullname);
                     namespaceCount++;
 
