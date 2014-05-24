@@ -47,7 +47,7 @@
   overflow-x: auto;
   overflow-y: hidden;
 }
-.markdown .inline-code{
+.markdown .inline-code, .markdown p code{
   background: #f6f5f1;
   border: 1px solid #dadada;
   padding: 1px;
