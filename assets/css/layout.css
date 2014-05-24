@@ -346,6 +346,14 @@
     margin: 0px 35px 35px 35px;
 }
 
+.save {
+    float: right;
+}
+
+.save i {
+    margin-right: 5px;
+}
+
 ul {
     margin: 0;
     padding: 0;

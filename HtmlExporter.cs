@@ -31,7 +31,7 @@ namespace SharpDox.Plugins.Html
         public void Export(SDProject sdProject, string outputPath)
         {
             _docCount = sdProject.DocumentationLanguages.Count;
-            _docIndex = 1;
+            _docIndex = 0;
             foreach (var docLanguage in sdProject.DocumentationLanguages)
             {
                 StepInput.InitStepinput(sdProject, Path.Combine(outputPath, docLanguage), docLanguage, GetCurrentStrings(docLanguage, sdProject.DocLanguage), _htmlStrings, _htmlConfig);
@@ -81,7 +81,7 @@ namespace SharpDox.Plugins.Html
             var handler = OnStepProgress;
             if (handler != null)
             {
-                handler((int)((progress / _docCount) * _docIndex));
+                handler((int)((progress / _docCount) + (100 / _docCount * _docIndex)));
             }
         }
 

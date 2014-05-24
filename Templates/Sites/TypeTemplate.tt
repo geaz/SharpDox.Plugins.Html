@@ -45,6 +45,9 @@
 			<script src="../assets/js/vendor/1-jquery.hashchange.min.js"></script>			
 			<script src="../assets/js/vendor/2-jquery.print.js"></script>
 			<script src="../assets/js/vendor/highlight.pack.js"></script>
+			<script src="../assets/js/vendor/rgbcolor.js"></script>
+			<script src="../assets/js/vendor/StackBlur.js"></script>
+			<script src="../assets/js/vendor/canvg.js"></script>
 
 			<script src="../assets/js/frame/SVGPan.js"></script>
 			<script src="../assets/js/frame/iframe.js"></script>
@@ -335,7 +338,7 @@
 							var helper = new Helper(StepInput.SDProject); #>
 						<#= template.TransformText(helper.TransformLinkToken) #>
 					</div>
-					<div class="legend"><p><#= StepInput.DocStrings.PanZoom #></p></div>
+					<div class="legend"><p class="save"><a href="#"><i class="icon-save"></i><#= StepInput.DocStrings.Save #></a></p><p><#= StepInput.DocStrings.PanZoom #></p></div>
 				<# } #>
 			</div>
 		</div>
