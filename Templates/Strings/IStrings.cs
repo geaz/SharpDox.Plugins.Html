@@ -27,6 +27,7 @@
         string UsedBy { get; }
         string PanZoom { get; }
         string Save { get; }
+        string Reset { get; }
         string Article { get; }
         string Members { get; }
         string Fields { get; }

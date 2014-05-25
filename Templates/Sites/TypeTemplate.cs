@@ -1249,24 +1249,31 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"legend\"><p class=\"save\"><a href=\"#\"><i class=\"ico" +
-                    "n-save\"></i>");
+            this.Write("\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"legend\">\r\n\t\t\t\t\t\t<p class=\"save\"><a href=\"#\"><i cl" +
+                    "ass=\"icon-save\"></i>");
             
-            #line 338 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\TypeTemplate.tt"
+            #line 339 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Save));
             
             #line default
             #line hidden
-            this.Write("</a></p><p>");
+            this.Write("</a></p>\r\n\t\t\t\t\t\t<p class=\"resetzoom\"><a href=\"#\"><i class=\"icon-refresh\"></i>");
             
-            #line 338 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\TypeTemplate.tt"
+            #line 340 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\TypeTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Reset));
+            
+            #line default
+            #line hidden
+            this.Write("</a></p>\r\n\t\t\t\t\t\t<p>");
+            
+            #line 341 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.PanZoom));
             
             #line default
             #line hidden
-            this.Write("</p></div>\r\n\t\t\t\t");
+            this.Write("</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t");
             
-            #line 339 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\TypeTemplate.tt"
+            #line 343 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
@@ -1275,7 +1282,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 346 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\TypeTemplate.tt"
+        #line 350 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\TypeTemplate.tt"
  public SDType SDType { get; set; } 
         
         #line default

@@ -86,6 +86,12 @@ $(document).ready(function () {
         this.href = img;
     });
 
+    $('.resetzoom a').click(function () {
+        var svgPan = svgPanZoom("#" + $(this).parent().parent().prev().attr('id') + " svg");
+        svgPan.resetZoom();
+        svgPan.center();
+    });
+
     postUrl();
 });
 

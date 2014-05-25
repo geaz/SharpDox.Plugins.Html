@@ -551,24 +551,31 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\r\n\t\t\t</div>\r\n\t\t\t<div class=\"legend\"><p class=\"save\"><a href=\"#\"><i class=\"icon-sa" +
-                    "ve\"></i>");
+            this.Write("\r\n\t\t\t</div>\r\n\t\t\t<div class=\"legend\">\r\n\t\t\t\t<p class=\"save\"><a href=\"#\"><i class=\"i" +
+                    "con-save\"></i>");
             
-            #line 168 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\MemberTemplate.tt"
+            #line 169 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Save));
             
             #line default
             #line hidden
-            this.Write("</a></p><p>");
+            this.Write("</a></p>\r\n\t\t\t\t<p class=\"resetzoom\"><a href=\"#\"><i class=\"icon-refresh\"></i>");
             
-            #line 168 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\MemberTemplate.tt"
+            #line 170 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\MemberTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Reset));
+            
+            #line default
+            #line hidden
+            this.Write("</a></p>\r\n\t\t\t\t<p>");
+            
+            #line 171 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.PanZoom));
             
             #line default
             #line hidden
-            this.Write("</p></div>\r\n\t\t");
+            this.Write("</p>\r\n\t\t\t</div>\r\n\t\t");
             
-            #line 169 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\MemberTemplate.tt"
+            #line 173 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\MemberTemplate.tt"
  } 
             
             #line default
@@ -577,7 +584,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 174 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\MemberTemplate.tt"
+        #line 178 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\MemberTemplate.tt"
  public SDMember SDMember { get; set; } 
         
         #line default

@@ -27,6 +27,7 @@
         public string UsedBy { get { return "Used by"; } }
         public string PanZoom { get { return "Drag to pan - Use Mousewheel + Ctrl to zoom"; } }
         public string Save { get { return "save"; } }
+        public string Reset { get { return "reset"; } }
         public string Article { get { return "Article"; } }
         public string Members { get { return "Members"; } }
         public string Fields { get { return "Fields"; } }
