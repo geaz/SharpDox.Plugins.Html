@@ -66,6 +66,10 @@ $(document).ready(function () {
     });
 
     $('.save a').click(function () {
+        var svgPan = svgPanZoom("#" + $(this).parent().parent().prev().attr('id') + " svg");
+        svgPan.resetZoom();
+        svgPan.center();
+
         var bbox = $($(this).parent().parent().prev().children()[0])[0].getBBox();
         var svgData = "<svg xmlns='http://www.w3.org/2000/svg' width='" + (bbox.width + 10) + "' height='" + (bbox.height + 55) + "'>" + $($($($(this).parent().parent().prev()).children()[0]).children()[0]).html().trim() + "</svg>";
 
