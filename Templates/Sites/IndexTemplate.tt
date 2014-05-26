@@ -53,7 +53,7 @@
 			<#}
 			else
 			{#>
-				<a href="index.html"><img id="sitetitle" src="<#= Path.GetFileName(StepInput.SDProject.LogoPath) #>" title="<#= StepInput.SDProject.ProjectName #>"/></a>
+				<a href="index.html" id="sitetitle"><img src="<#= Path.GetFileName(StepInput.SDProject.LogoPath) #>" title="<#= StepInput.SDProject.ProjectName #>"/></a>
 			<#}#>
 			<div id="subtitle"><p><#= StepInput.DocStrings.Home #></p></div>
 		</div>

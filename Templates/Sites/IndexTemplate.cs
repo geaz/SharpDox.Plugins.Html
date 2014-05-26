@@ -113,7 +113,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\t\t\t\t<a href=\"index.html\"><img id=\"sitetitle\" src=\"");
+            this.Write("\t\t\t\t<a href=\"index.html\" id=\"sitetitle\"><img src=\"");
             
             #line 56 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Path.GetFileName(StepInput.SDProject.LogoPath)));
