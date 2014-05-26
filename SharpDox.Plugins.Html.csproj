@@ -642,7 +642,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\js\frame\SVGPan.js">
+    <None Include="assets\js\frame\svg.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="assets\js\vendor\1-jquery.mousewheel.js">
@@ -723,6 +723,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="assets\js\vendor\StackBlur.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\js\vendor\modernizr.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

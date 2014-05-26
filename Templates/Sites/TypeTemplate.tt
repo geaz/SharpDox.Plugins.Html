@@ -41,17 +41,18 @@
 			<script src="../assets/js/vendor/1-jquery.panzoom.min.js"></script>		
 			<script src="../assets/js/vendor/1-jquery.hashchange.min.js"></script>			
 			<script src="../assets/js/vendor/2-jquery.print.js"></script>
+			<script src="../assets/js/vendor/modernizr.js"></script>
 			<script src="../assets/js/vendor/highlight.pack.js"></script>
 			<script src="../assets/js/vendor/rgbcolor.js"></script>
 			<script src="../assets/js/vendor/StackBlur.js"></script>
 			<script src="../assets/js/vendor/canvg.js"></script>
 
-			<script src="../assets/js/frame/SVGPan.js"></script>
+			<script src="../assets/js/frame/svg.js"></script>
 			<script src="../assets/js/frame/iframe.js"></script>
 		<# #else #>
-			<link rel="stylesheet" type="text/css" href="../assets/css/style.css?version=0931" />
-			<script src="../assets/js/vendor.js?version=0931"></script>
-			<script src="../assets/js/frame.js?version=0931"></script>
+			<link rel="stylesheet" type="text/css" href="../assets/css/style.css?version=094" />
+			<script src="../assets/js/vendor.js?version=094"></script>
+			<script src="../assets/js/frame.js?version=094"></script>
 		<# #endif #>
 
 		<script>hljs.initHighlightingOnLoad();</script>
