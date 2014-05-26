@@ -159,7 +159,7 @@
 		<# } #>
 
 		<# if(SDMember is SDMethod && !((SDMethod)SDMember).IsSequenceDiagramEmpty() && !StepInput.HtmlConfig.DisableSequenceDiagrams) { #>
-			<div id="<#= SDMember.Name #>-diagram" class="sd-sequence-diagram svgpan">
+			<div id="<#= SDMember.ShortIdentifier #>-diagram" class="sd-sequence-diagram svgpan">
 				<#	var sequenceSvg = ((SDMethod)SDMember).GetSequenceDiagram(StepInput.SDProject).ToSvg();
 					var template = new Templater(StepInput.SDProject, sequenceSvg); 
 					var helper = new Helper(StepInput.SDProject); #>
