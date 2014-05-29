@@ -1,20 +1,22 @@
 ﻿$(document).ready(function () {
     if ($('html').hasClass('svg')) {
 
-        $.each($('.svgpan'), function(index, value) {
+        $('.svg-diagram').css('display', 'block');
+
+        $.each($('.svgpan'), function (index, value) {
             var parentId = $(value).attr('id');
             var id = "#" + parentId + " svg";
             var svgDia = svgPanZoom(id, { 'minZoom': 0.1, fit: false });
         });
 
-        $('.resetZoom a').click(function() {
+        $('.resetZoom a').click(function () {
             var svgPan = svgPanZoom("#" + $(this).parent().parent().prev().attr('id') + " svg");
             svgPan.resetZoom();
             svgPan.center();
         });
 
         var gotClicked = false;
-        $('.save a').click(function() {
+        $('.save a').click(function () {
             if ($(this).attr('href') == "#") //just create diagram one time
             {
                 var svgPan = svgPanZoom("#" + $(this).parent().parent().prev().attr('id') + " svg");
@@ -30,7 +32,7 @@
                 var link = this;
                 var canvas = document.createElement('canvas');
                 canvg(canvas, svgData, {
-                    renderCallback: function() {
+                    renderCallback: function () {
                         var png_dataurl = canvas.toDataURL();
                         link.download = "diagram.png";
                         link.href = png_dataurl;

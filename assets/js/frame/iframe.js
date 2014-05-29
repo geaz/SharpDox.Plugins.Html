@@ -1,5 +1,9 @@
 var allExpanded = false;
 
+$(window).unload(function () {
+    showLoader();
+});
+
 $(document).ready(function () {
     $('body').layout({
         defaults: {
@@ -108,4 +112,8 @@ function postUrl() {
     }
 
     parent.postMessage(siteUrl, '*');
+}
+
+function showLoader() {
+    parent.postMessage('showLoader', '*');
 }

@@ -538,52 +538,52 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t<div id=\"");
+            this.Write("\n\t\t\t<div class=\"svg-diagram\">\n\t\t\t\t<div id=\"");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(SDMember.ShortIdentifier));
             
             #line default
             #line hidden
-            this.Write("-diagram\" class=\"sd-sequence-diagram svgpan\">\n\t\t\t\t");
+            this.Write("-diagram\" class=\"sd-sequence-diagram svgpan\">\n\t\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
 	var sequenceSvg = ((SDMethod)SDMember).GetSequenceDiagram(StepInput.SDProject).ToSvg();
-					var template = new Templater(StepInput.SDProject, sequenceSvg); 
-					var helper = new Helper(StepInput.SDProject); 
+						var template = new Templater(StepInput.SDProject, sequenceSvg); 
+						var helper = new Helper(StepInput.SDProject); 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t");
+            this.Write("\n\t\t\t\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(template.TransformText(helper.TransformLinkToken)));
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t</div>\n\t\t\t<div class=\"legend\">\n\t\t\t\t<p class=\"save\"><a href=\"#\"><i class=\"icon" +
-                    "-save\"></i>");
+            this.Write("\n\t\t\t\t</div>\n\t\t\t\t<div class=\"legend\">\n\t\t\t\t\t<p class=\"save\"><a href=\"#\"><i class=\"i" +
+                    "con-save\"></i>");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Save));
             
             #line default
             #line hidden
-            this.Write("</a></p>\n\t\t\t\t<p class=\"resetZoom\"><a href=\"#\"><i class=\"icon-refresh\"></i>");
+            this.Write("</a></p>\n\t\t\t\t\t<p class=\"resetZoom\"><a href=\"#\"><i class=\"icon-refresh\"></i>");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Reset));
             
             #line default
             #line hidden
-            this.Write("</a></p>\n\t\t\t\t<p>");
+            this.Write("</a></p>\n\t\t\t\t\t<p>");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.PanZoom));
             
             #line default
             #line hidden
-            this.Write("</p>\n\t\t\t</div>\n\t\t");
+            this.Write("</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t");
             
             #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
  } 

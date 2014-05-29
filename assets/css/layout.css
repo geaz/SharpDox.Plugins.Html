@@ -1,3 +1,10 @@
+#loader{
+	background: white;
+	position:absolute;
+	z-index:999;
+	text-align: center;
+}
+
 /* Layout */
 .ui-layout-mask {
     background-color: #666;
@@ -325,6 +332,10 @@
 
 .no-margin{
 	margin:0;
+}
+
+.svg-diagram{
+	display: none;
 }
 
 .sd-sequence-diagram, #sd-class-diagram {

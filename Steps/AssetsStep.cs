@@ -1,4 +1,5 @@
 ﻿using SharpDox.Plugins.Html.Templates;
+using SharpDox.UML;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,8 +27,8 @@ namespace SharpDox.Plugins.Html.Steps
                 CopyCompressedJs(Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "assets", "js", "frame"), Path.Combine(StepInput.OutputPath, "assets", "js"), "frame.js");
             #endif
 
-                CopyFolder(Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "assets", "font"), Path.Combine(StepInput.OutputPath, "assets", "font"));
-                CopyFolder(Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "assets", "images"), Path.Combine(StepInput.OutputPath, "assets", "images"));
+            CopyFolder(Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "assets", "font"), Path.Combine(StepInput.OutputPath, "assets", "font"));
+            CopyFolder(Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "assets", "images"), Path.Combine(StepInput.OutputPath, "assets", "images"));
 
             CopyImages(StepInput.SDProject.Images, Path.Combine(StepInput.OutputPath, "assets"));
             CopyImage(StepInput.SDProject.LogoPath, StepInput.OutputPath);
@@ -85,29 +86,31 @@ namespace SharpDox.Plugins.Html.Steps
             File.WriteAllText(Path.Combine(output, compressedFileName), new JavaScriptCompressor().Compress(completeJs));
         }
 
-        /*private void CopyDiagrams(HtmlExporter htmlExporter, string outputPath)
+        private void CopyDiagrams(string diagramPath)
         {
-            var diagramPath = Path.Combine(outputPath, "images", "diagrams");
             Directory.CreateDirectory(diagramPath);
 
-            foreach (var sdType in htmlExporter.Repository.GetAllTypes())
+            foreach (var sdRepository in StepInput.SDProject.Repositories.Values)
             {
-                if(!sdType.IsClassDiagramEmpty())
+                foreach (var sdType in sdRepository.GetAllTypes())
                 {
-                    htmlExporter.ExecuteOnStepMessage(string.Format(htmlExporter.HtmlStrings.CopyingFile, sdType.Guid + ".png"));
-                    sdType.GetClassDiagram().ToPng(Path.Combine(diagramPath, sdType.Guid + ".png"));
+                    if (!sdType.IsClassDiagramEmpty())
+                    {
+                        ExecuteOnStepMessage(string.Format(StepInput.HtmlStrings.CopyingFile, sdType.Guid + ".png"));
+                        sdType.GetClassDiagram().ToPng(Path.Combine(diagramPath, sdType.Guid + ".png"));
+                    }
                 }
-            }
 
-            foreach (var sdMethod in htmlExporter.Repository.GetAllMethods())
-            {
-                if (!sdMethod.IsSequenceDiagramEmpty())
+                foreach (var sdMethod in sdRepository.GetAllMethods())
                 {
-                    htmlExporter.ExecuteOnStepMessage(string.Format(htmlExporter.HtmlStrings.CopyingFile, sdMethod.Guid + ".png"));
-                    sdMethod.GetSequenceDiagram(htmlExporter.Repository.GetAllTypes()).ToPng(Path.Combine(diagramPath, sdMethod.Guid + ".png"));
+                    if (!sdMethod.IsSequenceDiagramEmpty())
+                    {
+                        ExecuteOnStepMessage(string.Format(StepInput.HtmlStrings.CopyingFile, sdMethod.Guid + ".png"));
+                        sdMethod.GetSequenceDiagram(StepInput.SDProject).ToPng(Path.Combine(diagramPath, sdMethod.Guid + ".png"));
+                    }
                 }
             }
-        }*/
+        }
 
         private void CopyImages(IEnumerable<string> images, string outputPath)
         {

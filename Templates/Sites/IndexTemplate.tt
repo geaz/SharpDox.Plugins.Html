@@ -88,6 +88,7 @@
         <div id="navigation" class="ui-layout-west">
 			<#= Navigation #>
 		</div>
+		<div id="loader"><i class="icon-refresh icon-spin"></i></div>
 		<iframe id="content" class="ui-layout-center" frameborder="0" width="100%" src="article/home.html"></iframe>
     </body>
 </html>

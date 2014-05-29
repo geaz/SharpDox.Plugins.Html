@@ -159,16 +159,18 @@
 		<# } #>
 
 		<# if(SDMember is SDMethod && !((SDMethod)SDMember).IsSequenceDiagramEmpty() && !StepInput.HtmlConfig.DisableSequenceDiagrams) { #>
-			<div id="<#= SDMember.ShortIdentifier #>-diagram" class="sd-sequence-diagram svgpan">
-				<#	var sequenceSvg = ((SDMethod)SDMember).GetSequenceDiagram(StepInput.SDProject).ToSvg();
-					var template = new Templater(StepInput.SDProject, sequenceSvg); 
-					var helper = new Helper(StepInput.SDProject); #>
-				<#= template.TransformText(helper.TransformLinkToken) #>
-			</div>
-			<div class="legend">
-				<p class="save"><a href="#"><i class="icon-save"></i><#= StepInput.DocStrings.Save #></a></p>
-				<p class="resetZoom"><a href="#"><i class="icon-refresh"></i><#= StepInput.DocStrings.Reset #></a></p>
-				<p><#= StepInput.DocStrings.PanZoom #></p>
+			<div class="svg-diagram">
+				<div id="<#= SDMember.ShortIdentifier #>-diagram" class="sd-sequence-diagram svgpan">
+					<#	var sequenceSvg = ((SDMethod)SDMember).GetSequenceDiagram(StepInput.SDProject).ToSvg();
+						var template = new Templater(StepInput.SDProject, sequenceSvg); 
+						var helper = new Helper(StepInput.SDProject); #>
+					<#= template.TransformText(helper.TransformLinkToken) #>
+				</div>
+				<div class="legend">
+					<p class="save"><a href="#"><i class="icon-save"></i><#= StepInput.DocStrings.Save #></a></p>
+					<p class="resetZoom"><a href="#"><i class="icon-refresh"></i><#= StepInput.DocStrings.Reset #></a></p>
+					<p><#= StepInput.DocStrings.PanZoom #></p>
+				</div>
 			</div>
 		<# } #>
 

@@ -329,17 +329,19 @@
 				<# } #>
 
 				<#	if(!SDType.IsClassDiagramEmpty()) {  #>
-					<h3 class="box-title"><#= StepInput.DocStrings.ClassDiagram #></h3>
-					<div id="sd-class-diagram" class="svgpan">
-						<#	var svg = SDType.GetClassDiagram().ToSvg();
-							var template = new Templater(StepInput.SDProject, svg); 
-							var helper = new Helper(StepInput.SDProject); #>
-						<#= template.TransformText(helper.TransformLinkToken) #>
-					</div>
-					<div class="legend">
-						<p class="save"><a href="#"><i class="icon-save"></i><#= StepInput.DocStrings.Save #></a></p>
-						<p class="resetZoom"><a href="#"><i class="icon-refresh"></i><#= StepInput.DocStrings.Reset #></a></p>
-						<p><#= StepInput.DocStrings.PanZoom #></p>
+					<div class="svg-diagram">
+						<h3 class="box-title"><#= StepInput.DocStrings.ClassDiagram #></h3>
+						<div id="sd-class-diagram" class="svgpan">
+							<#	var svg = SDType.GetClassDiagram().ToSvg();
+								var template = new Templater(StepInput.SDProject, svg); 
+								var helper = new Helper(StepInput.SDProject); #>
+							<#= template.TransformText(helper.TransformLinkToken) #>
+						</div>
+						<div class="legend">
+							<p class="save"><a href="#"><i class="icon-save"></i><#= StepInput.DocStrings.Save #></a></p>
+							<p class="resetZoom"><a href="#"><i class="icon-refresh"></i><#= StepInput.DocStrings.Reset #></a></p>
+							<p><#= StepInput.DocStrings.PanZoom #></p>
+						</div>
 					</div>
 				<# } #>
 			</div>
