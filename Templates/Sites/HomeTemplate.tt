@@ -3,6 +3,8 @@
 
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Reflection" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="SharpDox.Plugins.Html.Steps" #>
 <#@ import namespace="MarkdownSharp" #>
@@ -30,9 +32,9 @@
 
 			<script src="../assets/js/frame/iframe.js"></script>
 		<# #else #>
-			<link rel="stylesheet" type="text/css" href="../assets/css/style.css?version=0931" />
-			<script src="../assets/js/vendor.js?version=0931"></script>
-			<script src="../assets/js/frame.js?version=0931"></script>
+			<link rel="stylesheet" type="text/css" href="../assets/css/style.css?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>" />
+			<script src="../assets/js/vendor.js?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>"></script>
+			<script src="../assets/js/frame.js?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>"></script>
 		<# #endif #>
 
     </head>

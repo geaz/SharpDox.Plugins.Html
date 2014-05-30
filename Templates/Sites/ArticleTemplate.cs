@@ -11,6 +11,8 @@ namespace SharpDox.Plugins.Html.Templates.Sites
 {
     using System.Linq;
     using System.Text;
+    using System.Diagnostics;
+    using System.Reflection;
     using System.Collections.Generic;
     using SharpDox.Sdk;
     using SharpDox.Model.Documentation.Article;
@@ -36,14 +38,14 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\r\n<!doctype html>\r\n<html>\r\n    <head>\r\n        <meta charset=\"utf-8\">\r\n        <m" +
                     "eta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\r\n        <title>");
             
-            #line 17 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\ArticleTemplate.tt"
+            #line 19 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\ArticleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.SDProject.ProjectName));
             
             #line default
             #line hidden
             this.Write("</title>\r\n        <meta name=\"viewport\" content=\"width=device-width\">\r\n\r\n\t\t");
             
-            #line 20 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\ArticleTemplate.tt"
+            #line 22 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\ArticleTemplate.tt"
  #if DEBUG 
             
             #line default
@@ -65,16 +67,35 @@ namespace SharpDox.Plugins.Html.Templates.Sites
 			<script src=""../assets/js/frame/iframe.js""></script>
 		");
             
-            #line 36 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\ArticleTemplate.tt"
+            #line 38 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\ArticleTemplate.tt"
  #else 
             
             #line default
             #line hidden
-            this.Write("\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/css/style.css?version=0" +
-                    "931\" />\r\n\t\t\t<script src=\"../assets/js/vendor.js?version=0931\"></script>\r\n\t\t\t<scr" +
-                    "ipt src=\"../assets/js/frame.js?version=0931\"></script>\r\n\t\t");
+            this.Write("\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/css/style.css?version=");
+            
+            #line 39 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\ArticleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
+            
+            #line default
+            #line hidden
+            this.Write("\" />\r\n\t\t\t<script src=\"../assets/js/vendor.js?version=");
             
             #line 40 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\ArticleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
+            
+            #line default
+            #line hidden
+            this.Write("\"></script>\r\n\t\t\t<script src=\"../assets/js/frame.js?version=");
+            
+            #line 41 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\ArticleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
+            
+            #line default
+            #line hidden
+            this.Write("\"></script>\r\n\t\t");
+            
+            #line 42 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\ArticleTemplate.tt"
  #endif 
             
             #line default
@@ -83,7 +104,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
                     "   \t\r\n\t\t<div class=\"ui-layout-center\">\r\n\t\t\t<div class=\"text-box markdown no-marg" +
                     "in\">\r\n\t\t\t\t");
             
-            #line 48 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\ArticleTemplate.tt"
+            #line 50 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\ArticleTemplate.tt"
 	var template = new Templater(StepInput.SDProject, Article.Content); 
 					var helper = new Helper(StepInput.SDProject);
 					var article = template.TransformText(helper.TransformLinkToken); 
@@ -92,7 +113,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write("\r\n\t\t\t\t");
             
-            #line 52 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\ArticleTemplate.tt"
+            #line 54 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\ArticleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(article)));
             
             #line default
@@ -101,7 +122,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 58 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\ArticleTemplate.tt"
+        #line 60 "D:\Github\SharpDox.Plugins.Html\Templates\Sites\ArticleTemplate.tt"
 	public SDArticle Article { get; set; }  
         
         #line default

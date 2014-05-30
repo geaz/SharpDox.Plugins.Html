@@ -4,6 +4,8 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Net" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Reflection" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="SharpDox.Sdk" #>
 <#@ import namespace="SharpDox.UML" #>
@@ -50,9 +52,9 @@
 			<script src="../assets/js/frame/svg.js"></script>
 			<script src="../assets/js/frame/iframe.js"></script>
 		<# #else #>
-			<link rel="stylesheet" type="text/css" href="../assets/css/style.css?version=094" />
-			<script src="../assets/js/vendor.js?version=094"></script>
-			<script src="../assets/js/frame.js?version=094"></script>
+			<link rel="stylesheet" type="text/css" href="../assets/css/style.css?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>" />
+			<script src="../assets/js/vendor.js?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>"></script>
+			<script src="../assets/js/frame.js?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>"></script>
 		<# #endif #>
 
 		<script>hljs.initHighlightingOnLoad();</script>
