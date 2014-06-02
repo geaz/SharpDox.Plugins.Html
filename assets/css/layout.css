@@ -94,6 +94,10 @@
 	color: white;
 }
 
+#sitetitle img {
+    height: 50px;
+}
+
 #subtitle{
 	padding: 10px;
 	font-family: 'OpenSansSemiBold';
