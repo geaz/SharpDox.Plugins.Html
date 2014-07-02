@@ -12,15 +12,6 @@
     filter: alpha(opacity=50); /* for IE */
 }
 
-.ui-outer{
-    padding: 10px;
-	overflow: auto;
-}
-
-.ui-outer-center{
-    padding: 0px!important;
-}
-
 .ui-outer-north{
 	padding: 0px;
 	text-align: center;
@@ -40,8 +31,13 @@
     border-right: 1px solid #7F7F7F;
 }
 
-.ui-outer-west{
+.ui-outer-west {
     background: #f8f8f8;
+	overflow: auto;
+}
+
+.ui-outer-west>ul{
+	padding: 10px;
 }
 
 .ui-outer-resizer-south{
@@ -50,10 +46,13 @@
 }
 
 .ui-outer-south{
-    padding: 0px 5px 5px 5px;
     background: #f8f8f8;
     font-size: 0.7em;
     color: gray;
+}
+
+.ui-outer-south>div{
+	padding: 0px 5px 5px 5px;
 }
 
 .ui-outer-south .sd-footer{
@@ -76,8 +75,11 @@
 }
 
 .ui-layout-center{
-	padding: 25px;
 	overflow: auto;
+}
+
+.ui-layout-center>div{
+	padding: 25px;
 }
 
 /* Elements */
