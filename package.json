@@ -1,0 +1,19 @@
+{
+  "name": "sharpDox-html-plugin",
+  "description": "A plugin for sharpDox to create a html documentation",
+  "version": "0.9.4",
+  "author": "Gerrit 'Geaz' Gazic <mail@geaz.de> (http://geaz.de)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Geaz/SharpDox.Plugins.Html.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.8.5",
+    "gulp-concat": "^2.2.0",
+    "gulp-concat-css": "^0.1.4",
+    "gulp-msbuild": "^0.1.7",
+    "gulp-rimraf": "^0.1.0",
+    "gulp-uglify": "^0.3.1"
+  }
+}

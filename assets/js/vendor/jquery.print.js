@@ -1,11 +1,11 @@
 ﻿// Create a jquery plugin that prints the given element.
-jQuery.fn.print = function () {
+$.fn.print = function () {
     // NOTE: We are trimming the jQuery collection down to the
     // first element in the collection.
-    if (this.size() > 1) {
+    if (this.size && this.size() > 1) {
         this.eq(0).print();
         return;
-    } else if (!this.size()) {
+    } else if (this.size && !this.size()) {
         return;
     }
 
@@ -25,8 +25,7 @@ jQuery.fn.print = function () {
     .css("height", "1px")
     .css("position", "absolute")
     .css("left", "-9999px")
-    .appendTo($("body:first"))
-    ;
+    .appendTo($("body:first"));
 
     // Get a FRAMES reference to the new frame.
     var objFrame = window.frames[strFrameName];
@@ -41,9 +40,7 @@ jQuery.fn.print = function () {
     // Create a temp document DIV to hold the style tags.
     // This is the only way I could find to get the style
     // tags into IE.
-    var jStyleDiv = $("<div>").append(
-    $("link").clone()
-    );
+    var jStyleDiv = $("<div>").append($("link").clone());
 
     // Write the HTML for the document. In this, we will
     // write out the HTML of the current element.
@@ -74,4 +71,4 @@ jQuery.fn.print = function () {
     },
     (60 * 1000)
     );
-}
+};

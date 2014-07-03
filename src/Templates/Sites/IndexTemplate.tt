@@ -38,7 +38,15 @@
 			<script src="assets/js/app/index.js"></script>
 		<# #else #>
 			<link rel="stylesheet" type="text/css" href="assets/css/style.css?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>" />
-			<script src="assets/js/vendor.js?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>"></script>
+			<link rel="stylesheet" type="text/css" href="assets/css/dynamic.css?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>" />
+			
+			<!--[if IE 8]>
+				<script src="assets/js/vendor.ie8.js?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>"></script>
+			<![endif]-->
+			<![if !IE 8]>
+				<script src="assets/js/vendor.js?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>"></script>
+			<![endif]>
+
 			<script src="assets/js/app.js?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>"></script>
 		<# #endif #>
 

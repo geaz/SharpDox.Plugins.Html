@@ -40,7 +40,14 @@
 			<script src="../assets/js/frame/iframe.js"></script>
 		<# #else #>
 			<link rel="stylesheet" type="text/css" href="../assets/css/style.css?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>" />
-			<script src="../assets/js/vendor.js?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>"></script>
+			
+			<!--[if IE 8]>
+				<script src="../assets/js/vendor.ie8.js?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>"></script>
+			<![endif]-->
+			<![if !IE 8]>
+				<script src="../assets/js/vendor.js?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>"></script>
+			<![endif]>
+
 			<script src="../assets/js/frame.js?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>"></script>
 		<# #endif #>
 
@@ -72,80 +79,82 @@
 		</div>
         
 		<div class="ui-layout-center">
-			<# if(Namespace.Description.Count != 0 && Namespace.Description.ContainsKey(StepInput.CurrentLanguage)) { #>
-				<h3 class="box-title first-heading"><#= StepInput.DocStrings.Description #></h3>
+			<div>
+				<# if(Namespace.Description.Count != 0 && Namespace.Description.ContainsKey(StepInput.CurrentLanguage)) { #>
+					<h3 class="box-title first-heading"><#= StepInput.DocStrings.Description #></h3>
 				
-				<div class="text-box markdown">
-					<#	var template = new Templater(StepInput.SDProject, Namespace.Description[StepInput.CurrentLanguage]); 
-						var helper = new Helper(StepInput.SDProject);
-						var namespaceDescription = template.TransformText(helper.TransformLinkToken); #>
+					<div class="text-box markdown">
+						<#	var template = new Templater(StepInput.SDProject, Namespace.Description[StepInput.CurrentLanguage]); 
+							var helper = new Helper(StepInput.SDProject);
+							var namespaceDescription = template.TransformText(helper.TransformLinkToken); #>
 
-					<#= new Markdown().Transform(namespaceDescription) #>
-				</div>
-				<h3 class="box-title"><#= StepInput.DocStrings.Types #></h3>
+						<#= new Markdown().Transform(namespaceDescription) #>
+					</div>
+					<h3 class="box-title"><#= StepInput.DocStrings.Types #></h3>
 
-			<# } else { #>
+				<# } else { #>
 
-				<h3 class="box-title first-heading"><#= StepInput.DocStrings.Types #></h3>
+					<h3 class="box-title first-heading"><#= StepInput.DocStrings.Types #></h3>
 
-			<# } #>
+				<# } #>
 
-			<div class="table-box">
-				<table>
-					<thead>
-						<tr>
-							<td></td>
-							<td>Name</td>
-							<td>Description</td>
-						</tr>
-					</thead>
-					<tbody>			
-
-						<# var even = false; 
-						foreach(var type in Namespace.Types) { 
-							var sdType = (SDType)StepInput.SDProject.GetTypeByIdentifier(type.Identifier); #>
-
-							<tr <# if(even) { even = false; #> class="even" <# } else { even = true; } #>>
-								<td class="iconColumn">
-									<img alt="Class-Icon" src="../assets/images/icons/class_<#= sdType.Accessibility #>.png">
-								</td>
-								<td>
-									<a title="<#= sdType.Name #>" href="../type/<#= sdType.ShortIdentifier #>.html"><#= sdType.Name #></a>
-								</td>	
-								<td class="markdown">
-									<# if(sdType.Documentation.ContainsKey(StepInput.CurrentLanguage)) { #>
-										<#= new Markdown().Transform(sdType.Documentation[StepInput.CurrentLanguage].Summary.ToString()) #>
-									<# } #>
-								</td>
+				<div class="table-box">
+					<table>
+						<thead>
+							<tr>
+								<td></td>
+								<td>Name</td>
+								<td>Description</td>
 							</tr>
+						</thead>
+						<tbody>			
 
+							<# var even = false; 
+							foreach(var type in Namespace.Types) { 
+								var sdType = (SDType)StepInput.SDProject.GetTypeByIdentifier(type.Identifier); #>
+
+								<tr <# if(even) { even = false; #> class="even" <# } else { even = true; } #>>
+									<td class="iconColumn">
+										<img alt="Class-Icon" src="../assets/images/icons/class_<#= sdType.Accessibility #>.png">
+									</td>
+									<td>
+										<a title="<#= sdType.Name #>" href="../type/<#= sdType.ShortIdentifier #>.html"><#= sdType.Name #></a>
+									</td>	
+									<td class="markdown">
+										<# if(sdType.Documentation.ContainsKey(StepInput.CurrentLanguage)) { #>
+											<#= new Markdown().Transform(sdType.Documentation[StepInput.CurrentLanguage].Summary.ToString()) #>
+										<# } #>
+									</td>
+								</tr>
+
+							<# } #>
+
+						</tbody>
+					</table>
+				</div>
+
+				<# if(Namespace.Uses.Count > 0) { #>
+					<h3 class="box-title"><#= StepInput.DocStrings.Uses #></h3>
+					<div class="list-box">
+						<ul>
+						<# foreach(var use in Namespace.Uses) { #>
+							<li><a href="../namespace/<#= use.Fullname #>.html"><#= use.Fullname #></a></li>
 						<# } #>
+						</ul>
+					</div>
+				<# } #>
 
-					</tbody>
-				</table>
+				<# if(Namespace.UsedBy.Count > 0) { #>
+					<h3 class="box-title"><#= StepInput.DocStrings.UsedBy #></h3>
+					<div class="list-box">
+						<ul>
+						<# foreach(var used in Namespace.UsedBy) { #>
+							<li><a href="../namespace/<#= used.Fullname #>.html"><#= used.Fullname #></a></li>
+						<# } #>
+						</ul>
+					</div>
+				<# } #>
 			</div>
-
-			<# if(Namespace.Uses.Count > 0) { #>
-				<h3 class="box-title"><#= StepInput.DocStrings.Uses #></h3>
-				<div class="list-box">
-					<ul>
-					<# foreach(var use in Namespace.Uses) { #>
-						<li><a href="../namespace/<#= use.Fullname #>.html"><#= use.Fullname #></a></li>
-					<# } #>
-					</ul>
-				</div>
-			<# } #>
-
-			<# if(Namespace.UsedBy.Count > 0) { #>
-				<h3 class="box-title"><#= StepInput.DocStrings.UsedBy #></h3>
-				<div class="list-box">
-					<ul>
-					<# foreach(var used in Namespace.UsedBy) { #>
-						<li><a href="../namespace/<#= used.Fullname #>.html"><#= used.Fullname #></a></li>
-					<# } #>
-					</ul>
-				</div>
-			<# } #>
 		</div>
 	   
     </body>
