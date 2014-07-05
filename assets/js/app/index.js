@@ -33,7 +33,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#content').load(function () {
+    $('#content').load(function () {		
         $('#loader').fadeOut(500);
     });
 

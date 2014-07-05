@@ -68,7 +68,7 @@ $(document).ready(function () {
     $('#print-button').click(function () {
         $('.ui-inner-center').print();
     });
-
+	
     postUrl();
 });
 

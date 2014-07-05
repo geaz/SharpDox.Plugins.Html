@@ -19,20 +19,20 @@
         <meta name="viewport" content="width=device-width">
 
 		<# #if DEBUG #>
-			<link rel="stylesheet" type="text/css" href="assets/css/0-reset.css" />
-			<link rel="stylesheet" type="text/css" href="assets/css/1-font.css" />
-			<link rel="stylesheet" type="text/css" href="assets/css/1-font-awesome.css" />
-			<link rel="stylesheet" type="text/css" href="assets/css/2-typography.css" />		
-			<link rel="stylesheet" type="text/css" href="assets/css/3-markdown.css" />			
-			<link rel="stylesheet" type="text/css" href="assets/css/3-tree.css" />
+			<link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+			<link rel="stylesheet" type="text/css" href="assets/css/font.css" />
+			<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" />
+			<link rel="stylesheet" type="text/css" href="assets/css/typography.css" />		
+			<link rel="stylesheet" type="text/css" href="assets/css/markdown.css" />			
+			<link rel="stylesheet" type="text/css" href="assets/css/tree.css" />
 			<link rel="stylesheet" type="text/css" href="assets/css/layout.css" />
 			<link rel="stylesheet" type="text/css" href="assets/css/dynamic.css" />
 
-			<script src="assets/js/vendor/0-jquery.js"></script>
-			<script src="assets/js/vendor/1-jquery-ui.custom.min.js"></script>	
-			<script src="assets/js/vendor/1-jquery.layout.min.js"></script>	
-			<script src="assets/js/vendor/1-jstree.min.js"></script>	
-			<script src="assets/js/vendor/1-jquery.hashchange.min.js"></script>
+			<script src="assets/js/vendor/jquery.min.js"></script>
+			<script src="assets/js/vendor/jquery-ui.custom.min.js"></script>	
+			<script src="assets/js/vendor/jquery.layout.min.js"></script>	
+			<script src="assets/js/vendor/jstree.js"></script>	
+			<script src="assets/js/vendor/jquery.hashchange.min.js"></script>
 		
 			<script src="assets/js/app/NavigationController.js"></script>
 			<script src="assets/js/app/index.js"></script>
