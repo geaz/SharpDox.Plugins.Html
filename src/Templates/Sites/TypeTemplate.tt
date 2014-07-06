@@ -55,6 +55,8 @@
 			<script src="../assets/js/frame/svg.js"></script>
 			<script src="../assets/js/frame/iframe.js"></script>
 		<# #else #>
+			<link rel="stylesheet" type="text/css" href="../assets/css/font.css?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>" />
+			<link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.css?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>" />
 			<link rel="stylesheet" type="text/css" href="../assets/css/style.css?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>" />
 			
 			<!--[if IE 8]>

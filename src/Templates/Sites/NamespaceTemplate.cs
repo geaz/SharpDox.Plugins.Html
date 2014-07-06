@@ -92,8 +92,23 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/css/style.css?version=" +
-                    "");
+            this.Write("\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/css/font.css?version=");
+            
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\NamespaceTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
+            
+            #line default
+            #line hidden
+            this.Write("\" />\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/css/font-awesome.c" +
+                    "ss?version=");
+            
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\NamespaceTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
+            
+            #line default
+            #line hidden
+            this.Write("\" />\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/css/style.css?vers" +
+                    "ion=");
             
             #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\NamespaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
