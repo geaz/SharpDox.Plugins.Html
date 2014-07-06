@@ -29,7 +29,7 @@ namespace SharpDox.Plugins.Html.Steps
             if (!string.IsNullOrEmpty(article.Content))
             {
                 var articleTemplate = new ArticleTemplate { Article = article };
-                File.WriteAllText(Path.Combine(StepInput.OutputPath, "article", string.Format("{0}.html", article.Filename)), articleTemplate.TransformText());
+                File.WriteAllText(Path.Combine(StepInput.OutputPath, "article", string.Format("{0}.html", article.Id)), articleTemplate.TransformText());
             }
 
             if (!(article is SDDocPlaceholder))

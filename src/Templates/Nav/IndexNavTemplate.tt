@@ -16,22 +16,21 @@
 				for (int i = 0; i < articles.Count; i++)
 				{
 					var article = articles[i];
-					var dataUrl = string.IsNullOrEmpty(article.Filename) ? Guid.NewGuid().ToString() : article.Filename;
 
 					if (article is SDDocPlaceholder)
 					{ #>		
 						<# var apiNavTemplate = new ApiNavTemplate { Repository = StepInput.SDProject.Repositories[((SDDocPlaceholder)article).SolutionFile] }; #>						
-						<#= string.Format("<li data-jstree='{{\"icon\":\"icon-code\"}}' id=\"node-article/{0}\">{1} {2}</li>", dataUrl, article.Title, apiNavTemplate.TransformText()) #>
+						<#= string.Format("<li data-jstree='{{\"icon\":\"icon-code\"}}' id=\"node-article/{0}\">{1} {2}</li>", article.Id, article.Title, apiNavTemplate.TransformText()) #>
 					<# }
 					else if (!string.IsNullOrEmpty(article.Content))
 					{ #>
 						<# var articleNavTemplate = new ArticleNavTemplate { Article = article }; #>		
-						<#= string.Format("<li data-jstree='{{\"icon\":\"icon-file-text\"}}' id=\"node-article/{0}\"><a href=\"#article/{0}\">{1}</a>{2}</li>", dataUrl, article.Title, articleNavTemplate.TransformText()) #>
+						<#= string.Format("<li data-jstree='{{\"icon\":\"icon-file-text\"}}' id=\"node-article/{0}\"><a href=\"#article/{0}\">{1}</a>{2}</li>", article.Id, article.Title, articleNavTemplate.TransformText()) #>
 					<# }
 					else
 					{ #>
 						<# var articleNavTemplate = new ArticleNavTemplate { Article = article }; #>
-						<#= string.Format("<li data-jstree='{{\"icon\":\"icon-folder-close\"}}' id=\"node-article/{0}\">{1} {2}</li>", dataUrl, article.Title, articleNavTemplate.TransformText()) #>
+						<#= string.Format("<li data-jstree='{{\"icon\":\"icon-folder-close\"}}' id=\"node-article/{0}\">{1} {2}</li>", article.Id, article.Title, articleNavTemplate.TransformText()) #>
 					<# }
 				}
 			} else {
