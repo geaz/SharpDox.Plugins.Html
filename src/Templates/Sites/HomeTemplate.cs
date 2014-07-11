@@ -133,28 +133,15 @@ namespace SharpDox.Plugins.Html.Templates.Sites
                     "ass=\"text-box markdown no-margin\">\n\t\t\t\t");
             
             #line 7 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\HomeTemplate.tt"
- if(StepInput.SDProject.Description.Count > 0 && StepInput.SDProject.Description.ContainsKey(StepInput.CurrentLanguage)) { 
+	var description = StepInput.SDProject.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage);
+					if(description != null) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t");
             
             #line 7 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\HomeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(StepInput.SDProject.Description[StepInput.CurrentLanguage])));
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t\t");
-            
-            #line 7 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\HomeTemplate.tt"
- } else if(StepInput.SDProject.Description.Count > 0) { 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t\t\t");
-            
-            #line 7 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\HomeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(StepInput.SDProject.Description["default"])));
+            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(description)));
             
             #line default
             #line hidden

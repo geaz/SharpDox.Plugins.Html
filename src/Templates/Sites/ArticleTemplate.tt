@@ -56,9 +56,8 @@
     <body>      	
 		<div class="ui-layout-center">
 			<div class="text-box markdown no-margin">
-				<#	var template = new Templater(StepInput.SDProject, Article.Content); 
-					var helper = new Helper(StepInput.SDProject);
-					var article = template.TransformText(helper.TransformLinkToken); #>
+				<#	var helper = new Helper(StepInput.SDProject);
+					var article = Article.Content.Transform(helper.TransformLinkToken); #>
 
 				<#= new Markdown().Transform(article) #>
 			</div>

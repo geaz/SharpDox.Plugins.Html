@@ -1,5 +1,4 @@
 ﻿using SharpDox.Model;
-using System;
 
 namespace SharpDox.Plugins.Html
 {
@@ -12,7 +11,7 @@ namespace SharpDox.Plugins.Html
             _sdProject = sdProject;
         }
 
-        public string TransformLinkToken(string linkType, Guid guid, string identifier)
+        public string TransformLinkToken(string linkType, string identifier)
         {
             var link = string.Empty;
             if (linkType == "image")
@@ -29,15 +28,15 @@ namespace SharpDox.Plugins.Html
                 if(sdType != null)
                     link = string.Format("../{0}/{1}.html", "type", sdType.ShortIdentifier);
             }
-            else if (guid != Guid.Empty) // Member
+            else if(linkType == "article")
+            {
+                link = string.Format("../{0}/{1}.html", linkType, identifier);
+            }
+            else // Member
             {
                 var sdMember = _sdProject.GetMemberByIdentifier(identifier);
                 if (sdMember != null)
                     link = string.Format("../{0}/{1}.html#{2}", "type", sdMember.DeclaringType.ShortIdentifier, sdMember.ShortIdentifier);
-            }
-            else // Article
-            {
-                link = string.Format("../{0}/{1}.html", linkType, identifier);
             }
             return link;
         }

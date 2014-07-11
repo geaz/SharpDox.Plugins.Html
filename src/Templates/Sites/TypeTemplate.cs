@@ -50,13 +50,6 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n");
             this.Write("\n");
             this.Write("\n");
-            this.Write("\n\n");
-            
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
- var currentLanguage = SDType.Documentation.ContainsKey(StepInput.CurrentLanguage) ? StepInput.CurrentLanguage : "default"; 
-            
-            #line default
-            #line hidden
             this.Write("\n\n<!doctype html>\n<html>\n    <head>\n        <meta charset=\"utf-8\">\n        <meta " +
                     "http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n        <title>");
             
@@ -619,14 +612,15 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n        \n\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
- if(SDType.Documentation.Count > 0) { 
+ var documentation = SDType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
+				if(documentation != null) { 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
- if(SDType.Documentation[currentLanguage].Summary.Count > 0) { 
+ if(documentation.Summary.Count > 0) { 
             
             #line default
             #line hidden
@@ -640,7 +634,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("</h3>\n\t\t\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(SDType.Documentation[currentLanguage].Summary.ToMarkdown())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(documentation.Summary.ToMarkdown())));
             
             #line default
             #line hidden
@@ -654,7 +648,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\n\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
- if(SDType.Documentation[currentLanguage].Remarks.Count > 0) { 
+ if(documentation.Remarks.Count > 0) { 
             
             #line default
             #line hidden
@@ -668,7 +662,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("</h3>\n\t\t\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(SDType.Documentation[currentLanguage].Remarks.ToMarkdown())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(documentation.Remarks.ToMarkdown())));
             
             #line default
             #line hidden
@@ -682,7 +676,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\n\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
- if(SDType.Documentation[currentLanguage].Example.Count > 0) { 
+ if(documentation.Example.Count > 0) { 
             
             #line default
             #line hidden
@@ -696,7 +690,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("</h3>\n\t\t\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(SDType.Documentation[currentLanguage].Example.ToMarkdown())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(documentation.Example.ToMarkdown())));
             
             #line default
             #line hidden
@@ -710,7 +704,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\n\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
- if(SDType.Documentation[currentLanguage].Returns.Count > 0) { 
+ if(documentation.Returns.Count > 0) { 
             
             #line default
             #line hidden
@@ -724,7 +718,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("</h3>\n\t\t\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(SDType.Documentation[currentLanguage].Returns.ToMarkdown())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(documentation.Returns.ToMarkdown())));
             
             #line default
             #line hidden
@@ -738,7 +732,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\n\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
- if(SDType.Documentation[currentLanguage].Exceptions.Count > 0) { 
+ if(documentation.Exceptions.Count > 0) { 
             
             #line default
             #line hidden
@@ -752,7 +746,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("</h3>\n\t\t\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
- foreach(var exception in SDType.Documentation[currentLanguage].Exceptions) { 
+ foreach(var exception in documentation.Exceptions) { 
             
             #line default
             #line hidden
@@ -787,7 +781,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\n\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
- if(SDType.Documentation[currentLanguage].Params.Count > 0) { 
+ if(documentation.Params.Count > 0) { 
             
             #line default
             #line hidden
@@ -801,7 +795,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("</h3>\n\t\t\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
- foreach(var parameter in SDType.Documentation[currentLanguage].Params) { 
+ foreach(var parameter in documentation.Params) { 
             
             #line default
             #line hidden
@@ -836,7 +830,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\n\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
- if(SDType.Documentation[currentLanguage].TypeParams.Count > 0) { 
+ if(documentation.TypeParams.Count > 0) { 
             
             #line default
             #line hidden
@@ -850,7 +844,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("</h3>\n\t\t\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
- foreach(var typeParameter in SDType.Documentation[currentLanguage].TypeParams) { 
+ foreach(var typeParameter in documentation.TypeParams) { 
             
             #line default
             #line hidden
@@ -885,7 +879,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\n\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
- if(SDType.Documentation[currentLanguage].SeeAlsos.Count > 0) { 
+ if(documentation.SeeAlsos.Count > 0) { 
             
             #line default
             #line hidden
@@ -899,7 +893,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("</h3>\n\t\t\t\t\t\t<div class=\"list-box\">\n\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
- foreach(var sdToken in SDType.Documentation[currentLanguage].SeeAlsos) 
+ foreach(var sdToken in documentation.SeeAlsos) 
 							{ 
 								var seeAlso = (SDSeeToken)sdToken;
 								if(!string.IsNullOrEmpty(seeAlso.DeclaringType))
@@ -1295,7 +1289,6 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
 	var svg = SDType.GetClassDiagram().ToSvg();
-								var template = new Templater(StepInput.SDProject, svg); 
 								var helper = new Helper(StepInput.SDProject); 
             
             #line default
@@ -1303,7 +1296,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\t\t\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(template.TransformText(helper.TransformLinkToken)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(svg.Transform(helper.TransformLinkToken)));
             
             #line default
             #line hidden

@@ -50,10 +50,9 @@
     <body>        
        <div class="ui-layout-center">
 			<div class="text-box markdown no-margin">
-				<# if(StepInput.SDProject.Description.Count > 0 && StepInput.SDProject.Description.ContainsKey(StepInput.CurrentLanguage)) { #>
-					<#= new Markdown().Transform(StepInput.SDProject.Description[StepInput.CurrentLanguage]) #>
-				<# } else if(StepInput.SDProject.Description.Count > 0) { #>
-					<#= new Markdown().Transform(StepInput.SDProject.Description["default"]) #>
+				<#	var description = StepInput.SDProject.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage);
+					if(description != null) { #>
+					<#= new Markdown().Transform(description) #>
 				<# } #>
 			</div>
 		</div>

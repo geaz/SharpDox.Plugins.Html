@@ -25,7 +25,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+    #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
     public partial class MemberTemplate : MemberTemplateBase
     {
@@ -48,9 +48,9 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n");
             this.Write("\n\n");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
 
-	var currentLanguage = SDMember.Documentation.ContainsKey(StepInput.CurrentLanguage) ? StepInput.CurrentLanguage : "default";
+	var documentation = SDMember.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
 
 	var imgurl = string.Empty;
 	var name = SDMember.Name;
@@ -73,7 +73,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write("\n\n<div id=\"");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(SDMember.ShortIdentifier));
             
             #line default
@@ -81,49 +81,49 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\" class=\"member\">\n\t<div class=\"member-header\">\t\t\n\t\t<a href=\"#\"><i class=\"icon-car" +
                     "et-right\"></i><img src=\"");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(imgurl));
             
             #line default
             #line hidden
             this.Write("\"/> <p>");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(name));
             
             #line default
             #line hidden
             this.Write("</p></a>\n\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
- if(SDMember.Documentation.Count > 0) { 
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+ if(documentation != null) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
- if(SDMember.Documentation[currentLanguage].Summary.Count > 0) { 
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+ if(documentation.Summary.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t<div class=\"summary markdown\">\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(SDMember.Documentation[currentLanguage].Summary.ToMarkdown())));
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(documentation.Summary.ToMarkdown())));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t</div>\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  } 
             
             #line default
@@ -131,77 +131,77 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\t</div>\n\n\t<div class=\"member-content\">\n\n\t\t<div class=\"syntax-box\">\n\t\t\t<pre class" +
                     "=\"wrap-pre\"><code>");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(WebUtility.HtmlEncode(SDMember.Syntax)));
             
             #line default
             #line hidden
             this.Write("</code></pre>\n\t\t</div>\t\t\n        \n\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  if(SDMember is SDField && !string.IsNullOrEmpty(((SDField)SDMember).ConstantValue)){ 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t<p class=\"member-box-title\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.ConstValue));
             
             #line default
             #line hidden
             this.Write("</p>\n\t\t\t<div class=\"member-doc-box markdown\">\n\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(((SDField)SDMember).ConstantValue));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t</div>\n\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
- if(SDMember.Documentation.Count > 0) { 
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+ if(documentation != null) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
- if(SDMember.Documentation[currentLanguage].Params.Count > 0) { 
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+ if(documentation.Params.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t<p class=\"member-box-title\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Parameters));
             
             #line default
             #line hidden
             this.Write("</p>\n\t\t\t\t<div class=\"member-doc-box markdown\">\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
- foreach(var parameter in SDMember.Documentation[currentLanguage].Params) { 
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+ foreach(var parameter in documentation.Params) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t<p class=\"key\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Key));
             
             #line default
             #line hidden
             this.Write("</p>\n\t\t\t\t\t\t\n\t\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  if(SDMember is SDMethod){ 
 								var sdParam = ((SDMethod)SDMember).Parameters.SingleOrDefault(s => s.Name == parameter.Key);
 								if(sdParam != null) { 
@@ -210,14 +210,14 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write("\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t<small>");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdParam.ParamType.Name));
             
             #line default
             #line hidden
             this.Write("</small>\n\n\t\t\t\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  }
 						} 
             
@@ -225,225 +225,225 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write("\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t<div class=\"inline\">\n\t\t\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(parameter.Value.ToMarkdown())));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t</div>\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t</div>\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
- if(SDMember.Documentation[currentLanguage].TypeParams.Count > 0) { 
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+ if(documentation.TypeParams.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t<p class=\"member-box-title\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.TypeParameters));
             
             #line default
             #line hidden
             this.Write("</p>\n\t\t\t\t<div class=\"member-doc-box markdown\">\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
- foreach(var typeParameter in SDMember.Documentation[currentLanguage].TypeParams) { 
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+ foreach(var typeParameter in documentation.TypeParams) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t<p class=\"key\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(typeParameter.Key));
             
             #line default
             #line hidden
             this.Write("</p>\t\t\t\t\t\t\n\t\t\t\t\t\t<div class=\"inline\">\n\t\t\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(typeParameter.Value.ToMarkdown())));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t</div>\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t</div>\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
- if(SDMember.Documentation[currentLanguage].Returns.Count > 0) { 
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+ if(documentation.Returns.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t<p class=\"member-box-title\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Returns));
             
             #line default
             #line hidden
             this.Write("</p>\n\t\t\t\t<div class=\"member-doc-box\">\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(SDMember.Documentation[currentLanguage].Returns.ToMarkdown())));
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(documentation.Returns.ToMarkdown())));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t</div>\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
- if(SDMember.Documentation[currentLanguage].Exceptions.Count > 0) { 
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+ if(documentation.Exceptions.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t<p class=\"member-box-title\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Exceptions));
             
             #line default
             #line hidden
             this.Write("</p>\n\t\t\t\t<div class=\"member-doc-box markdown\">\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
- foreach(var exception in SDMember.Documentation[currentLanguage].Exceptions) { 
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+ foreach(var exception in documentation.Exceptions) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t<p class=\"key\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(exception.Key));
             
             #line default
             #line hidden
             this.Write("</p>\n\t\t\t\t\t\t<div class=\"inline\">\n\t\t\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(exception.Value.ToMarkdown())));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t</div>\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t</div>\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
- if(SDMember.Documentation[currentLanguage].Remarks.Count > 0) { 
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+ if(documentation.Remarks.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t<p class=\"member-box-title\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Remarks));
             
             #line default
             #line hidden
             this.Write("</p>\n\t\t\t\t<div class=\"member-doc-box markdown\">\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(SDMember.Documentation[currentLanguage].Remarks.ToMarkdown())));
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(documentation.Remarks.ToMarkdown())));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t</div>\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
- if(SDMember.Documentation[currentLanguage].Example.Count > 0) { 
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+ if(documentation.Example.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t<p class=\"member-box-title\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Example));
             
             #line default
             #line hidden
             this.Write("</p>\n\t\t\t\t<div class=\"member-doc-box markdown\">\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(SDMember.Documentation[currentLanguage].Example.ToMarkdown())));
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(documentation.Example.ToMarkdown())));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t</div>\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
- if(SDMember.Documentation[currentLanguage].SeeAlsos.Count > 0) { 
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+ if(documentation.SeeAlsos.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t<p class=\"member-box-title\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.SeeAlso));
             
             #line default
             #line hidden
             this.Write("</p>\n\t\t\t\t<div class=\"list-box\">\n\t\t\t\t\t<ul>\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
- foreach(var sdToken in SDMember.Documentation[currentLanguage].SeeAlsos) 
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+ foreach(var sdToken in documentation.SeeAlsos) 
 					{ 
 						var seeAlso = (SDSeeToken)sdToken;
 						if(!string.IsNullOrEmpty(seeAlso.DeclaringType))
@@ -458,28 +458,28 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write(" <li><a href=\"../type/");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdMember.DeclaringType.ShortIdentifier));
             
             #line default
             #line hidden
             this.Write(".html#");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdMember.ShortIdentifier));
             
             #line default
             #line hidden
             this.Write("\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdMember.Name));
             
             #line default
             #line hidden
             this.Write("</a></li> ");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
 
                             }
 						}
@@ -495,21 +495,21 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write(" <li><a href=\"../type/");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.ShortIdentifier));
             
             #line default
             #line hidden
             this.Write(".html\">");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Fullname));
             
             #line default
             #line hidden
             this.Write("</a></li> ");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
 
                             }
 						} 
@@ -519,73 +519,72 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write("\n\t\t\t\t\t</ul>\n\t\t\t\t</div>\n\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  if(SDMember is SDMethod && !((SDMethod)SDMember).IsSequenceDiagramEmpty() && !StepInput.HtmlConfig.DisableSequenceDiagrams) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t<div class=\"svg-diagram\">\n\t\t\t\t<div id=\"");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(SDMember.ShortIdentifier));
             
             #line default
             #line hidden
             this.Write("-diagram\" class=\"sd-sequence-diagram svgpan\">\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
 	var sequenceSvg = ((SDMethod)SDMember).GetSequenceDiagram(StepInput.SDProject).ToSvg();
-						var template = new Templater(StepInput.SDProject, sequenceSvg); 
 						var helper = new Helper(StepInput.SDProject); 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(template.TransformText(helper.TransformLinkToken)));
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sequenceSvg.Transform(helper.TransformLinkToken)));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t</div>\n\t\t\t\t<div class=\"legend\">\n\t\t\t\t\t<p class=\"save\"><a href=\"#\"><i class=\"i" +
                     "con-save\"></i>");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Save));
             
             #line default
             #line hidden
             this.Write("</a></p>\n\t\t\t\t\t<p class=\"resetZoom\"><a href=\"#\"><i class=\"icon-refresh\"></i>");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Reset));
             
             #line default
             #line hidden
             this.Write("</a></p>\n\t\t\t\t\t<p>");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.PanZoom));
             
             #line default
             #line hidden
             this.Write("</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  } 
             
             #line default
@@ -594,7 +593,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\Templates\Sites\MemberTemplate.tt"
+        #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\MemberTemplate.tt"
  public SDMember SDMember { get; set; } 
         
         #line default

@@ -75,30 +75,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             
             #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
  }
-		else if (!string.IsNullOrEmpty(article.Content))
-		{ 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t");
-            
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
- var articleNavTemplate = new ArticleNavTemplate { Article = article }; 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\n\t\t\t");
-            
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-file-text\"}}' id=\"node-article/{0}\"><a href=\"#article/{0}\">{1}</a>{2}</li>", article.Id, article.Title, articleNavTemplate.TransformText())));
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t");
-            
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
- }
-		else
+		else if (article is SDArticlePlaceholder)
 		{ 
             
             #line default
@@ -121,6 +98,29 @@ namespace SharpDox.Plugins.Html.Templates.Nav
             
             #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
  }
+		else
+		{ 
+            
+            #line default
+            #line hidden
+            this.Write("\n\t\t\t");
+            
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
+ var articleNavTemplate = new ArticleNavTemplate { Article = article }; 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\n\t\t\t");
+            
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-file-text\"}}' id=\"node-article/{0}\"><a href=\"#article/{0}\">{1}</a>{2}</li>", article.Id, article.Title, articleNavTemplate.TransformText())));
+            
+            #line default
+            #line hidden
+            this.Write("\n\t\t");
+            
+            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
+ }		
 	} 
 
 	if(Article.Children.Count > 0) { 

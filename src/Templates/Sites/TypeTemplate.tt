@@ -14,8 +14,6 @@
 <#@ import namespace="SharpDox.Model.Documentation.Token" #>
 <#@ import namespace="MarkdownSharp" #>
 
-<# var currentLanguage = SDType.Documentation.ContainsKey(StepInput.CurrentLanguage) ? StepInput.CurrentLanguage : "default"; #>
-
 <!doctype html>
 <html>
     <head>
@@ -182,40 +180,41 @@
 					</div>
 				<# } #>
         
-				<# if(SDType.Documentation.Count > 0) { #>
+				<# var documentation = SDType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
+				if(documentation != null) { #>
 
-					<# if(SDType.Documentation[currentLanguage].Summary.Count > 0) { #>
+					<# if(documentation.Summary.Count > 0) { #>
 						<h3 class="box-title"><#= StepInput.DocStrings.Summary #></h3>
 						<div class="doc-box markdown">
-							<#= new Markdown().Transform(SDType.Documentation[currentLanguage].Summary.ToMarkdown()) #>
+							<#= new Markdown().Transform(documentation.Summary.ToMarkdown()) #>
 						</div>
 					<# } #>
 
-					<# if(SDType.Documentation[currentLanguage].Remarks.Count > 0) { #>
+					<# if(documentation.Remarks.Count > 0) { #>
 						<h3 class="box-title"><#= StepInput.DocStrings.Remarks #></h3>
 						<div class="doc-box markdown">
-							<#= new Markdown().Transform(SDType.Documentation[currentLanguage].Remarks.ToMarkdown()) #>
+							<#= new Markdown().Transform(documentation.Remarks.ToMarkdown()) #>
 						</div>
 					<# } #>
 
-					<# if(SDType.Documentation[currentLanguage].Example.Count > 0) { #>
+					<# if(documentation.Example.Count > 0) { #>
 						<h3 class="box-title"><#= StepInput.DocStrings.Example #></h3>
 						<div class="doc-box markdown">
-							<#= new Markdown().Transform(SDType.Documentation[currentLanguage].Example.ToMarkdown()) #>
+							<#= new Markdown().Transform(documentation.Example.ToMarkdown()) #>
 						</div>
 					<# } #>
 
-					<# if(SDType.Documentation[currentLanguage].Returns.Count > 0) { #>
+					<# if(documentation.Returns.Count > 0) { #>
 						<h3 class="box-title"><#= StepInput.DocStrings.Returns #></h3>
 						<div class="doc-box markdown">
-							<#= new Markdown().Transform(SDType.Documentation[currentLanguage].Returns.ToMarkdown()) #>
+							<#= new Markdown().Transform(documentation.Returns.ToMarkdown()) #>
 						</div>
 					<# } #>
 
-					<# if(SDType.Documentation[currentLanguage].Exceptions.Count > 0) { #>
+					<# if(documentation.Exceptions.Count > 0) { #>
 						<h3 class="box-title"><#= StepInput.DocStrings.Exceptions #></h3>
 						<div class="doc-box markdown">
-							<# foreach(var exception in SDType.Documentation[currentLanguage].Exceptions) { #>
+							<# foreach(var exception in documentation.Exceptions) { #>
 								<p><#= exception.Key #></p>
 								<div class="inline">
 									<#= new Markdown().Transform(exception.Value.ToMarkdown()) #>
@@ -224,10 +223,10 @@
 						</div>
 					<# } #>
 
-					<# if(SDType.Documentation[currentLanguage].Params.Count > 0) { #>
+					<# if(documentation.Params.Count > 0) { #>
 						<h3 class="box-title"><#= StepInput.DocStrings.Parameters #></h3>
 						<div class="doc-box markdown">
-							<# foreach(var parameter in SDType.Documentation[currentLanguage].Params) { #>
+							<# foreach(var parameter in documentation.Params) { #>
 								<p><#= parameter.Key #></p>
 								<div class="inline">
 									<#= new Markdown().Transform(parameter.Value.ToMarkdown()) #>
@@ -236,10 +235,10 @@
 						</div>
 					<# } #>
 
-					<# if(SDType.Documentation[currentLanguage].TypeParams.Count > 0) { #>
+					<# if(documentation.TypeParams.Count > 0) { #>
 						<h3 class="box-title"><#= StepInput.DocStrings.TypeParameters #></h3>
 						<div class="doc-box markdown">
-							<# foreach(var typeParameter in SDType.Documentation[currentLanguage].TypeParams) { #>
+							<# foreach(var typeParameter in documentation.TypeParams) { #>
 								<p><#= typeParameter.Key #></p>
 								<div class="inline">
 									<#= new Markdown().Transform(typeParameter.Value.ToMarkdown()) #>
@@ -248,11 +247,11 @@
 						</div>
 					<# } #>
 
-					<# if(SDType.Documentation[currentLanguage].SeeAlsos.Count > 0) { #>
+					<# if(documentation.SeeAlsos.Count > 0) { #>
 						<h3 class="box-title"><#= StepInput.DocStrings.SeeAlso #></h3>
 						<div class="list-box">
 							<ul>
-							<# foreach(var sdToken in SDType.Documentation[currentLanguage].SeeAlsos) 
+							<# foreach(var sdToken in documentation.SeeAlsos) 
 							{ 
 								var seeAlso = (SDSeeToken)sdToken;
 								if(!string.IsNullOrEmpty(seeAlso.DeclaringType))
@@ -347,9 +346,8 @@
 						<h3 class="box-title"><#= StepInput.DocStrings.ClassDiagram #></h3>
 						<div id="sd-class-diagram" class="svgpan">
 							<#	var svg = SDType.GetClassDiagram().ToSvg();
-								var template = new Templater(StepInput.SDProject, svg); 
 								var helper = new Helper(StepInput.SDProject); #>
-							<#= template.TransformText(helper.TransformLinkToken) #>
+							<#= svg.Transform(helper.TransformLinkToken) #>
 						</div>
 						<div class="legend">
 							<p class="save"><a href="#"><i class="icon-save"></i><#= StepInput.DocStrings.Save #></a></p>

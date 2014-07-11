@@ -139,9 +139,8 @@ namespace SharpDox.Plugins.Html.Templates.Sites
                     "\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\ArticleTemplate.tt"
-	var template = new Templater(StepInput.SDProject, Article.Content); 
-					var helper = new Helper(StepInput.SDProject);
-					var article = template.TransformText(helper.TransformLinkToken); 
+	var helper = new Helper(StepInput.SDProject);
+					var article = Article.Content.Transform(helper.TransformLinkToken); 
             
             #line default
             #line hidden

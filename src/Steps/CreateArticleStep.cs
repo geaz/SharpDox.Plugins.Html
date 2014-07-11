@@ -26,7 +26,7 @@ namespace SharpDox.Plugins.Html.Steps
 
         private void CreateArticle(SDArticle article)
         {
-            if (!string.IsNullOrEmpty(article.Content))
+            if (article.Content != null)
             {
                 var articleTemplate = new ArticleTemplate { Article = article };
                 File.WriteAllText(Path.Combine(StepInput.OutputPath, "article", string.Format("{0}.html", article.Id)), articleTemplate.TransformText());

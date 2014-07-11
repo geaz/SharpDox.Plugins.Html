@@ -82,13 +82,13 @@
         
 		<div class="ui-layout-center">
 			<div>
-				<# if(Namespace.Description.Count != 0 && Namespace.Description.ContainsKey(StepInput.CurrentLanguage)) { #>
+				<# var description = Namespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage); 
+				if(description != null) { #>
 					<h3 class="box-title first-heading"><#= StepInput.DocStrings.Description #></h3>
 				
 					<div class="text-box markdown">
-						<#	var template = new Templater(StepInput.SDProject, Namespace.Description[StepInput.CurrentLanguage]); 
-							var helper = new Helper(StepInput.SDProject);
-							var namespaceDescription = template.TransformText(helper.TransformLinkToken); #>
+						<#	var helper = new Helper(StepInput.SDProject);
+							var namespaceDescription = description.Transform(helper.TransformLinkToken); #>
 
 						<#= new Markdown().Transform(namespaceDescription) #>
 					</div>
@@ -123,8 +123,9 @@
 										<a title="<#= sdType.Name #>" href="../type/<#= sdType.ShortIdentifier #>.html"><#= sdType.Name #></a>
 									</td>	
 									<td class="markdown">
-										<# if(sdType.Documentation.ContainsKey(StepInput.CurrentLanguage)) { #>
-											<#= new Markdown().Transform(sdType.Documentation[StepInput.CurrentLanguage].Summary.ToString()) #>
+										<#	var documentation = sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
+											if(documentation != null) { #>
+												<#= new Markdown().Transform(documentation.Summary.ToString()) #>
 										<# } #>
 									</td>
 								</tr>

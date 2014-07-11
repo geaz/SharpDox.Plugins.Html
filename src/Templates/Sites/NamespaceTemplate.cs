@@ -218,7 +218,8 @@ namespace SharpDox.Plugins.Html.Templates.Sites
                     "\t\t</div>\n\t\t</div>\n        \n\t\t<div class=\"ui-layout-center\">\n\t\t\t<div>\n\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\NamespaceTemplate.tt"
- if(Namespace.Description.Count != 0 && Namespace.Description.ContainsKey(StepInput.CurrentLanguage)) { 
+ var description = Namespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage); 
+				if(description != null) { 
             
             #line default
             #line hidden
@@ -232,9 +233,8 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("</h3>\n\t\t\t\t\n\t\t\t\t\t<div class=\"text-box markdown\">\n\t\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\NamespaceTemplate.tt"
-	var template = new Templater(StepInput.SDProject, Namespace.Description[StepInput.CurrentLanguage]); 
-							var helper = new Helper(StepInput.SDProject);
-							var namespaceDescription = template.TransformText(helper.TransformLinkToken); 
+	var helper = new Helper(StepInput.SDProject);
+							var namespaceDescription = description.Transform(helper.TransformLinkToken); 
             
             #line default
             #line hidden
@@ -330,14 +330,15 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("</a>\n\t\t\t\t\t\t\t\t\t</td>\t\n\t\t\t\t\t\t\t\t\t<td class=\"markdown\">\n\t\t\t\t\t\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\NamespaceTemplate.tt"
- if(sdType.Documentation.ContainsKey(StepInput.CurrentLanguage)) { 
+	var documentation = sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
+											if(documentation != null) { 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t\t\t\t\t\t\t");
+            this.Write("\n\t\t\t\t\t\t\t\t\t\t\t\t");
             
             #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\NamespaceTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(sdType.Documentation[StepInput.CurrentLanguage].Summary.ToString())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(documentation.Summary.ToString())));
             
             #line default
             #line hidden
