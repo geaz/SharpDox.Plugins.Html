@@ -1,4 +1,6 @@
-﻿using SharpDox.Plugins.Html.Templates.Nav;
+﻿using SharpDox.Plugins.Html.Templates;
+using SharpDox.Plugins.Html.Templates.Nav;
+using SharpDox.Plugins.Html.Templates.Search;
 using SharpDox.Plugins.Html.Templates.Sites;
 using System;
 using System.IO;
@@ -12,8 +14,7 @@ namespace SharpDox.Plugins.Html.Steps
 
         public override void RunStep()
         {
-            var navigation = GetNavigation();
-            var indexTemplate = new IndexTemplate { Navigation = navigation };
+            var indexTemplate = new IndexTemplate { Navigation = GetNavigation(), SearchIndex = GetSearchIndex() };
             File.WriteAllText(Path.Combine(StepInput.OutputPath, "index.html"), indexTemplate.TransformText());
 
             var homeTemplate = new HomeTemplate();
@@ -47,6 +48,14 @@ namespace SharpDox.Plugins.Html.Steps
             var indexNav = indexNavTemplate.TransformText().Trim();
 
             return indexNav;
+        }
+
+        private string GetSearchIndex()
+        {
+            var searchIndexTemplate = new SearchIndexTemplate() { Articles = StepInput.SDProject.Articles.GetElementOrDefault(StepInput.CurrentLanguage), Repository = StepInput.SDProject.Repositories.SingleOrDefault().Value };
+            var searchIndex = searchIndexTemplate.TransformText().Trim();
+
+            return searchIndex;
         }
     }
 }

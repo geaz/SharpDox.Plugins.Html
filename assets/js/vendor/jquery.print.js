@@ -60,8 +60,15 @@ $.fn.print = function () {
     objDoc.close();
 
     // Print the document.
-    objFrame.focus();
-    objFrame.print();
+	$(objFrame).load(function(){
+		setTimeout(
+		function () {
+			objFrame.focus();
+			objFrame.print();
+		},
+		(100)
+		);		
+	});    
 
     // Have the frame remove itself in about a minute so that
     // we don't build up too many of these frames.

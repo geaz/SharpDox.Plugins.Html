@@ -62,8 +62,13 @@ NavigationController.prototype = {
         $('#loader').css('left', $('#content').css('left'));
         $('#loader').css('height', $('#content').css('height'));
         $('#loader').css('width', $('#content').css('width'));
-        $('#loader').css('padding-top', (parseInt($('#loader').css('height'), 10) / 2) + "px");
+        $('#loader i').css('margin-top', (parseInt($('#loader').css('height'), 10) / 2) + "px");
 
         $('#loader').show();
-    }
+    },
+	
+	hideLoader: function(){
+		$('#loader').fadeOut(500);
+	}
+	
 };

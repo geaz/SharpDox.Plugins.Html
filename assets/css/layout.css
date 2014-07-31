@@ -110,8 +110,8 @@
 }
 
 .toolbar{
-	padding: 5px;
-	margin: 15px 15px 0px 15px;
+	padding: 0 5px;
+	margin: 15px 15px 5px 15px;
 	background: #f8f8f8;
 	border: 1px solid silver;
 }
@@ -122,6 +122,7 @@
 	border: 1px solid silver;
 	background: white;
 	color: black;
+	margin: 5px 0;
 }
 
 .toolbar .button:hover{

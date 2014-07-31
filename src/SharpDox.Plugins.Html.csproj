@@ -82,6 +82,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Templates\Search\SearchRepositoryTemplate.cs">
+      <DependentUpon>SearchRepositoryTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Search\SearchArticleTemplate.cs">
+      <DependentUpon>SearchArticleTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Search\SearchIndexTemplate.cs">
+      <DependentUpon>SearchIndexTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Templates\Nav\ArticleNavTemplate.cs">
       <DependentUpon>ArticleNavTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -112,14 +127,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Templates\Strings\DeStrings.cs" />
     <Compile Include="Templates\Sites\MemberTemplate.cs">
       <DependentUpon>MemberTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Templates\Strings\IStrings.cs" />
-    <Compile Include="Templates\Strings\EnStrings.cs" />
     <Compile Include="Templates\Sites\TypeTemplate.cs">
       <DependentUpon>TypeTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -141,6 +153,18 @@
     <None Include="Templates\Css.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Css1.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\Search\SearchRepositoryTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SearchRepositoryTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\Search\SearchArticleTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SearchArticleTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\Search\SearchIndexTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SearchIndexTemplate.cs</LastGenOutput>
     </None>
     <None Include="Templates\Nav\ArticleNavTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

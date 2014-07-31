@@ -1,7 +1,7 @@
 ﻿using SharpDox.Model;
 using SharpDox.Plugins.Html.Steps;
-using SharpDox.Plugins.Html.Templates.Strings;
 using SharpDox.Sdk.Exporter;
+using SharpDox.Sdk.Local;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,12 +17,14 @@ namespace SharpDox.Plugins.Html
         private double _docCount;
         private double _docIndex;
 
+        private readonly ILocalController _localController;
         private readonly HtmlStrings _htmlStrings;
         private readonly HtmlConfig _htmlConfig;
         
-        public HtmlExporter(HtmlStrings htmlStrings, HtmlConfig htmlConfig)
+        public HtmlExporter(ILocalController localController, HtmlConfig htmlConfig)
 	    {
-            _htmlStrings = htmlStrings;
+            _localController = localController;
+            _htmlStrings = localController.GetLocalStrings<HtmlStrings>();
             _htmlConfig = htmlConfig;
 	    }
 
@@ -34,7 +36,7 @@ namespace SharpDox.Plugins.Html
             _docIndex = 0;
             foreach (var docLanguage in sdProject.DocumentationLanguages)
             {
-                StepInput.InitStepinput(sdProject, Path.Combine(outputPath, docLanguage), docLanguage, GetCurrentStrings(docLanguage, sdProject.DocLanguage), _htmlStrings, _htmlConfig);
+                StepInput.InitStepinput(sdProject, Path.Combine(outputPath, docLanguage), docLanguage, _localController.GetLocalStringsOrDefault<HtmlStrings>(docLanguage), _htmlStrings, _htmlConfig);
 
                 var steps = new List<StepBase>();
                 steps.Add(new PreBuildStep(0, 10));
@@ -55,16 +57,6 @@ namespace SharpDox.Plugins.Html
 
                 _docIndex++;
             }
-        }
-
-        private IStrings GetCurrentStrings(string docLanguage, string defaultLanguage)
-        {
-            IStrings strings = new EnStrings();
-            if (docLanguage == "de" || (docLanguage == "default" && defaultLanguage == "de"))
-            {
-                strings = new DeStrings();
-            }
-            return strings;
         }
 
         internal void ExecuteOnStepMessage(string message)

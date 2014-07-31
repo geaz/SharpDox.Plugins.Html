@@ -27,7 +27,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+    #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
     public partial class TypeTemplate : TypeTemplateBase
     {
@@ -53,21 +53,21 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\n<!doctype html>\n<html>\n    <head>\n        <meta charset=\"utf-8\">\n        <meta " +
                     "http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n        <title>");
             
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.SDProject.ProjectName));
             
             #line default
             #line hidden
             this.Write(" - ");
             
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(SDType.Name));
             
             #line default
             #line hidden
             this.Write("</title>\n        <meta name=\"viewport\" content=\"width=device-width\">\n\n\t\t");
             
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  #if DEBUG 
             
             #line default
@@ -84,25 +84,25 @@ namespace SharpDox.Plugins.Html.Templates.Sites
                     "../assets/js/vendor/jquery.min.js\"></script>\n\t\t\t<script src=\"../assets/js/vendor" +
                     "/jquery-ui.custom.min.js\"></script>\t\n\t\t\t<script src=\"../assets/js/vendor/jquery." +
                     "dropdown.min.js\"></script>\n\t\t\t<script src=\"../assets/js/vendor/jquery.layout.min" +
-                    ".js\"></script>\n\t\t\t<script src=\"../assets/js/vendor/jquery.mousewheel.js\"></scrip" +
-                    "t>\t\t\t\t\n\t\t\t<script src=\"../assets/js/vendor/jquery.hashchange.min.js\"></script>\t\t" +
-                    "\t\n\t\t\t<script src=\"../assets/js/vendor/jquery.print.js\"></script>\n\n\t\t\t<![if !IE 8" +
-                    "]>\n\t\t\t\t<script src=\"../assets/js/vendor/jquery.panzoom.js\"></script>\t\n\t\t\t\t<scrip" +
-                    "t src=\"../assets/js/vendor/modernizr.js\"></script>\n\t\t\t\t<script src=\"../assets/js" +
-                    "/vendor/highlight.pack.js\"></script>\n\t\t\t\t<script src=\"../assets/js/vendor/rgbcol" +
-                    "or.js\"></script>\n\t\t\t\t<script src=\"../assets/js/vendor/StackBlur.js\"></script>\n\t\t" +
-                    "\t\t<script src=\"../assets/js/vendor/canvg.js\"></script>\n\t\t\t<![endif]>\n\n\t\t\t<script" +
-                    " src=\"../assets/js/frame/svg.js\"></script>\n\t\t\t<script src=\"../assets/js/frame/if" +
-                    "rame.js\"></script>\n\t\t");
+                    ".js\"></script>\n\t\t\t<script src=\"../assets/js/vendor/jquery.mousewheel.min.js\"></s" +
+                    "cript>\t\t\t\t\n\t\t\t<script src=\"../assets/js/vendor/jquery.hashchange.min.js\"></scrip" +
+                    "t>\t\t\t\n\t\t\t<script src=\"../assets/js/vendor/jquery.print.js\"></script>\n\n\t\t\t<![if !" +
+                    "IE 8]>\n\t\t\t\t<script src=\"../assets/js/vendor/jquery.panzoom.js\"></script>\t\n\t\t\t\t<s" +
+                    "cript src=\"../assets/js/vendor/modernizr.js\"></script>\n\t\t\t\t<script src=\"../asset" +
+                    "s/js/vendor/highlight.pack.js\"></script>\n\t\t\t\t<script src=\"../assets/js/vendor/rg" +
+                    "bcolor.js\"></script>\n\t\t\t\t<script src=\"../assets/js/vendor/StackBlur.js\"></script" +
+                    ">\n\t\t\t\t<script src=\"../assets/js/vendor/canvg.js\"></script>\n\t\t\t<![endif]>\n\n\t\t\t<sc" +
+                    "ript src=\"../assets/js/frame/svg.js\"></script>\n\t\t\t<script src=\"../assets/js/fram" +
+                    "e/iframe.js\"></script>\n\t\t");
             
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  #else 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/css/font.css?version=");
             
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
             
             #line default
@@ -110,7 +110,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\" />\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/css/font-awesome.c" +
                     "ss?version=");
             
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
             
             #line default
@@ -118,36 +118,36 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\" />\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../assets/css/style.css?vers" +
                     "ion=");
             
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
             
             #line default
             #line hidden
-            this.Write("\" />\n\t\t\t\n\t\t\t<!--[if IE 8]>\r\n\t\t\t\t<script src=\"../assets/js/vendor.ie8.js?version=");
+            this.Write("\" />\n\t\t\t\n\t\t\t<!--[if IE 8]>\n\t\t\t\t<script src=\"../assets/js/vendor.ie8.js?version=");
             
-            #line 2 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
             
             #line default
             #line hidden
-            this.Write("\"></script>\r\n\t\t\t<![endif]-->\r\n\t\t\t<![if !IE 8]>\r\n\t\t\t\t<script src=\"../assets/js/ven" +
-                    "dor.js?version=");
+            this.Write("\"></script>\n\t\t\t<![endif]-->\n\t\t\t<![if !IE 8]>\n\t\t\t\t<script src=\"../assets/js/vendor" +
+                    ".js?version=");
             
-            #line 5 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
             
             #line default
             #line hidden
-            this.Write("\"></script>\r\n\t\t\t<![endif]>\n\n\t\t\t<script src=\"../assets/js/frame.js?version=");
+            this.Write("\"></script>\n\t\t\t<![endif]>\n\n\t\t\t<script src=\"../assets/js/frame.js?version=");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
             
             #line default
             #line hidden
             this.Write("\"></script>\n\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  #endif 
             
             #line default
@@ -156,35 +156,35 @@ namespace SharpDox.Plugins.Html.Templates.Sites
                     "  \n        \n\t\t<!-- DropDowns -->\n\t\t<div id=\"dropdown-1\" class=\"dropdown dropdown" +
                     "-tip\">\n\t\t\t<ul class=\"dropdown-menu\">\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  foreach(var sdField in SDType.Fields) { 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t\t<li><a href=\"#");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdField.ShortIdentifier));
             
             #line default
             #line hidden
             this.Write("\"><img alt=\"Field-Icon\" src=\"../assets/images/icons/field_");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdField.Accessibility));
             
             #line default
             #line hidden
             this.Write(".png\"> ");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdField.Name));
             
             #line default
             #line hidden
             this.Write("</a></li>\n\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
@@ -192,35 +192,35 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\t\t\t</ul>\n\t\t</div>\n\n\t\t<div id=\"dropdown-2\" class=\"dropdown dropdown-tip\">\n\t\t\t<ul " +
                     "class=\"dropdown-menu\">\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  foreach(var sdEvent in SDType.Events) { 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t\t<li><a href=\"#");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdEvent.ShortIdentifier));
             
             #line default
             #line hidden
             this.Write("\"><img alt=\"Event-Icon\" src=\"../assets/images/icons/event_");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdEvent.Accessibility));
             
             #line default
             #line hidden
             this.Write(".png\"> ");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdEvent.Name));
             
             #line default
             #line hidden
             this.Write("</a></li>\n\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
@@ -228,70 +228,70 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\t\t\t</ul>\n\t\t</div>\n\n\t\t<div id=\"dropdown-3\" class=\"dropdown dropdown-tip\">\n\t\t\t<ul " +
                     "class=\"dropdown-menu\">\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  foreach(var sdConstructor in SDType.Constructors) {  
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t\t<li><a href=\"#");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdConstructor.ShortIdentifier));
             
             #line default
             #line hidden
             this.Write("\"><img alt=\"Method-Icon\" src=\"../assets/images/icons/method_");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdConstructor.Accessibility));
             
             #line default
             #line hidden
             this.Write(".png\"> ");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdConstructor.Signature));
             
             #line default
             #line hidden
             this.Write("</a></li>\n\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  foreach(var sdMethod in SDType.Methods) {  
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t\t<li><a href=\"#");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdMethod.ShortIdentifier));
             
             #line default
             #line hidden
             this.Write("\"><img alt=\"Method-Icon\" src=\"../assets/images/icons/method_");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdMethod.Accessibility));
             
             #line default
             #line hidden
             this.Write(".png\"> ");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdMethod.Signature));
             
             #line default
             #line hidden
             this.Write("</a></li>\n\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
@@ -299,35 +299,35 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\t\t\t</ul>\n\t\t</div>\n\n\t\t<div id=\"dropdown-4\" class=\"dropdown dropdown-tip\">\n\t\t\t<ul " +
                     "class=\"dropdown-menu\">\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  foreach(var sdProperty in SDType.Properties) { 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t\t<li><a href=\"#");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdProperty.ShortIdentifier));
             
             #line default
             #line hidden
             this.Write("\"><img alt=\"Property-Icon\" src=\"../assets/images/icons/properties_");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdProperty.Accessibility));
             
             #line default
             #line hidden
             this.Write(".png\"> ");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdProperty.Name));
             
             #line default
             #line hidden
             this.Write("</a></li>\n\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
@@ -335,7 +335,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\t\t\t</ul>\n\t\t</div>\n\t\t<!-- DropDowns Ende -->\n\n\t    <div class=\"ui-layout-north\">\n" +
                     "\t\t\t<div class=\"toolbar\">\n\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  if(SDType.Fields.Count > 0) { 
             
             #line default
@@ -343,21 +343,21 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\t\t\t\t\t<a href=\"#\" data-dropdown=\"#dropdown-1\" class=\"button\"><img src=\"../assets/" +
                     "images/icons/field_public.png\"/> ");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Fields));
             
             #line default
             #line hidden
             this.Write(" <span class=\"info\">(");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(SDType.Fields.Count));
             
             #line default
             #line hidden
             this.Write(")</span> <i class=\"icon-caret-down\"></i></a>\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } if(SDType.Events.Count > 0) { 
             
             #line default
@@ -365,21 +365,21 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\t\t\t\t\t<a href=\"#\" data-dropdown=\"#dropdown-2\" class=\"button\"><img src=\"../assets/" +
                     "images/icons/class_public.png\"/> ");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Events));
             
             #line default
             #line hidden
             this.Write(" <span class=\"info\">(");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(SDType.Events.Count));
             
             #line default
             #line hidden
             this.Write(")</span> <i class=\"icon-caret-down\"></i></a>\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } if(SDType.Methods.Count > 0 || SDType.Constructors.Count > 0) { 
             
             #line default
@@ -387,21 +387,21 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\t\t\t\t\t<a href=\"#\" data-dropdown=\"#dropdown-3\" class=\"button\"><img src=\"../assets/" +
                     "images/icons/method_public.png\"/> ");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Methods));
             
             #line default
             #line hidden
             this.Write(" <span class=\"info\">(");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(SDType.Constructors.Count + SDType.Methods.Count));
             
             #line default
             #line hidden
             this.Write(")</span> <i class=\"icon-caret-down\"></i></a>\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } if(SDType.Properties.Count > 0) { 
             
             #line default
@@ -409,28 +409,28 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\t\t\t\t\t<a href=\"#\" data-dropdown=\"#dropdown-4\" class=\"button\"><img src=\"../assets/" +
                     "images/icons/properties_public.png\"/> ");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Properties));
             
             #line default
             #line hidden
             this.Write(" <span class=\"info\">(");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(SDType.Properties.Count));
             
             #line default
             #line hidden
             this.Write(")</span> <i class=\"icon-caret-down\"></i></a>\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t<div class=\"right\">\n\t\t\t\t\t<span class=\"toolbar-info\"> Namespace: ");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(SDType.Namespace.Fullname));
             
             #line default
@@ -438,7 +438,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("</span>\n\t\t\t\t\t<a href=\"#\" id=\"expand-all-button\" class=\"button\"><i class=\"icon-ali" +
                     "gn-justify\" title=\"");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.ExpandAll));
             
             #line default
@@ -446,7 +446,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\"></i></a>\n\t\t\t\t\t<a href=\"#\" id=\"print-button\" class=\"button\"><i class=\"icon-print" +
                     "\" title=\"");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Print));
             
             #line default
@@ -455,35 +455,35 @@ namespace SharpDox.Plugins.Html.Templates.Sites
                     "    \n\t\t<div class=\"ui-layout-center\">\n\n\t\t\t<div>\n\t\t\t\t<h3 class=\"box-title first-h" +
                     "eading\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Syntax));
             
             #line default
             #line hidden
             this.Write("</h3>\t\t\t\t\t\n\t\t\t\t<div class=\"syntax-box\">\n\t\t\t\t\t<pre class=\"wrap-pre\"><code>");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(WebUtility.HtmlEncode(SDType.Syntax)));
             
             #line default
             #line hidden
             this.Write("</code></pre>\n\t\t\t\t</div>\n\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  if(SDType.BaseTypes.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.BaseType));
             
             #line default
             #line hidden
             this.Write("</h3>\n\t\t\t\t\t<div class=\"list-box\">\n\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  foreach(var baseType in SDType.BaseTypes) { 
 							if(baseType.IsProjectStranger) { 
             
@@ -491,70 +491,70 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write("\n\t\t\t\t\t\t\t\t<li>");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(baseType.Fullname));
             
             #line default
             #line hidden
             this.Write("</a></li>\n\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } else { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t\t\t<li><a href=\"../type/");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(baseType.ShortIdentifier));
             
             #line default
             #line hidden
             this.Write(".html\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(baseType.Fullname));
             
             #line default
             #line hidden
             this.Write("</a></li>\n\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</div>\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  if(SDType.ImplementedInterfaces.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Implements));
             
             #line default
             #line hidden
             this.Write("</h3>\n\t\t\t\t\t<div class=\"list-box\">\n\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  foreach(var implementedInterface in SDType.ImplementedInterfaces) {
 							if(implementedInterface.IsProjectStranger) { 
             
@@ -562,56 +562,56 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write("\n\t\t\t\t\t\t\t\t<li>");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(implementedInterface.Fullname));
             
             #line default
             #line hidden
             this.Write("</a></li>\n\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } else { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t\t\t<li><a href=\"../type/");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(implementedInterface.ShortIdentifier));
             
             #line default
             #line hidden
             this.Write(".html\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(implementedInterface.Fullname));
             
             #line default
             #line hidden
             this.Write("</a></li>\n\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</div>\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n        \n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  var documentation = SDType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
 				if(documentation != null) { 
             
@@ -619,280 +619,280 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write("\n\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  if(documentation.Summary.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Summary));
             
             #line default
             #line hidden
             this.Write("</h3>\n\t\t\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(documentation.Summary.ToMarkdown())));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t</div>\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  if(documentation.Remarks.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Remarks));
             
             #line default
             #line hidden
             this.Write("</h3>\n\t\t\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(documentation.Remarks.ToMarkdown())));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t</div>\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  if(documentation.Example.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Example));
             
             #line default
             #line hidden
             this.Write("</h3>\n\t\t\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(documentation.Example.ToMarkdown())));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t</div>\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  if(documentation.Returns.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Returns));
             
             #line default
             #line hidden
             this.Write("</h3>\n\t\t\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(documentation.Returns.ToMarkdown())));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t</div>\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  if(documentation.Exceptions.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Exceptions));
             
             #line default
             #line hidden
             this.Write("</h3>\n\t\t\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  foreach(var exception in documentation.Exceptions) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t\t\t<p>");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(exception.Key));
             
             #line default
             #line hidden
             this.Write("</p>\n\t\t\t\t\t\t\t\t<div class=\"inline\">\n\t\t\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(exception.Value.ToMarkdown())));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t</div>\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  if(documentation.Params.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Parameters));
             
             #line default
             #line hidden
             this.Write("</h3>\n\t\t\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  foreach(var parameter in documentation.Params) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t\t\t<p>");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Key));
             
             #line default
             #line hidden
             this.Write("</p>\n\t\t\t\t\t\t\t\t<div class=\"inline\">\n\t\t\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(parameter.Value.ToMarkdown())));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t</div>\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  if(documentation.TypeParams.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.TypeParameters));
             
             #line default
             #line hidden
             this.Write("</h3>\n\t\t\t\t\t\t<div class=\"doc-box markdown\">\n\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  foreach(var typeParameter in documentation.TypeParams) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t\t\t<p>");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(typeParameter.Key));
             
             #line default
             #line hidden
             this.Write("</p>\n\t\t\t\t\t\t\t\t<div class=\"inline\">\n\t\t\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(typeParameter.Value.ToMarkdown())));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t</div>\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  if(documentation.SeeAlsos.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.SeeAlso));
             
             #line default
             #line hidden
             this.Write("</h3>\n\t\t\t\t\t\t<div class=\"list-box\">\n\t\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  foreach(var sdToken in documentation.SeeAlsos) 
 							{ 
 								var seeAlso = (SDSeeToken)sdToken;
@@ -908,28 +908,28 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write(" <li><a href=\"../type/");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdMember.DeclaringType.ShortIdentifier));
             
             #line default
             #line hidden
             this.Write(".html#");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdMember.ShortIdentifier));
             
             #line default
             #line hidden
             this.Write("\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdMember.Name));
             
             #line default
             #line hidden
             this.Write("</a></li> ");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
 
 									}
 								}
@@ -945,21 +945,21 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write(" <li><a href=\"../type/");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.ShortIdentifier));
             
             #line default
             #line hidden
             this.Write(".html\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Fullname));
             
             #line default
             #line hidden
             this.Write("</a></li> ");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
 
 									}
 								} 
@@ -969,133 +969,133 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write("\n\t\t\t\t\t\t\t</ul>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  if(SDType.Uses.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Uses));
             
             #line default
             #line hidden
             this.Write("</h3>\n\t\t\t\t\t<div class=\"list-box\">\n\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  foreach(var use in SDType.Uses) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t\t<li><a href=\"../type/");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(use.ShortIdentifier));
             
             #line default
             #line hidden
             this.Write(".html\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(use.Name));
             
             #line default
             #line hidden
             this.Write("</a></li>\n\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</div>\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  if(SDType.UsedBy.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.UsedBy));
             
             #line default
             #line hidden
             this.Write("</h3>\n\t\t\t\t\t<div class=\"list-box\">\n\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  foreach(var used in SDType.UsedBy) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t\t<li><a href=\"../type/");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(used.ShortIdentifier));
             
             #line default
             #line hidden
             this.Write(".html\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(used.Name));
             
             #line default
             #line hidden
             this.Write("</a></li>\n\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</div>\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  if(SDType.Fields.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Fields));
             
             #line default
             #line hidden
             this.Write("</h3>\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  foreach (var field in SDType.Fields)
 					{
 						var memberTemplate = new MemberTemplate { SDMember = field }; 
@@ -1104,42 +1104,42 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write("\n\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(memberTemplate.TransformText()));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  if(SDType.Events.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Events));
             
             #line default
             #line hidden
             this.Write("</h3>\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  foreach (var eve in SDType.Events)
 					{
 						var memberTemplate = new MemberTemplate { SDMember = eve }; 
@@ -1148,42 +1148,42 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write("\n\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(memberTemplate.TransformText()));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  if(SDType.Methods.Count > 0 || SDType.Constructors.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Methods));
             
             #line default
             #line hidden
             this.Write("</h3>\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  foreach (var constructor in SDType.Constructors)
 					{
 						var memberTemplate = new MemberTemplate { SDMember = constructor }; 
@@ -1192,14 +1192,14 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write("\n\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(memberTemplate.TransformText()));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } foreach (var method in SDType.Methods)
 					{
 						var memberTemplate = new MemberTemplate { SDMember = method }; 
@@ -1208,42 +1208,42 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write("\n\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(memberTemplate.TransformText()));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
   } 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  if(SDType.Properties.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Properties));
             
             #line default
             #line hidden
             this.Write("</h3>\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  foreach (var property in SDType.Properties)
 					{
 						var memberTemplate = new MemberTemplate { SDMember = property }; 
@@ -1252,42 +1252,42 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write("\n\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(memberTemplate.TransformText()));
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\n\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
 	if(!SDType.IsClassDiagramEmpty()) {  
             
             #line default
             #line hidden
             this.Write("\n\t\t\t\t\t<div class=\"svg-diagram\">\n\t\t\t\t\t\t<h3 class=\"box-title\">");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.ClassDiagram));
             
             #line default
             #line hidden
             this.Write("</h3>\n\t\t\t\t\t\t<div id=\"sd-class-diagram\" class=\"svgpan\">\n\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
 	var svg = SDType.GetClassDiagram().ToSvg();
 								var helper = new Helper(StepInput.SDProject); 
             
@@ -1295,7 +1295,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             #line hidden
             this.Write("\n\t\t\t\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(svg.Transform(helper.TransformLinkToken)));
             
             #line default
@@ -1303,28 +1303,28 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"legend\">\n\t\t\t\t\t\t\t<p class=\"save\"><a href=\"#\"><i cl" +
                     "ass=\"icon-save\"></i>");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Save));
             
             #line default
             #line hidden
             this.Write("</a></p>\n\t\t\t\t\t\t\t<p class=\"resetZoom\"><a href=\"#\"><i class=\"icon-refresh\"></i>");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Reset));
             
             #line default
             #line hidden
             this.Write("</a></p>\n\t\t\t\t\t\t\t<p>");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.PanZoom));
             
             #line default
             #line hidden
             this.Write("</p>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t");
             
-            #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  } 
             
             #line default
@@ -1333,7 +1333,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 6 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
+        #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\TypeTemplate.tt"
  public SDType SDType { get; set; } 
         
         #line default

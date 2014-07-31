@@ -26,6 +26,7 @@
 			<link rel="stylesheet" type="text/css" href="assets/css/markdown.css" />			
 			<link rel="stylesheet" type="text/css" href="assets/css/tree.css" />
 			<link rel="stylesheet" type="text/css" href="assets/css/layout.css" />
+			<link rel="stylesheet" type="text/css" href="assets/css/search.css" />
 			<link rel="stylesheet" type="text/css" href="assets/css/dynamic.css" />
 
 			<script src="assets/js/vendor/jquery.min.js"></script>
@@ -34,6 +35,7 @@
 			<script src="assets/js/vendor/jstree.js"></script>	
 			<script src="assets/js/vendor/jquery.hashchange.min.js"></script>
 		
+			<script src="assets/js/app/SearchController.js"></script>
 			<script src="assets/js/app/NavigationController.js"></script>
 			<script src="assets/js/app/index.js"></script>
 		<# #else #>
@@ -54,6 +56,7 @@
 
 		<script>
 			var homeString = "<#= StepInput.DocStrings.Home #>";
+			<#= SearchIndex #>
 		</script>
 
     </head>
@@ -97,12 +100,21 @@
 				 <#= project #> <#= StepInput.SDProject.VersionNumber != null ? StepInput.SDProject.VersionNumber : string.Empty #> <#= author #> - <#= StepInput.DocStrings.GeneratedBy #> <a href="http://sharpDox.de" target="_blank">sharpDox</a>
 			</div>
 		</div>
-        <div id="navigation" class="ui-layout-west">
-			<#= Navigation #>
+        <div class="ui-layout-west">
+			<div id="search">
+				<i class="icon-search"></i> <input id="searchInput" type="text" />
+				<div id="searchResults">
+				</div>
+			</div>
+			<div id="navigation">
+				<#= Navigation #>
+			</div>
 		</div>
 		<div id="loader"><i class="icon-refresh icon-spin"></i></div>
 		<iframe id="content" class="ui-layout-center" frameborder="0" width="100%" src="article/home.html"></iframe>
     </body>
 </html>
 
-<#+ public string Navigation { get; set; } #>
+<#+ public string Navigation { get; set; } 
+	public string SearchIndex { get; set; }
+#>

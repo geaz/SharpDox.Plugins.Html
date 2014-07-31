@@ -37,7 +37,7 @@
 			<script src="../assets/js/vendor/jquery-ui.custom.min.js"></script>	
 			<script src="../assets/js/vendor/jquery.dropdown.min.js"></script>
 			<script src="../assets/js/vendor/jquery.layout.min.js"></script>
-			<script src="../assets/js/vendor/jquery.mousewheel.js"></script>				
+			<script src="../assets/js/vendor/jquery.mousewheel.min.js"></script>				
 			<script src="../assets/js/vendor/jquery.hashchange.min.js"></script>			
 			<script src="../assets/js/vendor/jquery.print.js"></script>
 

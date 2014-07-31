@@ -32,22 +32,26 @@ $(document).ready(function () {
             size: 350
         }
     });
-
-    $('#content').load(function () {		
-        $('#loader').fadeOut(500);
+	
+	$('#content').load(function () {		
+        navigationController.hideLoader();
     });
 
     navigationController = new NavigationController();
+	searchController = new SearchController("#searchInput", "#searchResults", searchIndex);
 });
 
 function OnLoadPage(event) {
     if (event.data != null) {
-        if (window.location.hash != event.data && event.data != '#home' && event.data != 'showLoader') {
+        if (window.location.hash != event.data && event.data != '#home' && event.data != 'showLoader' && event.data != 'hideLoader') {
             doNotLoad = true;
             window.location.hash = event.data;
         }
         else if (event.data == 'showLoader') {
             navigationController.showLoader();
+        }
+		else if (event.data == 'hideLoader') {
+            navigationController.hideLoader();
         }
     }
 }
