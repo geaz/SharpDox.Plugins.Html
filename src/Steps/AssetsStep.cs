@@ -2,6 +2,7 @@
 using SharpDox.UML;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 
 namespace SharpDox.Plugins.Html.Steps
@@ -16,9 +17,30 @@ namespace SharpDox.Plugins.Html.Steps
             EnsureFolder(Path.Combine(StepInput.OutputPath, "assets", "css"));
             File.WriteAllText(Path.Combine(StepInput.OutputPath, "assets", "css", "dynamic.css"), dynamicCss.TransformText());
 
+            CopyFavIcon();
             CopyFolder(Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "assets"), Path.Combine(StepInput.OutputPath, "assets"));
             CopyImages(StepInput.SDProject.Images, Path.Combine(StepInput.OutputPath, "assets"));
             CopyImage(StepInput.SDProject.LogoPath, StepInput.OutputPath);
+        }
+
+        private void CopyFavIcon()
+        {
+            if(!string.IsNullOrEmpty(StepInput.HtmlConfig.FavIcon))
+            {
+                var outputFilePath = Path.Combine(StepInput.OutputPath, "favicon.ico");
+                if (Path.GetExtension(StepInput.HtmlConfig.FavIcon) == "ico")
+                {
+                    File.Copy(StepInput.HtmlConfig.FavIcon, outputFilePath);
+                }
+                else
+                {
+                    using (FileStream stream = File.OpenWrite(outputFilePath))
+                    {
+                        var bitmap = (Bitmap)Image.FromFile(StepInput.HtmlConfig.FavIcon);
+                        Icon.FromHandle(bitmap.GetHicon()).Save(stream);
+                    }
+                }
+            }
         }
 
         private void CopyFolder(string input, string output)

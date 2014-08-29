@@ -15,11 +15,24 @@ namespace SharpDox.Plugins.Html
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        private string _favIcon;
         private string _headerBackground;
         private string _subheaderBackground;
         private string _color;
         private bool _disableSequenceDiagrams;
         private string _footerLine;
+
+        [Name(typeof(HtmlStrings), "FavIcon")]
+        [ConfigEditor(EditorType.Filepicker, "Icon File(.png; .ico)|*.png; *.ico")]
+        public string FavIcon
+        {
+            get { return _favIcon; }
+            set
+            {
+                _favIcon = value;
+                OnPropertyChanged("FavIcon");
+            }
+        }
 
         [Name(typeof(HtmlStrings), "HeaderBackground")]
         [ConfigEditor(EditorType.Colorpicker)]
