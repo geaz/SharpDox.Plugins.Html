@@ -14,7 +14,10 @@ NavigationController.prototype = {
                 that._title.html(data.node.text);
                 document.location = href;
             }
-            else {
+			else if(href != "#"){
+				that._title.html(data.node.text);
+			}
+            else {				
                 doNotLoad = false;
             }
 
