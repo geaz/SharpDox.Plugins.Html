@@ -39,14 +39,17 @@
     <Reference Include="MarkdownSharp">
       <HintPath>packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDox.Model">
-      <HintPath>..\libs\SharpDox.Model.dll</HintPath>
+    <Reference Include="SharpDox.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\sharpDoxSDK.0.9.9\lib\net40\SharpDox.Model.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDox.Sdk">
-      <HintPath>..\libs\SharpDox.Sdk.dll</HintPath>
+    <Reference Include="SharpDox.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\sharpDoxSDK.0.9.9\lib\net40\SharpDox.Sdk.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDox.UML">
-      <HintPath>..\libs\SharpDox.UML.dll</HintPath>
+    <Reference Include="SharpDox.UML, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\sharpDoxSDK.0.9.9\lib\net40\SharpDox.UML.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
