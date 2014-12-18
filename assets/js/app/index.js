@@ -43,7 +43,7 @@ $(document).ready(function () {
 
 function OnLoadPage(event) {
     if (event.data != null) {
-        if (window.location.hash != event.data && event.data != '#home' && event.data != 'showLoader' && event.data != 'hideLoader') {
+        if (window.location.hash != event.data && event.data != 'showLoader' && event.data != 'hideLoader') {
             doNotLoad = true;
             window.location.hash = event.data;
         }

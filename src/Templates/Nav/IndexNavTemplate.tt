@@ -9,7 +9,7 @@
 <#@ import namespace="SharpDox.Model.Documentation.Article" #>
 
 <ul>
-	<#= string.Format("<li data-jstree='{{\"icon\":\"icon-home\"}}' id=\"home\" class=\"jstree-open\"><a href=\"#home\">{0}</a>", StepInput.DocStrings.Home) #>
+	<#= string.Format("<li data-jstree='{{\"icon\":\"icon-home\"}}' id=\"node-home\" class=\"jstree-open\"><a href=\"#home\">{0}</a>", StepInput.DocStrings.Home) #>
 	<ul>
 		<# if(StepInput.SDProject.Articles.Count > 0) {
 				var articles = StepInput.SDProject.Articles.GetElementOrDefault(StepInput.CurrentLanguage);

@@ -17,9 +17,8 @@ NavigationController.prototype = {
 			else if(href != "#"){
 				that._title.html(data.node.text);
 			}
-            else {				
-                doNotLoad = false;
-            }
+            
+			doNotLoad = false;
 
             if (data.node.parent != "#")
                 data.instance.open_node(data.node);
@@ -36,7 +35,7 @@ NavigationController.prototype = {
     setDocSite: function (site) {
         this.showLoader();
         if (site == "home") {
-            this.selectNode('node-' + homeString);
+            this.selectNode('node-home');
             $("#content").attr('src', "article/home.html");
         }
         else if (site != "") {

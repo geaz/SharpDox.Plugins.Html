@@ -41,15 +41,20 @@ $(document).ready(function () {
     });
 
     $('.member-header').click(function () {
-        toggleSlide(this);
-
-        //prevent scrolling
+		
+		//prevent scrolling
         var id = $(this).parent().attr('id');
         $(this).parent().attr('id', id + "-tmp");
-
-        window.location = "#" + id;
-        postUrl();
-
+		
+		//if not slided down
+		var icon = $($($(this).children()[0]).children()[0]);
+		if (icon.hasClass('icon-caret-right')) {      
+			window.location = "#" + id;
+			postUrl();
+		}
+	
+        toggleSlide(this);
+		
         //set to original id
         $(this).parent().attr('id', id);
     });
@@ -114,16 +119,18 @@ function highlightMember(){
 }
 
 function postUrl() {
-    var splittedUrl = window.location.toString().split('/');
-    var site = splittedUrl[splittedUrl.length - 2] + "/" + splittedUrl[splittedUrl.length - 1];
-    var splittedSite = site.split('#');
-    var siteUrl = '#' + splittedSite[0].substring(0, splittedSite[0].length - 5);
+	var splittedUrl = window.location.toString().split('/');
+	var site = splittedUrl[splittedUrl.length - 2] + "/" + splittedUrl[splittedUrl.length - 1];
+	var splittedSite = site.split('#');
+	var siteUrl = '#' + splittedSite[0].substring(0, splittedSite[0].length - 5);
 
-    if (splittedSite.length == 2) {
-        siteUrl += '?' + splittedSite[1];
-    }
-
-    parent.postMessage(siteUrl, '*');
+	if (splittedSite.length == 2) {
+		siteUrl += '?' + splittedSite[1];
+	}
+	
+	if(siteUrl != "#article/home"){
+		parent.postMessage(siteUrl, '*');
+	}
 }
 
 function showLoader() {
