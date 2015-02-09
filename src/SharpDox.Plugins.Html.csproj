@@ -33,23 +33,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EcmaScript.NET">
-      <HintPath>packages\YUICompressor.NET.MSBuild.2.4.0.0\lib\NET20\EcmaScript.NET.dll</HintPath>
+    <Reference Include="EcmaScript.NET, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\EcmaScript.NET.dll</HintPath>
     </Reference>
     <Reference Include="MarkdownSharp">
       <HintPath>packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
     </Reference>
     <Reference Include="SharpDox.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\sharpDoxSDK.0.9.9\lib\net40\SharpDox.Model.dll</HintPath>
+      <HintPath>packages\sharpDoxSDK.0.9.10\lib\net40\SharpDox.Model.dll</HintPath>
     </Reference>
     <Reference Include="SharpDox.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\sharpDoxSDK.0.9.9\lib\net40\SharpDox.Sdk.dll</HintPath>
+      <HintPath>packages\sharpDoxSDK.0.9.10\lib\net40\SharpDox.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="SharpDox.UML, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\sharpDoxSDK.0.9.9\lib\net40\SharpDox.UML.dll</HintPath>
+      <HintPath>packages\sharpDoxSDK.0.9.10\lib\net40\SharpDox.UML.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,11 +61,13 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Yahoo.Yui.Compressor">
-      <HintPath>packages\YUICompressor.NET.MSBuild.2.4.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+    <Reference Include="Yahoo.Yui.Compressor, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
     </Reference>
-    <Reference Include="Yahoo.Yui.Compressor.Build.MsBuild">
-      <HintPath>packages\YUICompressor.NET.MSBuild.2.4.0.0\lib\NET20\Yahoo.Yui.Compressor.Build.MsBuild.dll</HintPath>
+    <Reference Include="Yahoo.Yui.Compressor.Build.MsBuild, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\YUICompressor.NET.MSBuild.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.Build.MsBuild.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
