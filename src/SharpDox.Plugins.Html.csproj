@@ -130,11 +130,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Templates\Sites\HomeTemplate1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HomeTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Templates\Sites\MemberTemplate.cs">
       <DependentUpon>MemberTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
