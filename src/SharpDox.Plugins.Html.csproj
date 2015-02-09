@@ -130,6 +130,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Templates\Sites\HomeTemplate1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HomeTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\Sites\MemberTemplate.cs">
       <DependentUpon>MemberTemplate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -183,7 +188,7 @@
     </None>
     <None Include="Templates\Sites\HomeTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>HomeTemplate.cs</LastGenOutput>
+      <LastGenOutput>HomeTemplate1.cs</LastGenOutput>
     </None>
     <None Include="Templates\Sites\ArticleTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -203,7 +208,6 @@
     </None>
     <None Include="Templates\Sites\NamespaceTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>NamespaceTemplate.cs</LastGenOutput>
     </None>
     <None Include="Templates\Sites\IndexTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

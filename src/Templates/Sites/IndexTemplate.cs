@@ -23,7 +23,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+    #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
     public partial class IndexTemplate : IndexTemplateBase
     {
@@ -33,48 +33,39 @@ namespace SharpDox.Plugins.Html.Templates.Sites
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\n");
-            this.Write("\n\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n\n<!doctype html>\n<html class=\"index\">\n    <head>\n        <meta charset=\"utf-8\">\n" +
-                    "        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n        <" +
-                    "title>");
+            this.Write("\r\n");
+            this.Write("\r\n<!doctype html>\r\n<html class=\"index\">\r\n    <head>\r\n        <meta charset=\"utf-8" +
+                    "\">\r\n        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\r\n    " +
+                    "    <title>");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.SDProject.ProjectName));
             
             #line default
             #line hidden
-            this.Write("</title>\n        <meta name=\"viewport\" content=\"width=device-width\">\n\n\t\t");
+            this.Write("</title>\r\n        <meta name=\"viewport\" content=\"width=device-width\">\r\n\r\n\t\t");
             
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 21 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
  if (!String.IsNullOrEmpty(StepInput.HtmlConfig.FavIcon)) { 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t<link rel=\"icon\" href=\"favicon.ico\"/>\r\n\t\t\t<link rel=\"shortcut icon\" href=\"fav" +
-                    "icon.ico\"/>\r\n\t\t\t<link href=\"favicon.ico\"/>\n\t\t");
+            this.Write("\t\t\t<link rel=\"icon\" href=\"favicon.ico\"/>\r\n\t\t\t<link rel=\"shortcut icon\" href=\"favi" +
+                    "con.ico\"/>\r\n\t\t\t<link href=\"favicon.ico\"/>\r\n\t\t");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 25 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t");
+            this.Write("\r\n\t\t");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 27 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
  #if DEBUG 
             
             #line default
             #line hidden
-            this.Write(@"
-			<link rel=""stylesheet"" type=""text/css"" href=""assets/css/reset.css"" />
+            this.Write(@"			<link rel=""stylesheet"" type=""text/css"" href=""assets/css/reset.css"" />
 			<link rel=""stylesheet"" type=""text/css"" href=""assets/css/font.css"" />
 			<link rel=""stylesheet"" type=""text/css"" href=""assets/css/font-awesome.css"" />
 			<link rel=""stylesheet"" type=""text/css"" href=""assets/css/typography.css"" />		
@@ -95,148 +86,157 @@ namespace SharpDox.Plugins.Html.Templates.Sites
 			<script src=""assets/js/app/index.js""></script>
 		");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 47 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
  #else 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/font.css?version=");
+            this.Write("\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/font.css?version=");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 48 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
             
             #line default
             #line hidden
-            this.Write("\" />\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/font-awesome.css?" +
-                    "version=");
-            
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
-            
-            #line default
-            #line hidden
-            this.Write("\" />\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/style.css?version" +
-                    "=");
-            
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
-            
-            #line default
-            #line hidden
-            this.Write("\" />\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/dynamic.css?versi" +
-                    "on=");
-            
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
-            
-            #line default
-            #line hidden
-            this.Write("\" />\n\t\t\t\n\t\t\t<!--[if IE 8]>\n\t\t\t\t<script src=\"assets/js/vendor.ie8.js?version=");
-            
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
-            
-            #line default
-            #line hidden
-            this.Write("\"></script>\n\t\t\t<![endif]-->\n\t\t\t<![if !IE 8]>\n\t\t\t\t<script src=\"assets/js/vendor.js" +
+            this.Write("\" />\r\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/font-awesome.css" +
                     "?version=");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 49 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
             
             #line default
             #line hidden
-            this.Write("\"></script>\n\t\t\t<![endif]>\n\n\t\t\t<script src=\"assets/js/app.js?version=");
+            this.Write("\" />\r\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/style.css?versio" +
+                    "n=");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 50 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
             
             #line default
             #line hidden
-            this.Write("\"></script>\n\t\t");
+            this.Write("\" />\r\n\t\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/dynamic.css?vers" +
+                    "ion=");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 51 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
+            
+            #line default
+            #line hidden
+            this.Write("\" />\r\n\t\t\t\r\n\t\t\t<!--[if IE 8]>\r\n\t\t\t\t<script src=\"assets/js/vendor.ie8.js?version=");
+            
+            #line 54 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
+            
+            #line default
+            #line hidden
+            this.Write("\"></script>\r\n\t\t\t<![endif]-->\r\n\t\t\t<![if !IE 8]>\r\n\t\t\t\t<script src=\"assets/js/vendor" +
+                    ".js?version=");
+            
+            #line 57 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
+            
+            #line default
+            #line hidden
+            this.Write("\"></script>\r\n\t\t\t<![endif]>\r\n\r\n\t\t\t<script src=\"assets/js/jquery.layout.min.js?vers" +
+                    "ion=");
+            
+            #line 60 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
+            
+            #line default
+            #line hidden
+            this.Write("\"></script>\t\r\n\t\t\t<script src=\"assets/js/app.js?version=");
+            
+            #line 61 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion));
+            
+            #line default
+            #line hidden
+            this.Write("\"></script>\r\n\t\t");
+            
+            #line 62 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
  #endif 
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t<script>\n\t\t\tvar homeString = \"");
+            this.Write("\r\n\t\t<script>\r\n\t\t\tvar homeString = \"");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 65 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Home));
             
             #line default
             #line hidden
-            this.Write("\";\n\t\t\t");
+            this.Write("\";\r\n\t\t\t");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 66 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(SearchIndex));
             
             #line default
             #line hidden
-            this.Write("\n\t\t</script>\n\n    </head>\n    <body>   \n\t\t<div class=\"ui-layout-north\">\n\t\t\t");
+            this.Write("\r\n\t\t</script>\r\n\r\n    </head>\r\n    <body>   \r\n\t\t<div class=\"ui-layout-north\">\r\n\t\t\t" +
+                    "");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 72 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
  if (String.IsNullOrEmpty(StepInput.SDProject.LogoPath))
 			{
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t<h1 id=\"sitetitle\"><a href=\"index.html\">");
+            this.Write("\t\t\t\t<h1 id=\"sitetitle\"><a href=\"index.html\">");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 74 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.SDProject.ProjectName));
             
             #line default
             #line hidden
-            this.Write("</a></h1>\n\t\t\t");
+            this.Write("</a></h1>\r\n\t\t\t");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 75 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
 }
 			else
 			{
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t<a href=\"index.html\" id=\"sitetitle\"><img src=\"");
+            this.Write("\t\t\t\t<a href=\"index.html\" id=\"sitetitle\"><img src=\"");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 78 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Path.GetFileName(StepInput.SDProject.LogoPath)));
             
             #line default
             #line hidden
             this.Write("\" title=\"");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 78 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.SDProject.ProjectName));
             
             #line default
             #line hidden
-            this.Write("\"/></a>\n\t\t\t");
+            this.Write("\"/></a>\r\n\t\t\t");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 79 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
 }
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t<div id=\"subtitle\"><p>");
+            this.Write("\t\t\t<div id=\"subtitle\"><p>");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 80 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Home));
             
             #line default
             #line hidden
-            this.Write("</p></div>\n\t\t</div>\n        <div class=\"ui-layout-south\">\n\t\t\t<div class=\"user-foo" +
-                    "ter markdown\">\n\t\t\t\t");
+            this.Write("</p></div>\r\n\t\t</div>\r\n        <div class=\"ui-layout-south\">\r\n\t\t\t<div class=\"user-" +
+                    "footer markdown\">\r\n\t\t\t\t");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 84 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(StepInput.HtmlConfig.FooterLine)));
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t</div>\n\t\t\t<div class=\"sd-footer\">\n\t\t\t\t");
+            this.Write("\r\n\t\t\t</div>\r\n\t\t\t<div class=\"sd-footer\">\r\n\t\t\t\t");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 87 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
 	var project = string.Empty;
 					if(!string.IsNullOrEmpty(StepInput.SDProject.ProjectUrl))
 					{	
@@ -259,30 +259,30 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t\t\t ");
+            this.Write("\r\n\t\t\t\t ");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 107 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(project));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 107 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.SDProject.VersionNumber != null ? StepInput.SDProject.VersionNumber : string.Empty));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 107 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(author));
             
             #line default
             #line hidden
             this.Write(" - ");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 107 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.GeneratedBy));
             
             #line default
@@ -299,18 +299,18 @@ namespace SharpDox.Plugins.Html.Templates.Sites
 			<div id=""navigation"">
 				");
             
-            #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+            #line 117 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Navigation));
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t</div>\n\t\t</div>\n\t\t<div id=\"loader\"><i class=\"icon-refresh icon-spin\"></i></di" +
-                    "v>\n\t\t<iframe id=\"content\" class=\"ui-layout-center\" frameborder=\"0\" width=\"100%\" " +
-                    "src=\"article/home.html\"></iframe>\n    </body>\n</html>\n\n");
+            this.Write("\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t<div id=\"loader\"><i class=\"icon-refresh icon-spin\"></i><" +
+                    "/div>\r\n\t\t<iframe id=\"content\" class=\"ui-layout-center\" frameborder=\"0\" width=\"10" +
+                    "0%\" src=\"article/home.html\"></iframe>\r\n    </body>\r\n</html>\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Sites\IndexTemplate.tt"
+        #line 125 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\IndexTemplate.tt"
  public string Navigation { get; set; } 
 	public string SearchIndex { get; set; }
 

@@ -12,14 +12,6 @@ $(document).ready(function () {
             resizable: false
         }
     });
-	
-	if($(window).hashchange != undefined){
-		$(window).hashchange(function () {
-			hideLoader();
-			highlightMember();
-		});	
-    }
-	highlightMember();
 
 	$('a').filter(function() {
 	   return this.hostname && this.hostname !== location.hostname;
@@ -80,6 +72,7 @@ $(document).ready(function () {
 	
     postUrl();
 	hideLoader();
+	highlightMember();
 });
 
 function slideUp(header) {
@@ -113,7 +106,8 @@ function toggleSlide(header) {
 
 function highlightMember(){
 	if (window.location.hash != "") {
-		$(window.location.hash).effect("highlight", {}, 3000);
+		$(window.location.hash).effect("highlight", {}, 3000); 
+		
 		slideDown($(window.location.hash).children()[0]);
 	}
 }

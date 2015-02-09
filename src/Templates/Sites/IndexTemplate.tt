@@ -57,6 +57,7 @@
 				<script src="assets/js/vendor.js?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>"></script>
 			<![endif]>
 
+			<script src="assets/js/jquery.layout.min.js?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>"></script>	
 			<script src="assets/js/app.js?version=<#= FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(HtmlExporter)).Location).FileVersion #>"></script>
 		<# #endif #>
 
