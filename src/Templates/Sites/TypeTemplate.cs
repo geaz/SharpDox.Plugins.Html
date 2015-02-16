@@ -708,7 +708,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("\r\n\t\t\t\t\t");
             
             #line 209 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
- if(documentation.Returns.Count > 0) { 
+ if(documentation.Returns.Count > 0 && documentation.Returns.ContainsKey("default")) { 
             
             #line default
             #line hidden
@@ -722,7 +722,7 @@ namespace SharpDox.Plugins.Html.Templates.Sites
             this.Write("</h3>\r\n\t\t\t\t\t\t<div class=\"doc-box markdown\">\r\n\t\t\t\t\t\t\t");
             
             #line 212 "D:\Github\SharpDox.Plugins.Html\src\Templates\Sites\TypeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(documentation.Returns.ToMarkdown())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(new Markdown().Transform(documentation.Returns["default"].ToMarkdown())));
             
             #line default
             #line hidden

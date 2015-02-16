@@ -206,10 +206,10 @@
 						</div>
 					<# } #>
 
-					<# if(documentation.Returns.Count > 0) { #>
+					<# if(documentation.Returns.Count > 0 && documentation.Returns.ContainsKey("default")) { #>
 						<h3 class="box-title"><#= StepInput.DocStrings.Returns #></h3>
 						<div class="doc-box markdown">
-							<#= new Markdown().Transform(documentation.Returns.ToMarkdown()) #>
+							<#= new Markdown().Transform(documentation.Returns["default"].ToMarkdown()) #>
 						</div>
 					<# } #>
 

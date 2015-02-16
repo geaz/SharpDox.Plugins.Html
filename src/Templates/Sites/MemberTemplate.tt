@@ -93,10 +93,10 @@
 				</div>
 			<# } #>
 
-			<# if(documentation.Returns.Count > 0) { #>
+			<# if(documentation.Returns.Count > 0 && documentation.Returns.ContainsKey("default")) { #>
 				<p class="member-box-title"><#= StepInput.DocStrings.Returns #></p>
 				<div class="member-doc-box">
-					<#= new Markdown().Transform(documentation.Returns.ToMarkdown()) #>
+					<#= new Markdown().Transform(documentation.Returns["default"].ToMarkdown()) #>
 				</div>
 			<# } #>
 
