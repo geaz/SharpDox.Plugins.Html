@@ -54,27 +54,37 @@
                 <div>
                   <i class="nav-icon icon-folder-close"></i>
                   <span class="nav-text">{{name}}</span>
-                </div>{{>recursive-nav-template}}
+                </div>
+                {{>recursive-nav-template}}
               </li>
             {{/isPlaceholder}}
             {{#isArticle}}
-              <li>
+              <li id="article-{{id}}">
+                <a href="#!article/{{id}}" title="{{name}}">
                 <div>
                   <i class="nav-icon icon-file-text"></i>
                   <span class="nav-text">{{name}}</span>
-                </div>{{>recursive-nav-template}}
+                </div>
+                </a>
+                {{>recursive-nav-template}}
               </li>
             {{/isArticle}}
             {{#isNamespace}}
-              <li>
-                <img class="nav-icon" src="./assets/icons/namespace_public.png" title="namespace"></i>
-                <span class="nav-text">{{name}}</span>{{>recursive-nav-template}}
+              <li id="namespace-{{id}}">
+                <a href="#!namespace/{{id}}" title="{{name}}">
+                  <img class="nav-icon" src="./assets/icons/namespace_public.png" title="namespace"></i>
+                  <span class="nav-text">{{name}}</span>
+                </a>
+                {{>recursive-nav-template}}
               </li>
             {{/isNamespace}}
             {{#isType}}
-              <li>
-                <img class="nav-icon" src="./assets/icons/{{kind}}_{{accessibility}}.png" title="member"></i>
-                <span class="nav-text">{{name}}</span>{{>recursive-nav-template}}
+              <li id="type-{{id}}">
+                <a href="#!type/{{id}}" title="{{name}}">
+                  <img class="nav-icon" src="./assets/icons/{{kind}}_{{accessibility}}.png" title="member"></i>
+                  <span class="nav-text">{{name}}</span>
+                </a>
+                {{>recursive-nav-template}}
               </li>
             {{/isType}}
     			</script>

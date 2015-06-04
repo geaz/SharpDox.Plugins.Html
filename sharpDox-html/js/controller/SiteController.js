@@ -33,6 +33,7 @@ export default class SiteController{
   setPageToArticle(id){
     var article = this.articles[id];
     if(article !== undefined){
+      this.currentPageId = "article-" + id;
       this.currentPage = article;
     }
   }

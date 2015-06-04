@@ -18,9 +18,12 @@ export default can.Component.extend({
 			this.viewModel.siteController.setPageFromHash();
 			this.viewModel.attr('children', sharpDox.navigationData);
 			$('#nav').jstree();
+			$('#nav').jstree('deselect_all');
+      $('#nav').jstree('select_node', this.viewModel.siteController.currentPageId);
 			$("#nav").bind("select_node.jstree", function (e, data) {
             var href = data.instance.get_node(data.node, true).children('a').attr('href');
-						document.location = href;
+						if (href != "#")
+							document.location = href;
 
 						data.instance.open_node(data.node);
 
