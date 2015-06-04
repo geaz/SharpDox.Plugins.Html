@@ -10,13 +10,22 @@ export default can.Component.extend({
 	tag: 'sd-nav',
 	template: can.view('nav-template'),
 	viewModel: {
-		siteController: new SiteController()
+		siteController: new SiteController(),
+		strings: sharpDox.strings
 	},
 	events: {
 		"inserted": function(){
 			this.viewModel.siteController.setPageFromHash();
 			this.viewModel.attr('children', sharpDox.navigationData);
 			$('#nav').jstree();
+			$("#nav").bind("select_node.jstree", function (e, data) {
+            var href = data.instance.get_node(data.node, true).children('a').attr('href');
+						document.location = href;
+
+						data.instance.open_node(data.node);
+
+            return false;
+        });
 		},
 		"{can.route} change": function() {
 			this.viewModel.siteController.setPageFromHash();

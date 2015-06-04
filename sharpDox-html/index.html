@@ -23,9 +23,19 @@
     			<script type="text/mustache" id="nav-template">
             <div id="nav">
               <ul>
-                {{#children}}
-                  {{>nav-item-template}}
-                {{/children}}
+                <li class="jstree-open">
+                  <a href="#!" title="{{strings.home}}">
+                    <div>
+                      <i class="nav-icon icon-home"></i>
+                      <span class="nav-text">{{strings.home}}</span>
+                    </div>
+                  </a>
+                  <ul>
+                    {{#children}}
+                      {{>nav-item-template}}
+                    {{/children}}
+                  </ul>
+                </li>
               </ul>
             </div>
     			</script>
