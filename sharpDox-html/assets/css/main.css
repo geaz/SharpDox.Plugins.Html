@@ -1,0 +1,12 @@
+#main{
+	margin-left:300px;
+	padding:25px;
+}
+
+#sidebar{
+	height: 100%;
+	width: 300px;
+	float: left;
+	background:#F5F4F0;
+	border-right:2px solid #F58026;
+}

@@ -10,6 +10,9 @@ node_modules/*
 src/packages/*
 !packages/repositories.config
 !src/packages/repositories.config
+sharpDox-html/node_modules/*
+sharpDox-html/data/*
+sharpDox-html/dist/*
 
 # Build results
 

@@ -1,0 +1,35 @@
+sd-nav{
+  display:block;
+  overflow:hidden;
+}
+
+.nav-icon{
+  float: left;
+  font-size: 0.9em;
+  margin-top: 5px !important;
+  text-align: center;
+  width: 16px !important;
+}
+
+.nav-text{
+  margin-left: 18px;
+  display: block;
+}
+
+.jstree-default a {
+    white-space:normal !important;
+		height: auto !important;
+		width: 100%;
+    padding:0 5px!important;
+}
+
+.jstree-clicked, .jstree-hovered{
+	box-shadow:none!important;
+	background: #F58026!important;
+	border-radius: 0!important;
+	color:white!important;
+}
+
+.jstree-themeicon{
+  display:none!important;
+}

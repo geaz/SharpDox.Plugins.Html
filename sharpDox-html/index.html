@@ -1,0 +1,102 @@
+    <html>
+        <head>
+            <title></title>
+        </head>
+        <body>
+          <script type="text/mustache" id="app-template">
+            <div id="wrapper">
+      				<div id="sidebar">
+      					<sd-header></sd-header>
+      					<sd-nav></sd-nav>
+      				</div>
+              <div id="main">
+    				    <sd-content></sd-content>
+              </div>
+            </div>
+          </script>
+
+    			<script type="text/mustache" id="header-template">
+    				{{#hasLogo}}<a href="#!"><img src="data/logo.png" alt="{{projectName}}"/></a>{{/hasLogo}}
+            {{^hasLogo}}<a href="#!"><h1>{{projectName}}</h1></a>{{/hasLogo}}
+    			</script>
+
+    			<script type="text/mustache" id="nav-template">
+            <div id="nav">
+              <ul>
+                {{#children}}
+                  {{>nav-item-template}}
+                {{/children}}
+              </ul>
+            </div>
+    			</script>
+
+          <script type="text/mustache" id="recursive-nav-template">
+            {{#children}}
+              <ul>
+                {{>nav-item-template}}
+              </ul>
+            {{/children}}
+    			</script>
+
+          <script type="text/mustache" id="nav-item-template">
+            {{#isPlaceholder}}
+              <li>
+                <div>
+                  <i class="nav-icon icon-folder-close"></i>
+                  <span class="nav-text">{{name}}</span>
+                </div>{{>recursive-nav-template}}
+              </li>
+            {{/isPlaceholder}}
+            {{#isArticle}}
+              <li>
+                <div>
+                  <i class="nav-icon icon-file-text"></i>
+                  <span class="nav-text">{{name}}</span>
+                </div>{{>recursive-nav-template}}
+              </li>
+            {{/isArticle}}
+            {{#isNamespace}}
+              <li>
+                <img class="nav-icon" src="./assets/icons/namespace_public.png" title="namespace"></i>
+                <span class="nav-text">{{name}}</span>{{>recursive-nav-template}}
+              </li>
+            {{/isNamespace}}
+            {{#isType}}
+              <li>
+                <img class="nav-icon" src="./assets/icons/{{kind}}_{{accessibility}}.png" title="member"></i>
+                <span class="nav-text">{{name}}</span>{{>recursive-nav-template}}
+              </li>
+            {{/isType}}
+    			</script>
+
+    			<script type="text/mustache" id="titlebar-template">
+            <h2>{{title}}</h2>
+            <h3>{{subTitle}}</h3>
+    			</script>
+
+    			<script type="text/mustache" id="content-template">
+    				<sd-titlebar></sd-titlebar>
+    				{{{content}}}
+    				<sd-footer></sd-footer>
+    			</script>
+
+    			<script type="text/mustache" id="footer-template">
+            <div id="footer-left">{{{footerLine}}}</div>
+            <div id="footer-right">
+              {{#homepage}}<a href="{{homepage}}" title="{{projectName}}" target="_blank">{{projectName}}</a>{{/homepage}}
+              {{^homepage}}{{projectName}}{{/homepage}} {{version}}
+              {{#author}}- {{author}}{{/author}} - {{footerText}} <a href="http://sharpdox.de" title="sharpDox" target="_blank">sharpDox</a></div>
+    			</script>
+
+          <div id="app"></div>
+
+          <script src="./data/Strings.js"></script>
+          <script src="./data/Project.js"></script>
+          <script src="./data/Articles.js"></script>
+          <script src="./data/Repository.js"></script>
+          <script src="./data/Navigation.js"></script>
+          <!--<script src="./dist/app.js" base-url="./"></script>-->
+          <script src="./node_modules/steal/steal.js" data-main="app"></script>
+
+        </body>
+    </html>
