@@ -19,4 +19,5 @@ import sdFooter from "./js/components/sd-footer";
 var router = new Router();
 router.start();
 
+document.title = sharpDox.projectData.name;
 $('#app').html(can.view('app-template'));

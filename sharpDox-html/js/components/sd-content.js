@@ -12,11 +12,13 @@ export default can.Component.extend({
 	events: {
 		"inserted": function(){
 			this.viewModel.siteController.setPageFromHash();
-			this.viewModel.attr('content', this.viewModel.siteController.currentPage.content);
+			this.viewModel.attr('currentPage', this.viewModel.siteController.currentPage);
+			this.viewModel.attr('currentPageType', this.viewModel.siteController.currentPageType);
 		},
 		"{can.route} change": function() {
 			this.viewModel.siteController.setPageFromHash();
-			this.viewModel.attr('content', this.viewModel.siteController.currentPage.content);
+			this.viewModel.attr('currentPage', this.viewModel.siteController.currentPage);
+			this.viewModel.attr('currentPageType', this.viewModel.siteController.currentPageType);
     }
 	}
 });

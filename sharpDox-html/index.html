@@ -96,7 +96,15 @@
 
     			<script type="text/mustache" id="content-template">
     				<sd-titlebar></sd-titlebar>
-    				{{{content}}}
+            {{#currentPageType.isArticle}}
+  				    {{{currentPage.content}}}
+            {{/currentPageType.isArticle}}
+            {{#currentPageType.isNamespace}}
+              {{{currentPage.summary}}}
+            {{/currentPageType.isNamespace}}
+            {{#currentPageType.isType}}
+              {{{currentPage.summary}}}
+            {{/currentPageType.isType}}
     				<sd-footer></sd-footer>
     			</script>
 
@@ -113,7 +121,8 @@
           <script src="./data/Strings.js"></script>
           <script src="./data/Project.js"></script>
           <script src="./data/Articles.js"></script>
-          <script src="./data/Repository.js"></script>
+          <script src="./data/Namespaces.js"></script>
+          <script src="./data/Types.js"></script>
           <script src="./data/Navigation.js"></script>
           <!--<script src="./dist/app.js" base-url="./"></script>-->
           <script src="./node_modules/steal/steal.js" data-main="app"></script>
