@@ -91,7 +91,7 @@ table {
 }
 
 th {
-  background: #C2C2C2;
+  background: #C2C2C2 !important;
 }
 
 .even {
@@ -99,7 +99,7 @@ th {
 }
 
 td, th {
-  padding: 5px 10px 5px 10px;
+  padding: 3px !important;
 	text-align: left;
 }
 
@@ -109,10 +109,10 @@ td p {
 
 thead, th{
   background: none repeat scroll 0 0 #f6f5f1;
-  border-bottom: 1px solid #DADADA;
-  border-top: 1px solid #DADADA;
-  font-family: OpenSansLight;
-  font-weight: bold;
+  border-bottom: 1px solid #DADADA !important;
+  border-top: 1px solid #DADADA !important;
+  font-family: OpenSansLight !important;
+  font-weight: bold !important;
 }
 
 .iconColumn {
