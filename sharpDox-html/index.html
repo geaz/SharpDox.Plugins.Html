@@ -1,6 +1,7 @@
     <html>
         <head>
             <title></title>
+            <meta charset="utf-8"/>
         </head>
         <body>
           <script type="text/mustache" id="app-template">
@@ -20,6 +21,7 @@
             {{^hasLogo}}<a href="#!"><h1>{{projectName}}</h1></a>{{/hasLogo}}
     			</script>
 
+          <!-- NAVIGATION TEMPLATES -->
     			<script type="text/mustache" id="nav-template">
             <div id="nav">
               <ul>
@@ -58,6 +60,7 @@
                 {{>recursive-nav-template}}
               </li>
             {{/isPlaceholder}}
+
             {{#isArticle}}
               <li id="article-{{id}}">
                 <a href="#!article/{{id}}" title="{{name}}">
@@ -69,6 +72,7 @@
                 {{>recursive-nav-template}}
               </li>
             {{/isArticle}}
+
             {{#isNamespace}}
               <li id="namespace-{{id}}">
                 <a href="#!namespace/{{id}}" title="{{name}}">
@@ -78,6 +82,7 @@
                 {{>recursive-nav-template}}
               </li>
             {{/isNamespace}}
+
             {{#isType}}
               <li id="type-{{id}}">
                 <a href="#!type/{{id}}" title="{{name}}">
@@ -88,6 +93,7 @@
               </li>
             {{/isType}}
     			</script>
+          <!-- NAVIGATION TEMPLATES END-->
 
     			<script type="text/mustache" id="titlebar-template">
             <h2>{{title}}</h2>
@@ -96,17 +102,75 @@
 
     			<script type="text/mustache" id="content-template">
     				<sd-titlebar></sd-titlebar>
+
             {{#currentPageType.isArticle}}
   				    {{{currentPage.content}}}
             {{/currentPageType.isArticle}}
+
             {{#currentPageType.isNamespace}}
-              {{{currentPage.summary}}}
+              {{>namespace-template}}
             {{/currentPageType.isNamespace}}
+
             {{#currentPageType.isType}}
-              {{{currentPage.summary}}}
+              {{>type-template}}
             {{/currentPageType.isType}}
+
     				<sd-footer></sd-footer>
     			</script>
+
+          <script type="text/mustache" id="namespace-template">
+            <h2>{{strings.description}}</h2>
+
+            <div class="text-box markdown">{{{currentPage.summary}}}</div>
+
+            <h2>{{strings.types}}</h2>
+            <div class="table-box">
+            <table>
+              <thead>
+                <tr>
+                  <td></td>
+                  <td>{{strings.name}}</td>
+                  <td>{{strings.description}}</td>
+                </tr>
+              </thead>
+              <tbody>
+              {{#currentPage.types}}
+                <tr>
+                  <td class="iconColumn"><img src="./assets/icons/{{kind}}_{{accessibility}}.png"/></td>
+                  <td><a href="#!type/{{id}}">{{name}}</a></td>
+                  <td class="markdown">{{summary}}</td>
+                </tr>
+              {{/currentPage.types}}
+              </tbody>
+            </table>
+            </div>
+
+            {{#currentPage.hasUses}}
+            <h2>{{strings.uses}}</h2>
+            <div class="list-box">
+            <ul>
+              {{#currentPage.uses}}
+              <li><a href="#!namespace/{{id}}">{{name}}</a></li>
+              {{/currentPage.uses}}
+            </ul>
+            </div>
+            {{/currentPage.hasUses}}
+
+            {{#currentPage.hasUsedBy}}
+            <h2>{{strings.usedBy}}</h2>
+            <div class="list-box">
+            <ul>
+              {{#currentPage.usedBy}}
+              <li><a href="#!namespace/{{id}}">{{name}}</a></li>
+              {{/currentPage.usedBy}}
+            </ul>
+            </div>
+            {{/currentPage.hasUsedBy}}
+          </script>
+
+          <script type="text/mustache" id="type-template">
+            {{{currentPage.summary}}}
+          </script>
 
     			<script type="text/mustache" id="footer-template">
             <div id="footer-left">{{{footerLine}}}</div>

@@ -3,3 +3,108 @@ sd-content{
   max-width:800px;
   margin:auto;
 }
+
+.list-box, .doc-box, .text-box, .table-box , .syntax-box{
+    margin: 25px 0 25px 25px;
+}
+
+.list-box ul li:before, .doc-box ul li:before {
+  content: "\f138";
+  font-family: 'FontAwesome';
+  margin-right: 5px;
+}
+
+.markdown img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+}
+.markdown strong {
+    font-weight: bold;
+}
+.markdown em {
+    font-style: italic;
+}
+.markdown ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+}
+.markdown ul{
+    margin: 1em 0;
+}
+.markdown ul li:before {
+    content: "\f138";
+    font-family: 'FontAwesome';
+    margin-left: -1.2em;
+    margin-right: 5px;
+}
+.markdown ul li, .markdown ol li {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.markdown ul li {
+    padding-left: 1.2em;
+}
+.markdown blockquote {
+    background: #f6f5f1;
+    border: 1px solid #dadada;
+    padding: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.markdown blockquote p {
+    margin: 0;
+}
+.markdown pre {
+    background: #f6f5f1;
+    border: 1px solid #dadada;
+    padding: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: monospace;
+    display: block;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.markdown .inline-code, .markdown p code{
+    background: #f6f5f1;
+    border: 1px solid #dadada;
+    padding: 1px;
+    font-family: monospace;
+}
+.markdown pre p {
+    margin: 0;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  background: #C2C2C2;
+}
+
+.even {
+  background: #F6F5F1;
+}
+
+td, th {
+  padding: 5px 10px 5px 10px;
+	text-align: left;
+}
+
+td p {
+    margin: 0;
+}
+
+thead, th{
+  background: none repeat scroll 0 0 #f6f5f1;
+  border-bottom: 1px solid #DADADA;
+  border-top: 1px solid #DADADA;
+  font-family: OpenSansLight;
+  font-weight: bold;
+}
+
+.iconColumn {
+  width: 15px;
+}

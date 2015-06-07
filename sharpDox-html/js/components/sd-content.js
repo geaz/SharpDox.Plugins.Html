@@ -7,18 +7,20 @@ export default can.Component.extend({
 	tag: 'sd-content',
 	template: can.view('content-template'),
 	viewModel: {
-		siteController: new SiteController()
+		siteController: new SiteController(),
+		strings: sharpDox.strings,
+		setViewModel: function(){
+			this.siteController.setPageFromHash();
+			this.attr('currentPage', this.siteController.currentPage);
+			this.attr('currentPageType', this.siteController.currentPageType);
+		}
 	},
 	events: {
 		"inserted": function(){
-			this.viewModel.siteController.setPageFromHash();
-			this.viewModel.attr('currentPage', this.viewModel.siteController.currentPage);
-			this.viewModel.attr('currentPageType', this.viewModel.siteController.currentPageType);
+			this.viewModel.setViewModel();
 		},
 		"{can.route} change": function() {
-			this.viewModel.siteController.setPageFromHash();
-			this.viewModel.attr('currentPage', this.viewModel.siteController.currentPage);
-			this.viewModel.attr('currentPageType', this.viewModel.siteController.currentPageType);
+			this.viewModel.setViewModel();
     }
 	}
 });
