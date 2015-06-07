@@ -32,6 +32,8 @@ export default can.Component.extend({
 		},
 		"{can.route} change": function() {
 			this.viewModel.siteController.setPageFromHash();
+			$('#nav').jstree('deselect_all');
+      $('#nav').jstree('select_node', this.viewModel.siteController.currentPageId);
     }
 	}
 });
