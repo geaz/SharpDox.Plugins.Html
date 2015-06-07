@@ -4,14 +4,24 @@ sd-content{
   margin:auto;
 }
 
-.list-box, .doc-box, .text-box, .table-box , .syntax-box{
-    margin: 25px 0 25px 25px;
+sd-content h3{
+  margin-bottom:10px;
+}
+
+.list-box, .doc-box, .text-box, .table-box{
+    margin: 0 0 25px 25px;
 }
 
 .list-box ul li:before, .doc-box ul li:before {
   content: "\f138";
   font-family: 'FontAwesome';
   margin-right: 5px;
+}
+
+.syntax-box {
+    background: #F6F5F1;
+    padding: 5px;
+    border:1px solid #DADADA;
 }
 
 .markdown img {

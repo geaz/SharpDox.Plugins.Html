@@ -119,11 +119,11 @@
     			</script>
 
           <script type="text/mustache" id="namespace-template">
-            <h2>{{strings.description}}</h2>
+            <h3>{{strings.description}}</h3>
 
             <div class="text-box markdown">{{{currentPage.summary}}}</div>
 
-            <h2>{{strings.types}}</h2>
+            <h3>{{strings.types}}</h3>
             <div class="table-box">
             <table>
               <thead>
@@ -146,7 +146,7 @@
             </div>
 
             {{#currentPage.hasUses}}
-            <h2>{{strings.uses}}</h2>
+            <h3>{{strings.uses}}</h3>
             <div class="list-box">
             <ul>
               {{#currentPage.uses}}
@@ -157,7 +157,7 @@
             {{/currentPage.hasUses}}
 
             {{#currentPage.hasUsedBy}}
-            <h2>{{strings.usedBy}}</h2>
+            <h3>{{strings.usedBy}}</h3>
             <div class="list-box">
             <ul>
               {{#currentPage.usedBy}}
@@ -169,7 +169,32 @@
           </script>
 
           <script type="text/mustache" id="type-template">
-            {{{currentPage.summary}}}
+            <div class="syntax-box">{{{currentPage.syntax}}}</div>
+
+            <h3>{{strings.description}}</h3>
+            <div class="text-box markdown">{{{currentPage.summary}}}</div>
+
+            {{#currentPage.hasUses}}
+            <h3>{{strings.uses}}</h3>
+            <div class="list-box">
+            <ul>
+              {{#currentPage.uses}}
+              <li><a href="#!type/{{id}}">{{name}}</a></li>
+              {{/currentPage.uses}}
+            </ul>
+            </div>
+            {{/currentPage.hasUses}}
+
+            {{#currentPage.hasUsedBy}}
+            <h3>{{strings.usedBy}}</h3>
+            <div class="list-box">
+            <ul>
+              {{#currentPage.usedBy}}
+              <li><a href="#!type/{{id}}">{{name}}</a></li>
+              {{/currentPage.usedBy}}
+            </ul>
+            </div>
+            {{/currentPage.hasUsedBy}}
           </script>
 
     			<script type="text/mustache" id="footer-template">

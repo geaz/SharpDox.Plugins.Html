@@ -16,11 +16,11 @@ export default can.Component.extend({
 			}
 			else if(this.siteController.currentPageType.isNamespace){
 				this.attr('title', this.siteController.currentPage.name);
-				this.attr('subTitle', sharpDox.strings.assembly + ":" + this.siteController.currentPage.assembly);
+				this.attr('subTitle', sharpDox.strings.assembly + ": " + this.siteController.currentPage.assembly);
 			}
 			else if(this.siteController.currentPageType.isType){
 				this.attr('title', this.siteController.currentPage.name);
-				this.attr('subTitle', sharpDox.strings.namespace + ":" + this.siteController.currentPage.namespace);
+				this.attr('subTitle', sharpDox.strings.namespace + ": " + this.siteController.currentPage.namespace);
 			}
 		}
 	},
