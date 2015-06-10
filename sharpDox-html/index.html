@@ -119,11 +119,11 @@
     			</script>
 
           <script type="text/mustache" id="namespace-template">
-            <h3>{{strings.description}}</h3>
+            <h4>{{strings.description}}</h4>
 
             <div class="text-box markdown">{{{currentPage.summary}}}</div>
 
-            <h3>{{strings.types}}</h3>
+            <h4>{{strings.types}}</h4>
             <div class="table-box">
             <table>
               <thead>
@@ -146,7 +146,7 @@
             </div>
 
             {{#currentPage.hasUses}}
-            <h3>{{strings.uses}}</h3>
+            <h4>{{strings.uses}}</h4>
             <div class="list-box">
             <ul>
               {{#currentPage.uses}}
@@ -157,7 +157,7 @@
             {{/currentPage.hasUses}}
 
             {{#currentPage.hasUsedBy}}
-            <h3>{{strings.usedBy}}</h3>
+            <h4>{{strings.usedBy}}</h4>
             <div class="list-box">
             <ul>
               {{#currentPage.usedBy}}
@@ -171,22 +171,45 @@
           <script type="text/mustache" id="type-template">
             <div class="syntax-box">{{{currentPage.syntax}}}</div>
 
-            <h3>{{strings.description}}</h3>
+            {{#currentPage.summary}}
+            <h4>{{strings.description}}</h4>
             <div class="text-box markdown">{{{currentPage.summary}}}</div>
+            {{/currentPage.summary}}
+
+            {{#currentPage.remarks}}
+            <h4>{{strings.remarks}}</h4>
+            <div class="text-box markdown">{{{currentPage.remarks}}}</div>
+            {{/currentPage.remarks}}
+
+            {{#currentPage.example}}
+            <h4>{{strings.example}}</h4>
+            <div class="text-box markdown">{{{currentPage.example}}}</div>
+            {{/currentPage.example}}
+
+            {{#currentPage.hasTypeParams}}
+              <h4>{{strings.typeParams}}</h4>
+              <div class="multiline-box markdown">
+                {{#currentPage.typeParams}}
+                <p class="key">{{typeParam}}</p>
+                <div class="inline">
+                  <p>{{{summary}}}</p>
+                </div>
+                {{/currentPage.typeParams}}
+            {{/currentPage.hasTypeParams}}
 
             {{#currentPage.hasUses}}
-            <h3>{{strings.uses}}</h3>
-            <div class="list-box">
-            <ul>
-              {{#currentPage.uses}}
-              <li><a href="#!type/{{id}}">{{name}}</a></li>
-              {{/currentPage.uses}}
-            </ul>
-            </div>
+              <h4>{{strings.uses}}</h4>
+              <div class="list-box">
+              <ul>
+                {{#currentPage.uses}}
+                <li><a href="#!type/{{id}}">{{name}}</a></li>
+                {{/currentPage.uses}}
+              </ul>
+              </div>
             {{/currentPage.hasUses}}
 
             {{#currentPage.hasUsedBy}}
-            <h3>{{strings.usedBy}}</h3>
+            <h4>{{strings.usedBy}}</h4>
             <div class="list-box">
             <ul>
               {{#currentPage.usedBy}}
