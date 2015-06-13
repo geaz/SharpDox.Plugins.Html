@@ -1,7 +1,7 @@
 import can from "can";
 
 export default class Router{
-	constructor(){
+	constructor(){	
 		can.route(":type/:id");
 	}
 

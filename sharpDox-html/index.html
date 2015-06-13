@@ -145,27 +145,27 @@
             </table>
             </div>
 
-            {{#currentPage.hasUses}}
-            <h4>{{strings.uses}}</h4>
-            <div class="list-box">
-            <ul>
-              {{#currentPage.uses}}
-              <li><a href="#!namespace/{{id}}">{{name}}</a></li>
-              {{/currentPage.uses}}
-            </ul>
-            </div>
-            {{/currentPage.hasUses}}
+            {{#currentPage.uses.length}}
+              <h4>{{strings.uses}}</h4>
+              <div class="list-box">
+              <ul>
+                {{#currentPage.uses}}
+                <li><a href="#!namespace/{{id}}">{{name}}</a></li>
+                {{/currentPage.uses}}
+              </ul>
+              </div>
+            {{/currentPage.uses.length}}
 
-            {{#currentPage.hasUsedBy}}
-            <h4>{{strings.usedBy}}</h4>
-            <div class="list-box">
-            <ul>
-              {{#currentPage.usedBy}}
-              <li><a href="#!namespace/{{id}}">{{name}}</a></li>
-              {{/currentPage.usedBy}}
-            </ul>
-            </div>
-            {{/currentPage.hasUsedBy}}
+            {{#currentPage.usedBy.length}}
+              <h4>{{strings.usedBy}}</h4>
+              <div class="list-box">
+              <ul>
+                {{#currentPage.usedBy}}
+                <li><a href="#!namespace/{{id}}">{{name}}</a></li>
+                {{/currentPage.usedBy}}
+              </ul>
+              </div>
+            {{/currentPage.usedBy.length}}
           </script>
 
           <script type="text/mustache" id="type-template">
@@ -186,7 +186,7 @@
             <div class="text-box markdown">{{{currentPage.example}}}</div>
             {{/currentPage.example}}
 
-            {{#currentPage.hasTypeParams}}
+            {{#currentPage.typeParams.length}}
               <h4>{{strings.typeParams}}</h4>
               <div class="multiline-box markdown">
                 {{#currentPage.typeParams}}
@@ -195,9 +195,20 @@
                   <p>{{{summary}}}</p>
                 </div>
                 {{/currentPage.typeParams}}
-            {{/currentPage.hasTypeParams}}
+            {{/currentPage.typeParams.length}}
 
-            {{#currentPage.hasUses}}
+            {{#currentPage.seeAlso.length}}
+              <h4>{{strings.seeAlso}}</h4>
+              <div class="list-box">
+              <ul>
+                {{#currentPage.seeAlsos}}
+                <li><a href="#!{{type}}/{{id}}">{{name}}</a></li>
+                {{/currentPage.seeAlsos}}
+              </ul>
+              </div>
+            {{/currentPage.seeAlso.length}}
+
+            {{#currentPage.uses.length}}
               <h4>{{strings.uses}}</h4>
               <div class="list-box">
               <ul>
@@ -206,18 +217,29 @@
                 {{/currentPage.uses}}
               </ul>
               </div>
-            {{/currentPage.hasUses}}
+            {{/currentPage.uses.length}}
 
-            {{#currentPage.hasUsedBy}}
-            <h4>{{strings.usedBy}}</h4>
-            <div class="list-box">
-            <ul>
-              {{#currentPage.usedBy}}
-              <li><a href="#!type/{{id}}">{{name}}</a></li>
-              {{/currentPage.usedBy}}
-            </ul>
-            </div>
-            {{/currentPage.hasUsedBy}}
+            {{#currentPage.usedBy.length}}
+              <h4>{{strings.usedBy}}</h4>
+              <div class="list-box">
+              <ul>
+                {{#currentPage.usedBy}}
+                <li><a href="#!type/{{id}}">{{name}}</a></li>
+                {{/currentPage.usedBy}}
+              </ul>
+              </div>
+            {{/currentPage.usedBy.length}}
+
+            fields
+            events
+            methods
+            properties
+
+            classdiagram
+          </script>
+
+          <script type="text/mustache" id="member-template">
+            test
           </script>
 
     			<script type="text/mustache" id="footer-template">
