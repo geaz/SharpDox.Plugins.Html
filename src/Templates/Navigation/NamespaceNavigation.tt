@@ -9,10 +9,10 @@
 <#  foreach(var sdType in Namespace.Types)
 	{ #>
 		{
-			id: "<#= sdType.ShortIdentifier #>",
-			name: "<#= sdType.Name #>",
-			kind: "<#= sdType.Kind #>",
-			accessibility: "<#= sdType.Accessibility #>",
+			id: '<#= sdType.ShortIdentifier #>',
+			name: '<#= sdType.Name #>',
+			kind: '<#= sdType.Kind #>',
+			accessibility: '<#= sdType.Accessibility #>',
 			isPlaceholder: false,
 			isArticle: false,
 			isNamespace: false,

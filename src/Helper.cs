@@ -1,20 +1,21 @@
-﻿using SharpDox.Model.Repository;
+﻿using SharpDox.Model;
+using SharpDox.Model.Repository;
 
 namespace SharpDox.Plugins.Html
 {
     public class Helper
     {
-        private readonly SDRepository _sdRepository;
+        private readonly SDProject _sdProject;
 
-        public Helper(SDRepository sdRepository)
+        public Helper(SDProject sdProject)
         {
-            _sdRepository = sdRepository;
+            _sdProject = sdProject;
         }
 
         public string TransformLinkToken(string linkType, string identifier)
         {
             var link = string.Empty;
-            if (linkType == "image")
+            /*if (linkType == "image")
             {
                 link = string.Format("../assets/{0}s/{1}", linkType, identifier);
             }
@@ -24,7 +25,7 @@ namespace SharpDox.Plugins.Html
             }
             else if(linkType == "type")
             {
-                var sdType = _sdRepository.GetTypeByIdentifier(identifier);
+                var sdType = _sdProject.GetTypeByIdentifier(identifier);
                 if(sdType != null)
                     link = string.Format("../{0}/{1}.html", "type", sdType.ShortIdentifier);
             }
@@ -34,10 +35,10 @@ namespace SharpDox.Plugins.Html
             }
             else // Member
             {
-                var sdMember = _sdRepository.GetMemberByIdentifier(identifier);
+                var sdMember = _sdProject.GetMemberByIdentifier(identifier);
                 if (sdMember != null)
                     link = string.Format("../{0}/{1}.html#{2}", "type", sdMember.DeclaringType.ShortIdentifier, sdMember.ShortIdentifier);
-            }
+            }*/
             return link;
         }
     }

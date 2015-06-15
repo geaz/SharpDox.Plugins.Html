@@ -33,28 +33,28 @@ namespace SharpDox.Plugins.Html.Templates
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\n\nvar sharpDox = sharpDox || {};\n\nsharpDox.projectData = {\n  name: \"");
+            this.Write("\n\nvar sharpDox = sharpDox || {};\n\nsharpDox.projectData = {\n  name: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.SDProject.ProjectName));
             
             #line default
             #line hidden
-            this.Write("\",\n  ");
+            this.Write("\',\n  ");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
  if(!string.IsNullOrEmpty(StepInput.SDProject.ProjectUrl)) { 
             
             #line default
             #line hidden
-            this.Write(" homepage: \"");
+            this.Write(" homepage: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.SDProject.ProjectUrl));
             
             #line default
             #line hidden
-            this.Write("\", ");
+            this.Write("\', ");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
  } 
@@ -68,14 +68,14 @@ namespace SharpDox.Plugins.Html.Templates
             
             #line default
             #line hidden
-            this.Write(" version: \"");
+            this.Write(" version: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.SDProject.VersionNumber));
             
             #line default
             #line hidden
-            this.Write("\", ");
+            this.Write("\', ");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
  } 
@@ -89,14 +89,14 @@ namespace SharpDox.Plugins.Html.Templates
             
             #line default
             #line hidden
-            this.Write(" author: \"");
+            this.Write(" author: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.SDProject.Author));
             
             #line default
             #line hidden
-            this.Write("\", ");
+            this.Write("\', ");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
  } 
@@ -110,14 +110,14 @@ namespace SharpDox.Plugins.Html.Templates
             
             #line default
             #line hidden
-            this.Write(" authorHomepage: \"");
+            this.Write(" authorHomepage: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.SDProject.AuthorUrl));
             
             #line default
             #line hidden
-            this.Write("\", ");
+            this.Write("\', ");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
  } 
@@ -131,14 +131,14 @@ namespace SharpDox.Plugins.Html.Templates
             
             #line default
             #line hidden
-            this.Write(" footerLine: \"");
+            this.Write(" footerLine: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(CommonMarkConverter.Convert(StepInput.HtmlConfig.FooterLine)));
             
             #line default
             #line hidden
-            this.Write("\", ");
+            this.Write("\', ");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
  } 

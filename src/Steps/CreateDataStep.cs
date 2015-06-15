@@ -1,5 +1,8 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
+using SharpDox.Model.Documentation.Article;
 using SharpDox.Plugins.Html.Templates;
+using SharpDox.Plugins.Html.Templates.Repository;
 
 namespace SharpDox.Plugins.Html.Steps
 {
@@ -12,6 +15,7 @@ namespace SharpDox.Plugins.Html.Steps
             CreateDataFolder();
             CreateProjectData();
             CreateStringData();
+            CreateArticleData();
         }
 
         private void CreateDataFolder()
@@ -38,6 +42,30 @@ namespace SharpDox.Plugins.Html.Steps
 
             var stringData = new Strings();
             File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "Strings.js"), stringData.TransformText());
+        }
+
+        private void CreateArticleData()
+        {
+            ExecuteOnStepProgress(20);
+            ExecuteOnStepMessage(StepInput.HtmlStrings.CreatingArticleData);
+
+            var articles = new List<SDArticle>();
+            foreach (var article in StepInput.SDProject.Articles.GetElementOrDefault(StepInput.CurrentLanguage))
+            {
+                AddArticle(articles, article);
+            }
+
+            var articleData = new ArticleData { SDArticles = articles };
+            File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "Articles.js"), articleData.TransformText());
+        }
+
+        private void AddArticle(List<SDArticle> sdArticles, SDArticle sdArticle)
+        {
+            sdArticles.Add(sdArticle);
+            foreach (var article in sdArticle.Children)
+            {
+                AddArticle(sdArticles, article);
+            }
         }
     }
 }

@@ -31,126 +31,126 @@ namespace SharpDox.Plugins.Html.Templates
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\nvar sharpDox = sharpDox || {};\n\nsharpDox.strings = {\n  home: \"");
+            this.Write("\r\nvar sharpDox = sharpDox || {};\n\nsharpDox.strings = {\n  home: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Home));
             
             #line default
             #line hidden
-            this.Write("\",\n  createdWith: \"");
+            this.Write("\',\n  createdWith: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.GeneratedBy));
             
             #line default
             #line hidden
-            this.Write("\",\n  name: \"");
+            this.Write("\',\n  name: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Name));
             
             #line default
             #line hidden
-            this.Write("\",\n  description: \"");
+            this.Write("\',\n  description: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Description));
             
             #line default
             #line hidden
-            this.Write("\",\n  remarks: \"");
+            this.Write("\',\n  remarks: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Remarks));
             
             #line default
             #line hidden
-            this.Write("\",\n  example: \"");
+            this.Write("\',\n  example: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Example));
             
             #line default
             #line hidden
-            this.Write("\",\n  return: \"");
+            this.Write("\',\n  return: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Returns));
             
             #line default
             #line hidden
-            this.Write("\",\n  baseTypes: \"");
+            this.Write("\',\n  baseTypes: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.BaseType));
             
             #line default
             #line hidden
-            this.Write("\",\n  implements: \"");
+            this.Write("\',\n  implements: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Implements));
             
             #line default
             #line hidden
-            this.Write("\",\n  types: \"");
+            this.Write("\',\n  types: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Types));
             
             #line default
             #line hidden
-            this.Write("\",\n  uses: \"");
+            this.Write("\',\n  uses: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Uses));
             
             #line default
             #line hidden
-            this.Write("\",\n  usedBy: \"");
+            this.Write("\',\n  usedBy: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.UsedBy));
             
             #line default
             #line hidden
-            this.Write("\",\n  assembly: \"");
+            this.Write("\',\n  assembly: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Assembly));
             
             #line default
             #line hidden
-            this.Write("\",\n  namespace: \"");
+            this.Write("\',\n  namespace: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Namespace));
             
             #line default
             #line hidden
-            this.Write("\",\n  syntax: \"");
+            this.Write("\',\n  syntax: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Syntax));
             
             #line default
             #line hidden
-            this.Write("\",\n  typeParams: \"");
+            this.Write("\',\n  typeParams: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.TypeParameters));
             
             #line default
             #line hidden
-            this.Write("\",\n  seeAlso: \"");
+            this.Write("\',\n  seeAlso: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.SeeAlso));
             
             #line default
             #line hidden
-            this.Write("\"\n}");
+            this.Write("\'\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

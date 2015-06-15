@@ -38,35 +38,35 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
             
             #line default
             #line hidden
-            this.Write("\t\t{\n\t\t\tid: \"");
+            this.Write("\t\t{\n\t\t\tid: \'");
             
             #line 11 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.ShortIdentifier));
             
             #line default
             #line hidden
-            this.Write("\",\n\t\t\tname: \"");
+            this.Write("\',\n\t\t\tname: \'");
             
             #line 11 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Name));
             
             #line default
             #line hidden
-            this.Write("\",\n\t\t\tkind: \"");
+            this.Write("\',\n\t\t\tkind: \'");
             
             #line 11 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Kind));
             
             #line default
             #line hidden
-            this.Write("\",\n\t\t\taccessibility: \"");
+            this.Write("\',\n\t\t\taccessibility: \'");
             
             #line 11 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Accessibility));
             
             #line default
             #line hidden
-            this.Write("\",\n\t\t\tisPlaceholder: false,\n\t\t\tisArticle: false,\n\t\t\tisNamespace: false,\n\t\t\tisType" +
+            this.Write("\',\n\t\t\tisPlaceholder: false,\n\t\t\tisArticle: false,\n\t\t\tisNamespace: false,\n\t\t\tisType" +
                     ": true,\n\t\t\tchildren: []\n        },\t\r\n");
             
             #line 12 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"

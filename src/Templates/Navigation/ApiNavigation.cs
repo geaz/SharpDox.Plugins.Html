@@ -41,21 +41,21 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
             
             #line default
             #line hidden
-            this.Write("\t\t{\n\t\t\tid: \"");
+            this.Write("\t\t{\n\t\t\tid: \'");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdNamespace.Identifier));
             
             #line default
             #line hidden
-            this.Write("\",\n\t\t\tname: \"");
+            this.Write("\',\n\t\t\tname: \'");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdNamespace.Fullname));
             
             #line default
             #line hidden
-            this.Write("\",\n\t\t\tisPlaceholder: false,\n\t\t\tisArticle: false,\n\t\t\tisNamespace: true,\n\t\t\tisType:" +
+            this.Write("\',\n\t\t\tisPlaceholder: false,\n\t\t\tisArticle: false,\n\t\t\tisNamespace: true,\n\t\t\tisType:" +
                     " false,\n\t\t\tchildren: [\n\t\t\t\t");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"

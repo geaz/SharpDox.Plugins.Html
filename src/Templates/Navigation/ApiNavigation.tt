@@ -13,8 +13,8 @@
 	{
 		var namespaceNavTemplate = new NamespaceNavigation { Namespace = sdNamespace }; #>
 		{
-			id: "<#= sdNamespace.Identifier #>",
-			name: "<#= sdNamespace.Fullname #>",
+			id: '<#= sdNamespace.Identifier #>',
+			name: '<#= sdNamespace.Fullname #>',
 			isPlaceholder: false,
 			isArticle: false,
 			isNamespace: true,

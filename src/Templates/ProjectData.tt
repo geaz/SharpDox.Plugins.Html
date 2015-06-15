@@ -12,11 +12,11 @@
 var sharpDox = sharpDox || {};
 
 sharpDox.projectData = {
-  name: "<#= StepInput.SDProject.ProjectName #>",
-  <# if(!string.IsNullOrEmpty(StepInput.SDProject.ProjectUrl)) { #> homepage: "<#= StepInput.SDProject.ProjectUrl #>", <# } #>
-  <# if(!string.IsNullOrEmpty(StepInput.SDProject.VersionNumber)) { #> version: "<#= StepInput.SDProject.VersionNumber #>", <# } #>
-  <# if(!string.IsNullOrEmpty(StepInput.SDProject.Author)) { #> author: "<#= StepInput.SDProject.Author #>", <# } #>
-  <# if(!string.IsNullOrEmpty(StepInput.SDProject.AuthorUrl)) { #> authorHomepage: "<#= StepInput.SDProject.AuthorUrl #>", <# } #>
-  <# if(!string.IsNullOrEmpty(StepInput.HtmlConfig.FooterLine)) { #> footerLine: "<#= CommonMarkConverter.Convert(StepInput.HtmlConfig.FooterLine) #>", <# } #>
+  name: '<#= StepInput.SDProject.ProjectName #>',
+  <# if(!string.IsNullOrEmpty(StepInput.SDProject.ProjectUrl)) { #> homepage: '<#= StepInput.SDProject.ProjectUrl #>', <# } #>
+  <# if(!string.IsNullOrEmpty(StepInput.SDProject.VersionNumber)) { #> version: '<#= StepInput.SDProject.VersionNumber #>', <# } #>
+  <# if(!string.IsNullOrEmpty(StepInput.SDProject.Author)) { #> author: '<#= StepInput.SDProject.Author #>', <# } #>
+  <# if(!string.IsNullOrEmpty(StepInput.SDProject.AuthorUrl)) { #> authorHomepage: '<#= StepInput.SDProject.AuthorUrl #>', <# } #>
+  <# if(!string.IsNullOrEmpty(StepInput.HtmlConfig.FooterLine)) { #> footerLine: '<#= CommonMarkConverter.Convert(StepInput.HtmlConfig.FooterLine) #>', <# } #>
   hasLogo: <#= string.IsNullOrEmpty(StepInput.SDProject.LogoPath) ? "false" : "true" #>
 }

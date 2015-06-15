@@ -14,6 +14,9 @@ namespace SharpDox.Plugins.Html.Templates.Repository
     using System.Net;
     using System.Collections.Generic;
     using SharpDox.Model;
+    using SharpDox.Model.Documentation.Article;
+    using SharpDox.Plugins.Html.Steps;
+    using CommonMark;
     using System;
     
     /// <summary>
@@ -31,31 +34,78 @@ namespace SharpDox.Plugins.Html.Templates.Repository
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\nvar sharpDox = sharpDox || {};\n\nsharpDox.articles = {\n  \"home\":{\n    title: \"Ho" +
-                    "me\",\n    subTitle: \"Project Description\",\n    content: \"<p><strong>sharpDox</str" +
-                    "ong> ist ein Dokumentationstool mit dem jede Art von C# Code-Dokumentation erste" +
-                    "llt werden kann. Die Kernaufgabe von sharpDox ist es, den Quellcode eines Projek" +
-                    "tes einzulesen und zu analysieren. Dabei wird ein internes Modell aufgebaut, das" +
-                    " alle Informationen zum Code beinhaltet. Neben der Inline-Dokumentation sind die" +
-                    "s zum Beispiel Informationen darüber, ob ein Typ bestimmte Interfaces implementi" +
-                    "ert oder andere Typen erbt.</p><p>Das komplette Modell des Quellcodes wird den r" +
-                    "egistrierten Exportern übergeben, die das Modell in ein gewünschtes Ausgabeforma" +
-                    "t überführen. Dabei können Entwickler auf einfache Art und Weise eigene Exporter" +
-                    " schreiben, die das Model neben dem CHM- und HTML-Format zum Beispiel in ein Wor" +
-                    "d-Dokument übertragen. </p><p>Die Benutzer von sharpDox können zusätzlich zu der" +
-                    " eigentlichen Code-Dokumentation auch benutzerdefinierte Seiten in die Dokumenta" +
-                    "tion einbinden. Dies können zum Beispiel erweiterte Beschreibungen von Namensräu" +
-                    "men oder Anleitungen sein. sharpDox beherrscht noch einige weitere Dinge, wie zu" +
-                    "m Beispiel die Erstellung von eigenen Dokumentations-Navigationen oder mehrsprac" +
-                    "higen Dokumentationen.</p><p><strong>sharpDox</strong> wird mit einem HTML-Expor" +
-                    "ter ausgeliefert, dieser soll die Möglichkeiten von <strong>sharpDox</strong> ve" +
-                    "ranschaulichen.</p>\"\n  },\n  \"test\": {\n    title: \"Article1\",\n    content: \"Test\"" +
-                    "\n  },\n  \"test2\": {\n    title: \"Article2\",\n    content: \"Test\"\n  }\n}\n\n");
+            this.Write("\r\n");
+            
+            #line 13 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+ var helper = new Helper(StepInput.SDProject); 
+            
+            #line default
+            #line hidden
+            this.Write("\r\nvar sharpDox = sharpDox || {};\n\nsharpDox.articles = {\n\t\'home\':{\n\t\ttitle: \'Home\'" +
+                    ",\n\t\tsubTitle: \'");
+            
+            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Description));
+            
+            #line default
+            #line hidden
+            this.Write("\',\n\t\tcontent: \'");
+            
+            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(CommonMarkConverter.Convert(StepInput.SDProject.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage))));
+            
+            #line default
+            #line hidden
+            this.Write("\'\n\t},\n\t");
+            
+            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+ foreach(var article in SDArticles){ 
+		if(!(article is SDArticlePlaceholder) && !(article is SDDocPlaceholder)){ 
+            
+            #line default
+            #line hidden
+            this.Write("\n\t\t\t\'");
+            
+            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(article.Id));
+            
+            #line default
+            #line hidden
+            this.Write("\': {\n\t\t\t\ttitle: \'");
+            
+            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(article.Title));
+            
+            #line default
+            #line hidden
+            this.Write("\',\n\t\t\t\t");
+            
+            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+ var articleContent = article.Content.Transform(helper.TransformLinkToken); 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t\tcontent: \'");
+            
+            #line 16 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(CommonMarkConverter.Convert(articleContent)));
+            
+            #line default
+            #line hidden
+            this.Write("\'\n\t\t\t},\n\t\t");
+            
+            #line 16 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+ }
+	} 
+            
+            #line default
+            #line hidden
+            this.Write("\n}\n\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
- public SDProject SDProject { get; set; } 
+        #line 16 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+ public List<SDArticle> SDArticles { get; set; } 
         
         #line default
         #line hidden
