@@ -7,24 +7,22 @@
 //     der Code erneut generiert wird.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace SharpDox.Plugins.Html.Templates.Search
+namespace SharpDox.Plugins.Html.Templates.Navigation
 {
     using System.Linq;
     using System.Text;
     using System.Net;
     using System.Collections.Generic;
-    using SharpDox.Plugins.Html.Steps;
-    using SharpDox.Model.Repository;
-    using SharpDox.Model.Documentation.Article;
+    using SharpDox.Model;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
+    #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public partial class SearchRepositoryTemplate : SearchRepositoryTemplateBase
+    public partial class ApiNavigation : ApiNavigationBase
     {
 #line hidden
         /// <summary>
@@ -32,228 +30,52 @@ namespace SharpDox.Plugins.Html.Templates.Search
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\n");
-            this.Write("\n\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n\n");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
- foreach(var sdNamespace in Repository.GetAllNamespaces()){ 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t{ \"Name\" : \"");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdNamespace.Fullname));
-            
-            #line default
-            #line hidden
-            this.Write("\", \"Url\" : \"#namespace/");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdNamespace.Fullname));
-            
-            #line default
-            #line hidden
-            this.Write("\", \"Type\" : \"");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Namespace));
-            
-            #line default
-            #line hidden
-            this.Write("\" },\n\t");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
- foreach(var sdType in sdNamespace.Types){ 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t{ \"Name\" : \"");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("\", \"Url\" : \"#type/");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.ShortIdentifier));
-            
-            #line default
-            #line hidden
-            this.Write("\", \"Type\" : \"");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Type));
-            
-            #line default
-            #line hidden
-            this.Write("\" },\n\n\t\t");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
- foreach(var sdField in sdType.Fields){ 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t{ \"Name\" : \"");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdField.Name));
-            
-            #line default
-            #line hidden
-            this.Write("\", \"Url\" : \"#type/");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.ShortIdentifier));
-            
-            #line default
-            #line hidden
-            this.Write("?");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdField.ShortIdentifier));
-            
-            #line default
-            #line hidden
-            this.Write("\", \"Type\" : \"");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Field));
-            
-            #line default
-            #line hidden
-            this.Write("\" },\n\t\t");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
- }
-		foreach(var sdProperty in sdType.Properties){ 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t{ \"Name\" : \"");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdProperty.Name));
-            
-            #line default
-            #line hidden
-            this.Write("\", \"Url\" : \"#type/");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.ShortIdentifier));
-            
-            #line default
-            #line hidden
-            this.Write("?");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdProperty.ShortIdentifier));
-            
-            #line default
-            #line hidden
-            this.Write("\", \"Type\" : \"");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Property));
-            
-            #line default
-            #line hidden
-            this.Write("\" },\n\t\t");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
- }
-		foreach(var sdEvent in sdType.Events){ 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t{ \"Name\" : \"");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdEvent.Name));
-            
-            #line default
-            #line hidden
-            this.Write("\", \"Url\" : \"#type/");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.ShortIdentifier));
-            
-            #line default
-            #line hidden
-            this.Write("?");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdEvent.ShortIdentifier));
-            
-            #line default
-            #line hidden
-            this.Write("\", \"Type\" : \"");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Event));
-            
-            #line default
-            #line hidden
-            this.Write("\" },\n\t\t");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
- }
-		foreach(var sdMethod in sdType.Methods){ 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t{ \"Name\" : \"");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdMethod.Name));
-            
-            #line default
-            #line hidden
-            this.Write("\", \"Url\" : \"#type/");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.ShortIdentifier));
-            
-            #line default
-            #line hidden
-            this.Write("?");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdMethod.ShortIdentifier));
-            
-            #line default
-            #line hidden
-            this.Write("\", \"Type\" : \"");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.DocStrings.Method));
-            
-            #line default
-            #line hidden
-            this.Write("\" },\n\t\t");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
- }
-	}
-} 
-            
-            #line default
-            #line hidden
             this.Write("\r\n");
+            this.Write("\r\n{\r\n\t");
+            
+            #line 11 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+ var sdNamespaces = SDSolution.Repositories.FirstOrDefault().Value.GetAllNamespaces(); 
+	foreach(var sdNamespace in sdNamespaces)
+	{
+		var namespaceNavTemplate = new NamespaceNavigation { Namespace = sdNamespace }; 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t{\n\t\t\tid: \"");
+            
+            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdNamespace.Identifier));
+            
+            #line default
+            #line hidden
+            this.Write("\",\n\t\t\tname: \"");
+            
+            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdNamespace.Fullname));
+            
+            #line default
+            #line hidden
+            this.Write("\",\n\t\t\tisPlaceholder: false,\n\t\t\tisArticle: false,\n\t\t\tisNamespace: true,\n\t\t\tisType:" +
+                    " false,\n\t\t\tchildren: [\n\t\t\t\t");
+            
+            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(namespaceNavTemplate.TransformText()));
+            
+            #line default
+            #line hidden
+            this.Write("\n\t\t\t]\n\t\t},\r\n\t");
+            
+            #line 16 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 3 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchRepositoryTemplate.tt"
- public SDRepository Repository { get; set; } 
+        #line 19 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+ public SDSolution SDSolution { get; set; } 
         
         #line default
         #line hidden
@@ -266,7 +88,7 @@ namespace SharpDox.Plugins.Html.Templates.Search
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public class SearchRepositoryTemplateBase
+    public class ApiNavigationBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

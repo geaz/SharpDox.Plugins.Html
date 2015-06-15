@@ -19,7 +19,7 @@ namespace SharpDox.Plugins.Html.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Github\SharpDox.Plugins.Html\Templates\Css.tt"
+    #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Css.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
     public partial class Css : CssBase
     {
@@ -31,36 +31,8 @@ namespace SharpDox.Plugins.Html.Templates
         {
             this.Write(" \r\n\r\n.ui-outer-north{\r\n    background: ");
             
-            #line 9 "D:\Github\SharpDox.Plugins.Html\Templates\Css.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(HtmlConfig.HeaderBackground));
-            
-            #line default
-            #line hidden
-            this.Write(";\r\n}\r\n\r\n.ui-outer-resizer-north{\r\n    background: ");
-            
-            #line 13 "D:\Github\SharpDox.Plugins.Html\Templates\Css.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(HtmlConfig.HeaderBackground));
-            
-            #line default
-            #line hidden
-            this.Write(";\r\n}\r\n\r\n#sitetitle a{\r\n\tcolor: ");
-            
-            #line 17 "D:\Github\SharpDox.Plugins.Html\Templates\Css.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(HtmlConfig.Color));
-            
-            #line default
-            #line hidden
-            this.Write(";\r\n}\r\n\r\n#subtitle{\r\n\tbackground: ");
-            
-            #line 21 "D:\Github\SharpDox.Plugins.Html\Templates\Css.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(HtmlConfig.SubHeaderBackground));
-            
-            #line default
-            #line hidden
-            this.Write(";\r\n\tcolor: ");
-            
-            #line 22 "D:\Github\SharpDox.Plugins.Html\Templates\Css.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(HtmlConfig.Color));
+            #line 9 "D:\Github\SharpDox.Plugins.Html\src\Templates\Css.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(HtmlConfig.PrimaryColor));
             
             #line default
             #line hidden
@@ -68,7 +40,7 @@ namespace SharpDox.Plugins.Html.Templates
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 25 "D:\Github\SharpDox.Plugins.Html\Templates\Css.tt"
+        #line 12 "D:\Github\SharpDox.Plugins.Html\src\Templates\Css.tt"
 	public HtmlConfig HtmlConfig { get; set; } 
         
         #line default

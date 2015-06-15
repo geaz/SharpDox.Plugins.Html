@@ -17,17 +17,17 @@
 
 		if (article is SDDocPlaceholder)
 		{ #>		
-			<# var apiNavTemplate = new ApiNavTemplate { Repository = StepInput.SDProject.Repositories[((SDDocPlaceholder)article).SolutionFile] }; #>						
+			<# var apiNavTemplate = new ApiNavigation { SDSolution = StepInput.SDProject.Solutions[((SDDocPlaceholder)article).SolutionFile] }; #>						
 			<#= string.Format("<li data-jstree='{{\"icon\":\"icon-code\"}}' id=\"node-article/{0}\">{1} {2}</li>", article.Id, article.Title, apiNavTemplate.TransformText()) #>
 		<# }
 		else if (article is SDArticlePlaceholder)
 		{ #>
-			<# var articleNavTemplate = new ArticleNavTemplate { Article = article }; #>
+			<# var articleNavTemplate = new ArticleNavigation { Article = article }; #>
 			<#= string.Format("<li data-jstree='{{\"icon\":\"icon-folder-close\"}}' id=\"node-article/{0}\">{1} {2}</li>", article.Id, article.Title, articleNavTemplate.TransformText()) #>
 		<# }
 		else
 		{ #>
-			<# var articleNavTemplate = new ArticleNavTemplate { Article = article }; #>		
+			<# var articleNavTemplate = new ArticleNavigation { Article = article }; #>		
 			<#= string.Format("<li data-jstree='{{\"icon\":\"icon-file-text\"}}' id=\"node-article/{0}\"><a href=\"#article/{0}\">{1}</a>{2}</li>", article.Id, article.Title, articleNavTemplate.TransformText()) #>
 		<# }		
 	} 

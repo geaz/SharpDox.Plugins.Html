@@ -6,20 +6,7 @@
 <#@ import namespace="SharpDox.Plugins.Html" #> 
 
 .ui-outer-north{
-    background: <#= HtmlConfig.HeaderBackground #>;
-}
-
-.ui-outer-resizer-north{
-    background: <#= HtmlConfig.HeaderBackground #>;
-}
-
-#sitetitle a{
-	color: <#= HtmlConfig.Color #>;
-}
-
-#subtitle{
-	background: <#= HtmlConfig.SubHeaderBackground #>;
-	color: <#= HtmlConfig.Color #>;
+    background: <#= HtmlConfig.PrimaryColor #>;
 }
 
 <#+	public HtmlConfig HtmlConfig { get; set; } #>

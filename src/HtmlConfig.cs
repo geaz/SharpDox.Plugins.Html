@@ -16,9 +16,9 @@ namespace SharpDox.Plugins.Html
         }
 
         private string _favIcon;
-        private string _headerBackground;
-        private string _subheaderBackground;
-        private string _color;
+        private string _theme;
+        private string _primaryColor;
+        private string _secondaryColor;
         private bool _disableSequenceDiagrams;
         private string _footerLine;
 
@@ -34,39 +34,43 @@ namespace SharpDox.Plugins.Html
             }
         }
 
-        [Name(typeof(HtmlStrings), "HeaderBackground")]
-        [ConfigEditor(EditorType.Colorpicker)]
-        public string HeaderBackground
+        [Required]
+        [ConfigEditor(EditorType.ComboBox, typeof(ThemeList))]
+        [Name(typeof(HtmlStrings), "Theme")]
+        public string Theme
         {
-            get { return _headerBackground ?? "#3F72DB"; }
+            get { return _theme; }
             set
             {
-                _headerBackground = value;
-                OnPropertyChanged("HeaderBackground");
+                if (_theme != value)
+                {
+                    _theme = value;
+                    OnPropertyChanged("Theme");
+                }
             }
         }
 
-        [Name(typeof(HtmlStrings), "SubHeaderBackground")]
+        [Name(typeof(HtmlStrings), "PrimaryColor")]
         [ConfigEditor(EditorType.Colorpicker)]
-        public string SubHeaderBackground
+        public string PrimaryColor
         {
-            get { return _subheaderBackground ?? "#2862db"; }
+            get { return _primaryColor ?? "#3F72DB"; }
             set
             {
-                _subheaderBackground = value;
-                OnPropertyChanged("SubheaderBackground");
+                _primaryColor = value;
+                OnPropertyChanged("PrimaryColor");
             }
         }
 
-        [Name(typeof(HtmlStrings), "Color")]
+        [Name(typeof(HtmlStrings), "SecondaryColor")]
         [ConfigEditor(EditorType.Colorpicker)]
-        public string Color
+        public string SecondaryColor
         {
-            get { return _color ?? "#FFFFFF"; }
+            get { return _secondaryColor ?? "#2862db"; }
             set
             {
-                _color = value;
-                OnPropertyChanged("Color");
+                _secondaryColor = value;
+                OnPropertyChanged("SecondaryColor");
             }
         }
 

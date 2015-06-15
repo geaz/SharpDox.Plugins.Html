@@ -7,22 +7,24 @@
 //     der Code erneut generiert wird.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace SharpDox.Plugins.Html.Templates.Nav
+namespace SharpDox.Plugins.Html.Templates
 {
     using System.Linq;
     using System.Text;
+    using System.Net;
     using System.Collections.Generic;
-    using SharpDox.Model.Documentation.Article;
+    using SharpDox.Model;
     using SharpDox.Plugins.Html.Steps;
+    using CommonMark;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
+    #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public partial class ArticleNavTemplate : ArticleNavTemplateBase
+    public partial class ProjectData : ProjectDataBase
     {
 #line hidden
         /// <summary>
@@ -30,119 +32,129 @@ namespace SharpDox.Plugins.Html.Templates.Nav
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\n");
-            this.Write("\n\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n\n");
+            this.Write("\r\n");
+            this.Write("\n\nvar sharpDox = sharpDox || {};\n\nsharpDox.projectData = {\n  name: \"");
             
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
-  if(Article.Children.Count > 0) { 
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.SDProject.ProjectName));
             
             #line default
             #line hidden
-            this.Write("\n\t\t<ul>\n");
+            this.Write("\",\n  ");
             
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
-	}
-
-	for (int i = 0; i < Article.Children.Count; i++)
-	{
-		var article = Article.Children[i];
-
-		if (article is SDDocPlaceholder)
-		{ 
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+ if(!string.IsNullOrEmpty(StepInput.SDProject.ProjectUrl)) { 
             
             #line default
             #line hidden
-            this.Write("\t\t\n\t\t\t");
+            this.Write(" homepage: \"");
             
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
- var apiNavTemplate = new ApiNavTemplate { Repository = StepInput.SDProject.Repositories[((SDDocPlaceholder)article).SolutionFile] }; 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\t\t\t\t\n\t\t\t");
-            
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-code\"}}' id=\"node-article/{0}\">{1} {2}</li>", article.Id, article.Title, apiNavTemplate.TransformText())));
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.SDProject.ProjectUrl));
             
             #line default
             #line hidden
-            this.Write("\n\t\t");
+            this.Write("\", ");
             
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
- }
-		else if (article is SDArticlePlaceholder)
-		{ 
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+ } 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t");
+            this.Write("\n  ");
             
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
- var articleNavTemplate = new ArticleNavTemplate { Article = article }; 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t");
-            
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-folder-close\"}}' id=\"node-article/{0}\">{1} {2}</li>", article.Id, article.Title, articleNavTemplate.TransformText())));
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+ if(!string.IsNullOrEmpty(StepInput.SDProject.VersionNumber)) { 
             
             #line default
             #line hidden
-            this.Write("\n\t\t");
+            this.Write(" version: \"");
             
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
- }
-		else
-		{ 
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.SDProject.VersionNumber));
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t");
+            this.Write("\", ");
             
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
- var articleNavTemplate = new ArticleNavTemplate { Article = article }; 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\n\t\t\t");
-            
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-file-text\"}}' id=\"node-article/{0}\"><a href=\"#article/{0}\">{1}</a>{2}</li>", article.Id, article.Title, articleNavTemplate.TransformText())));
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+ } 
             
             #line default
             #line hidden
-            this.Write("\n\t\t");
+            this.Write("\n  ");
             
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
- }		
-	} 
-
-	if(Article.Children.Count > 0) { 
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+ if(!string.IsNullOrEmpty(StepInput.SDProject.Author)) { 
             
             #line default
             #line hidden
-            this.Write("\n\t\t</ul>\t\n");
+            this.Write(" author: \"");
             
-            #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
-	}	
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.SDProject.Author));
             
             #line default
             #line hidden
-            this.Write("\n\n");
+            this.Write("\", ");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\n  ");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+ if(!string.IsNullOrEmpty(StepInput.SDProject.AuthorUrl)) { 
+            
+            #line default
+            #line hidden
+            this.Write(" authorHomepage: \"");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.SDProject.AuthorUrl));
+            
+            #line default
+            #line hidden
+            this.Write("\", ");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\n  ");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+ if(!string.IsNullOrEmpty(StepInput.HtmlConfig.FooterLine)) { 
+            
+            #line default
+            #line hidden
+            this.Write(" footerLine: \"");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(CommonMarkConverter.Convert(StepInput.HtmlConfig.FooterLine)));
+            
+            #line default
+            #line hidden
+            this.Write("\", ");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\n  hasLogo: ");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.IsNullOrEmpty(StepInput.SDProject.LogoPath) ? "false" : "true"));
+            
+            #line default
+            #line hidden
+            this.Write("\n}");
             return this.GenerationEnvironment.ToString();
         }
-        
-        #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\ArticleNavTemplate.tt"
-	public SDArticle Article { get; set; } 
-        
-        #line default
-        #line hidden
     }
     
     #line default
@@ -152,7 +164,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public class ArticleNavTemplateBase
+    public class ProjectDataBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

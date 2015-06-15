@@ -39,10 +39,8 @@ namespace SharpDox.Plugins.Html
                 StepInput.InitStepinput(sdProject, Path.Combine(outputPath, docLanguage), docLanguage, _localController.GetLocalStringsOrDefault<HtmlStrings>(docLanguage), _htmlStrings, _htmlConfig);
 
                 var steps = new List<StepBase>();
-                steps.Add(new PreBuildStep(0, 10));
-                steps.Add(new AssetsStep(10, 25));
-                steps.Add(new CreateArticleStep(25, 40));
-                steps.Add(new CreateHtmlStep(40, 100));
+                steps.Add(new CopyThemeStep(0, 25));
+                steps.Add(new CreateDataStep(25, 100));
 
                 foreach(var step in steps)
                 {

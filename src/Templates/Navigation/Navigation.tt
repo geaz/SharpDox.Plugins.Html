@@ -1,0 +1,42 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Net" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="SharpDox.Sdk" #>
+<#@ import namespace="SharpDox.UML" #>
+<#@ import namespace="SharpDox.Model.Documentation.Article" #>
+<#@ import namespace="SharpDox.Plugins.Html.Steps" #>
+
+var sharpDox = sharpDox || {};
+
+sharpDox.navigationData = [
+	<# if(StepInput.SDProject.Articles.Count > 0) {
+		var articles = StepInput.SDProject.Articles.GetElementOrDefault(StepInput.CurrentLanguage);
+		foreach(var article in articles)
+		{
+			if (article is SDDocPlaceholder)
+			{ #>		
+				<# var apiNavTemplate = new ApiNavigation { SDSolution = StepInput.SDProject.Solutions[((SDDocPlaceholder)article).SolutionFile] }; #>						
+				<#= apiNavTemplate.TransformText() #>
+			<# }
+			else if (article is SDArticlePlaceholder)
+			{ #>
+				<# var articleNavTemplate = new ArticleNavigation { Article = article }; #>
+				<#= articleNavTemplate.TransformText() #>
+			<# }
+			else
+			{ #>
+				<# var articleNavTemplate = new ArticleNavigation { Article = article }; #>		
+				<#= articleNavTemplate.TransformText() #>
+			<# }
+		}
+	} else {
+		var apiNavTemplate = new ApiNavigation { SDSolution = StepInput.SDProject.Solutions.Single().Value }; #>
+		<#= apiNavTemplate.TransformText() #>
+	<# } #>
+];
+
+<#+	public SDArticle Article { get; set; } #>

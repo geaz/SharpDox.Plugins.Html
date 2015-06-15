@@ -7,23 +7,25 @@
 //     der Code erneut generiert wird.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace SharpDox.Plugins.Html.Templates.Nav
+namespace SharpDox.Plugins.Html.Templates.Navigation
 {
     using System.Linq;
     using System.Text;
     using System.Net;
     using System.Collections.Generic;
-    using SharpDox.Plugins.Html.Steps;
+    using SharpDox.Sdk;
+    using SharpDox.UML;
     using SharpDox.Model.Documentation.Article;
+    using SharpDox.Plugins.Html.Steps;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\IndexNavTemplate.tt"
+    #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public partial class IndexNavTemplate : IndexNavTemplateBase
+    public partial class Navigation : NavigationBase
     {
 #line hidden
         /// <summary>
@@ -32,114 +34,111 @@ namespace SharpDox.Plugins.Html.Templates.Nav
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\n<ul>\r\n\t");
+            this.Write("\r\nvar sharpDox = sharpDox || {};\n\nsharpDox.navigationData = [\r\n\t");
             
-            #line 12 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\IndexNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-home\"}}' id=\"node-home\" class=\"jstree-open\"><a href=\"#home\">{0}</a>", StepInput.DocStrings.Home)));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\t<ul>\r\n\t\t");
-            
-            #line 14 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\IndexNavTemplate.tt"
+            #line 14 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
  if(StepInput.SDProject.Articles.Count > 0) {
-				var articles = StepInput.SDProject.Articles.GetElementOrDefault(StepInput.CurrentLanguage);
-				for (int i = 0; i < articles.Count; i++)
-				{
-					var article = articles[i];
-
-					if (article is SDDocPlaceholder)
-					{ 
+		var articles = StepInput.SDProject.Articles.GetElementOrDefault(StepInput.CurrentLanguage);
+		foreach(var article in articles)
+		{
+			if (article is SDDocPlaceholder)
+			{ 
             
             #line default
             #line hidden
-            this.Write("\t\t\r\n\t\t\t\t\t\t");
+            this.Write("\t\t\r\n\t\t\t\t");
             
-            #line 22 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\IndexNavTemplate.tt"
- var apiNavTemplate = new ApiNavTemplate { Repository = StepInput.SDProject.Repositories[((SDDocPlaceholder)article).SolutionFile] }; 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\t\t\t\t\r\n\t\t\t\t\t\t");
-            
-            #line 23 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\IndexNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-code\"}}' id=\"node-article/{0}\">{1} {2}</li>", article.Id, article.Title, apiNavTemplate.TransformText())));
+            #line 20 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+ var apiNavTemplate = new ApiNavigation { SDSolution = StepInput.SDProject.Solutions[((SDDocPlaceholder)article).SolutionFile] }; 
             
             #line default
             #line hidden
-            this.Write("\r\n\t\t\t\t\t");
+            this.Write("\t\t\t\t\t\t\r\n\t\t\t\t");
             
-            #line 24 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\IndexNavTemplate.tt"
+            #line 21 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(apiNavTemplate.TransformText()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t\t");
+            
+            #line 22 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
  }
-					else if (article is SDArticlePlaceholder)
-					{ 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\t\t\t\t");
-            
-            #line 27 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\IndexNavTemplate.tt"
- var articleNavTemplate = new ArticleNavTemplate { Article = article }; 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\t\t\t\t");
-            
-            #line 28 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\IndexNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-folder-close\"}}' id=\"node-article/{0}\">{1} {2}</li>", article.Id, article.Title, articleNavTemplate.TransformText())));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\t\t\t\t\t");
-            
-            #line 29 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\IndexNavTemplate.tt"
- }
-					else
-					{ 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\t\t\t\t");
-            
-            #line 32 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\IndexNavTemplate.tt"
- var articleNavTemplate = new ArticleNavTemplate { Article = article }; 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\r\n\t\t\t\t\t\t");
-            
-            #line 33 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\IndexNavTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-file-text\"}}' id=\"node-article/{0}\"><a href=\"#article/{0}\">{1}</a>{2}</li>", article.Id, article.Title, articleNavTemplate.TransformText())));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\t\t\t\t\t");
-            
-            #line 34 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\IndexNavTemplate.tt"
- }
-				}
-			} else {
-				var apiNavTemplate = new ApiNavTemplate { Repository = StepInput.SDProject.Repositories.Single().Value }; 
+			else if (article is SDArticlePlaceholder)
+			{ 
             
             #line default
             #line hidden
             this.Write("\t\t\t\t");
             
-            #line 38 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\IndexNavTemplate.tt"
+            #line 25 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+ var articleNavTemplate = new ArticleNavigation { Article = article }; 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t\t");
+            
+            #line 26 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(articleNavTemplate.TransformText()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t\t");
+            
+            #line 27 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+ }
+			else
+			{ 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t\t");
+            
+            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+ var articleNavTemplate = new ArticleNavigation { Article = article }; 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\r\n\t\t\t\t");
+            
+            #line 31 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(articleNavTemplate.TransformText()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t\t");
+            
+            #line 32 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+ }
+		}
+	} else {
+		var apiNavTemplate = new ApiNavigation { SDSolution = StepInput.SDProject.Solutions.Single().Value }; 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t");
+            
+            #line 36 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(apiNavTemplate.TransformText()));
             
             #line default
             #line hidden
-            this.Write("\r\n\t\t");
+            this.Write("\r\n\t");
             
-            #line 39 "D:\Github\SharpDox.Plugins.Html\src\Templates\Nav\IndexNavTemplate.tt"
+            #line 37 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\t</ul>\r\n\t</li>\t\r\n</ul>");
+            this.Write("];\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
+        
+        #line 40 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+	public SDArticle Article { get; set; } 
+        
+        #line default
+        #line hidden
     }
     
     #line default
@@ -149,7 +148,7 @@ namespace SharpDox.Plugins.Html.Templates.Nav
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public class IndexNavTemplateBase
+    public class NavigationBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

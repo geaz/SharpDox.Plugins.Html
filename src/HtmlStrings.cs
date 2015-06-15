@@ -5,18 +5,15 @@ namespace SharpDox.Plugins.Html
     public class HtmlStrings : ILocalStrings
     {
         private string _html = "Html";
-        private string _headerBackground = "Header Background";
-        private string _subheaderBackground = "Subheader Background";
-        private string _color = "Header Font Color";
+        private string _primaryColor = "Primary Color";
+        private string _secondaryColor = "Secondary Color";
+        private string _theme = "Theme";
         private string _disableSequenceDiagrams = "Disable sequence diagrams";
         private string _footerLine = "Footer Line";
         private string _favIcon = "Favicon";
 
-        private string _creatingFolders = "Creating Folders";
-        private string _creatingNavigation = "Creating navigation files";
-        private string _createFilesForNamespace = "Creating files for namespace";
-        private string _creatingArticle = "Creating article: {0}";
-        private string _copyingFile = "Copying File: {0}";
+        private string _creatingProjectData = "Creating Project Data";
+        private string _creatingStringData = "Creating String Data";
 
         private string _start = "Start";
         private string _by = "by";
@@ -69,22 +66,22 @@ namespace SharpDox.Plugins.Html
             set { _html = value; }
         }
 
-        public string HeaderBackground
+        public string PrimaryColor
         {
-            get { return _headerBackground; }
-            set { _headerBackground = value; }
+            get { return _primaryColor; }
+            set { _primaryColor = value; }
         }
 
-        public string SubHeaderBackground
+        public string SecondaryColor
         {
-            get { return _subheaderBackground; }
-            set { _subheaderBackground = value; }
+            get { return _secondaryColor; }
+            set { _secondaryColor = value; }
         }
 
-        public string Color
+        public string Theme
         {
-            get { return _color; }
-            set { _color = value; }
+            get { return _theme; }
+            set { _theme = value; }
         }
 
         public string DisableSequenceDiagrams
@@ -105,34 +102,16 @@ namespace SharpDox.Plugins.Html
             set { _favIcon = value; }
         }
 
-        public string CreatingFolders
+        public string CreatingProjectData
         {
-            get { return _creatingFolders; }
-            set { _creatingFolders = value; }
+            get { return _creatingProjectData; }
+            set { _creatingProjectData = value; }
         }
 
-        public string CreateFilesForNamespace
+        public string CreatingStringData
         {
-            get { return _createFilesForNamespace; }
-            set { _createFilesForNamespace = value; }
-        }
-
-        public string CreatingNavigation
-        {
-            get { return _creatingNavigation; }
-            set { _creatingNavigation = value; }
-        }
-
-        public string CreatingArticle
-        {
-            get { return _creatingArticle; }
-            set { _creatingArticle = value; }
-        }
-
-        public string CopyingFile
-        {
-            get { return _copyingFile; }
-            set { _copyingFile = value; }
+            get { return _creatingStringData; }
+            set { _creatingStringData = value; }
         }
 
         public string Start

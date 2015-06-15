@@ -7,24 +7,21 @@
 //     der Code erneut generiert wird.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace SharpDox.Plugins.Html.Templates.Search
+namespace SharpDox.Plugins.Html.Templates.Repository
 {
     using System.Linq;
     using System.Text;
     using System.Net;
     using System.Collections.Generic;
-    using SharpDox.Model.Repository;
-    using SharpDox.Plugins.Html.Steps;
-    using SharpDox.Model.Documentation.Article;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchIndexTemplate.tt"
+    #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public partial class SearchIndexTemplate : SearchIndexTemplateBase
+    public partial class TypeData : TypeDataBase
     {
 #line hidden
         /// <summary>
@@ -32,67 +29,9 @@ namespace SharpDox.Plugins.Html.Templates.Search
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\n");
-            this.Write("\n\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n\nvar searchIndex = [ \n\t");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchIndexTemplate.tt"
-	if(Articles != null) 
-		{
-			foreach(var article in Articles)
-			{
-				var searchArticleTemplate = new SearchArticleTemplate() { Article = article }; 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t\t");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchIndexTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(searchArticleTemplate.TransformText()));
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchIndexTemplate.tt"
- }
-		}
-		else if(Repository != null)
-		{
-			var searchRepositoryTemplate = new SearchRepositoryTemplate() { Repository = Repository }; 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchIndexTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(searchRepositoryTemplate.TransformText()));
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t");
-            
-            #line 1 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchIndexTemplate.tt"
- } 
-            
-            #line default
-            #line hidden
-            this.Write("];\r\n\r\n");
+            this.Write("\r\n");
             return this.GenerationEnvironment.ToString();
         }
-        
-        #line 4 "C:\Users\ZP620933\Downloads\SharpDox.Plugins.Html-dev\src\Templates\Search\SearchIndexTemplate.tt"
- public List<SDArticle> Articles { get; set; }
-	public SDRepository Repository { get; set; } 
-        
-        #line default
-        #line hidden
     }
     
     #line default
@@ -102,7 +41,7 @@ namespace SharpDox.Plugins.Html.Templates.Search
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public class SearchIndexTemplateBase
+    public class TypeDataBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

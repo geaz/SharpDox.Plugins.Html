@@ -1,0 +1,24 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="SharpDox.Model.Repository" #> 
+
+<#  foreach(var sdType in Namespace.Types)
+	{ #>
+		{
+			id: "<#= sdType.ShortIdentifier #>",
+			name: "<#= sdType.Name #>",
+			kind: "<#= sdType.Kind #>",
+			accessibility: "<#= sdType.Accessibility #>",
+			isPlaceholder: false,
+			isArticle: false,
+			isNamespace: false,
+			isType: true,
+			children: []
+        },	
+<#	}	#>
+
+<#+	public SDNamespace Namespace { get; set; } #>
