@@ -229,7 +229,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t]\n\t\t\t\t},\n\t\t\t}\n\t\t\t");
+            this.Write("\n\t\t\t\t\t]\n\t\t\t\t},\n\t\t\t},\n\t\t\t");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
  }

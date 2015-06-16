@@ -59,7 +59,7 @@ sharpDox.namespaceData = {
 						<# } #>
 					]
 				},
-			}
+			},
 			<# }
 		}
 	} #>
