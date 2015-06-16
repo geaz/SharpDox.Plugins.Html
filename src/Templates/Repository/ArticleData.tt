@@ -18,7 +18,7 @@ sharpDox.articles = {
 	'home':{
 		title: 'Home',
 		subTitle: '<#= StepInput.HtmlStrings.Description #>',
-		content: '<#= CommonMarkConverter.Convert(StepInput.SDProject.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage)) #>'
+		content: '<#= CommonMarkConverter.Convert(StepInput.SDProject.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken)) #>'
 	},
 	<# foreach(var article in SDArticles){ 
 		if(!(article is SDArticlePlaceholder) && !(article is SDDocPlaceholder)){ #>

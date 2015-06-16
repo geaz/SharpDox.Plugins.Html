@@ -52,7 +52,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             this.Write("\',\n\t\tcontent: \'");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(CommonMarkConverter.Convert(StepInput.SDProject.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage))));
+            this.Write(this.ToStringHelper.ToStringWithCulture(CommonMarkConverter.Convert(StepInput.SDProject.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken))));
             
             #line default
             #line hidden

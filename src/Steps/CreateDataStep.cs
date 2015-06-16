@@ -15,6 +15,7 @@ namespace SharpDox.Plugins.Html.Steps
             CreateDataFolder();
             CreateProjectData();
             CreateStringData();
+            CreateNamespaceData();
             CreateArticleData();
         }
 
@@ -44,9 +45,18 @@ namespace SharpDox.Plugins.Html.Steps
             File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "Strings.js"), stringData.TransformText());
         }
 
-        private void CreateArticleData()
+        private void CreateNamespaceData()
         {
             ExecuteOnStepProgress(20);
+            ExecuteOnStepMessage(StepInput.HtmlStrings.CreatingNamespaceData);
+
+            var namespaceData = new NamespaceData();
+            File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "Namespaces.js"), namespaceData.TransformText()); 
+        }
+
+        private void CreateArticleData()
+        {
+            ExecuteOnStepProgress(40);
             ExecuteOnStepMessage(StepInput.HtmlStrings.CreatingArticleData);
 
             var articles = new List<SDArticle>();

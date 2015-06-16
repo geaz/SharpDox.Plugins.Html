@@ -5,3 +5,62 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Net" #>
 <#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="SharpDox.Model" #>
+<#@ import namespace="SharpDox.Model.Documentation.Article" #>
+<#@ import namespace="SharpDox.Plugins.Html.Steps" #>
+<#@ import namespace="CommonMark" #>
+
+<# var helper = new Helper(StepInput.SDProject); #>
+
+var sharpDox = sharpDox || {};
+
+sharpDox.namespaceData = {
+	<# foreach(var sdSolution in StepInput.SDProject.Solutions)
+	{
+		foreach(var sdTargetNamespaceDic in sdSolution.Value.GetAllNamespaces())
+		{ #>
+			
+			'<#= sdTargetNamespaceDic.Key #>': {
+			
+			<# foreach(var sdTargetNamespace in sdTargetNamespaceDic.Value)
+            {
+				var sdNamespace = sdTargetNamespace.Value;
+				var targetFx = sdTargetNamespace.Key; #>
+				
+				'<#= targetFx.Name #>': {
+					name: '<#= sdNamespace.Fullname #>',
+					assembly: '<#= sdNamespace.Assemblyname #>',
+					<# if(sdNamespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage) != null) { #> description: '<#= sdNamespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken) #>', <# } #>
+					usedBy: [
+						<# foreach(var usedBy in sdNamespace.UsedBy) { #>
+							{
+								id: '<#= usedBy.Identifier #>',
+								name: '<#= usedBy.Fullname #>'
+							},
+						<# } #>
+					],
+					uses: [
+						<# foreach(var use in sdNamespace.Uses) { #>
+							{
+								id: '<#= use.Identifier #>',
+								name: '<#= use.Fullname #>'
+							},
+						<# } #>
+					],
+					types:[
+						<# foreach(var sdType in sdNamespace.Types) { #>
+							{
+								id: '<#= sdType.Identifier #>',
+								name: '<#= sdType.Name #>',
+								kind: '<#= sdType.Kind #>',
+								accessibility: '<#= sdType.Accessibility #>',
+								<# if(sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage) != null) { #> summary: '<#= sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage).ToString() #>' <# } #>
+							},
+						<# } #>
+					]
+				},
+			}
+			<# }
+		}
+	} #>
+};
