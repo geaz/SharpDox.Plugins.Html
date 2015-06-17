@@ -152,7 +152,28 @@ namespace SharpDox.Plugins.Html.Templates
             
             #line default
             #line hidden
-            this.Write("\n}");
+            this.Write(",\n  targetFxs: [\n\t");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+ foreach(var targetFx in StepInput.SDProject.GetAllAvailableTargetFxs()) { 
+            
+            #line default
+            #line hidden
+            this.Write("\n\t\t\"");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(targetFx.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\",\n\t");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\n  ]\n}");
             return this.GenerationEnvironment.ToString();
         }
     }
