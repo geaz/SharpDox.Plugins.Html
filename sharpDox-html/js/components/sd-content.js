@@ -2,6 +2,7 @@ import can from "can";
 import SiteController from "../controller/SiteController";
 
 import "../../assets/css/sd-content.css!";
+import "../../assets/css/markdown.css!";
 
 export default can.Component.extend({
 	tag: 'sd-content',

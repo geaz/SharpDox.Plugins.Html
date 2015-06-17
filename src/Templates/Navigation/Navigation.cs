@@ -46,23 +46,38 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
             
             #line default
             #line hidden
-            this.Write("\t\t\r\n\t\t\t\t");
+            this.Write("\t\t\r\n\t\t\t\t{\r\n\t\t\t\t\tid: \"");
             
-            #line 20 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+            #line 21 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(article.Id));
+            
+            #line default
+            #line hidden
+            this.Write("\",\r\n\t\t\t\t\tname: \"");
+            
+            #line 22 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(article.Title));
+            
+            #line default
+            #line hidden
+            this.Write("\",\r\n\t\t\t\t\tisPlaceholder: true,\r\n\t\t\t\t\tisArticle: false,\r\n\t\t\t\t\tisNamespace: false,\r\n" +
+                    "\t\t\t\t\tisType: false,\r\n\t\t\t\t\tchildren: [\r\n\t\t\t\t\t\t");
+            
+            #line 28 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
  var apiNavTemplate = new ApiNavigation { SDSolution = StepInput.SDProject.Solutions[((SDDocPlaceholder)article).SolutionFile] }; 
             
             #line default
             #line hidden
-            this.Write("\t\t\t\t\t\t\r\n\t\t\t\t");
+            this.Write("\t\t\t\t\t\t\r\n\t\t\t\t\t\t");
             
-            #line 21 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+            #line 29 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(apiNavTemplate.TransformText()));
             
             #line default
             #line hidden
-            this.Write("\r\n\t\t\t");
+            this.Write("\r\n\t\t\t\t\t]\r\n\t\t\t\t}\r\n\t\t\t");
             
-            #line 22 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+            #line 32 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
  }
 			else if (article is SDArticlePlaceholder)
 			{ 
@@ -71,21 +86,21 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
             #line hidden
             this.Write("\t\t\t\t");
             
-            #line 25 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
- var articleNavTemplate = new ArticleNavigation { Article = article }; 
+            #line 35 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+ var articleNavTemplate = new ArticleNavigation { Article = article, IsPlaceholder = true }; 
             
             #line default
             #line hidden
             this.Write("\t\t\t\t");
             
-            #line 26 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+            #line 36 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(articleNavTemplate.TransformText()));
             
             #line default
             #line hidden
             this.Write("\r\n\t\t\t");
             
-            #line 27 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+            #line 37 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
  }
 			else
 			{ 
@@ -94,21 +109,21 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
             #line hidden
             this.Write("\t\t\t\t");
             
-            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
- var articleNavTemplate = new ArticleNavigation { Article = article }; 
+            #line 40 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+ var articleNavTemplate = new ArticleNavigation { Article = article, IsPlaceholder = false }; 
             
             #line default
             #line hidden
             this.Write("\t\t\r\n\t\t\t\t");
             
-            #line 31 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+            #line 41 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(articleNavTemplate.TransformText()));
             
             #line default
             #line hidden
             this.Write("\r\n\t\t\t");
             
-            #line 32 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+            #line 42 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
  }
 		}
 	} else {
@@ -118,27 +133,21 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
             #line hidden
             this.Write("\t\t");
             
-            #line 36 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+            #line 46 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(apiNavTemplate.TransformText()));
             
             #line default
             #line hidden
             this.Write("\r\n\t");
             
-            #line 37 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+            #line 47 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("];\r\n\r\n");
+            this.Write("];");
             return this.GenerationEnvironment.ToString();
         }
-        
-        #line 40 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
-	public SDArticle Article { get; set; } 
-        
-        #line default
-        #line hidden
     }
     
     #line default

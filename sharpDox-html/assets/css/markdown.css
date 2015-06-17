@@ -1,42 +1,3 @@
-sd-content{
-  display:block;
-  max-width:800px;
-  margin:auto;
-}
-
-sd-content p{
-  text-align: justify;
-}
-
-sd-content h4{
-  margin-bottom:10px;
-}
-
-.list-box, .multiline-box, .text-box, .table-box{
-    margin: 0 0 25px 25px;
-}
-
-.list-box ul li:before, .doc-box ul li:before {
-  content: "\f138";
-  font-family: 'FontAwesome';
-  margin-right: 5px;
-}
-
-.multiline-box .key{
-  margin-bottom: 0;
-  font-style: italic;
-}
-
-.multiline-box .inline {
-	margin-left:25px;
-}
-
-.syntax-box {
-    background: #F6F5F1;
-    padding: 5px;
-    border:1px solid #DADADA;
-}
-
 .markdown img {
     display: block;
     margin: auto;
@@ -97,37 +58,4 @@ sd-content h4{
 }
 .markdown pre p {
     margin: 0;
-}
-
-table {
-  width: 100%;
-}
-
-th {
-  background: #C2C2C2 !important;
-}
-
-.even {
-  background: #F6F5F1;
-}
-
-td, th {
-  padding: 3px !important;
-	text-align: left;
-}
-
-td p {
-    margin: 0;
-}
-
-thead, th{
-  background: none repeat scroll 0 0 #f6f5f1;
-  border-bottom: 1px solid #DADADA !important;
-  border-top: 1px solid #DADADA !important;
-  font-family: OpenSansLight !important;
-  font-weight: bold !important;
-}
-
-.iconColumn {
-  width: 15px;
 }

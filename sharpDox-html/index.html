@@ -100,11 +100,22 @@
             <h3>{{subTitle}}</h3>
     			</script>
 
+          <script type="text/mustache" id="fxchanger-template">
+            <select>
+              {{#targetFxs}}
+              <option>{{.}}</option>
+              {{/targetFxs}}
+            </select>
+          </script>
+
     			<script type="text/mustache" id="content-template">
+            <sd-fxchanger></sd-fxchanger>
     				<sd-titlebar></sd-titlebar>
 
             {{#currentPageType.isArticle}}
-  				    {{{currentPage.content}}}
+              <div class="markdown">
+  				        {{{currentPage.content}}}
+              </div>
             {{/currentPageType.isArticle}}
 
             {{#currentPageType.isNamespace}}

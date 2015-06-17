@@ -1,7 +1,8 @@
 sd-titlebar{
-	margin: 20px 0 40px;
-	display:block;
-	text-align:center;
+	display: block;
+  margin: 15px auto 40px;
+  text-align: center;
+  width: 450px;
 }
 
 sd-titlebar h2{

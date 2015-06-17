@@ -7,33 +7,45 @@
 <#@ import namespace="SharpDox.Model.Documentation.Article" #>
 <#@ import namespace="SharpDox.Plugins.Html.Steps" #>
 
-<#  if(Article.Children.Count > 0) { #>
-		<ul>
-<#	}
-
-	for (int i = 0; i < Article.Children.Count; i++)
-	{
-		var article = Article.Children[i];
-
-		if (article is SDDocPlaceholder)
-		{ #>		
-			<# var apiNavTemplate = new ApiNavigation { SDSolution = StepInput.SDProject.Solutions[((SDDocPlaceholder)article).SolutionFile] }; #>						
-			<#= string.Format("<li data-jstree='{{\"icon\":\"icon-code\"}}' id=\"node-article/{0}\">{1} {2}</li>", article.Id, article.Title, apiNavTemplate.TransformText()) #>
-		<# }
-		else if (article is SDArticlePlaceholder)
-		{ #>
-			<# var articleNavTemplate = new ArticleNavigation { Article = article }; #>
-			<#= string.Format("<li data-jstree='{{\"icon\":\"icon-folder-close\"}}' id=\"node-article/{0}\">{1} {2}</li>", article.Id, article.Title, articleNavTemplate.TransformText()) #>
-		<# }
-		else
-		{ #>
-			<# var articleNavTemplate = new ArticleNavigation { Article = article }; #>		
-			<#= string.Format("<li data-jstree='{{\"icon\":\"icon-file-text\"}}' id=\"node-article/{0}\"><a href=\"#article/{0}\">{1}</a>{2}</li>", article.Id, article.Title, articleNavTemplate.TransformText()) #>
-		<# }		
-	} 
-
-	if(Article.Children.Count > 0) { #>
-		</ul>	
-<#	}	#>
+{
+	id: "<#= Article.Id #>",
+	name: "<#= Article.Title #>",
+	isPlaceholder: <#= IsPlaceholder ? "true" : "false" #>,
+	isArticle: <#= !IsPlaceholder ? "true" : "false" #>,
+	isNamespace: false,
+	isType: false,
+	children: [
+		<# for (int i = 0; i < Article.Children.Count; i++)
+		{
+			var article = Article.Children[i];
+			if (article is SDDocPlaceholder)
+			{ #>		
+				{
+					id: "<#= article.Id #>",
+					name: "<#= article.Title #>",
+					isPlaceholder: true,
+					isArticle: false,
+					isNamespace: false,
+					isType: false,
+					children: [
+						<# var apiNavTemplate = new ApiNavigation { SDSolution = StepInput.SDProject.Solutions[((SDDocPlaceholder)article).SolutionFile] }; #>						
+						<#= apiNavTemplate.TransformText() #>
+					]
+				}
+			<# }
+			else if (article is SDArticlePlaceholder)
+			{ #>
+				<# var articleNavTemplate = new ArticleNavigation { Article = article, IsPlaceholder = true }; #>
+				<#= articleNavTemplate.TransformText() #>
+			<# }
+			else
+			{ #>
+				<# var articleNavTemplate = new ArticleNavigation { Article = article, IsPlaceholder = false }; #>		
+				<#= articleNavTemplate.TransformText() #>
+			<# }	
+		} #>
+	]
+},
 
 <#+	public SDArticle Article { get; set; } #>
+<#+	public bool IsPlaceholder { get; set; } #>

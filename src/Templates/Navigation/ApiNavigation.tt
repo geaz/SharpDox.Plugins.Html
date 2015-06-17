@@ -7,23 +7,21 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="SharpDox.Model" #>
 
+<# var sdNamespaces = SDSolution.Repositories.FirstOrDefault().Value.GetAllNamespaces(); 
+foreach(var sdNamespace in sdNamespaces)
 {
-	<# var sdNamespaces = SDSolution.Repositories.FirstOrDefault().Value.GetAllNamespaces(); 
-	foreach(var sdNamespace in sdNamespaces)
+	var namespaceNavTemplate = new NamespaceNavigation { Namespace = sdNamespace }; #>
 	{
-		var namespaceNavTemplate = new NamespaceNavigation { Namespace = sdNamespace }; #>
-		{
-			id: '<#= sdNamespace.Identifier #>',
-			name: '<#= sdNamespace.Fullname #>',
-			isPlaceholder: false,
-			isArticle: false,
-			isNamespace: true,
-			isType: false,
-			children: [
-				<#= namespaceNavTemplate.TransformText() #>
-			]
-		},
-	<# } #>
-}
+		id: '<#= sdNamespace.Identifier #>',
+		name: '<#= sdNamespace.Fullname #>',
+		isPlaceholder: false,
+		isArticle: false,
+		isNamespace: true,
+		isType: false,
+		children: [
+			<#= namespaceNavTemplate.TransformText() #>
+		]
+	},
+<# } #>
 
 <#+ public SDSolution SDSolution { get; set; } #>

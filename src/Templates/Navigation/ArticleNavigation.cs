@@ -31,110 +31,140 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\n");
+            this.Write("\r\n{\r\n\tid: \"");
             
-            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
-  if(Article.Children.Count > 0) { 
+            #line 11 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Article.Id));
             
             #line default
             #line hidden
-            this.Write("\t\t<ul>\r\n");
+            this.Write("\",\n\tname: \"");
+            
+            #line 11 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Article.Title));
+            
+            #line default
+            #line hidden
+            this.Write("\",\n\tisPlaceholder: ");
+            
+            #line 11 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(IsPlaceholder ? "true" : "false"));
+            
+            #line default
+            #line hidden
+            this.Write(",\n\tisArticle: ");
+            
+            #line 11 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(!IsPlaceholder ? "true" : "false"));
+            
+            #line default
+            #line hidden
+            this.Write(",\n\tisNamespace: false,\n\tisType: false,\n\tchildren: [\r\n\t\t");
             
             #line 12 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
-	}
-
-	for (int i = 0; i < Article.Children.Count; i++)
-	{
-		var article = Article.Children[i];
-
-		if (article is SDDocPlaceholder)
-		{ 
+ for (int i = 0; i < Article.Children.Count; i++)
+		{
+			var article = Article.Children[i];
+			if (article is SDDocPlaceholder)
+			{ 
             
             #line default
             #line hidden
-            this.Write("\t\t\r\n\t\t\t");
+            this.Write("\t\t\r\n\t\t\t\t{\r\n\t\t\t\t\tid: \"");
             
-            #line 20 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
+            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(article.Id));
+            
+            #line default
+            #line hidden
+            this.Write("\",\r\n\t\t\t\t\tname: \"");
+            
+            #line 19 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(article.Title));
+            
+            #line default
+            #line hidden
+            this.Write("\",\r\n\t\t\t\t\tisPlaceholder: true,\r\n\t\t\t\t\tisArticle: false,\r\n\t\t\t\t\tisNamespace: false,\r\n" +
+                    "\t\t\t\t\tisType: false,\r\n\t\t\t\t\tchildren: [\r\n\t\t\t\t\t\t");
+            
+            #line 25 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
  var apiNavTemplate = new ApiNavigation { SDSolution = StepInput.SDProject.Solutions[((SDDocPlaceholder)article).SolutionFile] }; 
             
             #line default
             #line hidden
-            this.Write("\t\t\t\t\t\t\r\n\t\t\t");
-            
-            #line 21 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-code\"}}' id=\"node-article/{0}\">{1} {2}</li>", article.Id, article.Title, apiNavTemplate.TransformText())));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\t\t");
-            
-            #line 22 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
- }
-		else if (article is SDArticlePlaceholder)
-		{ 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\t");
-            
-            #line 25 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
- var articleNavTemplate = new ArticleNavigation { Article = article }; 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\t");
+            this.Write("\t\t\t\t\t\t\r\n\t\t\t\t\t\t");
             
             #line 26 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-folder-close\"}}' id=\"node-article/{0}\">{1} {2}</li>", article.Id, article.Title, articleNavTemplate.TransformText())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(apiNavTemplate.TransformText()));
             
             #line default
             #line hidden
-            this.Write("\r\n\t\t");
+            this.Write("\r\n\t\t\t\t\t]\r\n\t\t\t\t}\r\n\t\t\t");
             
-            #line 27 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
+            #line 29 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
  }
-		else
-		{ 
+			else if (article is SDArticlePlaceholder)
+			{ 
             
             #line default
             #line hidden
-            this.Write("\t\t\t");
-            
-            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
- var articleNavTemplate = new ArticleNavigation { Article = article }; 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\r\n\t\t\t");
-            
-            #line 31 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("<li data-jstree='{{\"icon\":\"icon-file-text\"}}' id=\"node-article/{0}\"><a href=\"#article/{0}\">{1}</a>{2}</li>", article.Id, article.Title, articleNavTemplate.TransformText())));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\t\t");
+            this.Write("\t\t\t\t");
             
             #line 32 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
- }		
-	} 
-
-	if(Article.Children.Count > 0) { 
+ var articleNavTemplate = new ArticleNavigation { Article = article, IsPlaceholder = true }; 
             
             #line default
             #line hidden
-            this.Write("\t\t</ul>\t\r\n");
+            this.Write("\t\t\t\t");
+            
+            #line 33 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(articleNavTemplate.TransformText()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t\t");
+            
+            #line 34 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
+ }
+			else
+			{ 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t\t");
             
             #line 37 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
-	}	
+ var articleNavTemplate = new ArticleNavigation { Article = article, IsPlaceholder = false }; 
             
             #line default
             #line hidden
-            this.Write("\r\n");
+            this.Write("\t\t\r\n\t\t\t\t");
+            
+            #line 38 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(articleNavTemplate.TransformText()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t\t");
+            
+            #line 39 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
+ }	
+		} 
+            
+            #line default
+            #line hidden
+            this.Write("\t]\r\n},\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 39 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
+        #line 44 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
 	public SDArticle Article { get; set; } 
+        
+        #line default
+        #line hidden
+        
+        #line 45 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
+	public bool IsPlaceholder { get; set; } 
         
         #line default
         #line hidden

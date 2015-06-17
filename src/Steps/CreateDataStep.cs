@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using SharpDox.Model.Documentation.Article;
 using SharpDox.Plugins.Html.Templates;
+using SharpDox.Plugins.Html.Templates.Navigation;
 using SharpDox.Plugins.Html.Templates.Repository;
 
 namespace SharpDox.Plugins.Html.Steps
@@ -15,7 +17,9 @@ namespace SharpDox.Plugins.Html.Steps
             CreateDataFolder();
             CreateProjectData();
             CreateStringData();
+            CreateNavigationData();
             CreateNamespaceData();
+            CreateTypeData();
             CreateArticleData();
         }
 
@@ -33,7 +37,7 @@ namespace SharpDox.Plugins.Html.Steps
             ExecuteOnStepMessage(StepInput.HtmlStrings.CreatingProjectData);
 
             var projectData = new ProjectData();
-            File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "Project.js"), projectData.TransformText());
+            File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "Project.js"), projectData.TransformText().Replace(Environment.NewLine, ""));
         }
 
         private void CreateStringData()
@@ -42,21 +46,39 @@ namespace SharpDox.Plugins.Html.Steps
             ExecuteOnStepMessage(StepInput.HtmlStrings.CreatingStringData);
 
             var stringData = new Strings();
-            File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "Strings.js"), stringData.TransformText());
+            File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "Strings.js"), stringData.TransformText().Replace(Environment.NewLine, ""));
+        }
+
+        private void CreateNavigationData()
+        {
+            ExecuteOnStepProgress(20);
+            ExecuteOnStepMessage(StepInput.HtmlStrings.CreatingNavigationData);
+
+            var navigationData = new Navigation();
+            File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "Navigation.js"), navigationData.TransformText().Replace(Environment.NewLine, ""));  
         }
 
         private void CreateNamespaceData()
         {
-            ExecuteOnStepProgress(20);
+            ExecuteOnStepProgress(40);
             ExecuteOnStepMessage(StepInput.HtmlStrings.CreatingNamespaceData);
 
             var namespaceData = new NamespaceData();
-            File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "Namespaces.js"), namespaceData.TransformText()); 
+            File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "Namespaces.js"), namespaceData.TransformText().Replace(Environment.NewLine, "")); 
+        }
+
+        public void CreateTypeData()
+        {
+            ExecuteOnStepProgress(60);
+            ExecuteOnStepMessage(StepInput.HtmlStrings.CreatingTypeData);
+
+            var typeData = new TypeData();
+            File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "Types.js"), typeData.TransformText().Replace(Environment.NewLine, ""));  
         }
 
         private void CreateArticleData()
         {
-            ExecuteOnStepProgress(40);
+            ExecuteOnStepProgress(80);
             ExecuteOnStepMessage(StepInput.HtmlStrings.CreatingArticleData);
 
             var articles = new List<SDArticle>();
@@ -66,7 +88,7 @@ namespace SharpDox.Plugins.Html.Steps
             }
 
             var articleData = new ArticleData { SDArticles = articles };
-            File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "Articles.js"), articleData.TransformText());
+            File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "Articles.js"), articleData.TransformText().Replace(Environment.NewLine, ""));
         }
 
         private void AddArticle(List<SDArticle> sdArticles, SDArticle sdArticle)

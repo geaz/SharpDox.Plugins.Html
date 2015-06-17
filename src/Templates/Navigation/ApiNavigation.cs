@@ -31,50 +31,50 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\n{\r\n\t");
+            this.Write("\r\n");
             
-            #line 11 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
  var sdNamespaces = SDSolution.Repositories.FirstOrDefault().Value.GetAllNamespaces(); 
-	foreach(var sdNamespace in sdNamespaces)
-	{
-		var namespaceNavTemplate = new NamespaceNavigation { Namespace = sdNamespace }; 
+foreach(var sdNamespace in sdNamespaces)
+{
+	var namespaceNavTemplate = new NamespaceNavigation { Namespace = sdNamespace }; 
             
             #line default
             #line hidden
-            this.Write("\t\t{\n\t\t\tid: \'");
+            this.Write("\t{\n\t\tid: \'");
             
-            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+            #line 14 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdNamespace.Identifier));
             
             #line default
             #line hidden
-            this.Write("\',\n\t\t\tname: \'");
+            this.Write("\',\n\t\tname: \'");
             
-            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+            #line 14 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdNamespace.Fullname));
             
             #line default
             #line hidden
-            this.Write("\',\n\t\t\tisPlaceholder: false,\n\t\t\tisArticle: false,\n\t\t\tisNamespace: true,\n\t\t\tisType:" +
-                    " false,\n\t\t\tchildren: [\n\t\t\t\t");
+            this.Write("\',\n\t\tisPlaceholder: false,\n\t\tisArticle: false,\n\t\tisNamespace: true,\n\t\tisType: fal" +
+                    "se,\n\t\tchildren: [\n\t\t\t");
             
-            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+            #line 14 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(namespaceNavTemplate.TransformText()));
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t]\n\t\t},\r\n\t");
+            this.Write("\n\t\t]\n\t},\r\n");
             
-            #line 16 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("}\r\n\r\n");
+            this.Write("\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 19 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+        #line 17 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
  public SDSolution SDSolution { get; set; } 
         
         #line default
