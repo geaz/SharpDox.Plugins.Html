@@ -1,3 +1,12 @@
 sd-fxchanger{
   float:right;
+  margin-top: 8px;
+}
+
+sd-fxchanger select{
+  font-size: 0.7em;
+}
+
+sd-fxchanger option{
+  padding:5px;
 }

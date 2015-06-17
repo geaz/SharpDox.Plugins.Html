@@ -17,10 +17,7 @@ sd-nav{
 }
 
 .jstree-default a {
-    white-space:normal !important;
-		height: auto !important;
 		width: 100%;
-    padding:0 5px!important;
 }
 
 .jstree-clicked, .jstree-hovered{
