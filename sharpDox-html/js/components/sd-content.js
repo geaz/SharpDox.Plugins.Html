@@ -8,12 +8,10 @@ export default can.Component.extend({
 	tag: 'sd-content',
 	template: can.view('content-template'),
 	viewModel: {
-		siteController: new SiteController(),
 		strings: sharpDox.strings,
 		setViewModel: function(){
-			this.siteController.setPageFromHash();
-			this.attr('currentPage', this.siteController.currentPage);
-			this.attr('currentPageType', this.siteController.currentPageType);
+			this.attr('currentPage', this.sitecontroller.currentPage);
+			this.attr('currentPageType', this.sitecontroller.currentPageType);
 		}
 	},
 	events: {

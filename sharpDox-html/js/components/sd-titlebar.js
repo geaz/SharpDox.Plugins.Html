@@ -7,20 +7,18 @@ export default can.Component.extend({
 	tag: 'sd-titlebar',
 	template: can.view('titlebar-template'),
 	viewModel: {
-		siteController: new SiteController(),
 		setViewModel: function(){
-			this.siteController.setPageFromHash();
-			if(this.siteController.currentPageType.isArticle){
-				this.attr('title', this.siteController.currentPage.title);
-				this.attr('subTitle', this.siteController.currentPage.subTitle);
+			if(this.sitecontroller.currentPageType.isArticle){
+				this.attr('title', this.sitecontroller.currentPage.title);
+				this.attr('subTitle', this.sitecontroller.currentPage.subTitle);
 			}
-			else if(this.siteController.currentPageType.isNamespace){
-				this.attr('title', this.siteController.currentPage.name);
-				this.attr('subTitle', sharpDox.strings.assembly + ": " + this.siteController.currentPage.assembly);
+			else if(this.sitecontroller.currentPageType.isNamespace){
+				this.attr('title', this.sitecontroller.currentPage.name);
+				this.attr('subTitle', sharpDox.strings.assembly + ": " + this.sitecontroller.currentPage.assembly);
 			}
 			else if(this.siteController.currentPageType.isType){
-				this.attr('title', this.siteController.currentPage.name);
-				this.attr('subTitle', sharpDox.strings.namespace + ": " + this.siteController.currentPage.namespace);
+				this.attr('title', this.sitecontroller.currentPage.name);
+				this.attr('subTitle', sharpDox.strings.namespace + ": " + this.sitecontroller.currentPage.namespace);
 			}
 		}
 	},

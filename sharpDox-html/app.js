@@ -17,8 +17,12 @@ import sdFxChanger from "./js/components/sd-fxchanger";
 import sdContentFrame from "./js/components/sd-content";
 import sdFooter from "./js/components/sd-footer";
 
+//set homepage title
+document.title = sharpDox.projectData.name;
+
+//create and start router
 var router = new Router();
 router.start();
 
-document.title = sharpDox.projectData.name;
-$('#app').html(can.view('app-template'));
+//start the app
+$('#app').html(can.view('app-template', { sitecontroller: new SiteController() }));
