@@ -8,18 +8,11 @@ export default can.Component.extend({
 	tag: 'sd-content',
 	template: can.view('content-template'),
 	viewModel: {
-		strings: sharpDox.strings,
-		setViewModel: function(){
-			this.attr('currentPage', this.sitecontroller.currentPage);
-			this.attr('currentPageType', this.sitecontroller.currentPageType);
-		}
+		strings: sharpDox.strings
 	},
 	events: {
 		"inserted": function(){
-			this.viewModel.setViewModel();
-		},
-		"{can.route} change": function() {
-			this.viewModel.setViewModel();
-    }
+			this.viewModel.attr('site', this.viewModel.sitecontroller.site);
+		}
 	}
 });

@@ -5,14 +5,26 @@ export default class SiteController{
     this.articles = sharpDox.articles;
     this.namespaces = sharpDox.namespaceData;
     this.types = sharpDox.typeData;
-    this.currentPageType = {
-      isArticle: false,
-      isNamespace: false,
-      isType: false
-    }
 
+    this.setModel();
     this.bindEvents();
     this.setPageFromHash();
+  }
+
+  setModel(){
+    //contains:
+    //- currentPageType
+    //- currentPageId
+    //- currentPage
+    //- currentTargetFx
+    //- targetFxs
+    this.site = new can.Map();
+    this.site.attr('targetFxs', sharpDox.projectData.targetFxs);
+
+    var that = this;
+    this.site.bind('currentTargetFx', function(ev, newVal, oldVal) {
+      that.setPageFromHash();
+    });
   }
 
   bindEvents(){
@@ -33,47 +45,56 @@ export default class SiteController{
       this.setPageToType(can.route.attr('id'));
     }
     else{
-      this.currentPageType.isArticle = true;
-      this.currentPageType.isNamespace = false;
-      this.currentPageType.isType = false;
-
-      this.currentPage = this.articles["home"];
+      this.site.attr('currentPageType', { isArticle: true, isNamespace: false, isType: false });
+      this.site.attr('currentPage', this.articles["home"]);
     }
   }
 
   setPageToArticle(id){
     var article = this.articles[id];
     if(article !== undefined){
-      this.currentPageType.isArticle = true;
-      this.currentPageType.isNamespace = false;
-      this.currentPageType.isType = false;
-
-      this.currentPageId = "article-" + id;
-      this.currentPage = article;
+      this.site.attr('targetFxs', sharpDox.projectData.targetFxs);      
+      this.site.attr('currentPageType', { isArticle: true, isNamespace: false, isType: false });
+      this.site.attr('currentPageId', id);
+      this.site.attr('currentPage', article);
     }
   }
 
   setPageToNamespace(id){
     var namespace = this.namespaces[id];
-    if(namespace !== undefined){
-      this.currentPageType.isArticle = false;
-      this.currentPageType.isNamespace = true;
-      this.currentPageType.isType = false;
+    if(namespace !== undefined && namespace[this.site.attr('currentTargetFx')] !== undefined){
+      this.site.attr('targetFxs', Object.keys(namespace));
+      namespace = namespace[this.site.attr('currentTargetFx')];
+    }
+    else if(namespace !== undefined){
+      this.site.attr('targetFxs', Object.keys(namespace));
+      this.site.attr('currentTargetFx', Object.keys(namespace)[0]);
+      namespace = namespace[0];
+    }
 
-      this.currentPageId = "namespace-" + id;
-      this.currentPage = namespace;
+    if(namespace !== undefined){
+      this.site.attr('currentPageType', { isArticle: false, isNamespace: true, isType: false });
+      this.site.attr('currentPageId', id);
+      this.site.attr('currentPage', namespace);
     }
   }
 
   setPageToType(id){
     var type = this.types[id];
-    if(type !== undefined){
-      this.currentPageType.isArticle = false;
-      this.currentPageType.isNamespace = false;
-      this.currentPageType.isType = true;
+    if(type !== undefined && type[this.site.attr('currentTargetFx')] !== undefined){
+      this.site.attr('targetFxs', Object.keys(type));
+      type = namespace[this.site.attr('currentTargetFx')];
+    }
+    else if(type !== undefined){
+      this.site.attr('targetFxs', Object.keys(type));
+      this.site.attr('currentTargetFx', Object.keys(type)[0]);
+      type = type[0];
+    }
 
-      this.currentPageId = "type-" + id;
-      this.currentPage = type;
+    if(type !== undefined){
+      this.site.attr('currentPageType', { isArticle: false, isNamespace: false, isType: true });
+      this.site.attr('currentPageId', id);
+      this.site.attr('currentPage', type);
     }
   }
 }

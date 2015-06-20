@@ -4,13 +4,14 @@
         <meta charset="utf-8"/>
     </head>
     <body>
+
       <script type="text/mustache" id="app-template">
         <div id="wrapper">
-  				<div id="sidebar">
+  				<div id="sidebar" class="ui-layout-west">
   					<sd-header></sd-header>
   					<sd-nav sitecontroller='{sitecontroller}'></sd-nav>
   				</div>
-          <div id="main">
+          <div id="main" class="ui-layout-center">
 				    <sd-content sitecontroller='{sitecontroller}'></sd-content>
           </div>
         </div>
@@ -20,6 +21,31 @@
 				{{#hasLogo}}<a href="#!"><img src="data/logo.png" alt="{{projectName}}"/></a>{{/hasLogo}}
         {{^hasLogo}}<a href="#!"><h1>{{projectName}}</h1></a>{{/hasLogo}}
 			</script>
+
+      <script type="text/mustache" id="titlebar-template">
+        {{#site.currentPageType.isArticle}}
+          <h2>{{site.currentPage.title}}</h2>
+          <h3>{{site.currentPage.subTitle}}</h3>
+        {{/site.currentPageType.isArticle}}
+
+        {{#site.currentPageType.isNamespace}}
+          <h2>{{site.currentPage.name}}</h2>
+          <h3>{{strings.assembly}}: {{site.currentPage.assembly}}</h3>
+        {{/site.currentPageType.isNamespace}}
+
+        {{#site.currentPageType.isType}}
+          <h2>{{site.currentPage.name}}</h2>
+          <h3>{{strings.namespace}}: {{site.currentPage.namespace}}</h3>
+        {{/site.currentPageType.isType}}
+      </script>
+
+      <script type="text/mustache" id="fxchanger-template">
+        <select id="fx-changer">
+          {{#site.targetFxs}}
+          <option {{isSelected}}>{{.}}</option>
+          {{/site.targetFxs}}
+        </select>
+      </script>
 
       <!-- NAVIGATION TEMPLATES -->
 			<script type="text/mustache" id="nav-template">
@@ -62,7 +88,7 @@
         {{/isPlaceholder}}
 
         {{#isArticle}}
-          <li id="article-{{id}}">
+          <li id="{{id}}">
             <a href="#!article/{{id}}" title="{{name}}">
             <div>
               <i class="nav-icon icon-file-text"></i>
@@ -74,7 +100,7 @@
         {{/isArticle}}
 
         {{#isNamespace}}
-          <li id="namespace-{{id}}">
+          <li id="{{id}}">
             <a href="#!namespace/{{id}}" title="{{name}}">
               <img class="nav-icon" src="./assets/icons/namespace_public.png" title="namespace"></i>
               <span class="nav-text">{{name}}</span>
@@ -84,7 +110,7 @@
         {{/isNamespace}}
 
         {{#isType}}
-          <li id="type-{{id}}">
+          <li id="{{id}}">
             <a href="#!type/{{id}}" title="{{name}}">
               <img class="nav-icon" src="./assets/icons/{{kind}}_{{accessibility}}.png" title="member"></i>
               <span class="nav-text">{{name}}</span>
@@ -95,44 +121,32 @@
 			</script>
       <!-- NAVIGATION TEMPLATES END-->
 
-			<script type="text/mustache" id="titlebar-template">
-        <h2>{{title}}</h2>
-        <h3>{{subTitle}}</h3>
-			</script>
-
-      <script type="text/mustache" id="fxchanger-template">
-        <select>
-          {{#targetFxs}}
-          <option>{{.}}</option>
-          {{/targetFxs}}
-        </select>
-      </script>
-
 			<script type="text/mustache" id="content-template">
 				<sd-titlebar sitecontroller='{sitecontroller}'></sd-titlebar>
         <sd-fxchanger sitecontroller='{sitecontroller}'></sd-fxchanger>
 
-        {{#currentPageType.isArticle}}
+        {{#site.currentPageType.isArticle}}
           <div class="markdown">
-			        {{{currentPage.content}}}
+			        {{{site.currentPage.content}}}
           </div>
-        {{/currentPageType.isArticle}}
+        {{/site.currentPageType.isArticle}}
 
-        {{#currentPageType.isNamespace}}
+        {{#site.currentPageType.isNamespace}}
           {{>namespace-template}}
-        {{/currentPageType.isNamespace}}
+        {{/site.currentPageType.isNamespace}}
 
-        {{#currentPageType.isType}}
+        {{#site.currentPageType.isType}}
           {{>type-template}}
-        {{/currentPageType.isType}}
+        {{/site.currentPageType.isType}}
 
 				<sd-footer></sd-footer>
 			</script>
 
       <script type="text/mustache" id="namespace-template">
-        <h4>{{strings.description}}</h4>
-
-        <div class="text-box markdown">{{{currentPage.summary}}}</div>
+        {{#site.currentPage.description}}
+          <h4>{{strings.description}}</h4>
+          <div class="text-box markdown">{{{site.currentPage.description}}}</div>
+        {{/site.currentPage.description}}
 
         <h4>{{strings.types}}</h4>
         <div class="table-box">
@@ -145,38 +159,38 @@
             </tr>
           </thead>
           <tbody>
-          {{#currentPage.types}}
+          {{#site.currentPage.types}}
             <tr>
               <td class="iconColumn"><img src="./assets/icons/{{kind}}_{{accessibility}}.png"/></td>
               <td><a href="#!type/{{id}}">{{name}}</a></td>
               <td class="markdown">{{summary}}</td>
             </tr>
-          {{/currentPage.types}}
+          {{/site.currentPage.types}}
           </tbody>
         </table>
         </div>
 
-        {{#currentPage.uses.length}}
+        {{#site.currentPage.uses.length}}
           <h4>{{strings.uses}}</h4>
           <div class="list-box">
           <ul>
-            {{#currentPage.uses}}
+            {{#site.currentPage.uses}}
             <li><a href="#!namespace/{{id}}">{{name}}</a></li>
-            {{/currentPage.uses}}
+            {{/site.currentPage.uses}}
           </ul>
           </div>
-        {{/currentPage.uses.length}}
+        {{/site.currentPage.uses.length}}
 
-        {{#currentPage.usedBy.length}}
+        {{#site.currentPage.usedBy.length}}
           <h4>{{strings.usedBy}}</h4>
           <div class="list-box">
           <ul>
-            {{#currentPage.usedBy}}
+            {{#site.currentPage.usedBy}}
             <li><a href="#!namespace/{{id}}">{{name}}</a></li>
-            {{/currentPage.usedBy}}
+            {{/site.currentPage.usedBy}}
           </ul>
           </div>
-        {{/currentPage.usedBy.length}}
+        {{/site.currentPage.usedBy.length}}
       </script>
 
       <script type="text/mustache" id="type-template">
@@ -247,10 +261,6 @@
         properties
 
         classdiagram
-      </script>
-
-      <script type="text/mustache" id="member-template">
-        test
       </script>
 
 			<script type="text/mustache" id="footer-template">

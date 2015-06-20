@@ -51,14 +51,14 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\n\t\t\t\'");
+            this.Write("\n\t\t\t\n\t\t\t\"");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdTargetNamespaceDic.Key));
             
             #line default
             #line hidden
-            this.Write("\': {\n\t\t\t\n\t\t\t");
+            this.Write("\": {\n\t\t\t\n\t\t\t");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
  foreach(var sdTargetNamespace in sdTargetNamespaceDic.Value)
@@ -68,70 +68,70 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\n\t\t\t\t\'");
+            this.Write("\n\t\t\t\t\n\t\t\t\t\"");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(targetFx.Name));
             
             #line default
             #line hidden
-            this.Write("\': {\n\t\t\t\t\tname: \'");
+            this.Write("\": {\n\t\t\t\t\tname: \"");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdNamespace.Fullname));
             
             #line default
             #line hidden
-            this.Write("\',\n\t\t\t\t\tassembly: \'");
+            this.Write("\",\n\t\t\t\t\tassembly: \"");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdNamespace.Assemblyname));
             
             #line default
             #line hidden
-            this.Write("\',\n\t\t\t\t\t");
+            this.Write("\",\n\n\t\t\t\t\t");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
  if(sdNamespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage) != null) { 
             
             #line default
             #line hidden
-            this.Write(" description: \'");
+            this.Write(" \n\t\t\t\t\t\tdescription: \"");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdNamespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(CommonMarkConverter.Convert(sdNamespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken)).Replace("\"", "\\\"").Replace(Environment.NewLine, " \\" + Environment.NewLine)));
             
             #line default
             #line hidden
-            this.Write("\', ");
+            this.Write("\", \n\t\t\t\t\t");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\tusedBy: [\n\t\t\t\t\t\t");
+            this.Write("\n\n\t\t\t\t\tusedBy: [\n\t\t\t\t\t\t");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
  foreach(var usedBy in sdNamespace.UsedBy) { 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tid: \'");
+            this.Write("\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tid: \"");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(usedBy.Identifier));
             
             #line default
             #line hidden
-            this.Write("\',\n\t\t\t\t\t\t\t\tname: \'");
+            this.Write("\",\n\t\t\t\t\t\t\t\tname: \"");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(usedBy.Fullname));
             
             #line default
             #line hidden
-            this.Write("\'\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t");
+            this.Write("\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
  } 
@@ -145,21 +145,21 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tid: \'");
+            this.Write("\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tid: \"");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(use.Identifier));
             
             #line default
             #line hidden
-            this.Write("\',\n\t\t\t\t\t\t\t\tname: \'");
+            this.Write("\",\n\t\t\t\t\t\t\t\tname: \"");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(use.Fullname));
             
             #line default
             #line hidden
-            this.Write("\'\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t");
+            this.Write("\"\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
  } 
@@ -173,49 +173,49 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tid: \'");
+            this.Write("\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tid: \"");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Identifier));
             
             #line default
             #line hidden
-            this.Write("\',\n\t\t\t\t\t\t\t\tname: \'");
+            this.Write("\",\n\t\t\t\t\t\t\t\tname: \"");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Name));
             
             #line default
             #line hidden
-            this.Write("\',\n\t\t\t\t\t\t\t\tkind: \'");
+            this.Write("\",\n\t\t\t\t\t\t\t\tkind: \"");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Kind));
             
             #line default
             #line hidden
-            this.Write("\',\n\t\t\t\t\t\t\t\taccessibility: \'");
+            this.Write("\",\n\t\t\t\t\t\t\t\taccessibility: \"");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Accessibility));
             
             #line default
             #line hidden
-            this.Write("\',\n\t\t\t\t\t\t\t\t");
+            this.Write("\",\n\t\t\t\t\t\t\t\t");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
  if(sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage) != null) { 
             
             #line default
             #line hidden
-            this.Write(" summary: \'");
+            this.Write(" \n\t\t\t\t\t\t\t\tsummary: \"");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage).ToString()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage).Summary.ToMarkdown().Replace("\"", "\\\"").Replace(Environment.NewLine, " \\" + Environment.NewLine)));
             
             #line default
             #line hidden
-            this.Write("\' ");
+            this.Write("\" \n\t\t\t\t\t\t\t\t");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
  } 
