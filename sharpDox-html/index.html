@@ -7,11 +7,12 @@
 
       <script type="text/mustache" id="app-template">
         <div id="wrapper">
-  				<div id="sidebar" class="ui-layout-west">
+  				<div id="sidebar">
   					<sd-header></sd-header>
   					<sd-nav sitecontroller='{sitecontroller}'></sd-nav>
   				</div>
-          <div id="main" class="ui-layout-center">
+          <div id="main">
+            <sd-loader></sd-loader>
 				    <sd-content sitecontroller='{sitecontroller}'></sd-content>
           </div>
         </div>
@@ -45,6 +46,10 @@
           <option {{isSelected}}>{{.}}</option>
           {{/site.targetFxs}}
         </select>
+      </script>
+
+      <script type="text/mustache" id="loader-template">
+        <i class="icon-refresh icon-spin"></i>
       </script>
 
       <!-- NAVIGATION TEMPLATES -->

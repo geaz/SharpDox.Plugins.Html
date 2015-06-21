@@ -32,7 +32,7 @@ sharpDox.namespaceData = {
 					assembly: "<#= sdNamespace.Assemblyname #>",
 
 					<# if(sdNamespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage) != null) { #> 
-						description: "<#= CommonMarkConverter.Convert(sdNamespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken)).Replace("\"", "\\\"").Replace(Environment.NewLine, " \\" + Environment.NewLine) #>", 
+						description: "<#= helper.ToObjectString(CommonMarkConverter.Convert(sdNamespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken))) #>", 
 					<# } #>
 
 					usedBy: [
@@ -59,7 +59,7 @@ sharpDox.namespaceData = {
 								kind: "<#= sdType.Kind #>",
 								accessibility: "<#= sdType.Accessibility #>",
 								<# if(sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage) != null) { #> 
-								summary: "<#= sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage).Summary.ToMarkdown().Replace("\"", "\\\"").Replace(Environment.NewLine, " \\" + Environment.NewLine) #>" 
+								summary: "<#= helper.ToObjectString(sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage).Summary.ToMarkdown()) #>" 
 								<# } #>
 							},
 						<# } #>

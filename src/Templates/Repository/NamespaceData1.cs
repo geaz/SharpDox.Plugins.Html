@@ -99,7 +99,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             this.Write(" \n\t\t\t\t\t\tdescription: \"");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(CommonMarkConverter.Convert(sdNamespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken)).Replace("\"", "\\\"").Replace(Environment.NewLine, " \\" + Environment.NewLine)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(helper.ToObjectString(CommonMarkConverter.Convert(sdNamespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken)))));
             
             #line default
             #line hidden
@@ -211,7 +211,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             this.Write(" \n\t\t\t\t\t\t\t\tsummary: \"");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage).Summary.ToMarkdown().Replace("\"", "\\\"").Replace(Environment.NewLine, " \\" + Environment.NewLine)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(helper.ToObjectString(sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage).Summary.ToMarkdown())));
             
             #line default
             #line hidden

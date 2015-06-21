@@ -16,8 +16,6 @@ export default can.Component.extend({
 		"inserted": function(){
 			this.viewModel.attr('children', sharpDox.navigationData);
 			$('#nav').jstree();
-			$('#nav').jstree('deselect_all');
-      $('#nav').jstree('select_node', this.viewModel.sitecontroller.site.currentPageId);
 			$("#nav").bind("select_node.jstree", function (e, data) {
             var href = data.instance.get_node(data.node, true).children('a').attr('href');
 						if (href != "#")
@@ -26,11 +24,11 @@ export default can.Component.extend({
 						data.instance.open_node(data.node);
 
             return false;
-        });
-		},
-		"{can.route} change": function() {
-			$('#nav').jstree('deselect_all');
-      $('#nav').jstree('select_node', this.viewModel.sitecontroller.site.currentPageId);
-    }
+      });
+			this.viewModel.sitecontroller.site.bind('currentPageId', function(ev, newVal, oldVal){
+				$('#nav').jstree('deselect_all');
+	      $('#nav').jstree('select_node', newVal);
+			});
+		}
 	}
 });

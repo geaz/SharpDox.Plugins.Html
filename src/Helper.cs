@@ -1,4 +1,5 @@
-﻿using SharpDox.Model;
+﻿using System;
+using SharpDox.Model;
 using SharpDox.Model.Repository;
 
 namespace SharpDox.Plugins.Html
@@ -40,6 +41,14 @@ namespace SharpDox.Plugins.Html
                     link = string.Format("../{0}/{1}.html#{2}", "type", sdMember.DeclaringType.ShortIdentifier, sdMember.ShortIdentifier);
             }*/
             return link;
+        }
+
+        public string ToObjectString(string text)
+        {
+            return text
+                .Replace("\"", "\\\"")
+                .Replace(Environment.NewLine, " \\n\\" + Environment.NewLine)
+                .Replace("<code>", "<code class=\\\"language-csharp line-numbers\\\">");
         }
     }
 }

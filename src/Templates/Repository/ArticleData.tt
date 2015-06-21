@@ -15,17 +15,17 @@
 var sharpDox = sharpDox || {};
 
 sharpDox.articles = {
-	'home':{
-		title: 'Home',
-		subTitle: '<#= StepInput.HtmlStrings.Description #>',
-		content: '<#= CommonMarkConverter.Convert(StepInput.SDProject.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken)) #>'
+	"home":{
+		title: "Home",
+		subTitle: "<#= StepInput.HtmlStrings.Description #>",
+		content: "<#= helper.ToObjectString(CommonMarkConverter.Convert(StepInput.SDProject.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken))) #>"
 	},
 	<# foreach(var article in SDArticles){ 
 		if(!(article is SDArticlePlaceholder) && !(article is SDDocPlaceholder)){ #>
-			'<#= article.Id #>': {
-				title: '<#= article.Title #>',
+			"<#= article.Id #>": {
+				title: "<#= article.Title #>",
 				<# var articleContent = article.Content.Transform(helper.TransformLinkToken); #>
-				content: '<#= CommonMarkConverter.Convert(articleContent) #>'
+				content: "<#= helper.ToObjectString(CommonMarkConverter.Convert(articleContent)) #>"
 			},
 		<# }
 	} #>

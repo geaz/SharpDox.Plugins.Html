@@ -34,26 +34,47 @@ export default class SiteController{
     });
   }
 
-  setPageFromHash(){
-    if(can.route.attr('type') === 'article'){
-      this.setPageToArticle(can.route.attr('id'));
-    }
-    else if(can.route.attr('type') == 'namespace'){
-      this.setPageToNamespace(can.route.attr('id'));
-    }
-    else if(can.route.attr('type') == 'type'){
-      this.setPageToType(can.route.attr('id'));
+  showLoader(show, delegate){
+    if(show){
+      $('sd-loader').css('left', $('#main').css('left'));
+      $('sd-loader').css('width', $('#main').css('width'));
+      $('sd-loader i').css('margin-top', (parseInt($('sd-loader').css('height'), 10) / 2) + "px");
+
+      $('sd-loader').fadeIn(delegate);
     }
     else{
-      this.site.attr('currentPageType', { isArticle: true, isNamespace: false, isType: false });
-      this.site.attr('currentPage', this.articles["home"]);
+      $('sd-loader').fadeOut();
     }
+  }
+
+  setPageFromHash(){
+    var that = this;
+    this.showLoader(true, function(){
+      if(can.route.attr('type') === 'article'){
+        that.setPageToArticle(can.route.attr('id'));
+      }
+      else if(can.route.attr('type') == 'namespace'){
+        that.setPageToNamespace(can.route.attr('id'));
+      }
+      else if(can.route.attr('type') == 'type'){
+        that.setPageToType(can.route.attr('id'));
+      }
+      else{
+        that.site.attr('currentPageType', { isArticle: true, isNamespace: false, isType: false });
+        that.site.attr('currentPage', that.articles["home"]);
+      }
+
+      setTimeout(function(){
+        Prism.highlightAll();
+        that.showLoader(false);
+      }, 250);
+    });
   }
 
   setPageToArticle(id){
     var article = this.articles[id];
     if(article !== undefined){
-      this.site.attr('targetFxs', sharpDox.projectData.targetFxs);      
+      this.site.attr('targetFxs', sharpDox.projectData.targetFxs);
       this.site.attr('currentPageType', { isArticle: true, isNamespace: false, isType: false });
       this.site.attr('currentPageId', id);
       this.site.attr('currentPage', article);
