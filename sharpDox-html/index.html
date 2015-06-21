@@ -46,6 +46,7 @@
           <option {{isSelected}}>{{.}}</option>
           {{/site.targetFxs}}
         </select>
+        <div style="clear:both;"></div>
       </script>
 
       <script type="text/mustache" id="loader-template">
@@ -199,7 +200,9 @@
       </script>
 
       <script type="text/mustache" id="type-template">
-        <div class="syntax-box">{{{currentPage.syntax}}}</div>
+        <div class="text-box markdown">
+        <pre><code class="language-csharp">{{site.currentPage.syntax}}</code></pre>
+        </div>
 
         {{#currentPage.summary}}
         <h4>{{strings.description}}</h4>

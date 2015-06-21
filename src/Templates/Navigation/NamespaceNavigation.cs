@@ -41,7 +41,7 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
             this.Write("\t\t{\n\t\t\tid: \'");
             
             #line 11 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.ShortIdentifier));
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Identifier));
             
             #line default
             #line hidden

@@ -1,5 +1,6 @@
 sd-fxchanger{
   margin-bottom: 15px;
+  display:block;
 }
 
 sd-fxchanger select{
@@ -8,4 +9,8 @@ sd-fxchanger select{
 
 sd-fxchanger option{
   padding:5px;
+}
+
+#fx-changer{
+  float:right;
 }

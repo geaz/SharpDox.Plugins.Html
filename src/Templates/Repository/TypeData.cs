@@ -13,6 +13,10 @@ namespace SharpDox.Plugins.Html.Templates.Repository
     using System.Text;
     using System.Net;
     using System.Collections.Generic;
+    using SharpDox.Model;
+    using SharpDox.Model.Documentation.Article;
+    using SharpDox.Plugins.Html.Steps;
+    using CommonMark;
     using System;
     
     /// <summary>
@@ -30,6 +34,78 @@ namespace SharpDox.Plugins.Html.Templates.Repository
         public virtual string TransformText()
         {
             this.Write("\r\n");
+            this.Write("\r\n");
+            
+            #line 13 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+ var helper = new Helper(StepInput.SDProject); 
+            
+            #line default
+            #line hidden
+            this.Write("\r\nvar sharpDox = sharpDox || {};\r\n\r\nsharpDox.namespaceData = {\n\t");
+            
+            #line 17 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+ foreach(var sdSolution in StepInput.SDProject.Solutions)
+	{
+		foreach(var sdTargetTypeDic in sdSolution.Value.GetAllTypes())
+		{ 
+            
+            #line default
+            #line hidden
+            this.Write("\n\t\t\t\n\t\t\t\"");
+            
+            #line 17 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdTargetTypeDic.Key));
+            
+            #line default
+            #line hidden
+            this.Write("\": {\n\t\t\t\n\t\t\t");
+            
+            #line 17 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+ foreach(var sdTargetType in sdTargetTypeDic.Value)
+            {
+				var sdType = sdTargetType.Value;
+				var targetFx = sdTargetType.Key; 
+            
+            #line default
+            #line hidden
+            this.Write("\n\t\t\t\t\n\t\t\t\t\"");
+            
+            #line 17 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(targetFx.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\": {\n\t\t\t\t\tname: \"");
+            
+            #line 17 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\",\n\t\t\t\t\tnamespace: \"");
+            
+            #line 17 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Namespace));
+            
+            #line default
+            #line hidden
+            this.Write("\",\n\t\t\t\t\tsyntax: \"");
+            
+            #line 17 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Syntax));
+            
+            #line default
+            #line hidden
+            this.Write("\"\n\t\t\t\t},\n\t\t\t},\n\t\t\t");
+            
+            #line 17 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+ }
+		}
+	} 
+            
+            #line default
+            #line hidden
+            this.Write("\n};");
             return this.GenerationEnvironment.ToString();
         }
     }

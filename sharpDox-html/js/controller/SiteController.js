@@ -66,6 +66,10 @@ export default class SiteController{
 
       setTimeout(function(){
         Prism.highlightAll();
+        $('a').filter(function() {
+      	   return this.hostname && this.hostname !== location.hostname;
+      	}).attr("target","_blank");
+
         that.showLoader(false);
       }, 250);
     });
@@ -104,7 +108,7 @@ export default class SiteController{
     var type = this.types[id];
     if(type !== undefined && type[this.site.attr('currentTargetFx')] !== undefined){
       this.site.attr('targetFxs', Object.keys(type));
-      type = namespace[this.site.attr('currentTargetFx')];
+      type = type[this.site.attr('currentTargetFx')];
     }
     else if(type !== undefined){
       this.site.attr('targetFxs', Object.keys(type));

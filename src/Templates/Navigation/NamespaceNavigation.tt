@@ -9,7 +9,7 @@
 <#  foreach(var sdType in Namespace.Types)
 	{ #>
 		{
-			id: '<#= sdType.ShortIdentifier #>',
+			id: '<#= sdType.Identifier #>',
 			name: '<#= sdType.Name #>',
 			kind: '<#= sdType.Kind #>',
 			accessibility: '<#= sdType.Accessibility #>',
