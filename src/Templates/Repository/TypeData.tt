@@ -6,6 +6,7 @@
 <#@ import namespace="System.Net" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="SharpDox.Model" #>
+<#@ import namespace="SharpDox.Model.Documentation.Token" #>
 <#@ import namespace="SharpDox.Model.Documentation.Article" #>
 <#@ import namespace="SharpDox.Plugins.Html.Steps" #>
 <#@ import namespace="CommonMark" #>
@@ -14,7 +15,7 @@
 
 var sharpDox = sharpDox || {};
 
-sharpDox.namespaceData = {
+sharpDox.typeData = {
 	<# foreach(var sdSolution in StepInput.SDProject.Solutions)
 	{
 		foreach(var sdTargetTypeDic in sdSolution.Value.GetAllTypes())
@@ -30,7 +31,85 @@ sharpDox.namespaceData = {
 				"<#= targetFx.Name #>": {
 					name: "<#= sdType.Name #>",
 					namespace: "<#= sdType.Namespace #>",
-					syntax: "<#= sdType.Syntax #>"
+					syntax: "<#= sdType.Syntax #>",
+					baseTypes: [
+						<# foreach(var baseType in sdType.BaseTypes) { #>
+							{
+							<# if(!baseType.IsProjectStranger) { #>
+								id: "<#= baseType.Identifier #>",	
+							<# } #>
+								name: "<#= baseType.Fullname #>"	
+							}
+						<# } #>
+					],
+					implements: [
+						<# foreach(var implementedInterface in sdType.ImplementedInterfaces) { #>
+							{
+							<# if(!implementedInterface.IsProjectStranger) { #>
+								id: "<#= implementedInterface.Identifier #>",	
+							<# } #>
+								name: "<#= implementedInterface.Fullname #>"	
+							}
+						<# } #>	
+					],
+					<# var documentation = sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
+					if(documentation != null){ #>
+						summary: "<#= helper.ToObjectString(CommonMarkConverter.Convert(documentation.Summary.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken))) #>",
+						remarks: "<#= helper.ToObjectString(CommonMarkConverter.Convert(documentation.Remarks.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken))) #>",
+						example: "<#= helper.ToObjectString(CommonMarkConverter.Convert(documentation.Example.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken))) #>",
+						<# if(documentation.Returns.ContainsKey("default")) { #>
+							returns: "<#= helper.ToObjectString(CommonMarkConverter.Convert(documentation.Returns["default"].ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken))) #>",
+						<# } #>
+						exceptions: [
+							<# foreach(var exception in documentation.Exceptions) { #>
+								{
+									key: "<#= exception.Key #>",
+									value: "<#= helper.ToObjectString(CommonMarkConverter.Convert(exception.Value.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken))) #>" 
+								}
+							<# } #>
+						],
+						params: [
+							<# foreach(var param in documentation.Params) { #>
+								{
+									key: "<#= param.Key #>",
+									value: "<#= helper.ToObjectString(CommonMarkConverter.Convert(param.Value.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken))) #>" 
+								}
+							<# } #>
+						],
+						typeParams: [
+							<# foreach(var typeParam in documentation.TypeParams) { #>
+								{
+									key: "<#= typeParam.Key #>",
+									value: "<#= helper.ToObjectString(CommonMarkConverter.Convert(typeParam.Value.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken))) #>" 
+								}
+							<# } #>	
+						],
+						seeAlsos: [
+							<# foreach(var sdToken in documentation.SeeAlsos) 
+							{ 
+								var seeAlso = (SDSeeToken)sdToken;
+								if(!string.IsNullOrEmpty(seeAlso.DeclaringType))
+								{
+									var identifier = string.Format("{0}.{1}", seeAlso.DeclaringType, seeAlso.Name); #>
+									{
+										type: "",
+										id: "<#= identifier #>",
+										name: "<#= seeAlso.Name #>"
+									}
+								<# }
+								else
+								{
+									var identifier = string.Format("{0}.{1}", seeAlso.Namespace, seeAlso.Name); #>
+									{
+										type: "",
+										id: "<#= identifier #>",
+										name: "<#= seeAlso.Name #>"
+									}
+								<# } 
+							} #>
+						],
+					<# } #>
+
 				},
 			},
 			<# }

@@ -16,36 +16,34 @@ namespace SharpDox.Plugins.Html
         public string TransformLinkToken(string linkType, string identifier)
         {
             var link = string.Empty;
-            /*if (linkType == "image")
+            if (linkType == "image")
             {
-                link = string.Format("../assets/{0}s/{1}", linkType, identifier);
+                link = string.Format("./assets/{0}s/{1}", linkType, identifier);
             }
             else if(linkType == "namespace")
             {
-                link = string.Format("../{0}/{1}.html", linkType, identifier);
+                link = string.Format("#!{0}/{1}", linkType, identifier);
             }
             else if(linkType == "type")
             {
-                var sdType = _sdProject.GetTypeByIdentifier(identifier);
-                if(sdType != null)
-                    link = string.Format("../{0}/{1}.html", "type", sdType.ShortIdentifier);
+                link = string.Format("#!{0}/{1}", "type", identifier);
             }
             else if(linkType == "article")
             {
-                link = string.Format("../{0}/{1}.html", linkType, identifier);
+                link = string.Format("#!{0}/{1}", linkType, identifier);
             }
             else // Member
             {
-                var sdMember = _sdProject.GetMemberByIdentifier(identifier);
-                if (sdMember != null)
-                    link = string.Format("../{0}/{1}.html#{2}", "type", sdMember.DeclaringType.ShortIdentifier, sdMember.ShortIdentifier);
-            }*/
+                //var sdMember = _sdProject.GetMemberByIdentifier(identifier);
+                //if (sdMember != null)
+                //    link = string.Format("../{0}/{1}.html#{2}", "type", sdMember.DeclaringType.ShortIdentifier, sdMember.ShortIdentifier);
+            }
             return link;
         }
 
         public string ToObjectString(string text)
         {
-            return text
+            return text.Trim()
                 .Replace("\"", "\\\"")
                 .Replace(Environment.NewLine, " \\n\\" + Environment.NewLine)
                 .Replace("<code>", "<code class=\\\"language-csharp line-numbers\\\">");

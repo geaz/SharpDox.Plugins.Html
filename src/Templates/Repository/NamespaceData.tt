@@ -58,8 +58,10 @@ sharpDox.namespaceData = {
 								name: "<#= sdType.Name #>",
 								kind: "<#= sdType.Kind #>",
 								accessibility: "<#= sdType.Accessibility #>",
-								<# if(sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage) != null) { #> 
-								summary: "<#= helper.ToObjectString(sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage).Summary.ToMarkdown()) #>" 
+								<# if(sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage) != null) { 
+									var markdownTemplate = sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage).Summary.ToMarkdown(StepInput.SDProject.Tokens);
+									var htmlString = CommonMarkConverter.Convert(markdownTemplate.Transform(helper.TransformLinkToken)); #> 
+								summary: "<#= helper.ToObjectString(htmlString) #>" 
 								<# } #>
 							},
 						<# } #>

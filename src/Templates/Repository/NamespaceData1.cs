@@ -205,13 +205,15 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
  if(sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage) != null) { 
+									var markdownTemplate = sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage).Summary.ToMarkdown(StepInput.SDProject.Tokens);
+									var htmlString = CommonMarkConverter.Convert(markdownTemplate.Transform(helper.TransformLinkToken)); 
             
             #line default
             #line hidden
             this.Write(" \n\t\t\t\t\t\t\t\tsummary: \"");
             
             #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\NamespaceData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(helper.ToObjectString(sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage).Summary.ToMarkdown())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(helper.ToObjectString(htmlString)));
             
             #line default
             #line hidden

@@ -73,10 +73,24 @@ namespace SharpDox.Plugins.Html.Templates
             
             #line default
             #line hidden
-            this.Write("\',\n  return: \'");
+            this.Write("\',\n  returns: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Returns));
+            
+            #line default
+            #line hidden
+            this.Write("\',\n  exceptions: \'");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Exceptions));
+            
+            #line default
+            #line hidden
+            this.Write("\',\n  parameters: \'");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Parameters));
             
             #line default
             #line hidden

@@ -38,15 +38,15 @@
     </Reference>
     <Reference Include="SharpDox.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\sharpDoxSDK.0.9.11.4-beta\lib\net40\SharpDox.Model.dll</HintPath>
+      <HintPath>packages\sharpDoxSDK.0.9.11.5-beta\lib\net40\SharpDox.Model.dll</HintPath>
     </Reference>
     <Reference Include="SharpDox.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\sharpDoxSDK.0.9.11.4-beta\lib\net40\SharpDox.Sdk.dll</HintPath>
+      <HintPath>packages\sharpDoxSDK.0.9.11.5-beta\lib\net40\SharpDox.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="SharpDox.UML, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\sharpDoxSDK.0.9.11.4-beta\lib\net40\SharpDox.UML.dll</HintPath>
+      <HintPath>packages\sharpDoxSDK.0.9.11.5-beta\lib\net40\SharpDox.UML.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -78,6 +78,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NamespaceData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\Repository\TypeData1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TypeData.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\Strings.cs">
       <DependentUpon>Strings.tt</DependentUpon>
@@ -111,11 +116,6 @@
     </Compile>
     <Compile Include="Templates\Repository\ArticleData.cs">
       <DependentUpon>ArticleData.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\Repository\TypeData.cs">
-      <DependentUpon>TypeData.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -157,7 +157,7 @@
     </None>
     <None Include="Templates\Repository\TypeData.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>TypeData.cs</LastGenOutput>
+      <LastGenOutput>TypeData1.cs</LastGenOutput>
     </None>
     <None Include="Templates\Repository\NamespaceData.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
