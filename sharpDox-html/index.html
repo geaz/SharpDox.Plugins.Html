@@ -169,7 +169,7 @@
             <tr>
               <td class="iconColumn"><img src="./assets/icons/{{kind}}_{{accessibility}}.png"/></td>
               <td><a href="#!type/{{id}}">{{name}}</a></td>
-              <td class="markdown">{{summary}}</td>
+              <td class="markdown">{{{summary}}}</td>
             </tr>
           {{/site.currentPage.types}}
           </tbody>
@@ -201,45 +201,99 @@
 
       <script type="text/mustache" id="type-template">
         <div class="text-box markdown">
-        <pre><code class="language-csharp">{{site.currentPage.syntax}}</code></pre>
+        <pre><code class="language-csharp">{{{site.currentPage.syntax}}}</code></pre>
         </div>
 
-        {{#currentPage.summary}}
+        {{#site.currentPage.baseTypes.length}}
+          <h4>{{strings.baseTypes}}</h4>
+          <div class="list-box">
+          <ul>
+            {{#site.currentPage.baseTypes}}
+              {{#id}}
+                <li><a href="#!type/{{id}}">{{name}}</a></li>
+              {{/id}}
+              {{^id}}
+                <li>{{name}}</li>
+              {{/id}}
+            {{/site.currentPage.baseTypes}}
+          </ul>
+          </div>
+        {{/site.currentPage.baseTypes.length}}
+
+        {{#site.currentPage.implements.length}}
+          <h4>{{strings.implements}}</h4>
+          <div class="list-box">
+          <ul>
+            {{#site.currentPage.implements}}
+              <li><a href="#!type/{{id}}">{{name}}</a></li>
+            {{/site.currentPage.implements}}
+          </ul>
+          </div>
+        {{/site.currentPage.implements.length}}
+
+        {{#site.currentPage.summary}}
         <h4>{{strings.description}}</h4>
-        <div class="text-box markdown">{{{currentPage.summary}}}</div>
-        {{/currentPage.summary}}
+        <div class="text-box markdown">{{{site.currentPage.summary}}}</div>
+        {{/site.currentPage.summary}}
 
-        {{#currentPage.remarks}}
+        {{#site.currentPage.remarks}}
         <h4>{{strings.remarks}}</h4>
-        <div class="text-box markdown">{{{currentPage.remarks}}}</div>
-        {{/currentPage.remarks}}
+        <div class="text-box markdown">{{{site.currentPage.remarks}}}</div>
+        {{/site.currentPage.remarks}}
 
-        {{#currentPage.example}}
+        {{#site.currentPage.example}}
         <h4>{{strings.example}}</h4>
-        <div class="text-box markdown">{{{currentPage.example}}}</div>
-        {{/currentPage.example}}
+        <div class="text-box markdown">{{{site.currentPage.example}}}</div>
+        {{/site.currentPage.example}}
 
-        {{#currentPage.typeParams.length}}
+        {{#site.currentPage.returns}}
+        <h4>{{strings.returns}}</h4>
+        <div class="text-box markdown">{{{site.currentPage.returns}}}</div>
+        {{/site.currentPage.returns}}
+
+        {{#site.currentPage.exceptions.length}}
+          <h4>{{strings.exceptions}}</h4>
+          <div class="multiline-box markdown">
+            {{#site.currentPage.exceptions}}
+            <p class="key">{{key}}</p>
+            <div class="inline">
+              <p>{{{value}}}</p>
+            </div>
+            {{/site.currentPage.exceptions}}
+        {{/site.currentPage.exceptions.length}}
+
+        {{#site.currentPage.params.length}}
+          <h4>{{strings.parameters}}</h4>
+          <div class="multiline-box markdown">
+            {{#site.currentPage.params}}
+            <p class="key">{{key}}</p>
+            <div class="inline">
+              <p>{{{value}}}</p>
+            </div>
+            {{/site.currentPage.params}}
+        {{/site.currentPage.params.length}}
+
+        {{#site.currentPage.typeParams.length}}
           <h4>{{strings.typeParams}}</h4>
           <div class="multiline-box markdown">
-            {{#currentPage.typeParams}}
-            <p class="key">{{typeParam}}</p>
+            {{#site.currentPage.typeParams}}
+            <p class="key">{{key}}</p>
             <div class="inline">
-              <p>{{{summary}}}</p>
+              <p>{{{value}}}</p>
             </div>
-            {{/currentPage.typeParams}}
-        {{/currentPage.typeParams.length}}
+            {{/site.currentPage.typeParams}}
+        {{/site.currentPage.typeParams.length}}
 
-        {{#currentPage.seeAlso.length}}
+        {{#site.currentPage.seeAlsos.length}}
           <h4>{{strings.seeAlso}}</h4>
           <div class="list-box">
           <ul>
-            {{#currentPage.seeAlsos}}
+            {{#site.currentPage.seeAlsos}}
             <li><a href="#!{{type}}/{{id}}">{{name}}</a></li>
-            {{/currentPage.seeAlsos}}
+            {{/site.currentPage.seeAlsos}}
           </ul>
           </div>
-        {{/currentPage.seeAlso.length}}
+        {{/site.currentPage.seeAlsos.length}}
 
         {{#currentPage.uses.length}}
           <h4>{{strings.uses}}</h4>
