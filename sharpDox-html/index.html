@@ -201,7 +201,8 @@
 
       <script type="text/mustache" id="type-template">
         <div class="text-box markdown">
-        <pre><code class="language-csharp">{{{site.currentPage.syntax}}}</code></pre>
+        <pre><code id="syntax" class="language-csharp"></code></pre>
+        <div id="dummy-syntax" class="hide">{{site.currentPage.syntax}}</div>
         </div>
 
         {{#site.currentPage.baseTypes.length}}

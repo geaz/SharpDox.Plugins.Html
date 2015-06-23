@@ -65,6 +65,7 @@ export default class SiteController{
       }
 
       setTimeout(function(){
+        $('#syntax').html($('#dummy-syntax').html()); //because of Prism the syntax will not update. So i have to do a dummy bind and copy the value to the syntax box.
         Prism.highlightAll();
         $('a').filter(function() {
       	   return this.hostname && this.hostname !== location.hostname;

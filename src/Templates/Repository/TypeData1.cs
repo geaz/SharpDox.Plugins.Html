@@ -86,7 +86,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             this.Write("\",\n\t\t\t\t\tnamespace: \"");
             
             #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Namespace));
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Namespace.Fullname));
             
             #line default
             #line hidden
