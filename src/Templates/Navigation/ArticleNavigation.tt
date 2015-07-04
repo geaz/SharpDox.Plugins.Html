@@ -8,12 +8,13 @@
 <#@ import namespace="SharpDox.Plugins.Html.Steps" #>
 
 {
-	id: "<#= Article.Id #>",
-	name: "<#= Article.Title #>",
-	isPlaceholder: <#= IsPlaceholder ? "true" : "false" #>,
-	isArticle: <#= !IsPlaceholder ? "true" : "false" #>,
-	isNamespace: false,
-	isType: false,
+	id: '<#= Article.Id #>',
+	text: '<#= Article.Title #>',
+	<# if(IsPlaceholder){ #>
+	icon: 'icon-folder-close',
+	<# } else { #>
+	icon: 'icon-file-text',
+	<# } #>
 	children: [
 		<# for (int i = 0; i < Article.Children.Count; i++)
 		{
@@ -21,12 +22,9 @@
 			if (article is SDDocPlaceholder)
 			{ #>		
 				{
-					id: "<#= article.Id #>",
-					name: "<#= article.Title #>",
-					isPlaceholder: true,
-					isArticle: false,
-					isNamespace: false,
-					isType: false,
+					id: '<#= article.Id #>',
+					text: '<#= article.Title #>',
+					icon: 'icon-folder-close',
 					children: [
 						<# var apiNavTemplate = new ApiNavigation { SDSolution = StepInput.SDProject.Solutions[((SDDocPlaceholder)article).SolutionFile] }; #>						
 						<#= apiNavTemplate.TransformText() #>

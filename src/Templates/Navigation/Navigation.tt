@@ -20,12 +20,9 @@ sharpDox.navigationData = [
 			if (article is SDDocPlaceholder)
 			{ #>		
 				{
-					id: "<#= article.Id #>",
-					name: "<#= article.Title #>",
-					isPlaceholder: true,
-					isArticle: false,
-					isNamespace: false,
-					isType: false,
+					id: '<#= article.Id #>',
+					text: '<#= article.Title #>',
+					icon: 'icon-folder-close',
 					children: [
 						<# var apiNavTemplate = new ApiNavigation { SDSolution = StepInput.SDProject.Solutions[((SDDocPlaceholder)article).SolutionFile] }; #>						
 						<#= apiNavTemplate.TransformText() #>

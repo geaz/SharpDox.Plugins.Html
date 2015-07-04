@@ -11,11 +11,8 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
 {
     using System.Linq;
     using System.Text;
-    using System.Net;
     using System.Collections.Generic;
-    using SharpDox.Sdk;
-    using SharpDox.UML;
-    using SharpDox.Model.Documentation.Article;
+    using SharpDox.Model.Repository;
     using SharpDox.Plugins.Html.Steps;
     using System;
     
@@ -23,9 +20,9 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+    #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public partial class Navigation : NavigationBase
+    public partial class TypeNavigation : TypeNavigationBase
     {
 #line hidden
         /// <summary>
@@ -34,119 +31,331 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\nvar sharpDox = sharpDox || {};\n\nsharpDox.navigationData = [\r\n\t");
+            this.Write(" \r\n");
+            this.Write("\r\n");
             
-            #line 14 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
- if(StepInput.SDProject.Articles.Count > 0) {
-		var articles = StepInput.SDProject.Articles.GetElementOrDefault(StepInput.CurrentLanguage);
-		foreach(var article in articles)
-		{
-			if (article is SDDocPlaceholder)
-			{ 
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ if(Type.Fields.Count > 0){ 
             
             #line default
             #line hidden
-            this.Write("\t\t\r\n\t\t\t\t{\r\n\t\t\t\t\tid: \'");
+            this.Write("\t{\r\n\t\tid: \'");
             
-            #line 21 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(article.Id));
-            
-            #line default
-            #line hidden
-            this.Write("\',\r\n\t\t\t\t\ttext: \'");
-            
-            #line 22 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(article.Title));
+            #line 12 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Guid.NewGuid()));
             
             #line default
             #line hidden
-            this.Write("\',\r\n\t\t\t\t\ticon: \'icon-folder-close\',\r\n\t\t\t\t\tchildren: [\r\n\t\t\t\t\t\t");
+            this.Write("\',\r\n\t\ttext: \'");
             
-            #line 25 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
- var apiNavTemplate = new ApiNavigation { SDSolution = StepInput.SDProject.Solutions[((SDDocPlaceholder)article).SolutionFile] }; 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\t\t\t\t\r\n\t\t\t\t\t\t");
-            
-            #line 26 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(apiNavTemplate.TransformText()));
+            #line 13 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Fields));
             
             #line default
             #line hidden
-            this.Write("\r\n\t\t\t\t\t]\r\n\t\t\t\t}\r\n\t\t\t");
+            this.Write("\',\r\n\t\ticon: \'icon-folder-close\',\r\n\t\tchildren: [\r\n\t\t\t");
             
-            #line 29 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
- }
-			else if (article is SDArticlePlaceholder)
-			{ 
+            #line 16 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ foreach(var sdField in Type.Fields) { 
             
             #line default
             #line hidden
-            this.Write("\t\t\t\t");
+            this.Write("\t\t\t{\r\n\t\t\t\tid: \'");
             
-            #line 32 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
- var articleNavTemplate = new ArticleNavigation { Article = article, IsPlaceholder = true }; 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\t\t");
-            
-            #line 33 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(articleNavTemplate.TransformText()));
+            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdField.Identifier));
             
             #line default
             #line hidden
-            this.Write("\r\n\t\t\t");
+            this.Write("\',\r\n\t\t\t\ttext: \'");
             
-            #line 34 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
- }
-			else
-			{ 
+            #line 19 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdField.Name));
             
             #line default
             #line hidden
-            this.Write("\t\t\t\t");
+            this.Write("\',\r\n\t\t\t\ticon: \'./assets/icons/field_");
             
-            #line 37 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
- var articleNavTemplate = new ArticleNavigation { Article = article, IsPlaceholder = false }; 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\r\n\t\t\t\t");
-            
-            #line 38 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(articleNavTemplate.TransformText()));
+            #line 20 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdField.Accessibility));
             
             #line default
             #line hidden
-            this.Write("\r\n\t\t\t");
+            this.Write(".png\'\r\n\t\t\t},\r\n\t\t\t");
             
-            #line 39 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
- }
-		}
-	} else {
-		var apiNavTemplate = new ApiNavigation { SDSolution = StepInput.SDProject.Solutions.Single().Value }; 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t");
-            
-            #line 43 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(apiNavTemplate.TransformText()));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\t");
-            
-            #line 44 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\Navigation.tt"
+            #line 22 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("];");
+            this.Write("\t\t]\r\n\t},\r\n");
+            
+            #line 25 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 27 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ if(Type.Constructors.Count > 0){ 
+            
+            #line default
+            #line hidden
+            this.Write("\t{\r\n\t\tid: \'");
+            
+            #line 29 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Guid.NewGuid()));
+            
+            #line default
+            #line hidden
+            this.Write("\',\r\n\t\ttext: \'");
+            
+            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Constructors));
+            
+            #line default
+            #line hidden
+            this.Write("\',\r\n\t\ticon: \'icon-folder-close\',\r\n\t\tchildren: [\r\n\t\t\t");
+            
+            #line 33 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ foreach(var sdConstructor in Type.Constructors) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t{\r\n\t\t\t\tid: \'");
+            
+            #line 35 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdConstructor.Identifier));
+            
+            #line default
+            #line hidden
+            this.Write("\',\r\n\t\t\t\ttext: \'");
+            
+            #line 36 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdConstructor.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\',\r\n\t\t\t\ticon: \'./assets/icons/method_");
+            
+            #line 37 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdConstructor.Accessibility));
+            
+            #line default
+            #line hidden
+            this.Write(".png\'\r\n\t\t\t},\r\n\t\t\t");
+            
+            #line 39 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t]\r\n\t},\r\n");
+            
+            #line 42 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 44 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ if(Type.Methods.Count > 0){ 
+            
+            #line default
+            #line hidden
+            this.Write("\t{\r\n\t\tid: \'");
+            
+            #line 46 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Guid.NewGuid()));
+            
+            #line default
+            #line hidden
+            this.Write("\',\r\n\t\ttext: \'");
+            
+            #line 47 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Methods));
+            
+            #line default
+            #line hidden
+            this.Write("\',\r\n\t\ticon: \'icon-folder-close\',\r\n\t\tchildren: [\r\n\t\t\t");
+            
+            #line 50 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ foreach(var sdMethod in Type.Methods) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t{\r\n\t\t\t\tid: \'");
+            
+            #line 52 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdMethod.Identifier));
+            
+            #line default
+            #line hidden
+            this.Write("\',\r\n\t\t\t\ttext: \'");
+            
+            #line 53 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdMethod.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\',\r\n\t\t\t\ticon: \'./assets/icons/method_");
+            
+            #line 54 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdMethod.Accessibility));
+            
+            #line default
+            #line hidden
+            this.Write(".png\'\r\n\t\t\t},\r\n\t\t\t");
+            
+            #line 56 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t]\r\n\t},\r\n");
+            
+            #line 59 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 61 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ if(Type.Events.Count > 0){ 
+            
+            #line default
+            #line hidden
+            this.Write("\t{\r\n\t\tid: \'");
+            
+            #line 63 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Guid.NewGuid()));
+            
+            #line default
+            #line hidden
+            this.Write("\',\r\n\t\ttext: \'");
+            
+            #line 64 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Events));
+            
+            #line default
+            #line hidden
+            this.Write("\',\r\n\t\ticon: \'icon-folder-close\',\r\n\t\tchildren: [\r\n\t\t\t");
+            
+            #line 67 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ foreach(var sdEvent in Type.Events) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t{\r\n\t\t\t\tid: \'");
+            
+            #line 69 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdEvent.Identifier));
+            
+            #line default
+            #line hidden
+            this.Write("\',\r\n\t\t\t\ttext: \'");
+            
+            #line 70 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdEvent.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\',\r\n\t\t\t\ticon: \'./assets/icons/event_");
+            
+            #line 71 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdEvent.Accessibility));
+            
+            #line default
+            #line hidden
+            this.Write(".png\'\r\n\t\t\t},\r\n\t\t\t");
+            
+            #line 73 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t]\r\n\t},\r\n");
+            
+            #line 76 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 78 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ if(Type.Properties.Count > 0){ 
+            
+            #line default
+            #line hidden
+            this.Write("\t{\r\n\t\tid: \'");
+            
+            #line 80 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Guid.NewGuid()));
+            
+            #line default
+            #line hidden
+            this.Write("\',\r\n\t\ttext: \'");
+            
+            #line 81 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Properties));
+            
+            #line default
+            #line hidden
+            this.Write("\',\r\n\t\ticon: \'icon-folder-close\',\r\n\t\tchildren: [\r\n\t\t\t");
+            
+            #line 84 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ foreach(var sdProperty in Type.Properties) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t{\r\n\t\t\t\tid: \'");
+            
+            #line 86 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdProperty.Identifier));
+            
+            #line default
+            #line hidden
+            this.Write("\',\r\n\t\t\t\ttext: \'");
+            
+            #line 87 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdProperty.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\',\r\n\t\t\t\ticon: \'./assets/icons/property_");
+            
+            #line 88 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdProperty.Accessibility));
+            
+            #line default
+            #line hidden
+            this.Write(".png\'\r\n\t\t\t},\r\n\t\t\t");
+            
+            #line 90 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t]\r\n\t},\r\n");
+            
+            #line 93 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
             return this.GenerationEnvironment.ToString();
         }
+        
+        #line 95 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\TypeNavigation.tt"
+	public SDType Type { get; set; } 
+        
+        #line default
+        #line hidden
     }
     
     #line default
@@ -156,7 +365,7 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public class NavigationBase
+    public class TypeNavigationBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

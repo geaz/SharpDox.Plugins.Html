@@ -164,6 +164,20 @@ namespace SharpDox.Plugins.Html.Templates
             
             #line default
             #line hidden
+            this.Write("\',\n  fields: \'");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Fields));
+            
+            #line default
+            #line hidden
+            this.Write("\',\n  contstantValue: \'");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.ConstValue));
+            
+            #line default
+            #line hidden
             this.Write("\'\n}");
             return this.GenerationEnvironment.ToString();
         }

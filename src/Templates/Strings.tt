@@ -28,5 +28,7 @@ sharpDox.strings = {
   namespace: '<#= StepInput.HtmlStrings.Namespace #>',
   syntax: '<#= StepInput.HtmlStrings.Syntax #>',
   typeParams: '<#= StepInput.HtmlStrings.TypeParameters #>',
-  seeAlso: '<#= StepInput.HtmlStrings.SeeAlso #>'
+  seeAlso: '<#= StepInput.HtmlStrings.SeeAlso #>',
+  fields: '<#= StepInput.HtmlStrings.Fields #>',
+  contstantValue: '<#= StepInput.HtmlStrings.ConstValue #>'
 }

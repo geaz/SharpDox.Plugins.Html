@@ -13,11 +13,8 @@ foreach(var sdNamespace in sdNamespaces)
 	var namespaceNavTemplate = new NamespaceNavigation { Namespace = sdNamespace }; #>
 	{
 		id: '<#= sdNamespace.Identifier #>',
-		name: '<#= sdNamespace.Fullname #>',
-		isPlaceholder: false,
-		isArticle: false,
-		isNamespace: true,
-		isType: false,
+		text: '<#= sdNamespace.Fullname #>',
+		icon: './assets/icons/namespace_public.png',
 		children: [
 			<#= namespaceNavTemplate.TransformText() #>
 		]

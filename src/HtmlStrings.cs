@@ -49,6 +49,7 @@ namespace SharpDox.Plugins.Html
         private string _article = "Article";
         private string _members = "Members";
         private string _fields = "Fields";
+        private string _constructors = "Constructors";
         private string _methods = "Methods";
         private string _events = "Events";
         private string _properties = "Properties";
@@ -320,6 +321,12 @@ namespace SharpDox.Plugins.Html
         {
             get { return _fields; }
             set { _fields = value; }
+        }
+
+        public string Constructors
+        {
+            get { return _constructors; }
+            set { _constructors = value; }
         }
 
         public string Methods

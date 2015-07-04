@@ -48,15 +48,14 @@ foreach(var sdNamespace in sdNamespaces)
             
             #line default
             #line hidden
-            this.Write("\',\n\t\tname: \'");
+            this.Write("\',\n\t\ttext: \'");
             
             #line 14 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdNamespace.Fullname));
             
             #line default
             #line hidden
-            this.Write("\',\n\t\tisPlaceholder: false,\n\t\tisArticle: false,\n\t\tisNamespace: true,\n\t\tisType: fal" +
-                    "se,\n\t\tchildren: [\n\t\t\t");
+            this.Write("\',\n\t\ticon: \'./assets/icons/namespace_public.png\',\n\t\tchildren: [\n\t\t\t");
             
             #line 14 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(namespaceNavTemplate.TransformText()));

@@ -6,18 +6,16 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="SharpDox.Model.Repository" #> 
 
-<#  foreach(var sdType in Namespace.Types)
-	{ #>
+<# 	foreach(var sdType in Namespace.Types)
+	{ 
+		var typeNavTemplate = new TypeNavigation { Type = sdType }; #>
 		{
 			id: '<#= sdType.Identifier #>',
-			name: '<#= sdType.Name #>',
-			kind: '<#= sdType.Kind #>',
-			accessibility: '<#= sdType.Accessibility #>',
-			isPlaceholder: false,
-			isArticle: false,
-			isNamespace: false,
-			isType: true,
-			children: []
+			text: '<#= sdType.Name #>',
+			icon: './assets/icons/<#= sdType.Kind #>_<#= sdType.Accessibility #>.png',
+			children: [
+				<#= typeNavTemplate.TransformText() #>
+			]
         },	
 <#	}	#>
 

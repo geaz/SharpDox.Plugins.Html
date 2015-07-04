@@ -33,43 +33,50 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
             this.Write(" \r\n\r\n");
             
             #line 9 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
-  foreach(var sdType in Namespace.Types)
+ 	foreach(var sdType in Namespace.Types)
 	{ 
+		var typeNavTemplate = new TypeNavigation { Type = sdType }; 
             
             #line default
             #line hidden
             this.Write("\t\t{\n\t\t\tid: \'");
             
-            #line 11 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
+            #line 12 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Identifier));
             
             #line default
             #line hidden
-            this.Write("\',\n\t\t\tname: \'");
+            this.Write("\',\n\t\t\ttext: \'");
             
-            #line 11 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
+            #line 12 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Name));
             
             #line default
             #line hidden
-            this.Write("\',\n\t\t\tkind: \'");
+            this.Write("\',\n\t\t\ticon: \'./assets/icons/");
             
-            #line 11 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
+            #line 12 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Kind));
             
             #line default
             #line hidden
-            this.Write("\',\n\t\t\taccessibility: \'");
+            this.Write("_");
             
-            #line 11 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
+            #line 12 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Accessibility));
             
             #line default
             #line hidden
-            this.Write("\',\n\t\t\tisPlaceholder: false,\n\t\t\tisArticle: false,\n\t\t\tisNamespace: false,\n\t\t\tisType" +
-                    ": true,\n\t\t\tchildren: []\n        },\t\r\n");
+            this.Write(".png\',\n\t\t\tchildren: [\n\t\t\t\t");
             
             #line 12 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(typeNavTemplate.TransformText()));
+            
+            #line default
+            #line hidden
+            this.Write("\n\t\t\t]\n        },\t\r\n");
+            
+            #line 13 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
 	}	
             
             #line default
@@ -78,7 +85,7 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 14 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
+        #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
 	public SDNamespace Namespace { get; set; } 
         
         #line default

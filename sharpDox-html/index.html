@@ -53,81 +53,7 @@
         <i class="icon-refresh icon-spin"></i>
       </script>
 
-      <!-- NAVIGATION TEMPLATES -->
-			<script type="text/mustache" id="nav-template">
-        <div id="nav">
-          <ul>
-            <li class="jstree-open">
-              <a href="#!" title="{{strings.home}}">
-                <div>
-                  <i class="nav-icon icon-home"></i>
-                  <span class="nav-text">{{strings.home}}</span>
-                </div>
-              </a>
-              <ul>
-                {{#children}}
-                  {{>nav-item-template}}
-                {{/children}}
-              </ul>
-            </li>
-          </ul>
-        </div>
-			</script>
-
-      <script type="text/mustache" id="recursive-nav-template">
-        {{#children}}
-          <ul>
-            {{>nav-item-template}}
-          </ul>
-        {{/children}}
-			</script>
-
-      <script type="text/mustache" id="nav-item-template">
-        {{#isPlaceholder}}
-          <li>
-            <div>
-              <i class="nav-icon icon-folder-close"></i>
-              <span class="nav-text">{{name}}</span>
-            </div>
-            {{>recursive-nav-template}}
-          </li>
-        {{/isPlaceholder}}
-
-        {{#isArticle}}
-          <li id="{{id}}">
-            <a href="#!article/{{id}}" title="{{name}}">
-            <div>
-              <i class="nav-icon icon-file-text"></i>
-              <span class="nav-text">{{name}}</span>
-            </div>
-            </a>
-            {{>recursive-nav-template}}
-          </li>
-        {{/isArticle}}
-
-        {{#isNamespace}}
-          <li id="{{id}}">
-            <a href="#!namespace/{{id}}" title="{{name}}">
-              <img class="nav-icon" src="./assets/icons/namespace_public.png" title="namespace"></i>
-              <span class="nav-text">{{name}}</span>
-            </a>
-            {{>recursive-nav-template}}
-          </li>
-        {{/isNamespace}}
-
-        {{#isType}}
-          <li id="{{id}}">
-            <a href="#!type/{{id}}" title="{{name}}">
-              <img class="nav-icon" src="./assets/icons/{{kind}}_{{accessibility}}.png" title="member"></i>
-              <span class="nav-text">{{name}}</span>
-            </a>
-            {{>recursive-nav-template}}
-          </li>
-        {{/isType}}
-			</script>
-      <!-- NAVIGATION TEMPLATES END-->
-
-			<script type="text/mustache" id="content-template">
+      <script type="text/mustache" id="content-template">
 				<sd-titlebar sitecontroller='{sitecontroller}'></sd-titlebar>
         <sd-fxchanger sitecontroller='{sitecontroller}'></sd-fxchanger>
 
@@ -200,56 +126,28 @@
       </script>
 
       <script type="text/mustache" id="type-template">
-        <div class="text-box markdown">
+        <div class="markdown">
         <pre><code id="syntax" class="language-csharp"></code></pre>
         <div id="dummy-syntax" class="hide">{{site.currentPage.syntax}}</div>
         </div>
-
-        {{#site.currentPage.baseTypes.length}}
-          <h4>{{strings.baseTypes}}</h4>
-          <div class="list-box">
-          <ul>
-            {{#site.currentPage.baseTypes}}
-              {{#id}}
-                <li><a href="#!type/{{id}}">{{name}}</a></li>
-              {{/id}}
-              {{^id}}
-                <li>{{name}}</li>
-              {{/id}}
-            {{/site.currentPage.baseTypes}}
-          </ul>
-          </div>
-        {{/site.currentPage.baseTypes.length}}
-
-        {{#site.currentPage.implements.length}}
-          <h4>{{strings.implements}}</h4>
-          <div class="list-box">
-          <ul>
-            {{#site.currentPage.implements}}
-              <li><a href="#!type/{{id}}">{{name}}</a></li>
-            {{/site.currentPage.implements}}
-          </ul>
-          </div>
-        {{/site.currentPage.implements.length}}
-
+        
         {{#site.currentPage.summary}}
-        <h4>{{strings.description}}</h4>
-        <div class="text-box markdown">{{{site.currentPage.summary}}}</div>
+        <div class="markdown">{{{site.currentPage.summary}}}</div>
         {{/site.currentPage.summary}}
 
         {{#site.currentPage.remarks}}
         <h4>{{strings.remarks}}</h4>
-        <div class="text-box markdown">{{{site.currentPage.remarks}}}</div>
+        <div class="markdown">{{{site.currentPage.remarks}}}</div>
         {{/site.currentPage.remarks}}
 
         {{#site.currentPage.example}}
         <h4>{{strings.example}}</h4>
-        <div class="text-box markdown">{{{site.currentPage.example}}}</div>
+        <div class="markdown">{{{site.currentPage.example}}}</div>
         {{/site.currentPage.example}}
 
         {{#site.currentPage.returns}}
         <h4>{{strings.returns}}</h4>
-        <div class="text-box markdown">{{{site.currentPage.returns}}}</div>
+        <div class="markdown">{{{site.currentPage.returns}}}</div>
         {{/site.currentPage.returns}}
 
         {{#site.currentPage.exceptions.length}}
@@ -261,6 +159,7 @@
               <p>{{{value}}}</p>
             </div>
             {{/site.currentPage.exceptions}}
+          </div>
         {{/site.currentPage.exceptions.length}}
 
         {{#site.currentPage.params.length}}
@@ -272,6 +171,7 @@
               <p>{{{value}}}</p>
             </div>
             {{/site.currentPage.params}}
+          </div>
         {{/site.currentPage.params.length}}
 
         {{#site.currentPage.typeParams.length}}
@@ -283,6 +183,7 @@
               <p>{{{value}}}</p>
             </div>
             {{/site.currentPage.typeParams}}
+          </div>
         {{/site.currentPage.typeParams.length}}
 
         {{#site.currentPage.seeAlsos.length}}
@@ -296,34 +197,120 @@
           </div>
         {{/site.currentPage.seeAlsos.length}}
 
-        {{#currentPage.uses.length}}
+        {{#site.currentPage.uses.length}}
           <h4>{{strings.uses}}</h4>
           <div class="list-box">
           <ul>
-            {{#currentPage.uses}}
+            {{#site.currentPage.uses}}
             <li><a href="#!type/{{id}}">{{name}}</a></li>
-            {{/currentPage.uses}}
+            {{/site.currentPage.uses}}
           </ul>
           </div>
-        {{/currentPage.uses.length}}
+        {{/site.currentPage.uses.length}}
 
-        {{#currentPage.usedBy.length}}
+        {{#site.currentPage.usedBy.length}}
           <h4>{{strings.usedBy}}</h4>
           <div class="list-box">
           <ul>
-            {{#currentPage.usedBy}}
+            {{#site.currentPage.usedBy}}
             <li><a href="#!type/{{id}}">{{name}}</a></li>
-            {{/currentPage.usedBy}}
+            {{/site.currentPage.usedBy}}
           </ul>
           </div>
-        {{/currentPage.usedBy.length}}
-
-        fields
-        events
-        methods
-        properties
+        {{/site.currentPage.usedBy.length}} 
 
         classdiagram
+      </script>
+
+      <script type="text/mustache" id="member-template">
+      <div id="{{id}}" class="member">
+        <div class="member-header">		
+		      <a href="#!type/SharpDox.Build.BuildController"><i class="icon-caret-right"></i><img src="./assets/icons/{{type}}_{{accessibility}}.png"/> <p>{{name}}</p></a>
+		      {{#summary}}
+          <div class="summary markdown">
+				    {{{summary}}}
+				  </div>
+          {{/summary}}
+        </div>
+        <div class="member-content">
+          <div class="markdown">
+            <pre><code id="syntax" class="language-csharp">{{syntax}}</code></pre>
+          </div>
+          
+          {{#constantValue}}
+          <p class="member-box-title">{{strings.constantValue}}</p>
+    			<div class="member-doc-box markdown">
+    				{{constantValue}}
+    			</div>
+          {{/constantValue}}
+          
+          {{#params.length}}
+          <p class="member-box-title">{{strings.parameters}}</p>
+          <div class="member-doc-box markdown">
+            {{#params}}
+            <p class="key">{{key}}</p>
+            <div class="inline">
+              <p>{{{value}}}</p>
+            </div>
+            {{/params}}
+          </div>
+          {{/params.length}}
+          
+          {{#typeParams.length}}
+          <p class="member-box-title">{{strings.typeParams}}</p>
+          <div class="member-doc-box markdown">
+            {{#typeParams}}
+            <p class="key">{{key}}</p>
+            <div class="inline">
+              <p>{{{value}}}</p>
+            </div>
+            {{/typeParams}}
+          </div>
+          {{/typeParams.length}}
+        
+          {{#returns}}
+          <p class="member-box-title">{{strings.returns}}</p>
+          <div class="member-doc-box">{{{returns}}}</div>
+          {{/returns}}
+          
+          {{#remarks}}
+          <p class="member-box-title">{{strings.remarks}}</p>
+          <div class="markdown">{{{remarks}}}</div>
+          {{/remarks}}
+  
+          {{#example}}
+          <p class="member-box-title">{{strings.example}}</p>
+          <div class="markdown">{{{example}}}</div>
+          {{/example}}
+        
+          {{#exceptions.length}}
+          <p class="member-box-title">{{strings.exceptions}}</p>
+          <div class="member-doc-box markdown">
+            {{#exceptions}}
+            <p class="key">{{key}}</p>
+            <div class="inline">
+              <p>{{{value}}}</p>
+            </div>
+            {{/exceptions}}
+          </div>
+          {{/exceptions.length}}
+          
+          {{#seeAlsos.length}}
+          <p class="member-box-title">{{strings.seeAlso}}</p>
+          <div class="list-box">
+          <ul>
+            {{#seeAlsos}}
+            <li><a href="#!{{type}}/{{id}}">{{name}}</a></li>
+            {{/seeAlsos}}
+          </ul>
+          </div>
+          {{/seeAlsos.length}}
+        </div>
+      </div>
+      
+      events
+        methods
+        properties
       </script>
 
 			<script type="text/mustache" id="footer-template">
@@ -334,13 +321,16 @@
           {{#author}}- {{author}}{{/author}} - {{footerText}} <a href="http://sharpdox.de" title="sharpDox" target="_blank">sharpDox</a></div>
 			</script>
 
-      <div id="app"></div>
+      <div id="app">
+        <div id="loader"><img src="http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-1.gif" alt="Test"/><i class="icon-refresh icon-spin"></i></div>
+      </div>
 
       <script src="./data/Strings.js"></script>
       <script src="./data/Project.js"></script>
       <script src="./data/Articles.js"></script>
       <script src="./data/Namespaces.js"></script>
       <script src="./data/Types.js"></script>
+      <script src="./data/Members.js"></script>
       <script src="./data/Navigation.js"></script>
       <!--<script src="./dist/app.js" base-url="./"></script>-->
       <script src="./node_modules/steal/steal.js" data-main="app"></script>
