@@ -17,7 +17,8 @@
 			{
 				id: '<#= sdField.Identifier #>',
 				text: '<#= sdField.Name #>',
-				icon: './assets/icons/field_<#= sdField.Accessibility #>.png'
+				icon: './assets/icons/field_<#= sdField.Accessibility #>.png',
+				a_attr: { href : '#!member/<#= sdField.Identifier #>' },
 			},
 			<# } #>
 		]
@@ -34,7 +35,8 @@
 			{
 				id: '<#= sdConstructor.Identifier #>',
 				text: '<#= sdConstructor.Name #>',
-				icon: './assets/icons/method_<#= sdConstructor.Accessibility #>.png'
+				icon: './assets/icons/method_<#= sdConstructor.Accessibility #>.png',
+				a_attr: { href : '#!member/<#= sdConstructor.Identifier #>' },
 			},
 			<# } #>
 		]
@@ -51,7 +53,8 @@
 			{
 				id: '<#= sdMethod.Identifier #>',
 				text: '<#= sdMethod.Name #>',
-				icon: './assets/icons/method_<#= sdMethod.Accessibility #>.png'
+				icon: './assets/icons/method_<#= sdMethod.Accessibility #>.png',
+				a_attr: { href : '#!member/<#= sdMethod.Identifier #>' },
 			},
 			<# } #>
 		]
@@ -68,7 +71,8 @@
 			{
 				id: '<#= sdEvent.Identifier #>',
 				text: '<#= sdEvent.Name #>',
-				icon: './assets/icons/event_<#= sdEvent.Accessibility #>.png'
+				icon: './assets/icons/event_<#= sdEvent.Accessibility #>.png',
+				a_attr: { href : '#!member/<#= sdEvent.Identifier #>' },
 			},
 			<# } #>
 		]
@@ -85,7 +89,8 @@
 			{
 				id: '<#= sdProperty.Identifier #>',
 				text: '<#= sdProperty.Name #>',
-				icon: './assets/icons/property_<#= sdProperty.Accessibility #>.png'
+				icon: './assets/icons/property_<#= sdProperty.Accessibility #>.png',
+				a_attr: { href : '#!member/<#= sdProperty.Identifier #>' },
 			},
 			<# } #>
 		]

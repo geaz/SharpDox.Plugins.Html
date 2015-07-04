@@ -15,6 +15,7 @@ foreach(var sdNamespace in sdNamespaces)
 		id: '<#= sdNamespace.Identifier #>',
 		text: '<#= sdNamespace.Fullname #>',
 		icon: './assets/icons/namespace_public.png',
+		a_attr: { href : '#!namespace/<#= sdNamespace.Identifier #>' },
 		children: [
 			<#= namespaceNavTemplate.TransformText() #>
 		]

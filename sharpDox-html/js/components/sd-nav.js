@@ -28,7 +28,8 @@ export default can.Component.extend({
 				var tmpNode = {
 					id: value.id,
 					text: value.text,
-					icon: value.icon
+					icon: value.icon,
+					a_attr: value.a_attr
 				};
 				if("children" in value && value.children.length > 0){
 					tmpNode.children = true;

@@ -59,7 +59,14 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
             
             #line default
             #line hidden
-            this.Write("\n\ticon: \'icon-file-text\',\n\t");
+            this.Write("\n\ticon: \'icon-file-text\',\n\ta_attr: { href : \'#!article/");
+            
+            #line 11 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Article.Id));
+            
+            #line default
+            #line hidden
+            this.Write("\' },\n\t");
             
             #line 11 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ArticleNavigation.tt"
  } 

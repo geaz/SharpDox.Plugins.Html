@@ -67,7 +67,14 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
             
             #line default
             #line hidden
-            this.Write(".png\',\n\t\t\tchildren: [\n\t\t\t\t");
+            this.Write(".png\',\n\t\t\ta_attr: { href : \'#!type/");
+            
+            #line 12 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Identifier));
+            
+            #line default
+            #line hidden
+            this.Write("\' },\n\t\t\tchildren: [\n\t\t\t\t");
             
             #line 12 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(typeNavTemplate.TransformText()));
