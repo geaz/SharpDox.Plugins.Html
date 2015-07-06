@@ -40,7 +40,8 @@ namespace SharpDox.Plugins.Html
 
                 var steps = new List<StepBase>();
                 steps.Add(new CopyThemeStep(0, 25));
-                steps.Add(new CreateDataStep(25, 100));
+                steps.Add(new CreateDataStep(25, 75));
+                steps.Add(new CopySvgsStep(75, 100));
 
                 foreach(var step in steps)
                 {

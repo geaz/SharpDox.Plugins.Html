@@ -219,7 +219,17 @@
           </div>
         {{/site.currentPage.usedBy.length}} 
 
-        classdiagram
+        {{#site.currentPage.hasClassDiagram}}
+          <h4>{{strings.classDiagram}}</h4>
+          <div id="sd-class-diagram" class="svgpan">
+            <object type="image/svg+xml" data="./data/svg/{{site.currentTargetFx}}-{{site.currentPage.shortIdentifier}}.svg" />
+          </div>
+          <div class="legend">
+						<p class="save"><a href="#"><i class="icon-save"></i>{{strings.save}}</a></p>
+						<p class="resetZoom"><a href="#"><i class="icon-refresh"></i>{{strings.reset}}</a></p>
+						<p>{{strings.panZoom}}</p>
+					</div>
+        {{/site.currentPage.hasClassDiagram}}
       </script>
 
       <script type="text/mustache" id="member-template">

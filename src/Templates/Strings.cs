@@ -178,6 +178,34 @@ namespace SharpDox.Plugins.Html.Templates
             
             #line default
             #line hidden
+            this.Write("\',\n  classDiagram: \'");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.ClassDiagram));
+            
+            #line default
+            #line hidden
+            this.Write("\',\n  save: \'");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Save));
+            
+            #line default
+            #line hidden
+            this.Write("\',\n  reset: \'");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Reset));
+            
+            #line default
+            #line hidden
+            this.Write("\',\n  panZoom: \'");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.PanZoom));
+            
+            #line default
+            #line hidden
             this.Write("\'\n}");
             return this.GenerationEnvironment.ToString();
         }

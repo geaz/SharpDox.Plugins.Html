@@ -9,7 +9,7 @@ sd-content p{
 }
 
 sd-content h4{
-  margin-bottom:10px;
+  margin-bottom:5px;
   margin-top:0px;
 }
 
@@ -67,4 +67,39 @@ thead, th{
 
 .iconColumn {
   width: 15px;
+}
+
+.sd-sequence-diagram, #sd-class-diagram {
+  border: 1px solid #DADADA;
+  height: 450px;
+  padding: 5px;
+  position: relative;
+  overflow:hidden;
+  resize: vertical;
+}
+
+.sd-sequence-diagram object, #sd-class-diagram object{
+  width: 100%;
+  height: 100%;
+}
+
+.legend p {
+    font-size: 0.8em;
+    margin-bottom: 35px;
+}
+
+.save, .resetZoom {
+    float: right;
+}
+
+.save i, .resetZoom i {
+    margin-right: 5px;
+}
+
+.save {
+    margin-left: 10px !important;
+}
+
+.resetZoom {
+    margin-right: 10px !important;
 }

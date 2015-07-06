@@ -30,5 +30,9 @@ sharpDox.strings = {
   typeParams: '<#= StepInput.HtmlStrings.TypeParameters #>',
   seeAlso: '<#= StepInput.HtmlStrings.SeeAlso #>',
   fields: '<#= StepInput.HtmlStrings.Fields #>',
-  contstantValue: '<#= StepInput.HtmlStrings.ConstValue #>'
+  contstantValue: '<#= StepInput.HtmlStrings.ConstValue #>',
+  classDiagram: '<#= StepInput.HtmlStrings.ClassDiagram #>',
+  save: '<#= StepInput.HtmlStrings.Save #>',
+  reset: '<#= StepInput.HtmlStrings.Reset #>',
+  panZoom: '<#= StepInput.HtmlStrings.PanZoom #>'
 }

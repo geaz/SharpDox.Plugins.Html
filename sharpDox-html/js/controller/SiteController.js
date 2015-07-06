@@ -67,16 +67,6 @@ export default class SiteController{
         that.site.attr('currentPageType', { isArticle: true, isNamespace: false, isType: false });
         that.site.attr('currentPage', that.articles["home"]);
       }
-
-      setTimeout(function(){
-        $('#syntax').html($('#dummy-syntax').html()); //because of Prism the syntax will not update. So i have to do a dummy bind and copy the value to the syntax box.
-        Prism.highlightAll();
-        $('a').filter(function() {
-      	   return this.hostname && this.hostname !== location.hostname;
-      	}).attr("target","_blank");
-
-        that.showLoader(false);
-      }, 250);
     });
   }
 

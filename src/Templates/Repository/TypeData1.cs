@@ -83,6 +83,13 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             
             #line default
             #line hidden
+            this.Write("\",\n\t\t\t\t\tshortIdentifier: \"");
+            
+            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.ShortIdentifier));
+            
+            #line default
+            #line hidden
             this.Write("\",\n\t\t\t\t\tnamespace: \"");
             
             #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"

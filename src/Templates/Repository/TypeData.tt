@@ -30,6 +30,7 @@ sharpDox.typeData = {
 				
 				"<#= targetFx.Name #>": {
 					name: "<#= sdType.Name #>",
+					shortIdentifier: "<#= sdType.ShortIdentifier#>",
 					namespace: "<#= sdType.Namespace.Fullname #>",
 					syntax: "<#= sdType.Syntax #>",
 					baseTypes: [
