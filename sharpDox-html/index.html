@@ -76,17 +76,15 @@
 
       <script type="text/mustache" id="namespace-template">
         {{#site.currentPage.description}}
-          <h4>{{strings.description}}</h4>
           <div class="text-box markdown">{{{site.currentPage.description}}}</div>
         {{/site.currentPage.description}}
 
-        <h4>{{strings.types}}</h4>
         <div class="table-box">
         <table>
           <thead>
             <tr>
               <td></td>
-              <td>{{strings.name}}</td>
+              <td>{{strings.types}}</td>
               <td>{{strings.description}}</td>
             </tr>
           </thead>
@@ -126,19 +124,29 @@
       </script>
 
       <script type="text/mustache" id="type-template">
-        <div class="markdown">
-        <pre><code id="syntax" class="language-csharp"></code></pre>
-        <div id="dummy-syntax" class="hide">{{site.currentPage.syntax}}</div>
-        </div>
-        
         {{#site.currentPage.summary}}
         <div class="markdown">{{{site.currentPage.summary}}}</div>
         {{/site.currentPage.summary}}
-
+        
         {{#site.currentPage.remarks}}
         <h4>{{strings.remarks}}</h4>
         <div class="markdown">{{{site.currentPage.remarks}}}</div>
         {{/site.currentPage.remarks}}
+        
+        <div class="markdown">
+        <pre id="syntax-pre"><code id="syntax" class="language-csharp"></code></pre>
+        <div id="dummy-syntax" class="hide">{{site.currentPage.syntax}}</div>
+        </div>
+        {{#site.currentPage.hasClassDiagram}}
+          <div id="sd-class-diagram" class="svgpan">
+            <object type="image/svg+xml" data="./data/svg/{{site.currentTargetFx}}-{{site.currentPage.shortIdentifier}}.svg" />
+          </div>
+          <div class="legend">
+						<p class="save"><a href="#"><i class="icon-save"></i>{{strings.save}}</a></p>
+						<p class="resetZoom"><a href="#"><i class="icon-refresh"></i>{{strings.reset}}</a></p>
+						<p>{{strings.panZoom}}</p>
+					</div>
+        {{/site.currentPage.hasClassDiagram}}        
 
         {{#site.currentPage.example}}
         <h4>{{strings.example}}</h4>
@@ -151,39 +159,69 @@
         {{/site.currentPage.returns}}
 
         {{#site.currentPage.exceptions.length}}
-          <h4>{{strings.exceptions}}</h4>
-          <div class="multiline-box markdown">
+        <h4>{{strings.exceptions}}</h4>
+        <div class="table-box">
+          <table>
+            <thead>
+              <tr>
+                <td>{{strings.name}}</td>
+                <td>{{strings.description}}</td>
+              </tr>
+            </thead>
+            <tbody>
             {{#site.currentPage.exceptions}}
-            <p class="key">{{key}}</p>
-            <div class="inline">
-              <p>{{{value}}}</p>
-            </div>
+              <tr>
+                <td>{{key}}</td>
+                <td class="markdown">{{{value}}}</td>
+              </tr>
             {{/site.currentPage.exceptions}}
-          </div>
+            </tbody>
+          </table>
+        </div>
         {{/site.currentPage.exceptions.length}}
 
         {{#site.currentPage.params.length}}
-          <h4>{{strings.parameters}}</h4>
-          <div class="multiline-box markdown">
+        <h4>{{strings.parameters}}</h4>
+        <div class="table-box">
+          <table>
+            <thead>
+              <tr>
+                <td>{{strings.name}}</td>
+                <td>{{strings.description}}</td>
+              </tr>
+            </thead>
+            <tbody>
             {{#site.currentPage.params}}
-            <p class="key">{{key}}</p>
-            <div class="inline">
-              <p>{{{value}}}</p>
-            </div>
+              <tr>
+                <td>{{key}}</td>
+                <td class="markdown">{{{value}}}</td>
+              </tr>
             {{/site.currentPage.params}}
-          </div>
+            </tbody>
+          </table>
+        </div>
         {{/site.currentPage.params.length}}
 
         {{#site.currentPage.typeParams.length}}
-          <h4>{{strings.typeParams}}</h4>
-          <div class="multiline-box markdown">
+        <h4>{{strings.typeParams}}</h4>
+        <div class="table-box">
+          <table>
+            <thead>
+              <tr>
+                <td>{{strings.name}}</td>
+                <td>{{strings.description}}</td>
+              </tr>
+            </thead>
+            <tbody>
             {{#site.currentPage.typeParams}}
-            <p class="key">{{key}}</p>
-            <div class="inline">
-              <p>{{{value}}}</p>
-            </div>
+              <tr>
+                <td>{{key}}</td>
+                <td class="markdown">{{{value}}}</td>
+              </tr>
             {{/site.currentPage.typeParams}}
-          </div>
+            </tbody>
+          </table>
+        </div>
         {{/site.currentPage.typeParams.length}}
 
         {{#site.currentPage.seeAlsos.length}}
@@ -218,18 +256,6 @@
           </ul>
           </div>
         {{/site.currentPage.usedBy.length}} 
-
-        {{#site.currentPage.hasClassDiagram}}
-          <h4>{{strings.classDiagram}}</h4>
-          <div id="sd-class-diagram" class="svgpan">
-            <object type="image/svg+xml" data="./data/svg/{{site.currentTargetFx}}-{{site.currentPage.shortIdentifier}}.svg" />
-          </div>
-          <div class="legend">
-						<p class="save"><a href="#"><i class="icon-save"></i>{{strings.save}}</a></p>
-						<p class="resetZoom"><a href="#"><i class="icon-refresh"></i>{{strings.reset}}</a></p>
-						<p>{{strings.panZoom}}</p>
-					</div>
-        {{/site.currentPage.hasClassDiagram}}
       </script>
 
       <script type="text/mustache" id="member-template">

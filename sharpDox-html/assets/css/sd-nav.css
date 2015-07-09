@@ -3,19 +3,6 @@ sd-nav{
   overflow:hidden;
 }
 
-.nav-icon{
-  float: left;
-  font-size: 0.9em;
-  margin-top: 5px !important;
-  text-align: center;
-  width: 16px !important;
-}
-
-.nav-text{
-  margin-left: 18px;
-  display: block;
-}
-
 .jstree-default a {
 		width: 100%;
 }

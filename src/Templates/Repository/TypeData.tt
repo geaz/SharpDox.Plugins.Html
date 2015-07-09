@@ -9,6 +9,7 @@
 <#@ import namespace="SharpDox.Model.Documentation.Token" #>
 <#@ import namespace="SharpDox.Model.Documentation.Article" #>
 <#@ import namespace="SharpDox.Plugins.Html.Steps" #>
+<#@ import namespace="SharpDox.UML" #>
 <#@ import namespace="CommonMark" #>
 
 <# var helper = new Helper(StepInput.SDProject); #>
@@ -33,6 +34,7 @@ sharpDox.typeData = {
 					shortIdentifier: "<#= sdType.ShortIdentifier#>",
 					namespace: "<#= sdType.Namespace.Fullname #>",
 					syntax: "<#= sdType.Syntax #>",
+					hasClassDiagram: <#= sdTargetType.Value.IsClassDiagramEmpty() ? "false" : "true" #>,
 					baseTypes: [
 						<# foreach(var baseType in sdType.BaseTypes) { #>
 							{

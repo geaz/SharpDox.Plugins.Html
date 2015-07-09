@@ -11,14 +11,16 @@ sd-content p{
 sd-content h4{
   margin-bottom:5px;
   margin-top:0px;
+  font-size: 1em;
+  font-family: 'OpenSansSemiBold';
 }
 
 .hide{
   display:none;
 }
 
-.list-box, .multiline-box, .text-box, .table-box{
-    margin: 0 0 25px 25px;
+.list-box, .text-box, .table-box{
+    margin: 0 0 1.5em 0;
 }
 
 .list-box ul li:before, .doc-box ul li:before {
@@ -27,14 +29,7 @@ sd-content h4{
   margin-right: 5px;
 }
 
-.multiline-box .key{
-  margin-bottom: 0;
-  font-style: italic;
-}
-
-.multiline-box .inline {
-	margin-left:25px;
-}
+/* Table */
 
 table {
   width: 100%;
@@ -49,8 +44,16 @@ th {
 }
 
 td, th {
-  padding: 3px !important;
 	text-align: left;
+}
+
+td{
+  padding: 5px !important;
+  border-bottom: 1px solid #DADADA !important;
+}
+
+thead td{  
+  padding: 0 5px !important;
 }
 
 td p {
@@ -62,11 +65,16 @@ thead, th{
   border-bottom: 1px solid #DADADA !important;
   border-top: 1px solid #DADADA !important;
   font-family: OpenSansLight !important;
-  font-weight: bold !important;
 }
 
 .iconColumn {
   width: 15px;
+}
+
+/* Diagrams */
+
+#syntax-pre{
+  margin-bottom:0!important;
 }
 
 .sd-sequence-diagram, #sd-class-diagram {
@@ -83,9 +91,12 @@ thead, th{
   height: 100%;
 }
 
+#sd-class-diagram{
+  border-top:0;
+}
+
 .legend p {
-    font-size: 0.8em;
-    margin-bottom: 35px;
+    font-size: 0.6em;
 }
 
 .save, .resetZoom {
