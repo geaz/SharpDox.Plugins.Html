@@ -46,6 +46,20 @@ export default can.Component.extend({
 					that.viewModel.setSvg();
 				}, 250);
 			});
+		},
+		".member-header click": function(header){
+			var body = $(header).next();
+		    body.slideToggle();
+		
+		    var icon = $($($(header).children()[0]).children()[0]);
+		    if (icon.hasClass('icon-caret-right')) {
+		        icon.removeClass('icon-caret-right');
+		        icon.addClass('icon-caret-down');
+		    }
+		    else {
+		        icon.removeClass('icon-caret-down');
+		        icon.addClass('icon-caret-right');
+		    }
 		}
 	}
 });

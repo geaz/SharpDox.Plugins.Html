@@ -224,6 +224,41 @@
         </div>
         {{/site.currentPage.typeParams.length}}
 
+        {{#site.currentPage.fields.length}}
+          <h4>{{strings.fields}}</h4>
+          {{#site.currentPage.fields}}
+          {{>member-template}}
+          {{/site.currentPage.fields}}
+        {{/site.currentPage.fields.length}}
+        
+        {{#site.currentPage.constructors.length}}
+          <h4>{{strings.constructors}}</h4>
+          {{#site.currentPage.constructors}}
+          {{>member-template}}
+          {{/site.currentPage.constructors}}
+        {{/site.currentPage.constructors.length}}
+        
+        {{#site.currentPage.methods.length}}
+          <h4>{{strings.methods}}</h4>
+          {{#site.currentPage.methods}}
+          {{>member-template}}
+          {{/site.currentPage.methods}}
+        {{/site.currentPage.methods.length}}
+        
+        {{#site.currentPage.events.length}}
+          <h4>{{strings.events}}</h4>
+          {{#site.currentPage.events}}
+          {{>member-template}}
+          {{/site.currentPage.events}}
+        {{/site.currentPage.events.length}}
+        
+        {{#site.currentPage.properties.length}}
+          <h4>{{strings.properties}}</h4>
+          {{#site.currentPage.properties}}
+          {{>member-template}}
+          {{/site.currentPage.properties}}
+        {{/site.currentPage.properties.length}}
+
         {{#site.currentPage.seeAlsos.length}}
           <h4>{{strings.seeAlso}}</h4>
           <div class="list-box">
@@ -261,7 +296,7 @@
       <script type="text/mustache" id="member-template">
       <div id="{{id}}" class="member">
         <div class="member-header">		
-		      <a href="#!type/SharpDox.Build.BuildController"><i class="icon-caret-right"></i><img src="./assets/icons/{{type}}_{{accessibility}}.png"/> <p>{{name}}</p></a>
+		      <a href="#!type/SharpDox.Sdk.Config.IConfigController"><i class="icon-caret-right"></i><img src="./assets/icons/{{type}}_{{accessibility}}.png"/> <p>{{name}}</p></a>
 		      {{#summary}}
           <div class="summary markdown">
 				    {{{summary}}}
@@ -343,10 +378,6 @@
           {{/seeAlsos.length}}
         </div>
       </div>
-      
-      events
-        methods
-        properties
       </script>
 
 			<script type="text/mustache" id="footer-template">

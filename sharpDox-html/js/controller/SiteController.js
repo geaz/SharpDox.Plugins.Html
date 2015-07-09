@@ -60,9 +60,6 @@ export default class SiteController{
       else if(can.route.attr('type') == 'type'){
         that.setPageToType(can.route.attr('id'));
       }
-      else if(can.route.attr('type') == 'member'){
-        that.setPageToMember(can.route.attr('id'));
-      }
       else{
         that.site.attr('currentPageType', { isArticle: true, isNamespace: false, isType: false });
         that.site.attr('currentPage', that.articles["home"]);
@@ -115,25 +112,6 @@ export default class SiteController{
       this.site.attr('currentPageType', { isArticle: false, isNamespace: false, isType: true });
       this.site.attr('currentPageId', id);
       this.site.attr('currentPage', type);
-    }
-  }
-  
-  setPageToMember(id){
-    var member = this.members[id];
-    if(member !== undefined && member[this.site.attr('currentTargetFx')] !== undefined){
-      this.site.attr('targetFxs', Object.keys(member));
-      member = member[this.site.attr('currentTargetFx')];
-    }
-    else if(member !== undefined){
-      this.site.attr('targetFxs', Object.keys(member));
-      this.site.attr('currentTargetFx', Object.keys(member)[0]);
-      member = member[0];
-    }
-
-    if(member !== undefined){
-      this.site.attr('currentPageType', { isArticle: false, isNamespace: false, isType: true });
-      this.site.attr('currentPageId', id);
-      this.site.attr('currentPage', member);
     }
   }
 }

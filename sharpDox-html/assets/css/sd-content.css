@@ -49,7 +49,7 @@ td, th {
 
 td{
   padding: 5px !important;
-  border-bottom: 1px solid #DADADA !important;
+  border-top: 1px solid #DADADA !important;
 }
 
 thead td{  
@@ -62,13 +62,82 @@ td p {
 
 thead, th{
   background: none repeat scroll 0 0 #f6f5f1;
-  border-bottom: 1px solid #DADADA !important;
   border-top: 1px solid #DADADA !important;
   font-family: OpenSansLight !important;
 }
 
 .iconColumn {
   width: 15px;
+}
+
+/* Members */
+
+.member{
+	margin: 0 0 15px 5px;
+}
+
+.member-header i{
+	float: left;
+	margin-top: 5px;
+}
+
+.member-header img{
+	float: left;
+	margin: 0 5px;
+	padding-top: 0px;
+	top: 6px;
+	position: relative;
+}
+
+.member-header p{
+	margin: 0;
+	margin-left: 35px;
+}
+
+.member-header .summary{
+	font-family: 'OpenSansRegular';
+	margin: 0 35px;
+}
+
+.member-header .summary p{
+	margin: 0;
+}
+
+.member-content{
+	margin-left: 35px;
+  display:none;
+}
+
+.member-content .syntax-box{
+	margin: 0 35px;
+}
+
+.member-box-title{
+	margin: 10px 35px;
+	font-family: 'OpenSansSemiBold';	
+}
+
+.member-doc-box{
+	margin: 0px 65px;
+}
+
+.member-doc-box p, .member-doc-box pre{
+	margin: 0;
+}
+
+.member-doc-box .inline{
+	margin: 0 35px 15px;
+}
+
+.member-doc-box small{
+	margin: 0 35px;
+	font-size: 0.7em;
+	font-family: 'OpenSansSemiBold';
+	color: gray;
+}
+
+.member-doc-box .key{
+	font-style: italic;
 }
 
 /* Diagrams */
@@ -96,7 +165,7 @@ thead, th{
 }
 
 .legend p {
-    font-size: 0.6em;
+    font-size: 0.7em;
 }
 
 .save, .resetZoom {

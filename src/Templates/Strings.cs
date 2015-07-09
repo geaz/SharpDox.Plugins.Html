@@ -171,6 +171,34 @@ namespace SharpDox.Plugins.Html.Templates
             
             #line default
             #line hidden
+            this.Write("\',\n  constructors: \'");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Constructors));
+            
+            #line default
+            #line hidden
+            this.Write("\',\n  methods: \'");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Methods));
+            
+            #line default
+            #line hidden
+            this.Write("\',\n  events: \'");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Events));
+            
+            #line default
+            #line hidden
+            this.Write("\',\n  properties: \'");
+            
+            #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Properties));
+            
+            #line default
+            #line hidden
             this.Write("\',\n  contstantValue: \'");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Strings.tt"

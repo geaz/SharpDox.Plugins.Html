@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using SharpDox.Model.Documentation.Article;
 using SharpDox.Plugins.Html.Templates;
@@ -60,16 +59,16 @@ namespace SharpDox.Plugins.Html.Steps
 
         private void CreateNamespaceData()
         {
-            ExecuteOnStepProgress(40);
+            ExecuteOnStepProgress(30);
             ExecuteOnStepMessage(StepInput.HtmlStrings.CreatingNamespaceData);
 
             var namespaceData = new NamespaceData();
             File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "Namespaces.js"), namespaceData.TransformText()); 
         }
 
-        public void CreateTypeData()
+        private void CreateTypeData()
         {
-            ExecuteOnStepProgress(60);
+            ExecuteOnStepProgress(40);
             ExecuteOnStepMessage(StepInput.HtmlStrings.CreatingTypeData);
 
             var typeData = new TypeData();
@@ -78,7 +77,7 @@ namespace SharpDox.Plugins.Html.Steps
 
         private void CreateArticleData()
         {
-            ExecuteOnStepProgress(80);
+            ExecuteOnStepProgress(90);
             ExecuteOnStepMessage(StepInput.HtmlStrings.CreatingArticleData);
 
             var articles = new List<SDArticle>();
