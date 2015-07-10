@@ -81,6 +81,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Templates\Repository\MemberData.cs">
+      <DependentUpon>MemberData.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Repository\DocumentationData.cs">
+      <DependentUpon>DocumentationData.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Templates\Repository\NamespaceData1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -137,6 +147,14 @@
     <None Include="Templates\Navigation\TypeNavigation.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>TypeNavigation.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\Repository\MemberData.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>MemberData.cs</LastGenOutput>
+    </None>
+    <None Include="Templates\Repository\DocumentationData.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DocumentationData.cs</LastGenOutput>
     </None>
     <None Include="Templates\Strings.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

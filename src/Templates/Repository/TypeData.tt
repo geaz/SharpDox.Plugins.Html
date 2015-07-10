@@ -56,142 +56,26 @@ sharpDox.typeData = {
 						<# } #>	
 					],
 					<# var documentation = sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
-					if(documentation != null){ #>
-						summary: "<#= helper.ToObjectString(CommonMarkConverter.Convert(documentation.Summary.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken))) #>",
-						remarks: "<#= helper.ToObjectString(CommonMarkConverter.Convert(documentation.Remarks.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken))) #>",
-						example: "<#= helper.ToObjectString(CommonMarkConverter.Convert(documentation.Example.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken))) #>",
-						<# if(documentation.Returns.ContainsKey("default")) { #>
-							returns: "<#= helper.ToObjectString(CommonMarkConverter.Convert(documentation.Returns["default"].ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken))) #>",
-						<# } #>
-						exceptions: [
-							<# foreach(var exception in documentation.Exceptions) { #>
-								{
-									key: "<#= exception.Key #>",
-									value: "<#= helper.ToObjectString(CommonMarkConverter.Convert(exception.Value.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken))) #>" 
-								}
-							<# } #>
-						],
-						params: [
-							<# foreach(var param in documentation.Params) { #>
-								{
-									key: "<#= param.Key #>",
-									value: "<#= helper.ToObjectString(CommonMarkConverter.Convert(param.Value.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken))) #>" 
-								}
-							<# } #>
-						],
-						typeParams: [
-							<# foreach(var typeParam in documentation.TypeParams) { #>
-								{
-									key: "<#= typeParam.Key #>",
-									value: "<#= helper.ToObjectString(CommonMarkConverter.Convert(typeParam.Value.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken))) #>" 
-								}
-							<# } #>	
-						],
-						seeAlsos: [
-							<# foreach(var sdToken in documentation.SeeAlsos) 
-							{ 
-								var seeAlso = (SDSeeToken)sdToken;
-								if(!string.IsNullOrEmpty(seeAlso.DeclaringType))
-								{
-									var identifier = string.Format("{0}.{1}", seeAlso.DeclaringType, seeAlso.Name); #>
-									{
-										type: "",
-										id: "<#= identifier #>",
-										name: "<#= seeAlso.Name #>"
-									}
-								<# }
-								else
-								{
-									var identifier = string.Format("{0}.{1}", seeAlso.Namespace, seeAlso.Name); #>
-									{
-										type: "",
-										id: "<#= identifier #>",
-										name: "<#= seeAlso.Name #>"
-									}
-								<# } 
-							} #>
-						],
-					<# } #>
-					fields: [
-						<# foreach(var sdField in sdType.Fields){ #>
-						{
-							id: "<#= sdField.Identifier #>",
-							type: "field",
-							accessibility: "<#= sdField.Accessibility #>",
-							name: "<#= sdField.Name #>",
-							syntax: "<#= sdField.Syntax #>",
-							<# if(sdField.Documentations.GetElementOrDefault(StepInput.CurrentLanguage) != null) { 
-								var markdownTemplate = sdField.Documentations.GetElementOrDefault(StepInput.CurrentLanguage).Summary.ToMarkdown(StepInput.SDProject.Tokens);
-								var htmlString = CommonMarkConverter.Convert(markdownTemplate.Transform(helper.TransformLinkToken)); #> 
-							summary: "<#= helper.ToObjectString(htmlString) #>" 
-							<# } #>
-						},
-						<# } #>
-					],
-					constructors: [
-						<# foreach(var sdConstructor in sdType.Constructors){ #>
-						{
-							id: "<#= sdConstructor.Identifier #>",
-							type: "method",
-							accessibility: "<#= sdConstructor.Accessibility #>",
-							name: "<#= sdConstructor.Signature #>",
-							syntax: "<#= sdConstructor.Syntax #>",
-							<# if(sdConstructor.Documentations.GetElementOrDefault(StepInput.CurrentLanguage) != null) { 
-								var markdownTemplate = sdConstructor.Documentations.GetElementOrDefault(StepInput.CurrentLanguage).Summary.ToMarkdown(StepInput.SDProject.Tokens);
-								var htmlString = CommonMarkConverter.Convert(markdownTemplate.Transform(helper.TransformLinkToken)); #> 
-							summary: "<#= helper.ToObjectString(htmlString) #>" 
-							<# } #>
-						},
-						<# } #>
-					],
-					methods: [
-						<# foreach(var sdMethod in sdType.Methods){ #>
-						{
-							id: "<#= sdMethod.Identifier #>",
-							type: "method",
-							accessibility: "<#= sdMethod.Accessibility #>",
-							name: "<#= sdMethod.Signature #>",
-							syntax: "<#= sdMethod.Syntax #>",
-							<# if(sdMethod.Documentations.GetElementOrDefault(StepInput.CurrentLanguage) != null) { 
-								var markdownTemplate = sdMethod.Documentations.GetElementOrDefault(StepInput.CurrentLanguage).Summary.ToMarkdown(StepInput.SDProject.Tokens);
-								var htmlString = CommonMarkConverter.Convert(markdownTemplate.Transform(helper.TransformLinkToken)); #> 
-							summary: "<#= helper.ToObjectString(htmlString) #>" 
-							<# } #>
-						},
-						<# } #>
-					],
-					events: [
-						<# foreach(var sdEvent in sdType.Events){ #>
-						{
-							id: "<#= sdEvent.Identifier #>",
-							type: "event",
-							accessibility: "<#= sdEvent.Accessibility #>",
-							name: "<#= sdEvent.Name #>",
-							syntax: "<#= sdEvent.Syntax #>",
-							<# if(sdEvent.Documentations.GetElementOrDefault(StepInput.CurrentLanguage) != null) { 
-								var markdownTemplate = sdEvent.Documentations.GetElementOrDefault(StepInput.CurrentLanguage).Summary.ToMarkdown(StepInput.SDProject.Tokens);
-								var htmlString = CommonMarkConverter.Convert(markdownTemplate.Transform(helper.TransformLinkToken)); #> 
-							summary: "<#= helper.ToObjectString(htmlString) #>" 
-							<# } #>
-						},
-						<# } #>
-					],
-					properties: [
-						<# foreach(var sdProperty in sdType.Properties){ #>
-						{
-							id: "<#= sdProperty.Identifier #>",
-							type: "property",
-							accessibility: "<#= sdProperty.Accessibility #>",
-							name: "<#= sdProperty.Name #>",
-							syntax: "<#= sdProperty.Syntax #>",
-							<# if(sdProperty.Documentations.GetElementOrDefault(StepInput.CurrentLanguage) != null) { 
-								var markdownTemplate = sdProperty.Documentations.GetElementOrDefault(StepInput.CurrentLanguage).Summary.ToMarkdown(StepInput.SDProject.Tokens);
-								var htmlString = CommonMarkConverter.Convert(markdownTemplate.Transform(helper.TransformLinkToken)); #> 
-							summary: "<#= helper.ToObjectString(htmlString) #>" 
-							<# } #>
-						},
-						<# } #>
-					]
+					if(documentation != null){
+						var documentationTemplate = new DocumentationData { Documentation = documentation }; #>
+						<#= documentationTemplate.TransformText() #>	
+					<# } 
+
+					var fieldsTemplate = new MemberData { MemberTitle = "fields", MemberType = "field", Members = sdType.Fields }; #>
+					<#= fieldsTemplate.TransformText() #>
+
+					<# var constructorsTemplate = new MemberData { MemberTitle = "constructors", MemberType = "method", Members = sdType.Constructors }; #>
+					<#= constructorsTemplate.TransformText() #>
+
+					<# var methodsTemplate = new MemberData { MemberTitle = "methods", MemberType = "method", Members = sdType.Methods }; #>
+					<#= methodsTemplate.TransformText() #>
+
+					<# var eventsTemplate = new MemberData { MemberTitle = "events", MemberType = "event", Members = sdType.Events }; #>
+					<#= eventsTemplate.TransformText() #>
+
+					<# var propertiesTemplate = new MemberData { MemberTitle = "properties", MemberType = "property", Members = sdType.Properties }; #>
+					<#= propertiesTemplate.TransformText() #>
+
 				},
 			},
 			<# }

@@ -113,12 +113,12 @@ thead, th{
 }
 
 .member-box-title{
-	margin: 10px 35px;
+	margin: 10px 0;
 	font-family: 'OpenSansSemiBold';	
 }
 
 .member-doc-box{
-	margin: 0px 65px;
+	margin: 0px 25px;
 }
 
 .member-doc-box p, .member-doc-box pre{

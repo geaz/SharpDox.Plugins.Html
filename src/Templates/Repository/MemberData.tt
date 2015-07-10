@@ -1,0 +1,57 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Net" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="SharpDox.UML" #>
+<#@ import namespace="SharpDox.Model" #>
+<#@ import namespace="SharpDox.Model.Repository.Members" #>
+<#@ import namespace="SharpDox.Model.Documentation" #>
+<#@ import namespace="SharpDox.Model.Documentation.Token" #>
+<#@ import namespace="SharpDox.Model.Documentation.Article" #>
+<#@ import namespace="SharpDox.Plugins.Html.Steps" #>
+<#@ import namespace="CommonMark" #>
+
+<# if(Members.ToList().Count > 0) { #>
+	<#= MemberTitle #>: [
+		<# foreach(var sdMember in Members){ #>
+		{
+			id: "<#= sdMember.Identifier #>",
+			type: "<#= MemberType #>",
+			accessibility: "<#= sdMember.Accessibility #>",
+
+			<# if(sdMember is SDMethod) { 
+				var sdMethod = (SDMethod)sdMember; #>
+
+				name: "<#= sdMethod.Signature #>",
+				hasSequenceDiagram: <#= !sdMethod.IsSequenceDiagramEmpty() && !StepInput.HtmlConfig.DisableSequenceDiagrams ? "true" : "false" #>,
+
+			<# } else { #>
+
+				name: "<#= sdMember.Name #>",
+
+			<# } #> 
+			
+			<# if(sdMember is SDField && !string.IsNullOrEmpty(((SDField)sdMember).ConstantValue)) { #>
+				
+				constantValue:" <#= ((SDField)sdMember).ConstantValue #>", 
+
+			<# } #>
+
+			syntax: "<#= sdMember.Syntax #>",
+
+			<#	var documentation = sdMember.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
+				if(documentation != null){
+					var documentationTemplate = new DocumentationData { Documentation = documentation }; #>
+					<#= documentationTemplate.TransformText() #>	
+			<# } #>
+		},
+		<# } #>
+	],
+<# } #>
+
+<#+	public string MemberTitle { get; set; } #>
+<#+	public IEnumerable<SDMember> Members { get; set; } #>
+<#+	public string MemberType { get; set; } #>
