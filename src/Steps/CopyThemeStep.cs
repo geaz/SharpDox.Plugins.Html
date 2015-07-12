@@ -12,26 +12,34 @@ namespace SharpDox.Plugins.Html.Steps
 
         public override void RunStep()
         {
+            CreateDataFolder();
             CreateDynamicCSS();
             CopyFavIcon();
 
             CopyFolder(StepInput.HtmlConfig.Theme, StepInput.OutputPath);
-            CopyImages(StepInput.SDProject.Images, Path.Combine(StepInput.OutputPath, "assets"));
+            CopyImages(StepInput.SDProject.Images, Path.Combine(StepInput.OutputPath, "data"));
             CopyImage(StepInput.SDProject.LogoPath, StepInput.OutputPath);
+        }
+
+        private void CreateDataFolder()
+        {
+            if (!Directory.Exists(Path.Combine(StepInput.OutputPath, "data")))
+            {
+                Directory.CreateDirectory(Path.Combine(StepInput.OutputPath, "data"));
+            }
         }
 
         private void CreateDynamicCSS()
         {
             var dynamicCss = new Css { HtmlConfig = StepInput.HtmlConfig };
-            EnsureFolder(Path.Combine(StepInput.OutputPath, "assets", "css"));
-            File.WriteAllText(Path.Combine(StepInput.OutputPath, "assets", "css", "dynamic.css"), dynamicCss.TransformText());
+            File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "dynamic.css"), dynamicCss.TransformText());
         }
 
         private void CopyFavIcon()
         {
             if(!string.IsNullOrEmpty(StepInput.HtmlConfig.FavIcon))
             {
-                var outputFilePath = Path.Combine(StepInput.OutputPath, "favicon.ico");
+                var outputFilePath = Path.Combine(StepInput.OutputPath, "data", "favicon.ico");
                 if (Path.GetExtension(StepInput.HtmlConfig.FavIcon) == "ico")
                 {
                     File.Copy(StepInput.HtmlConfig.FavIcon, outputFilePath);

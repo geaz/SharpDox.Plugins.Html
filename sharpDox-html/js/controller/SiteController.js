@@ -96,7 +96,7 @@ export default class SiteController{
     }
   }
 
-  setPageToType(id){
+  setPageToType(id){    
     var type = this.types[id];
     if(type !== undefined && type[this.site.attr('currentTargetFx')] !== undefined){
       this.site.attr('targetFxs', Object.keys(type));

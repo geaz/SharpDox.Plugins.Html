@@ -13,21 +13,12 @@ namespace SharpDox.Plugins.Html.Steps
 
         public override void RunStep()
         {
-            CreateDataFolder();
             CreateProjectData();
             CreateStringData();
             CreateNavigationData();
             CreateNamespaceData();
             CreateTypeData();
             CreateArticleData();
-        }
-
-        private void CreateDataFolder()
-        {
-            if (!Directory.Exists(Path.Combine(StepInput.OutputPath, "data")))
-            {
-                Directory.CreateDirectory(Path.Combine(StepInput.OutputPath, "data"));
-            }
         }
 
         private void CreateProjectData()

@@ -18,7 +18,7 @@ namespace SharpDox.Plugins.Html
             var link = string.Empty;
             if (linkType == "image")
             {
-                link = string.Format("./assets/{0}s/{1}", linkType, identifier);
+                link = string.Format("./data/{0}s/{1}", linkType, identifier);
             }
             else if(linkType == "namespace")
             {
@@ -43,10 +43,23 @@ namespace SharpDox.Plugins.Html
 
         public string ToObjectString(string text)
         {
-            return text.Trim()
+            var trimmedText = text.Trim();
+            if (trimmedText.StartsWith("<pre><code>"))
+            {
+                trimmedText = trimmedText.Replace("<pre><code>", "");
+                trimmedText = trimmedText.Replace("</code></pre>", "");
+                trimmedText = trimmedText.Trim();
+                trimmedText = string.Format("<pre><code class=\"language-csharp line-numbers\">{0}</code></pre>", trimmedText);
+            }
+            else if (trimmedText.Contains("<pre><code>"))
+            {
+                trimmedText = trimmedText.Replace("<pre><code>", "<pre><code class=\"language-csharp line-numbers\">");
+                trimmedText = trimmedText.Replace(Environment.NewLine + "</code></pre>", "</code></pre>");
+            }
+
+            return trimmedText
                 .Replace("\"", "\\\"")
-                .Replace(Environment.NewLine, " \\n\\" + Environment.NewLine)
-                .Replace("<code>", "<code class=\\\"language-csharp line-numbers\\\">");
+                .Replace(Environment.NewLine, " \\n\\" + Environment.NewLine);
         }
     }
 }
