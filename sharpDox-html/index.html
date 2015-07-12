@@ -2,16 +2,18 @@
     <head>
         <title></title>
         <meta charset="utf-8"/>
+        <link rel="stylesheet" href="./data/dynamic.css">
     </head>
     <body>
 
       <script type="text/mustache" id="app-template">
-        <div id="wrapper">
-  				<div id="sidebar">
+        <div id="wrapper" class="split-pane fixed-left">
+  				<div id="sidebar" class="split-pane-component primary-background">
   					<sd-header></sd-header>
   					<sd-nav sitecontroller='{sitecontroller}'></sd-nav>
   				</div>
-          <div id="main">
+          <div class="split-pane-divider secondary-background" id="divider"></div>
+          <div id="main" class="split-pane-component">
             <sd-loader></sd-loader>
 				    <sd-content sitecontroller='{sitecontroller}'></sd-content>
           </div>
@@ -134,7 +136,7 @@
         {{/site.currentPage.remarks}}
         
         <div class="markdown">
-        <pre id="syntax-pre"><code id="syntax" class="language-csharp"></code></pre>
+        <pre class="syntax-pre"><code id="syntax" class="language-csharp"></code></pre>
         <div id="dummy-syntax" class="hide">{{site.currentPage.syntax}}</div>
         </div>
         {{#site.currentPage.hasClassDiagram}}
@@ -296,7 +298,7 @@
       <script type="text/mustache" id="member-template">
       <div id="{{id}}" class="member">
         <div class="member-header">		
-		      <a href="#!type/SharpDox.Sdk.Config.IConfigController"><i class="icon-caret-right"></i><img src="./assets/icons/{{type}}_{{accessibility}}.png"/> <p>{{name}}</p></a>
+		      <a href="#!type/SharpDox.Model.Repository.SDRepository"><i class="icon-caret-right"></i><img src="./assets/icons/{{type}}_{{accessibility}}.png"/> <p>{{name}}</p></a>
 		      {{#summary}}
           <div class="summary markdown">
 				    {{{summary}}}
@@ -305,8 +307,19 @@
         </div>
         <div class="member-content">
           <div class="markdown">
-            <pre><code id="syntax" class="language-csharp">{{syntax}}</code></pre>
+            <pre class="syntax-pre"><code id="syntax" class="language-csharp">{{syntax}}</code></pre>
           </div>
+          
+          {{#hasSequenceDiagram}}
+          <div id="sequence-diagram-{{shortIdentifier}}" class="sd-sequence-diagram svgpan">
+            <object type="image/svg+xml" data="./data/svg/{{site.currentTargetFx}}-{{shortIdentifier}}.svg" />
+          </div>
+          <div class="legend">
+						<p class="save"><a href="#"><i class="icon-save"></i>{{strings.save}}</a></p>
+						<p class="resetZoom"><a href="#"><i class="icon-refresh"></i>{{strings.reset}}</a></p>
+						<p>{{strings.panZoom}}</p>
+					</div>
+          {{/hasSequenceDiagram}}    
           
           {{#constantValue}}
           <p class="member-box-title">{{strings.constantValue}}</p>

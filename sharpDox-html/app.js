@@ -1,6 +1,7 @@
 import $ from "jquery";
 import can from "can";
 import prism from "./vendor/prism/prism";
+import splitter from "./vendor/splitter/jquery.splitter";
 
 import "./assets/css/reset.css!";
 import "./assets/css/font-awesome.css!";
@@ -8,6 +9,7 @@ import "./assets/css/font.css!";
 import "./assets/css/typography.css!";
 import "./assets/css/main.css!";
 import "./vendor/prism/prism.css!";
+import "./vendor/splitter/jquery.splitter.css!";
 
 import Router from "./js/router";
 import SiteController from "./js/controller/SiteController";
@@ -29,3 +31,5 @@ router.start();
 
 //start the app
 $('#app').html(can.view('app-template', { sitecontroller: new SiteController() }));
+
+$('#wrapper').splitPane();

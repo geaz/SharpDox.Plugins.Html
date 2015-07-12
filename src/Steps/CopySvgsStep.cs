@@ -11,6 +11,7 @@ namespace SharpDox.Plugins.Html.Steps
         {
             CreateSvgFolder();
             CopyClassDiagrams();
+            CopySequenceDiagrams();
         }
 
         private void CreateSvgFolder()
@@ -37,6 +38,44 @@ namespace SharpDox.Plugins.Html.Steps
                             var classDiagram = sdTargetType.Value.GetClassDiagram().ToSvg();
                             var classDiagramString = classDiagram.Transform(new Helper(StepInput.SDProject).TransformLinkToken);
                             File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "svg", fileName), classDiagramString);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void CopySequenceDiagrams()
+        {
+            foreach (var sdSolution in StepInput.SDProject.Solutions.Values)
+            {
+                foreach (var sdRepositoryTarget in sdSolution.Repositories)
+                {
+                    foreach (var sdType in sdRepositoryTarget.Value.GetAllTypes())
+                    {
+                        foreach (var constructor in sdType.Constructors)
+                        {
+                            if (!constructor.IsSequenceDiagramEmpty())
+                            {
+                                var fileName = string.Format("{0}-{1}.svg", sdRepositoryTarget.Key.Name, constructor.ShortIdentifier);
+                                ExecuteOnStepMessage(string.Format(StepInput.HtmlStrings.CopyingFile, fileName));
+
+                                var sequenceDiagram = constructor.GetSequenceDiagram(sdRepositoryTarget.Value).ToSvg();
+                                var sequenceDiagramString = sequenceDiagram.Transform(new Helper(StepInput.SDProject).TransformLinkToken);
+                                File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "svg", fileName), sequenceDiagramString);
+                            }
+                        }
+
+                        foreach (var sdMethod in sdType.Methods)
+                        {
+                            if (!sdMethod.IsSequenceDiagramEmpty())
+                            {
+                                var fileName = string.Format("{0}-{1}.svg", sdRepositoryTarget.Key.Name, sdMethod.ShortIdentifier);
+                                ExecuteOnStepMessage(string.Format(StepInput.HtmlStrings.CopyingFile, fileName));
+
+                                var sequenceDiagram = sdMethod.GetSequenceDiagram(sdRepositoryTarget.Value).ToSvg();
+                                var sequenceDiagramString = sequenceDiagram.Transform(new Helper(StepInput.SDProject).TransformLinkToken);
+                                File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "svg", fileName), sequenceDiagramString);
+                            }
                         }
                     }
                 }

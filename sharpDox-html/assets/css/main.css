@@ -1,14 +1,13 @@
 #main{
-	margin-left:300px;
-	padding:25px;
+	left: 300px;
 }
 
 #sidebar{
 	height: 100%;
 	width: 300px;
-	float: left;
-	background:#F5F4F0;
-	border-right:2px solid #F58026;
-	position: fixed;
-	overflow-y: auto;
+}
+
+#divider {
+    left: 300px;
+    width: 2px;
 }

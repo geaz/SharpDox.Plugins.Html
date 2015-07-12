@@ -29,10 +29,31 @@ namespace SharpDox.Plugins.Html.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write(" \r\n\r\n.ui-outer-north{\r\n    background: ");
+            this.Write(" \r\n\r\n.primary-background{\r\n    background: ");
             
             #line 9 "D:\Github\SharpDox.Plugins.Html\src\Templates\Css.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(HtmlConfig.PrimaryColor));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n}\r\n\r\n.primary-foreground{\r\n    color: ");
+            
+            #line 13 "D:\Github\SharpDox.Plugins.Html\src\Templates\Css.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(HtmlConfig.PrimaryColor));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n}\r\n\r\n.secondary-background{\r\n    background: ");
+            
+            #line 17 "D:\Github\SharpDox.Plugins.Html\src\Templates\Css.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(HtmlConfig.SecondaryColor));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n}\r\n\r\n.secondary-foreground{\r\n    color: ");
+            
+            #line 21 "D:\Github\SharpDox.Plugins.Html\src\Templates\Css.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(HtmlConfig.SecondaryColor));
             
             #line default
             #line hidden
@@ -40,7 +61,7 @@ namespace SharpDox.Plugins.Html.Templates
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 12 "D:\Github\SharpDox.Plugins.Html\src\Templates\Css.tt"
+        #line 24 "D:\Github\SharpDox.Plugins.Html\src\Templates\Css.tt"
 	public HtmlConfig HtmlConfig { get; set; } 
         
         #line default

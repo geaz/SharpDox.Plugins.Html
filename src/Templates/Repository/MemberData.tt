@@ -19,6 +19,7 @@
 		<# foreach(var sdMember in Members){ #>
 		{
 			id: "<#= sdMember.Identifier #>",
+			shortIdentifier: "<#= sdMember.ShortIdentifier #>",
 			type: "<#= MemberType #>",
 			accessibility: "<#= sdMember.Accessibility #>",
 

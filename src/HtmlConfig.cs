@@ -54,7 +54,7 @@ namespace SharpDox.Plugins.Html
         [ConfigEditor(EditorType.Colorpicker)]
         public string PrimaryColor
         {
-            get { return _primaryColor ?? "#3F72DB"; }
+            get { return _primaryColor ?? "#F5F4F0"; }
             set
             {
                 _primaryColor = value;
@@ -66,7 +66,7 @@ namespace SharpDox.Plugins.Html
         [ConfigEditor(EditorType.Colorpicker)]
         public string SecondaryColor
         {
-            get { return _secondaryColor ?? "#2862db"; }
+            get { return _secondaryColor ?? "#F58026"; }
             set
             {
                 _secondaryColor = value;

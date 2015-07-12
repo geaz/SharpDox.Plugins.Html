@@ -30,7 +30,7 @@ export default can.Component.extend({
 			$.each($('.svgpan'), function (index, value) {
 	            var parentId = $(value).attr('id');
 	            var id = "#" + parentId + " object";
-	            svgPanZoom(id, { 'minZoom': 0.1, fit: false });
+	            svgPanZoom(id, { fit: false });
 	        });
 		}
 	},
@@ -42,8 +42,11 @@ export default can.Component.extend({
 				setTimeout(function(){
 					that.viewModel.setHighlight();
 					that.viewModel.setLinks();
+					
+					that.viewModel.setSvg();					
+					 $('.member-content').css('display', 'none');	
+					 			
 					that.viewModel.hideLoader();
-					that.viewModel.setSvg();
 				}, 250);
 			});
 		},

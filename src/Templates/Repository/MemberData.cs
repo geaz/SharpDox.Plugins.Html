@@ -66,6 +66,13 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             
             #line default
             #line hidden
+            this.Write("\",\n\t\t\tshortIdentifier: \"");
+            
+            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdMember.ShortIdentifier));
+            
+            #line default
+            #line hidden
             this.Write("\",\n\t\t\ttype: \"");
             
             #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
