@@ -77,6 +77,16 @@ thead, th{
 	margin: 0 0 15px 5px;
 }
 
+.member-header-link{
+  cursor: pointer;
+  color: #1382ce;
+}
+
+.member-header-link:hover{
+  cursor: pointer;
+  color: #f58026;
+}
+
 .member-header i{
 	float: left;
 	margin-top: 5px;
