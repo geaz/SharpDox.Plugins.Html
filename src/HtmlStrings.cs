@@ -15,10 +15,9 @@ namespace SharpDox.Plugins.Html
         private string _creatingProjectData = "Creating Project Data";
         private string _creatingStringData = "Creating String Data";
         private string _creatingNavigationData = "Creating Navigation Data";
-        private string _createNamespaceData = "Creating Namespace Data";
-        private string _creatingTypeData = "Creating Type Data";
+        private string _createNamespaceData = "Creating Namespace Data: {0}";
         private string _creatingArticleData = "Creating Article Data";
-        private string _copyingFile = "Copying File: ";
+        private string _copyingFile = "Copying File: {0}";
 
         private string _start = "Start";
         private string _by = "by";
@@ -130,12 +129,6 @@ namespace SharpDox.Plugins.Html
         {
             get { return _createNamespaceData; }
             set { _createNamespaceData = value; }
-        }
-
-        public string CreatingTypeData
-        {
-            get { return _creatingTypeData; }
-            set { _creatingTypeData = value; }
         }
 
         public string CreatingArticleData

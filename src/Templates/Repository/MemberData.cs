@@ -38,180 +38,139 @@ namespace SharpDox.Plugins.Html.Templates.Repository
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\n");
+            this.Write("\r\n{\r\n\t\"id\": \"");
             
-            #line 17 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
- if(Members.ToList().Count > 0) { 
+            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Member.Identifier));
             
             #line default
             #line hidden
-            this.Write("\t");
+            this.Write("\",\r\n\t\"shortIdentifier\": \"");
             
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(MemberTitle));
-            
-            #line default
-            #line hidden
-            this.Write(": [\n\t\t");
-            
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
- foreach(var sdMember in Members){ 
+            #line 19 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Member.ShortIdentifier));
             
             #line default
             #line hidden
-            this.Write("\n\t\t{\n\t\t\tid: \"");
+            this.Write("\",\r\n\t\"type\": \"");
             
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdMember.Identifier));
-            
-            #line default
-            #line hidden
-            this.Write("\",\n\t\t\tshortIdentifier: \"");
-            
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdMember.ShortIdentifier));
-            
-            #line default
-            #line hidden
-            this.Write("\",\n\t\t\ttype: \"");
-            
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+            #line 20 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(MemberType));
             
             #line default
             #line hidden
-            this.Write("\",\n\t\t\taccessibility: \"");
+            this.Write("\",\r\n\t\"accessibility\": \"");
             
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdMember.Accessibility));
-            
-            #line default
-            #line hidden
-            this.Write("\",\n\n\t\t\t");
-            
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
- if(sdMember is SDMethod) { 
-				var sdMethod = (SDMethod)sdMember; 
+            #line 21 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Member.Accessibility));
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t\t\tname: \"");
+            this.Write("\",\r\n\r\n\t");
             
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+            #line 23 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+ if(Member is SDMethod) { 
+		var sdMethod = (SDMethod)Member; 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\"name\": \"");
+            
+            #line 25 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdMethod.Signature));
             
             #line default
             #line hidden
-            this.Write("\",\n\t\t\t\thasSequenceDiagram: ");
+            this.Write("\",\r\n\t\t\"hasSequenceDiagram\": ");
             
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+            #line 26 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(!sdMethod.IsSequenceDiagramEmpty() && !StepInput.HtmlConfig.DisableSequenceDiagrams ? "true" : "false"));
             
             #line default
             #line hidden
-            this.Write(",\n\n\t\t\t");
+            this.Write(",\r\n\t");
             
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+            #line 27 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
  } else { 
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t\t\tname: \"");
+            this.Write("\t\t\"name\": \"");
             
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdMember.Name));
+            #line 28 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Member.Name));
             
             #line default
             #line hidden
-            this.Write("\",\n\n\t\t\t");
+            this.Write("\",\r\n\t");
             
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+            #line 29 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
  } 
             
             #line default
             #line hidden
-            this.Write(" \n\t\t\t\n\t\t\t");
+            this.Write(" \r\n\t\r\n\t");
             
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
- if(sdMember is SDField && !string.IsNullOrEmpty(((SDField)sdMember).ConstantValue)) { 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t\t\n\t\t\t\tconstantValue:\" ");
-            
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(((SDField)sdMember).ConstantValue));
+            #line 31 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+ if(Member is SDField && !string.IsNullOrEmpty(((SDField)Member).ConstantValue)) { 
             
             #line default
             #line hidden
-            this.Write("\", \n\n\t\t\t");
+            this.Write("\t\t\"constantValue\":\" ");
             
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+            #line 32 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(((SDField)Member).ConstantValue));
+            
+            #line default
+            #line hidden
+            this.Write("\", \r\n\t");
+            
+            #line 33 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t\tsyntax: \"");
+            this.Write("\r\n\t");
             
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdMember.Syntax));
-            
-            #line default
-            #line hidden
-            this.Write("\",\n\n\t\t\t");
-            
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
-	var documentation = sdMember.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
-				if(documentation != null){
-					var documentationTemplate = new DocumentationData { Documentation = documentation }; 
+            #line 35 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+	var documentation = Member.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
+	if(documentation != null){
+		var documentationTemplate = new DocumentationData { Documentation = documentation }; 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t");
+            this.Write("\t\t");
             
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+            #line 38 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(documentationTemplate.TransformText()));
             
             #line default
             #line hidden
-            this.Write("\t\n\t\t\t");
+            this.Write("\t\r\n\t");
             
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+            #line 39 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\n\t\t},\n\t\t");
+            this.Write("\r\n\t\"syntax\": \"");
             
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
- } 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t],\r\n");
-            
-            #line 19 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
- } 
+            #line 41 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Member.Syntax));
             
             #line default
             #line hidden
-            this.Write("\r\n");
+            this.Write("\"\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 21 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
-	public string MemberTitle { get; set; } 
+        #line 44 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+	public SDMember Member { get; set; } 
         
         #line default
         #line hidden
         
-        #line 22 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
-	public IEnumerable<SDMember> Members { get; set; } 
-        
-        #line default
-        #line hidden
-        
-        #line 23 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
+        #line 45 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
 	public string MemberType { get; set; } 
         
         #line default

@@ -27,6 +27,11 @@ namespace SharpDox.Plugins.Html.Steps
             {
                 Directory.CreateDirectory(Path.Combine(StepInput.OutputPath, "data"));
             }
+
+            if (!Directory.Exists(Path.Combine(StepInput.OutputPath, "data", "namespaces")))
+            {
+                Directory.CreateDirectory(Path.Combine(StepInput.OutputPath, "data", "namespaces"));
+            }
         }
 
         private void CreateDynamicCSS()

@@ -5,7 +5,7 @@ import "../../assets/css/sd-titlebar.css!";
 
 export default can.Component.extend({
 	tag: 'sd-titlebar',
-	template: can.view('titlebar-template'),
+	template: can.view('templates/titlebar.mustache'),
 	viewModel: {
 		string: sharpDox.strings
 	},

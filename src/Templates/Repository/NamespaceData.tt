@@ -6,69 +6,34 @@
 <#@ import namespace="System.Net" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="SharpDox.Model" #>
+<#@ import namespace="SharpDox.Model.Repository" #>
 <#@ import namespace="SharpDox.Model.Documentation.Article" #>
 <#@ import namespace="SharpDox.Plugins.Html.Steps" #>
 <#@ import namespace="CommonMark" #>
 
 <# var helper = new Helper(StepInput.SDProject); #>
 
-var sharpDox = sharpDox || {};
+"<#= TargetFx.Name #>": {
+	"name": "<#= Namespace.Fullname #>",
+	"assembly": "<#= Namespace.Assemblyname #>",
+	"description": "<#= Namespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage) != null ?
+					helper.ToObjectString(CommonMarkConverter.Convert(Namespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken)))
+					: string.Empty #>", 
+	<# if(Namespace.UsedBy.Count > 0) { #>
+	"usedBy": [
+		<#= string.Join(",", Namespace.UsedBy.Select(usedBy => 
+			string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", usedBy.Identifier, usedBy.Fullname))) #>
+	],
+	<# } if(Namespace.Uses.Count > 0) { #>
+	"uses": [
+		<#= string.Join(",", Namespace.Uses.Select(use => 
+			string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", use.Identifier, use.Fullname))) #>
+	], 
+	<# } #>
+	"types":[
+		<#= string.Join(",", Namespace.Types.Select(sdType => new TypeData { Type = sdType }.TransformText())) #>
+	]
+}
 
-sharpDox.namespaceData = {
-	<# foreach(var sdSolution in StepInput.SDProject.Solutions)
-	{
-		foreach(var sdTargetNamespaceDic in sdSolution.Value.GetAllNamespaces())
-		{ #>
-			
-			"<#= sdTargetNamespaceDic.Key #>": {
-			
-			<# foreach(var sdTargetNamespace in sdTargetNamespaceDic.Value)
-            {
-				var sdNamespace = sdTargetNamespace.Value;
-				var targetFx = sdTargetNamespace.Key; #>
-				
-				"<#= targetFx.Name #>": {
-					name: "<#= sdNamespace.Fullname #>",
-					assembly: "<#= sdNamespace.Assemblyname #>",
-
-					<# if(sdNamespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage) != null) { #> 
-						description: "<#= helper.ToObjectString(CommonMarkConverter.Convert(sdNamespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken))) #>", 
-					<# } #>
-
-					usedBy: [
-						<# foreach(var usedBy in sdNamespace.UsedBy) { #>
-							{
-								id: "<#= usedBy.Identifier #>",
-								name: "<#= usedBy.Fullname #>"
-							},
-						<# } #>
-					],
-					uses: [
-						<# foreach(var use in sdNamespace.Uses) { #>
-							{
-								id: "<#= use.Identifier #>",
-								name: "<#= use.Fullname #>"
-							},
-						<# } #>
-					],
-					types:[
-						<# foreach(var sdType in sdNamespace.Types) { #>
-							{
-								id: "<#= sdType.Identifier #>",
-								name: "<#= sdType.Name #>",
-								kind: "<#= sdType.Kind #>",
-								accessibility: "<#= sdType.Accessibility #>",
-								<# if(sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage) != null) { 
-									var markdownTemplate = sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage).Summary.ToMarkdown(StepInput.SDProject.Tokens);
-									var htmlString = CommonMarkConverter.Convert(markdownTemplate.Transform(helper.TransformLinkToken)); #> 
-								summary: "<#= helper.ToObjectString(htmlString) #>" 
-								<# } #>
-							},
-						<# } #>
-					]
-				},
-			},
-			<# }
-		}
-	} #>
-};
+<#+	public SDNamespace Namespace { get; set; } #>
+<#+	public SDTargetFx TargetFx { get; set; } #>

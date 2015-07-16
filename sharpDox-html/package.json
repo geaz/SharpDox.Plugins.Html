@@ -12,7 +12,9 @@
     "clean": "rimraf dist",
     "steal": "steal-tools --bundleSteal",
     "prebuild": "npm run clean",
-    "build": "npm run steal"
+    "build": "npm run steal",
+    "predebugbuild": "npm run clean",
+    "debugbuild": "steal-tools --bundleSteal --debug true --sourceMaps true"
   },
   "dependencies": {
     "can": "^2.2.4",

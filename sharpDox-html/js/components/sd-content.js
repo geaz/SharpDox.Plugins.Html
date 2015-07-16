@@ -11,7 +11,7 @@ import "../../assets/css/markdown.css!";
 
 export default can.Component.extend({
 	tag: 'sd-content',
-	template: can.view('content-template'),
+	template: can.view('templates/content.mustache'),
 	viewModel: {
 		strings: sharpDox.strings,
 		setHighlight: function(){
@@ -43,11 +43,23 @@ export default can.Component.extend({
 					that.viewModel.setHighlight();
 					that.viewModel.setLinks();
 					
-					that.viewModel.setSvg();					
-					 $('.member-content').css('display', 'none');	
+					that.viewModel.setSvg();
+					$('.member-content').css('display', 'none');	
 					 			
 					that.viewModel.hideLoader();
-				}, 250);
+				}, 500);
+				
+				$.ajax({
+				    url: "data/Test.json",
+					dataType: "json",				
+				    success: function( response ) {
+						console.log("win");
+				        console.log( response );
+				    },
+					error: function(r){
+						console.log(r);
+					}
+				});
 			});
 		},
 		".member-header click": function(header){
@@ -58,6 +70,7 @@ export default can.Component.extend({
 		    if (icon.hasClass('icon-caret-right')) {
 		        icon.removeClass('icon-caret-right');
 		        icon.addClass('icon-caret-down');
+				this.viewModel.setSvg(); //because in some browser the object gets reloaded after "display:block" - reinit the svgs
 		    }
 		    else {
 		        icon.removeClass('icon-caret-down');

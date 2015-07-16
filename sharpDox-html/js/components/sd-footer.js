@@ -4,7 +4,7 @@ import "../../assets/css/sd-footer.css!";
 
 export default can.Component.extend({
 	tag: 'sd-footer',
-	template: can.view('footer-template'),
+	template: can.view('templates/footer.mustache'),
 	viewModel: {
 		projectName: sharpDox.projectData.name,
 		author: sharpDox.projectData.author,

@@ -59,7 +59,7 @@ namespace SharpDox.Plugins.Html
 
             return trimmedText
                 .Replace("\"", "\\\"")
-                .Replace(Environment.NewLine, " \\n\\" + Environment.NewLine);
+                .Replace(Environment.NewLine, " \\n");
         }
     }
 }

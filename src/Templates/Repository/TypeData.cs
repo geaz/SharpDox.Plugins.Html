@@ -14,6 +14,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
     using System.Net;
     using System.Collections.Generic;
     using SharpDox.Model;
+    using SharpDox.Model.Repository;
     using SharpDox.Model.Documentation.Token;
     using SharpDox.Model.Documentation.Article;
     using SharpDox.Plugins.Html.Steps;
@@ -38,264 +39,133 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             this.Write("\r\n");
             this.Write("\r\n");
             
-            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            #line 16 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
  var helper = new Helper(StepInput.SDProject); 
             
             #line default
             #line hidden
-            this.Write("\r\nvar sharpDox = sharpDox || {};\r\n\r\nsharpDox.typeData = {\n\t");
+            this.Write("\r\n{\r\n\t\"name\": \"");
             
             #line 19 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
- foreach(var sdSolution in StepInput.SDProject.Solutions)
-	{
-		foreach(var sdTargetTypeDic in sdSolution.Value.GetAllTypes())
-		{ 
+            this.Write(this.ToStringHelper.ToStringWithCulture(Type.Name));
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\n\t\t\t\"");
-            
-            #line 19 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdTargetTypeDic.Key));
-            
-            #line default
-            #line hidden
-            this.Write("\": {\n\t\t\t\n\t\t\t");
-            
-            #line 19 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
- foreach(var sdTargetType in sdTargetTypeDic.Value)
-            {
-				var sdType = sdTargetType.Value;
-				var targetFx = sdTargetType.Key; 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t\t\n\t\t\t\t\"");
-            
-            #line 19 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(targetFx.Name));
-            
-            #line default
-            #line hidden
-            this.Write("\": {\n\t\t\t\t\tname: \"");
-            
-            #line 19 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Name));
-            
-            #line default
-            #line hidden
-            this.Write("\",\n\t\t\t\t\tshortIdentifier: \"");
-            
-            #line 19 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.ShortIdentifier));
-            
-            #line default
-            #line hidden
-            this.Write("\",\n\t\t\t\t\tnamespace: \"");
-            
-            #line 19 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Namespace.Fullname));
-            
-            #line default
-            #line hidden
-            this.Write("\",\n\t\t\t\t\tsyntax: \"");
-            
-            #line 19 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Syntax));
-            
-            #line default
-            #line hidden
-            this.Write("\",\n\t\t\t\t\thasClassDiagram: ");
-            
-            #line 19 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdTargetType.Value.IsClassDiagramEmpty() ? "false" : "true"));
-            
-            #line default
-            #line hidden
-            this.Write(",\n\t\t\t\t\tbaseTypes: [\n\t\t\t\t\t\t");
-            
-            #line 19 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
- foreach(var baseType in sdType.BaseTypes) { 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t");
-            
-            #line 19 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
- if(!baseType.IsProjectStranger) { 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\t\t\t\t\t\tid: \"");
+            this.Write("\",\r\n\t\"shortIdentifier\": \"");
             
             #line 20 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(baseType.Identifier));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Type.ShortIdentifier));
             
             #line default
             #line hidden
-            this.Write("\",\t\r\n\t\t\t\t\t\t\t");
+            this.Write("\",\r\n\t\"namespace\": \"");
             
             #line 21 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
- } 
+            this.Write(this.ToStringHelper.ToStringWithCulture(Type.Namespace.Fullname));
             
             #line default
             #line hidden
-            this.Write("\t\t\t\t\t\t\t\tname: \"");
+            this.Write("\",\r\n\t\"syntax\": \"");
             
             #line 22 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(baseType.Fullname));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Type.Syntax));
             
             #line default
             #line hidden
-            this.Write("\"\t\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t");
+            this.Write("\",\r\n\t\"hasClassDiagram\": ");
+            
+            #line 23 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Type.IsClassDiagramEmpty() ? "false" : "true"));
+            
+            #line default
+            #line hidden
+            this.Write(",\r\n\t");
             
             #line 24 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
- } 
+ if(Type.BaseTypes.Count > 0) { 
             
             #line default
             #line hidden
-            this.Write("\t\t\t\t\t],\n\t\t\t\t\timplements: [\n\t\t\t\t\t\t");
-            
-            #line 25 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
- foreach(var implementedInterface in sdType.ImplementedInterfaces) { 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t");
-            
-            #line 25 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
- if(!implementedInterface.IsProjectStranger) { 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\t\t\t\t\t\tid: \"");
+            this.Write("\t\"baseTypes\": [\r\n\t\t");
             
             #line 26 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(implementedInterface.Identifier));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(",", Type.BaseTypes.Select(baseType => 
+			string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", baseType.Identifier, baseType.Fullname)))));
             
             #line default
             #line hidden
-            this.Write("\",\t\r\n\t\t\t\t\t\t\t");
-            
-            #line 27 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
- } 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\t\t\t\t\t\tname: \"");
+            this.Write("\r\n\t],\r\n\t");
             
             #line 28 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(implementedInterface.Fullname));
+ } if(Type.ImplementedInterfaces.Count > 0) { 
             
             #line default
             #line hidden
-            this.Write("\"\t\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t");
+            this.Write("\t\"implements\": [\r\n\t\t");
             
             #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
- } 
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(",", Type.ImplementedInterfaces.Select(implementedInterface => 
+			string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", implementedInterface.Identifier, implementedInterface.Fullname)))));
             
             #line default
             #line hidden
-            this.Write("\t\n\t\t\t\t\t],\n\t\t\t\t\t");
+            this.Write("\r\n\t],\r\n\t");
             
-            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
- var documentation = sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
-					if(documentation != null){
-						var documentationTemplate = new DocumentationData { Documentation = documentation }; 
+            #line 32 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+ }
+	var documentation = Type.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
+	if(documentation != null){
+		var documentationTemplate = new DocumentationData { Documentation = documentation }; 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\t\t\t");
+            this.Write("\t\t");
             
-            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            #line 36 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(documentationTemplate.TransformText()));
             
             #line default
             #line hidden
-            this.Write("\t\n\t\t\t\t\t");
+            this.Write("\t\r\n\t");
             
-            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
- } 
-
-					var fieldsTemplate = new MemberData { MemberTitle = "fields", MemberType = "field", Members = sdType.Fields }; 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t\t\t");
-            
-            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(fieldsTemplate.TransformText()));
-            
-            #line default
-            #line hidden
-            this.Write("\n\n\t\t\t\t\t");
-            
-            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
- var constructorsTemplate = new MemberData { MemberTitle = "constructors", MemberType = "method", Members = sdType.Constructors }; 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t\t\t");
-            
-            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(constructorsTemplate.TransformText()));
-            
-            #line default
-            #line hidden
-            this.Write("\n\n\t\t\t\t\t");
-            
-            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
- var methodsTemplate = new MemberData { MemberTitle = "methods", MemberType = "method", Members = sdType.Methods }; 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t\t\t");
-            
-            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(methodsTemplate.TransformText()));
-            
-            #line default
-            #line hidden
-            this.Write("\n\n\t\t\t\t\t");
-            
-            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
- var eventsTemplate = new MemberData { MemberTitle = "events", MemberType = "event", Members = sdType.Events }; 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t\t\t");
-            
-            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(eventsTemplate.TransformText()));
-            
-            #line default
-            #line hidden
-            this.Write("\n\n\t\t\t\t\t");
-            
-            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
- var propertiesTemplate = new MemberData { MemberTitle = "properties", MemberType = "property", Members = sdType.Properties }; 
-            
-            #line default
-            #line hidden
-            this.Write("\n\t\t\t\t\t");
-            
-            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(propertiesTemplate.TransformText()));
-            
-            #line default
-            #line hidden
-            this.Write("\n\n\t\t\t\t},\n\t\t\t},\n\t\t\t");
-            
-            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            #line 37 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
  }
-		}
+
+	var members = new List<string>();
+	if(Type.Fields.Count > 0) {
+		members.Add(string.Format("\"fields\": [{0}]", string.Join(",", Type.Fields.Select(sdField => new MemberData { Member = sdField, MemberType = "field" }.TransformText()))));
+	} 
+	if(Type.Constructors.Count > 0) {
+		members.Add(string.Format("\"constructors\": [{0}]", string.Join(",", Type.Constructors.Select(sdContructor => new MemberData { Member = sdContructor, MemberType = "method" }.TransformText()))));
+	}
+	if(Type.Methods.Count > 0) {
+		members.Add(string.Format("\"methods\": [{0}]", string.Join(",", Type.Methods.Select(sdMethod => new MemberData { Member = sdMethod, MemberType = "method" }.TransformText()))));
+	}
+	if(Type.Events.Count > 0) {
+		members.Add(string.Format("\"events\": [{0}]", string.Join(",", Type.Events.Select(sdEvent => new MemberData { Member = sdEvent, MemberType = "event" }.TransformText()))));
+    }
+	if(Type.Properties.Count > 0){
+		members.Add(string.Format("\"properties\": [{0}]", string.Join(",", Type.Properties.Select(sdProperty => new MemberData { Member = sdProperty, MemberType = "property" }.TransformText()))));	
 	} 
             
             #line default
             #line hidden
-            this.Write("\n};");
+            this.Write("\t");
+            
+            #line 55 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(",", members)));
+            
+            #line default
+            #line hidden
+            this.Write("\t\r\n}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
+        
+        #line 58 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+	public SDType Type { get; set; } 
+        
+        #line default
+        #line hidden
     }
     
     #line default

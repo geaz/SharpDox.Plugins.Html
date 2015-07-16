@@ -1,0 +1,95 @@
+<div id="{{id}}" class="member">
+	<div class="member-header">		
+	      <a href="#!type/SharpDox.Model.Repository.SDRepository"><i class="icon-caret-right"></i><img src="./assets/icons/{{type}}_{{accessibility}}.png"/> <p>{{name}}</p></a>
+	      {{#summary}}
+	  <div class="summary markdown">
+			    {{{summary}}}
+			  </div>
+	  {{/summary}}
+	</div>
+	<div class="member-content">
+	  <div class="markdown">
+	    <pre class="syntax-pre"><code id="syntax" class="language-csharp">{{syntax}}</code></pre>
+	  </div>
+	  
+	  {{#hasSequenceDiagram}}
+	  <div id="sequence-diagram-{{shortIdentifier}}" class="sd-sequence-diagram svgpan">
+	    <object type="image/svg+xml" data="./data/svg/{{site.currentTargetFx}}-{{shortIdentifier}}.svg" />
+	  </div>
+	  <div class="legend">
+					<p class="save"><a href="#"><i class="icon-save"></i>{{strings.save}}</a></p>
+					<p class="resetZoom"><a href="#"><i class="icon-refresh"></i>{{strings.reset}}</a></p>
+					<p>{{strings.panZoom}}</p>
+				</div>
+	  {{/hasSequenceDiagram}}    
+	  
+	  {{#constantValue}}
+	  <p class="member-box-title">{{strings.constantValue}}</p>
+			<div class="member-doc-box markdown">
+				{{constantValue}}
+			</div>
+	  {{/constantValue}}
+	  
+	  {{#params.length}}
+	  <p class="member-box-title">{{strings.parameters}}</p>
+	  <div class="member-doc-box markdown">
+	    {{#params}}
+	    <p class="key">{{key}}</p>
+	    <div class="inline">
+	      <p>{{{value}}}</p>
+	    </div>
+	    {{/params}}
+	  </div>
+	  {{/params.length}}
+	  
+	  {{#typeParams.length}}
+	  <p class="member-box-title">{{strings.typeParams}}</p>
+	  <div class="member-doc-box markdown">
+	    {{#typeParams}}
+	    <p class="key">{{key}}</p>
+	    <div class="inline">
+	      <p>{{{value}}}</p>
+	    </div>
+	    {{/typeParams}}
+	  </div>
+	  {{/typeParams.length}}
+	
+	  {{#returns}}
+	  <p class="member-box-title">{{strings.returns}}</p>
+	  <div class="member-doc-box">{{{returns}}}</div>
+	  {{/returns}}
+	  
+	  {{#remarks}}
+	  <p class="member-box-title">{{strings.remarks}}</p>
+	  <div class="markdown">{{{remarks}}}</div>
+	  {{/remarks}}
+	
+	  {{#example}}
+	  <p class="member-box-title">{{strings.example}}</p>
+	  <div class="markdown">{{{example}}}</div>
+	  {{/example}}
+	
+	  {{#exceptions.length}}
+	  <p class="member-box-title">{{strings.exceptions}}</p>
+	  <div class="member-doc-box markdown">
+	    {{#exceptions}}
+	    <p class="key">{{key}}</p>
+	    <div class="inline">
+	      <p>{{{value}}}</p>
+	    </div>
+	    {{/exceptions}}
+	  </div>
+	  {{/exceptions.length}}
+	  
+	  {{#seeAlsos.length}}
+	  <p class="member-box-title">{{strings.seeAlso}}</p>
+	  <div class="list-box">
+	  <ul>
+	    {{#seeAlsos}}
+	    <li><a href="#!{{type}}/{{id}}">{{name}}</a></li>
+	    {{/seeAlsos}}
+	  </ul>
+	  </div>
+	  {{/seeAlsos.length}}
+	</div>
+</div>

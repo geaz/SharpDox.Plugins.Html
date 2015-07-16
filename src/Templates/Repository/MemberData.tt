@@ -14,45 +14,32 @@
 <#@ import namespace="SharpDox.Plugins.Html.Steps" #>
 <#@ import namespace="CommonMark" #>
 
-<# if(Members.ToList().Count > 0) { #>
-	<#= MemberTitle #>: [
-		<# foreach(var sdMember in Members){ #>
-		{
-			id: "<#= sdMember.Identifier #>",
-			shortIdentifier: "<#= sdMember.ShortIdentifier #>",
-			type: "<#= MemberType #>",
-			accessibility: "<#= sdMember.Accessibility #>",
+{
+	"id": "<#= Member.Identifier #>",
+	"shortIdentifier": "<#= Member.ShortIdentifier #>",
+	"type": "<#= MemberType #>",
+	"accessibility": "<#= Member.Accessibility #>",
 
-			<# if(sdMember is SDMethod) { 
-				var sdMethod = (SDMethod)sdMember; #>
+	<# if(Member is SDMethod) { 
+		var sdMethod = (SDMethod)Member; #>
+		"name": "<#= sdMethod.Signature #>",
+		"hasSequenceDiagram": <#= !sdMethod.IsSequenceDiagramEmpty() && !StepInput.HtmlConfig.DisableSequenceDiagrams ? "true" : "false" #>,
+	<# } else { #>
+		"name": "<#= Member.Name #>",
+	<# } #> 
+	
+	<# if(Member is SDField && !string.IsNullOrEmpty(((SDField)Member).ConstantValue)) { #>
+		"constantValue":" <#= ((SDField)Member).ConstantValue #>", 
+	<# } #>
 
-				name: "<#= sdMethod.Signature #>",
-				hasSequenceDiagram: <#= !sdMethod.IsSequenceDiagramEmpty() && !StepInput.HtmlConfig.DisableSequenceDiagrams ? "true" : "false" #>,
+	<#	var documentation = Member.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
+	if(documentation != null){
+		var documentationTemplate = new DocumentationData { Documentation = documentation }; #>
+		<#= documentationTemplate.TransformText() #>	
+	<# } #>
 
-			<# } else { #>
+	"syntax": "<#= Member.Syntax #>"
+}
 
-				name: "<#= sdMember.Name #>",
-
-			<# } #> 
-			
-			<# if(sdMember is SDField && !string.IsNullOrEmpty(((SDField)sdMember).ConstantValue)) { #>
-				
-				constantValue:" <#= ((SDField)sdMember).ConstantValue #>", 
-
-			<# } #>
-
-			syntax: "<#= sdMember.Syntax #>",
-
-			<#	var documentation = sdMember.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
-				if(documentation != null){
-					var documentationTemplate = new DocumentationData { Documentation = documentation }; #>
-					<#= documentationTemplate.TransformText() #>	
-			<# } #>
-		},
-		<# } #>
-	],
-<# } #>
-
-<#+	public string MemberTitle { get; set; } #>
-<#+	public IEnumerable<SDMember> Members { get; set; } #>
+<#+	public SDMember Member { get; set; } #>
 <#+	public string MemberType { get; set; } #>

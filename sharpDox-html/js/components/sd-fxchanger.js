@@ -4,7 +4,7 @@ import "../../assets/css/sd-fxchanger.css!";
 
 export default can.Component.extend({
 	tag: 'sd-fxchanger',
-	template: can.view('fxchanger-template'),
+	template: can.view('templates/fxchanger.mustache'),
 	helpers: {
     isSelected: function(options){
 			var value = "";

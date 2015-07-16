@@ -30,6 +30,6 @@ var router = new Router();
 router.start();
 
 //start the app
-$('#app').html(can.view('app-template', { sitecontroller: new SiteController() }));
+$('#app').html(can.view('templates/app.mustache', { sitecontroller: new SiteController() }));
 
 $('#wrapper').splitPane();
