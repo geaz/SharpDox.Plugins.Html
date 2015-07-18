@@ -41,70 +41,70 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             
             #line default
             #line hidden
-            this.Write("\r\nvar sharpDox = sharpDox || {};\n\nsharpDox.articles = {\n\t\"home\":{\n\t\ttitle: \"Home\"" +
-                    ",\n\t\tsubTitle: \"");
+            this.Write("\r\nvar sharpDox = sharpDox || {};\r\n\r\nsharpDox.articles = {\r\n\t\"home\":{\r\n\t\ttitle: \"H" +
+                    "ome\",\r\n\t\tsubTitle: \"");
             
-            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+            #line 20 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlStrings.Description));
             
             #line default
             #line hidden
-            this.Write("\",\n\t\tcontent: \"");
+            this.Write("\",\r\n\t\tcontent: \"");
             
-            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(helper.ToObjectString(CommonMarkConverter.Convert(StepInput.SDProject.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken)))));
+            #line 21 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(CommonMarkConverter.Convert(StepInput.SDProject.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken)).ToObjectString()));
             
             #line default
             #line hidden
-            this.Write("\"\n\t},\n\t");
+            this.Write("\"\r\n\t},\r\n\t");
             
-            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+            #line 23 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
  foreach(var article in SDArticles){ 
 		if(!(article is SDArticlePlaceholder) && !(article is SDDocPlaceholder)){ 
             
             #line default
             #line hidden
-            this.Write("\n\t\t\t\"");
+            this.Write("\t\t\t\"");
             
-            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+            #line 25 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(article.Id));
             
             #line default
             #line hidden
-            this.Write("\": {\n\t\t\t\ttitle: \"");
+            this.Write("\": {\r\n\t\t\t\ttitle: \"");
             
-            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+            #line 26 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(article.Title));
             
             #line default
             #line hidden
-            this.Write("\",\n\t\t\t\t");
+            this.Write("\",\r\n\t\t\t\t");
             
-            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+            #line 27 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
  var articleContent = article.Content.Transform(helper.TransformLinkToken); 
             
             #line default
             #line hidden
             this.Write("\t\t\t\tcontent: \"");
             
-            #line 16 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(helper.ToObjectString(CommonMarkConverter.Convert(articleContent))));
+            #line 28 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(CommonMarkConverter.Convert(articleContent.ToObjectString())));
             
             #line default
             #line hidden
-            this.Write("\"\n\t\t\t},\n\t\t");
+            this.Write("\"\r\n\t\t\t},\r\n\t\t");
             
-            #line 16 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
  }
 	} 
             
             #line default
             #line hidden
-            this.Write("\n}\n\n");
+            this.Write("}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 16 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
+        #line 34 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\ArticleData.tt"
  public List<SDArticle> SDArticles { get; set; } 
         
         #line default

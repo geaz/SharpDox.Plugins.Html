@@ -42,7 +42,7 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
             this.Write("\t\t{\r\n\t\t\tid: \'");
             
             #line 13 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Identifier));
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Identifier.RemoveIllegalPathChars()));
             
             #line default
             #line hidden

@@ -43,34 +43,34 @@ namespace SharpDox.Plugins.Html.Templates.Repository
 
 var documentation = new List<string>();
 if(Documentation.Summary.Count > 0) {
-	documentation.Add(string.Format("\"summary\":\"{0}\"", helper.ToObjectString(CommonMarkConverter.Convert(Documentation.Summary.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken)))));
+	documentation.Add(string.Format("\"summary\":\"{0}\"", CommonMarkConverter.Convert(Documentation.Summary.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken)).ToObjectString()));
 } 
 if(Documentation.Remarks.Count > 0) {
-	documentation.Add(string.Format("\"remarks\":\"{0}\"", helper.ToObjectString(CommonMarkConverter.Convert(Documentation.Remarks.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken)))));
+	documentation.Add(string.Format("\"remarks\":\"{0}\"", CommonMarkConverter.Convert(Documentation.Remarks.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken)).ToObjectString()));
 }
 if(Documentation.Example.Count > 0) {
-	documentation.Add(string.Format("\"example\":\"{0}\"", helper.ToObjectString(CommonMarkConverter.Convert(Documentation.Example.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken)))));
+	documentation.Add(string.Format("\"example\":\"{0}\"", CommonMarkConverter.Convert(Documentation.Example.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken)).ToObjectString()));
 }
 if(Documentation.Returns.ContainsKey("default")) {
-	documentation.Add(string.Format("\"returns\":\"{0}\"", helper.ToObjectString(CommonMarkConverter.Convert(Documentation.Returns["default"].ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken)))));
+	documentation.Add(string.Format("\"returns\":\"{0}\"", CommonMarkConverter.Convert(Documentation.Returns["default"].ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken)).ToObjectString()));
 }
 if(Documentation.Exceptions.Count > 0) {
 	documentation.Add(string.Format("\"exceptions\":{0}", 
 				string.Join(",", Documentation.Exceptions.Select(exception => 
 					string.Format("{{\"key\": \"{0}\",\"value\": \"{1}\"}}", exception.Key, 
-					helper.ToObjectString(CommonMarkConverter.Convert(exception.Value.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken))))))));
+					CommonMarkConverter.Convert(exception.Value.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken)).ToObjectString())))));
 }
 if(Documentation.Params.Count > 0) {
 	documentation.Add(string.Format("\"params\":{0}", 
 				string.Join(",", Documentation.Params.Select(param => 
 					string.Format("{{\"key\": \"{0}\",\"value\": \"{1}\"}}", param.Key, 
-					helper.ToObjectString(CommonMarkConverter.Convert(param.Value.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken))))))));
+					CommonMarkConverter.Convert(param.Value.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken)).ToObjectString())))));
 }
 if(Documentation.TypeParams.Count > 0) {
 	documentation.Add(string.Format("\"params\":{0}", 
 				string.Join(",", Documentation.TypeParams.Select(typeParam => 
 					string.Format("{{\"key\": \"{0}\",\"value\": \"{1}\"}}", typeParam.Key, 
-					helper.ToObjectString(CommonMarkConverter.Convert(typeParam.Value.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken))))))));	
+					CommonMarkConverter.Convert(typeParam.Value.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken)).ToObjectString())))));	
 }
 if(Documentation.SeeAlsos.Count > 0 ){
 	var seeAlsos = new List<string>();
@@ -92,18 +92,18 @@ if(Documentation.SeeAlsos.Count > 0 ){
             
             #line default
             #line hidden
-            this.Write("\n");
+            this.Write("\r\n");
             
-            #line 56 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\DocumentationData.tt"
+            #line 66 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\DocumentationData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(",", documentation) + ","));
             
             #line default
             #line hidden
-            this.Write("\n\n\n");
+            this.Write("\r\n\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 56 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\DocumentationData.tt"
+        #line 69 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\DocumentationData.tt"
 	public SDDocumentation Documentation { get; set; } 
         
         #line default

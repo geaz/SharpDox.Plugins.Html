@@ -7,7 +7,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="SharpDox.Model" #>
 
-<# var sdNamespaces = SDSolution.Repositories.FirstOrDefault().Value.GetAllNamespaces(); 
+<# var sdNamespaces = SDSolution.Repositories.FirstOrDefault().GetAllNamespaces(); 
 foreach(var sdNamespace in sdNamespaces)
 {
 	var namespaceNavTemplate = new NamespaceNavigation { Namespace = sdNamespace }; #>

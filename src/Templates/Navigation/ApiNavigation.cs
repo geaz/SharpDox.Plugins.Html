@@ -34,45 +34,45 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
             this.Write("\r\n");
             
             #line 10 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
- var sdNamespaces = SDSolution.Repositories.FirstOrDefault().Value.GetAllNamespaces(); 
+ var sdNamespaces = SDSolution.Repositories.FirstOrDefault().GetAllNamespaces(); 
 foreach(var sdNamespace in sdNamespaces)
 {
 	var namespaceNavTemplate = new NamespaceNavigation { Namespace = sdNamespace }; 
             
             #line default
             #line hidden
-            this.Write("\t{\n\t\tid: \'");
+            this.Write("\t{\r\n\t\tid: \'");
             
-            #line 14 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdNamespace.Identifier));
             
             #line default
             #line hidden
-            this.Write("\',\n\t\ttext: \'");
+            this.Write("\',\r\n\t\ttext: \'");
             
-            #line 14 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+            #line 16 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdNamespace.Fullname));
             
             #line default
             #line hidden
-            this.Write("\',\n\t\ticon: \'./assets/icons/namespace_public.png\',\n\t\ta_attr: { href : \'#!namespace" +
-                    "/");
+            this.Write("\',\r\n\t\ticon: \'./assets/icons/namespace_public.png\',\r\n\t\ta_attr: { href : \'#!namespa" +
+                    "ce/");
             
-            #line 14 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+            #line 18 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(sdNamespace.Identifier));
             
             #line default
             #line hidden
-            this.Write("\' },\n\t\tchildren: [\n\t\t\t");
+            this.Write("\' },\r\n\t\tchildren: [\r\n\t\t\t");
             
-            #line 14 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+            #line 20 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(namespaceNavTemplate.TransformText()));
             
             #line default
             #line hidden
-            this.Write("\n\t\t]\n\t},\r\n");
+            this.Write("\r\n\t\t]\r\n\t},\r\n");
             
-            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+            #line 23 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
  } 
             
             #line default
@@ -81,7 +81,7 @@ foreach(var sdNamespace in sdNamespaces)
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 17 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
+        #line 25 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"
  public SDSolution SDSolution { get; set; } 
         
         #line default

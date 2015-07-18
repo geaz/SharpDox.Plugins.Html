@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using SharpDox.Model.Documentation.Article;
 using SharpDox.Plugins.Html.Templates;
@@ -21,6 +20,7 @@ namespace SharpDox.Plugins.Html.Steps
             CreateStringData();
             CreateNavigationData();
             CreateNamespaceData();
+            CreateTypeData();
             CreateArticleData();
         }
 
@@ -54,19 +54,35 @@ namespace SharpDox.Plugins.Html.Steps
         private void CreateNamespaceData()
         {
             ExecuteOnStepProgress(30);
-
             foreach (var sdSolution in StepInput.SDProject.Solutions)
             {
                 foreach (var targetFxNamespace in sdSolution.Value.GetAllNamespaces())
                 {
                     ExecuteOnStepMessage(string.Format(StepInput.HtmlStrings.CreatingNamespaceData, targetFxNamespace.Key));
                     
-                    var namespaceString = string.Format("{{{0}}}",
-                        string.Join(",", targetFxNamespace.Value.Select(sdTargetNamespace =>
-                        new NamespaceData { Namespace = sdTargetNamespace.Value, TargetFx = sdTargetNamespace.Key }.TransformText())));
+                    var namespaceString =   string.Join(",", targetFxNamespace.Value.Select(sdTargetNamespace =>
+                                            new NamespaceData { Namespace = sdTargetNamespace.Value, TargetFx = sdTargetNamespace.Key.TargetFx }.TransformText()));
                     namespaceString = Regex.Replace(namespaceString, "(\"(?:[^\"\\\\]|\\\\.)*\")|\\s+", "$1").Replace(Environment.NewLine, "");
 
                     File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "namespaces", targetFxNamespace.Key + ".json"), namespaceString); 
+                }
+            }
+        }
+
+        private void CreateTypeData()
+        {
+            ExecuteOnStepProgress(60);
+            foreach (var sdSolution in StepInput.SDProject.Solutions)
+            {
+                foreach (var targetFxType in sdSolution.Value.GetAllTypes())
+                {
+                    ExecuteOnStepMessage(string.Format(StepInput.HtmlStrings.CreatingTypeData, targetFxType.Key));
+
+                    var typeString =    string.Join(",", targetFxType.Value.Select(sdTargetType =>
+                                        new TypeData { Type = sdTargetType.Value, TargetFx = sdTargetType.Key.TargetFx, Repository = sdTargetType.Key}.TransformText()));
+                    typeString = Regex.Replace(typeString, "(\"(?:[^\"\\\\]|\\\\.)*\")|\\s+", "$1").Replace(Environment.NewLine, "");
+
+                    File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "types", targetFxType.Key.RemoveIllegalPathChars() + ".json"), typeString);
                 }
             }
         }

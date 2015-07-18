@@ -28,7 +28,14 @@ namespace SharpDox.Plugins.Html
             _htmlConfig = htmlConfig;
 	    }
 
-        public bool CheckRequirements() { return true; }
+        public bool CheckRequirements()
+        {
+            if (_htmlConfig.Theme == null)
+            {
+                ExecuteOnRequirementsWarning(_htmlStrings.ThemeMissing);
+            }
+            return _htmlConfig.Theme != null;
+        }
 
         public void Export(SDProject sdProject, string outputPath)
         {
@@ -39,9 +46,9 @@ namespace SharpDox.Plugins.Html
                 StepInput.InitStepinput(sdProject, Path.Combine(outputPath, docLanguage), docLanguage, _localController.GetLocalStringsOrDefault<HtmlStrings>(docLanguage), _htmlStrings, _htmlConfig);
 
                 var steps = new List<StepBase>();
-                steps.Add(new CopyThemeStep(0, 25));
-                steps.Add(new CreateDataStep(25, 75));
-                steps.Add(new CopySvgsStep(75, 100));
+                steps.Add(new PreStep(0, 5));
+                steps.Add(new CopyThemeStep(5, 25));
+                steps.Add(new CreateDataStep(25, 100));
 
                 foreach(var step in steps)
                 {
@@ -73,6 +80,15 @@ namespace SharpDox.Plugins.Html
             if (handler != null)
             {
                 handler((int)((progress / _docCount) + (100 / _docCount * _docIndex)));
+            }
+        }
+
+        internal void ExecuteOnRequirementsWarning(string message)
+        {
+            var handler = OnRequirementsWarning;
+            if (handler != null)
+            {
+                handler(message);
             }
         }
 

@@ -7,6 +7,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="SharpDox.UML" #>
 <#@ import namespace="SharpDox.Model" #>
+<#@ import namespace="SharpDox.Model.Repository" #>
 <#@ import namespace="SharpDox.Model.Repository.Members" #>
 <#@ import namespace="SharpDox.Model.Documentation" #>
 <#@ import namespace="SharpDox.Model.Documentation.Token" #>
@@ -23,8 +24,10 @@
 	<# if(Member is SDMethod) { 
 		var sdMethod = (SDMethod)Member; #>
 		"name": "<#= sdMethod.Signature #>",
-		"hasSequenceDiagram": <#= !sdMethod.IsSequenceDiagramEmpty() && !StepInput.HtmlConfig.DisableSequenceDiagrams ? "true" : "false" #>,
-	<# } else { #>
+		<# if(!sdMethod.IsSequenceDiagramEmpty()) { #>
+		"sequenceDiagram": "<#= sdMethod.GetSequenceDiagram(Repository).ToSvg().Transform(new Helper(StepInput.SDProject).TransformLinkToken).ToObjectString() #>",
+		<# }
+	} else { #>
 		"name": "<#= Member.Name #>",
 	<# } #> 
 	
@@ -43,3 +46,4 @@
 
 <#+	public SDMember Member { get; set; } #>
 <#+	public string MemberType { get; set; } #>
+<#+ public SDRepository Repository { get; set; } #>

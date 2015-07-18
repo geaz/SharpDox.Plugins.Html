@@ -1,6 +1,4 @@
-﻿using System;
-using SharpDox.Model;
-using SharpDox.Model.Repository;
+﻿using SharpDox.Model;
 
 namespace SharpDox.Plugins.Html
 {
@@ -39,27 +37,6 @@ namespace SharpDox.Plugins.Html
                 //    link = string.Format("../{0}/{1}.html#{2}", "type", sdMember.DeclaringType.ShortIdentifier, sdMember.ShortIdentifier);
             }
             return link;
-        }
-
-        public string ToObjectString(string text)
-        {
-            var trimmedText = text.Trim();
-            if (trimmedText.StartsWith("<pre><code>"))
-            {
-                trimmedText = trimmedText.Replace("<pre><code>", "");
-                trimmedText = trimmedText.Replace("</code></pre>", "");
-                trimmedText = trimmedText.Trim();
-                trimmedText = string.Format("<pre><code class=\"language-csharp line-numbers\">{0}</code></pre>", trimmedText);
-            }
-            else if (trimmedText.Contains("<pre><code>"))
-            {
-                trimmedText = trimmedText.Replace("<pre><code>", "<pre><code class=\"language-csharp line-numbers\">");
-                trimmedText = trimmedText.Replace(Environment.NewLine + "</code></pre>", "</code></pre>");
-            }
-
-            return trimmedText
-                .Replace("\"", "\\\"")
-                .Replace(Environment.NewLine, " \\n");
         }
     }
 }

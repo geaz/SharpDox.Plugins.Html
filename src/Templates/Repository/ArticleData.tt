@@ -18,14 +18,14 @@ sharpDox.articles = {
 	"home":{
 		title: "Home",
 		subTitle: "<#= StepInput.HtmlStrings.Description #>",
-		content: "<#= helper.ToObjectString(CommonMarkConverter.Convert(StepInput.SDProject.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken))) #>"
+		content: "<#= CommonMarkConverter.Convert(StepInput.SDProject.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken)).ToObjectString() #>"
 	},
 	<# foreach(var article in SDArticles){ 
 		if(!(article is SDArticlePlaceholder) && !(article is SDDocPlaceholder)){ #>
 			"<#= article.Id #>": {
 				title: "<#= article.Title #>",
 				<# var articleContent = article.Content.Transform(helper.TransformLinkToken); #>
-				content: "<#= helper.ToObjectString(CommonMarkConverter.Convert(articleContent)) #>"
+				content: "<#= CommonMarkConverter.Convert(articleContent.ToObjectString()) #>"
 			},
 		<# }
 	} #>

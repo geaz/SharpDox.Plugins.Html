@@ -2,11 +2,6 @@ import can from "can";
 
 export default class SiteController{
   constructor(){
-    this.articles = sharpDox.articles;
-    this.namespaces = sharpDox.namespaceData;
-    this.types = sharpDox.typeData;
-    this.members = sharpDox.memberData;
-
     this.setModel();
     this.bindEvents();
     this.setPageFromHash();

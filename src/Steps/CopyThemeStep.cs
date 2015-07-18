@@ -12,28 +12,15 @@ namespace SharpDox.Plugins.Html.Steps
 
         public override void RunStep()
         {
-            CreateDataFolder();
             CreateDynamicCSS();
             CopyFavIcon();
 
+            CopyFolder(Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "app"), StepInput.OutputPath);
             CopyFolder(StepInput.HtmlConfig.Theme, StepInput.OutputPath);
             CopyImages(StepInput.SDProject.Images, Path.Combine(StepInput.OutputPath, "data"));
             CopyImage(StepInput.SDProject.LogoPath, StepInput.OutputPath);
         }
-
-        private void CreateDataFolder()
-        {
-            if (!Directory.Exists(Path.Combine(StepInput.OutputPath, "data")))
-            {
-                Directory.CreateDirectory(Path.Combine(StepInput.OutputPath, "data"));
-            }
-
-            if (!Directory.Exists(Path.Combine(StepInput.OutputPath, "data", "namespaces")))
-            {
-                Directory.CreateDirectory(Path.Combine(StepInput.OutputPath, "data", "namespaces"));
-            }
-        }
-
+        
         private void CreateDynamicCSS()
         {
             var dynamicCss = new Css { HtmlConfig = StepInput.HtmlConfig };
@@ -75,32 +62,6 @@ namespace SharpDox.Plugins.Html.Steps
                 CopyFolder(dir, Path.Combine(output, Path.GetFileName(dir)));
             }
         }
-             
-        /*private void CopyDiagrams(string diagramPath)
-        {
-            Directory.CreateDirectory(diagramPath);
-
-            foreach (var sdRepository in StepInput.SDProject.Repositories.Values)
-            {
-                foreach (var sdType in sdRepository.GetAllTypes())
-                {
-                    if (!sdType.IsClassDiagramEmpty())
-                    {
-                        ExecuteOnStepMessage(string.Format(StepInput.HtmlStrings.CopyingFile, sdType.Guid + ".png"));
-                        sdType.GetClassDiagram().ToPng(Path.Combine(diagramPath, sdType.Guid + ".png"));
-                    }
-                }
-
-                foreach (var sdMethod in sdRepository.GetAllMethods())
-                {
-                    if (!sdMethod.IsSequenceDiagramEmpty())
-                    {
-                        ExecuteOnStepMessage(string.Format(StepInput.HtmlStrings.CopyingFile, sdMethod.Guid + ".png"));
-                        sdMethod.GetSequenceDiagram(StepInput.SDProject).ToPng(Path.Combine(diagramPath, sdMethod.Guid + ".png"));
-                    }
-                }
-            }
-        }*/
 
         private void CopyImages(IEnumerable<string> images, string outputPath)
         {

@@ -39,15 +39,15 @@
     </Reference>
     <Reference Include="SharpDox.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\sharpDoxSDK.0.9.11.7-beta\lib\net40\SharpDox.Model.dll</HintPath>
+      <HintPath>packages\sharpDoxSDK.0.9.11.8-beta\lib\net40\SharpDox.Model.dll</HintPath>
     </Reference>
     <Reference Include="SharpDox.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\sharpDoxSDK.0.9.11.7-beta\lib\net40\SharpDox.Sdk.dll</HintPath>
+      <HintPath>packages\sharpDoxSDK.0.9.11.8-beta\lib\net40\SharpDox.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="SharpDox.UML, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\sharpDoxSDK.0.9.11.7-beta\lib\net40\SharpDox.UML.dll</HintPath>
+      <HintPath>packages\sharpDoxSDK.0.9.11.8-beta\lib\net40\SharpDox.UML.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -65,12 +65,13 @@
     <Compile Include="HtmlStrings.cs" />
     <Compile Include="HtmlExporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Steps\CopySvgsStep.cs" />
     <Compile Include="Steps\CopyThemeStep.cs" />
     <Compile Include="Steps\CreateDataStep.cs" />
+    <Compile Include="Steps\PreStep.cs" />
     <Compile Include="Steps\StepBase.cs" />
     <Compile Include="Steps\StepInput.cs" />
     <Compile Include="Steps\StepRange.cs" />
+    <Compile Include="StringEx.cs" />
     <Compile Include="Templates\Css1.cs">
       <DependentUpon>Css.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -81,15 +82,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Templates\Repository\MemberData.cs">
-      <DependentUpon>MemberData.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Templates\Repository\DocumentationData.cs">
       <DependentUpon>DocumentationData.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Repository\MemberData1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MemberData.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\Repository\NamespaceData1.cs">
       <AutoGen>True</AutoGen>
@@ -150,7 +151,7 @@
     </None>
     <None Include="Templates\Repository\MemberData.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>MemberData.cs</LastGenOutput>
+      <LastGenOutput>MemberData1.cs</LastGenOutput>
     </None>
     <None Include="Templates\Repository\DocumentationData.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

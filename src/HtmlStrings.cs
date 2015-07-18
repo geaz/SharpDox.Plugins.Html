@@ -12,10 +12,13 @@ namespace SharpDox.Plugins.Html
         private string _footerLine = "Footer Line";
         private string _favIcon = "Favicon";
 
+        private string _themeMissing = "Theme missing!";
+
         private string _creatingProjectData = "Creating Project Data";
         private string _creatingStringData = "Creating String Data";
         private string _creatingNavigationData = "Creating Navigation Data";
         private string _createNamespaceData = "Creating Namespace Data: {0}";
+        private string _createTypeData = "Creating Type Data: {0}";
         private string _creatingArticleData = "Creating Article Data";
         private string _copyingFile = "Copying File: {0}";
 
@@ -107,6 +110,12 @@ namespace SharpDox.Plugins.Html
             set { _favIcon = value; }
         }
 
+        public string ThemeMissing
+        {
+            get { return _themeMissing; }
+            set { _themeMissing = value; }
+        }
+
         public string CreatingProjectData
         {
             get { return _creatingProjectData; }
@@ -129,6 +138,12 @@ namespace SharpDox.Plugins.Html
         {
             get { return _createNamespaceData; }
             set { _createNamespaceData = value; }
+        }
+
+        public string CreatingTypeData
+        {
+            get { return _createTypeData; }
+            set { _createTypeData = value; }
         }
 
         public string CreatingArticleData
