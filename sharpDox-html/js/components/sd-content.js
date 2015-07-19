@@ -29,7 +29,7 @@ export default can.Component.extend({
 		setSvg: function(){
 			$.each($('.svgpan'), function (index, value) {
 	            var parentId = $(value).attr('id');
-	            var id = "#" + parentId + " object";
+	            var id = "#" + parentId + " svg";
 	            svgPanZoom(id, { fit: false });
 	        });
 		}
@@ -48,18 +48,6 @@ export default can.Component.extend({
 					 			
 					that.viewModel.hideLoader();
 				}, 500);
-				
-				$.ajax({
-				    url: "data/Test.json",
-					dataType: "json",				
-				    success: function( response ) {
-						console.log("win");
-				        console.log( response );
-				    },
-					error: function(r){
-						console.log(r);
-					}
-				});
 			});
 		},
 		".member-header click": function(header){
@@ -70,7 +58,6 @@ export default can.Component.extend({
 		    if (icon.hasClass('icon-caret-right')) {
 		        icon.removeClass('icon-caret-right');
 		        icon.addClass('icon-caret-down');
-				this.viewModel.setSvg(); //because in some browser the object gets reloaded after "display:block" - reinit the svgs
 		    }
 		    else {
 		        icon.removeClass('icon-caret-down');

@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using CommonMark;
 using SharpDox.Model.Documentation.Article;
 using SharpDox.Plugins.Html.Templates;
 using SharpDox.Plugins.Html.Templates.Navigation;
@@ -92,22 +92,36 @@ namespace SharpDox.Plugins.Html.Steps
             ExecuteOnStepProgress(90);
             ExecuteOnStepMessage(StepInput.HtmlStrings.CreatingArticleData);
 
-            var articles = new List<SDArticle>();
+            var projectDescription = StepInput.SDProject.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage);
+            var homeData = new ArticleData()
+            {
+                Title = "Home",
+                SubTitle = StepInput.HtmlStrings.Description,
+                Content = CommonMarkConverter.Convert(projectDescription.Transform(new Helper(StepInput.SDProject).TransformLinkToken)).ToObjectString()
+            };
+            File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "articles", "home.json"), homeData.TransformText().MinifyJson());
+
             foreach (var article in StepInput.SDProject.Articles.GetElementOrDefault(StepInput.CurrentLanguage))
             {
-                AddArticle(articles, article);
+                AddArticle(article);
             }
-
-            var articleData = new ArticleData { SDArticles = articles };
-            File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "Articles.js"), articleData.TransformText());
         }
 
-        private void AddArticle(List<SDArticle> sdArticles, SDArticle sdArticle)
+        private void AddArticle(SDArticle sdArticle)
         {
-            sdArticles.Add(sdArticle);
+            if (!(sdArticle is SDArticlePlaceholder) && !(sdArticle is SDDocPlaceholder))
+            {
+                var articleData = new ArticleData
+                {
+                    Title = sdArticle.Title,
+                    Content = CommonMarkConverter.Convert(sdArticle.Content.Transform(new Helper(StepInput.SDProject).TransformLinkToken)).ToObjectString()
+                };
+                File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "articles", sdArticle.Id + ".json"), articleData.TransformText().MinifyJson());
+            }
+
             foreach (var article in sdArticle.Children)
             {
-                AddArticle(sdArticles, article);
+                AddArticle(article);
             }
         }
     }

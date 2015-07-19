@@ -12,16 +12,16 @@
 	    <pre class="syntax-pre"><code id="syntax" class="language-csharp">{{syntax}}</code></pre>
 	  </div>
 	  
-	  {{#hasSequenceDiagram}}
+	  {{#sequenceDiagram}}
 	  <div id="sequence-diagram-{{shortIdentifier}}" class="sd-sequence-diagram svgpan">
-	    <object type="image/svg+xml" data="./data/svg/{{site.currentTargetFx}}-{{shortIdentifier}}.svg" />
+	    {{{sequenceDiagram}}}
 	  </div>
 	  <div class="legend">
-					<p class="save"><a href="#"><i class="icon-save"></i>{{strings.save}}</a></p>
-					<p class="resetZoom"><a href="#"><i class="icon-refresh"></i>{{strings.reset}}</a></p>
-					<p>{{strings.panZoom}}</p>
-				</div>
-	  {{/hasSequenceDiagram}}    
+		<p class="save"><a href="#"><i class="icon-save"></i>{{strings.save}}</a></p>
+		<p class="resetZoom"><a href="#"><i class="icon-refresh"></i>{{strings.reset}}</a></p>
+		<p>{{strings.panZoom}}</p>
+	  </div>
+	  {{/sequenceDiagram}}    
 	  
 	  {{#constantValue}}
 	  <p class="member-box-title">{{strings.constantValue}}</p>

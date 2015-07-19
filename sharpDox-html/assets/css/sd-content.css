@@ -166,7 +166,7 @@ thead, th{
   resize: vertical;
 }
 
-.sd-sequence-diagram object, #sd-class-diagram object{
+.sd-sequence-diagram svg, #sd-class-diagram svg{
   width: 100%;
   height: 100%;
 }
