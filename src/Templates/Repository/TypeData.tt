@@ -20,8 +20,11 @@
 		"name": "<#= Type.Name #>",
 		"namespace": "<#= Type.Namespace.Fullname #>",
 		"syntax": "<#= Type.Syntax #>",
-		<# if(!Type.IsClassDiagramEmpty()) { #>
+		<# if(!Type.IsClassDiagramEmpty()) { 
+				var height = Type.GetClassDiagram().GetSvgSize().Height;
+				height = height > 400 ? 450 : height + 50; #>
 		"classDiagram": "<#= Type.GetClassDiagram().ToSvg().Transform(helper.TransformLinkToken).ToObjectString() #>",
+		"classDiagramHeight": "<#= height #>",
 		<# } if(Type.BaseTypes.Count > 0) { #>
 		"baseTypes": [
 			<#= string.Join(",", Type.BaseTypes.Select(baseType => 

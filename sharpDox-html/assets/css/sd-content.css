@@ -159,7 +159,6 @@ thead, th{
 .sd-sequence-diagram, #sd-class-diagram {
   border: 1px solid #DADADA;
   border-top:0;
-  height: 450px;
   padding: 5px;
   position: relative;
   overflow:hidden;

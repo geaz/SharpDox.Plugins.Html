@@ -37,17 +37,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\CommonMark.NET.0.9.1\lib\net40-client\CommonMark.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDox.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\sharpDoxSDK.0.9.11.8-beta\lib\net40\SharpDox.Model.dll</HintPath>
+    <Reference Include="SharpDox.Model">
+      <HintPath>packages\sharpDoxSDK.0.9.11.9-beta\lib\net40\SharpDox.Model.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDox.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\sharpDoxSDK.0.9.11.8-beta\lib\net40\SharpDox.Sdk.dll</HintPath>
+    <Reference Include="SharpDox.Sdk">
+      <HintPath>packages\sharpDoxSDK.0.9.11.9-beta\lib\net40\SharpDox.Sdk.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDox.UML, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\sharpDoxSDK.0.9.11.8-beta\lib\net40\SharpDox.UML.dll</HintPath>
+    <Reference Include="SharpDox.UML">
+      <HintPath>packages\sharpDoxSDK.0.9.11.9-beta\lib\net40\SharpDox.UML.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
