@@ -2,7 +2,7 @@ import can from "can";
 
 import Mousewheel from "../../vendor/svg/jquery.mousewheel";
 import svgPanZoom from "../../vendor/svg/svg-pan-zoom";
-
+import canvg from "../../vendor/svg/canvg/canvg";
 
 import SiteController from "../controller/SiteController";
 
@@ -32,6 +32,46 @@ export default can.Component.extend({
 	            var id = "#" + parentId + " svg";
 	            svgPanZoom(id, { fit: false });
 	        });
+		},
+		setSvgLinks: function(){
+			$('.resetZoom').click(function () {
+	            var svgPan = svgPanZoom("#" + $(this).parent().prev().attr('id') + " svg");
+	            svgPan.resetZoom();
+	            svgPan.center();
+	        });
+			
+			var gotClicked = false;
+	        $('.save a').click(function (event) {
+	            if ($(this).attr('href') == "#") //just create diagram one time
+	            {
+					event.preventDefault();
+	                var svgPan = svgPanZoom("#" + $(this).parent().parent().prev().attr('id') + " svg");
+	                svgPan.resetZoom();
+	                svgPan.center();
+	
+	                var isClassDiagram = $(this).parent().parent().prev().attr('id') == "sd-class-diagram";
+	                gotClicked = false; //set gotClicked to false
+	
+	                var bbox = $($(this).parent().parent().prev().children()[0])[0].getBBox();
+	                var svgData = "<svg xmlns='http://www.w3.org/2000/svg' width='" + (bbox.width + 10) + "' height='" + (bbox.height + 55) + "'>" + $($($($(this).parent().parent().prev()).children()[0]).children()[0]).html().trim() + "</svg>";
+	
+	                var link = this;
+	                var canvas = document.createElement('canvas');
+	                canvg(canvas, svgData, {
+	                    renderCallback: function () {
+	                        var png_dataurl = canvas.toDataURL();
+	                        link.download = "diagram.png";
+	                        link.href = png_dataurl;
+	
+	                        //Diagrams get not downloaded automatically - workaround
+	                        if (!gotClicked) {
+	                            gotClicked = true;
+	                            link.click();
+	                        }
+	                    }
+	                });
+	            }
+	        });
 		}
 	},
 	events: {
@@ -44,6 +84,7 @@ export default can.Component.extend({
 					that.viewModel.setLinks();
 					
 					that.viewModel.setSvg();
+					that.viewModel.setSvgLinks();
 					$('.member-content').css('display', 'none');	
 					 			
 					that.viewModel.hideLoader();

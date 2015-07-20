@@ -176,6 +176,13 @@ thead, th{
 
 .save, .resetZoom {
     float: right;
+    cursor: pointer;
+    color: #1382ce;
+}
+
+.save:hover, .resetZoom:hover{
+  cursor: pointer;
+  color: #f58026;
 }
 
 .save i, .resetZoom i {
