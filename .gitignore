@@ -5,6 +5,7 @@
 *.suo
 *.user
 *.sln.docstates
+.vs
 packages/*
 node_modules/*
 src/packages/*
