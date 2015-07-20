@@ -70,7 +70,7 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
             this.Write(".png\',\r\n\t\t\ta_attr: { href : \'#!type/");
             
             #line 16 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\NamespaceNavigation.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Identifier));
+            this.Write(this.ToStringHelper.ToStringWithCulture(sdType.Identifier.RemoveIllegalPathChars()));
             
             #line default
             #line hidden

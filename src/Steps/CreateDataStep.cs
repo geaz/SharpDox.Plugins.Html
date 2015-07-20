@@ -62,9 +62,8 @@ namespace SharpDox.Plugins.Html.Steps
                     
                     var namespaceString =   string.Join(",", targetFxNamespace.Value.Select(sdTargetNamespace =>
                                             new NamespaceData { Namespace = sdTargetNamespace.Value, TargetFx = sdTargetNamespace.Key.TargetFx }.TransformText()));
-                    namespaceString = Regex.Replace(namespaceString, "(\"(?:[^\"\\\\]|\\\\.)*\")|\\s+", "$1").Replace(Environment.NewLine, "");
 
-                    File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "namespaces", targetFxNamespace.Key + ".json"), namespaceString); 
+                    File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "namespaces", targetFxNamespace.Key + ".json"), namespaceString.MinifyJson()); 
                 }
             }
         }
@@ -80,9 +79,8 @@ namespace SharpDox.Plugins.Html.Steps
 
                     var typeString =    string.Join(",", targetFxType.Value.Select(sdTargetType =>
                                         new TypeData { Type = sdTargetType.Value, TargetFx = sdTargetType.Key.TargetFx, Repository = sdTargetType.Key}.TransformText()));
-                    typeString = Regex.Replace(typeString, "(\"(?:[^\"\\\\]|\\\\.)*\")|\\s+", "$1").Replace(Environment.NewLine, "");
 
-                    File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "types", targetFxType.Key.RemoveIllegalPathChars() + ".json"), typeString);
+                    File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "types", targetFxType.Key.RemoveIllegalPathChars() + ".json"), typeString.MinifyJson());
                 }
             }
         }
