@@ -14,6 +14,7 @@ export default can.Component.extend({
 	template: can.view('templates/content.mustache'),
 	viewModel: {
 		strings: sharpDox.strings,
+		disqusShortName: sharpDox.projectData.disqusShortName,
 		setTitle: function() {
 			if(this.site.attr('currentPageType').isArticle){
 				document.title = sharpDox.projectData.name + " - " + this.site.attr('currentPage').title;
@@ -26,13 +27,15 @@ export default can.Component.extend({
 			}
 		},
 		initDisqus: function() {
-			window.disqus_title = document.title;
-			window.disqus_url = window.location.href;
-			var dsq = document.createElement('script'); 
-			dsq.type = 'text/javascript'; 
-			dsq.async = true;
-			dsq.src = 'http://' + sharpDox.projectData.disqusShortName + '.disqus.com/embed.js';
-			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			if(this.attr('disqusShortName') != null){
+				window.disqus_title = document.title;
+				window.disqus_url = window.location.href;
+				var dsq = document.createElement('script'); 
+				dsq.type = 'text/javascript'; 
+				dsq.async = true;
+				dsq.src = 'http://' + sharpDox.projectData.disqusShortName + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			}
 		},
 		setHighlight: function(){
       		$('#syntax').html($('#dummy-syntax').html()); //because of Prism the syntax will not update. So i have to do a dummy bind and copy the value to the syntax box.
