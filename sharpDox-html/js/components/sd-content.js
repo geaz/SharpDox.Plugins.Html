@@ -14,6 +14,26 @@ export default can.Component.extend({
 	template: can.view('templates/content.mustache'),
 	viewModel: {
 		strings: sharpDox.strings,
+		setTitle: function() {
+			if(this.site.attr('currentPageType').isArticle){
+				document.title = sharpDox.projectData.name + " - " + this.site.attr('currentPage').title;
+			}
+			else if(this.site.attr('currentPageType').isNamespace || this.site.attr('currentPageType').isType){
+				document.title = sharpDox.projectData.name + " - " + this.site.attr('currentPage').name;
+			}
+			else{
+				document.title = sharpDox.projectData.name;
+			}
+		},
+		initDisqus: function() {
+			window.disqus_title = document.title;
+			window.disqus_url = window.location.href;
+			var dsq = document.createElement('script'); 
+			dsq.type = 'text/javascript'; 
+			dsq.async = true;
+			dsq.src = 'http://' + sharpDox.projectData.disqusShortName + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		},
 		setHighlight: function(){
       		$('#syntax').html($('#dummy-syntax').html()); //because of Prism the syntax will not update. So i have to do a dummy bind and copy the value to the syntax box.
 	        Prism.highlightAll();
@@ -80,13 +100,15 @@ export default can.Component.extend({
 			var that = this;
 			this.viewModel.sitecontroller.site.bind('currentPage', function(ev, newVal, oldVal){
 				setTimeout(function(){
+					that.viewModel.setTitle();
 					that.viewModel.setHighlight();
 					that.viewModel.setLinks();
 					
 					that.viewModel.setSvg();
 					that.viewModel.setSvgLinks();
 					$('.member-content').css('display', 'none');	
-					 			
+					that.viewModel.initDisqus();
+					
 					that.viewModel.hideLoader();
 				}, 500);
 			});

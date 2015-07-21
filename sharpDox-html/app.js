@@ -22,9 +22,6 @@ import sdFxChanger from "./js/components/sd-fxchanger";
 import sdContentFrame from "./js/components/sd-content";
 import sdFooter from "./js/components/sd-footer";
 
-//set homepage title
-document.title = sharpDox.projectData.name;
-
 //create and start router
 var router = new Router();
 router.start();

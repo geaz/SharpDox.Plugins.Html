@@ -17,6 +17,7 @@ namespace SharpDox.Plugins.Html
 
         private string _favIcon;
         private string _theme;
+        private string _disqusShortName;
         private string _primaryColor;
         private string _secondaryColor;
         private bool _disableSequenceDiagrams;
@@ -46,6 +47,20 @@ namespace SharpDox.Plugins.Html
                 {
                     _theme = value;
                     OnPropertyChanged("Theme");
+                }
+            }
+        }
+
+        [Name(typeof(HtmlStrings), "DisqusShortName")]
+        public string DisqusShortName
+        {
+            get { return _disqusShortName; }
+            set
+            {
+                if (_disqusShortName != value)
+                {
+                    _disqusShortName = value;
+                    OnPropertyChanged("DisqusShortName");
                 }
             }
         }

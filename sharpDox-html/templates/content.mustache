@@ -2,9 +2,7 @@
 <sd-fxchanger sitecontroller='{sitecontroller}'></sd-fxchanger>
 
 {{#site.currentPageType.isArticle}}
-  <div class="markdown">
-		        {{{site.currentPage.content}}}
-  </div>
+  {{>templates/article}}
 {{/site.currentPageType.isArticle}}
 
 {{#site.currentPageType.isNamespace}}

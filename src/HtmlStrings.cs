@@ -11,6 +11,7 @@ namespace SharpDox.Plugins.Html
         private string _disableSequenceDiagrams = "Disable sequence diagrams";
         private string _footerLine = "Footer Line";
         private string _favIcon = "Favicon";
+        private string _disqusShortName = "Disqus (Short Name)";
 
         private string _themeMissing = "Theme missing!";
 
@@ -108,6 +109,12 @@ namespace SharpDox.Plugins.Html
         {
             get { return _favIcon; }
             set { _favIcon = value; }
+        }
+
+        public string DisqusShortName
+        {
+            get { return _disqusShortName; }
+            set { _disqusShortName = value; }
         }
 
         public string ThemeMissing

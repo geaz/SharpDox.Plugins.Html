@@ -196,3 +196,8 @@ thead, th{
 .resetZoom {
     margin-right: 10px !important;
 }
+
+#disqus_thread{
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
