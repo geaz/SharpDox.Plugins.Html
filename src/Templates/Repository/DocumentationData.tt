@@ -28,19 +28,19 @@ if(Documentation.Returns.ContainsKey("default")) {
 	documentation.Add(string.Format("\"returns\":\"{0}\"", CommonMarkConverter.Convert(Documentation.Returns["default"].ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken)).ToObjectString()));
 }
 if(Documentation.Exceptions.Count > 0) {
-	documentation.Add(string.Format("\"exceptions\":{0}", 
+	documentation.Add(string.Format("\"exceptions\":[{0}]", 
 				string.Join(",", Documentation.Exceptions.Select(exception => 
 					string.Format("{{\"key\": \"{0}\",\"value\": \"{1}\"}}", exception.Key, 
 					CommonMarkConverter.Convert(exception.Value.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken)).ToObjectString())))));
 }
 if(Documentation.Params.Count > 0) {
-	documentation.Add(string.Format("\"params\":{0}", 
+	documentation.Add(string.Format("\"params\":[{0}]", 
 				string.Join(",", Documentation.Params.Select(param => 
 					string.Format("{{\"key\": \"{0}\",\"value\": \"{1}\"}}", param.Key, 
 					CommonMarkConverter.Convert(param.Value.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken)).ToObjectString())))));
 }
 if(Documentation.TypeParams.Count > 0) {
-	documentation.Add(string.Format("\"params\":{0}", 
+	documentation.Add(string.Format("\"params\":[{0}]", 
 				string.Join(",", Documentation.TypeParams.Select(typeParam => 
 					string.Format("{{\"key\": \"{0}\",\"value\": \"{1}\"}}", typeParam.Key, 
 					CommonMarkConverter.Convert(typeParam.Value.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken)).ToObjectString())))));	
