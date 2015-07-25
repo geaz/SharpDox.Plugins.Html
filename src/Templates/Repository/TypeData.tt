@@ -20,6 +20,7 @@
 		"name": "<#= Type.Name #>",
 		"namespace": "<#= Type.Namespace.Fullname #>",
 		"syntax": "<#= Type.Syntax #>",
+		"linkedSyntax": "<#= Type.SyntaxTemplate.Transform(helper.TransformLinkToken).ToObjectString() #>",
 		<# if(!Type.IsClassDiagramEmpty()) { 
 				var height = Type.GetClassDiagram().GetSvgSize().Height;
 				height = height > 400 ? 450 : height + 50; #>

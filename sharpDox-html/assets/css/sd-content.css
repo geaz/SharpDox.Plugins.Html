@@ -71,6 +71,18 @@ thead, th{
   width: 15px;
 }
 
+.md-link{
+  cursor: pointer;
+  color: #000000;
+  text-decoration: underline;
+}
+
+.md-link:hover{
+  cursor: pointer;
+  color: #f58026;
+  text-decoration: underline;
+}
+
 /* Members */
 
 .member{

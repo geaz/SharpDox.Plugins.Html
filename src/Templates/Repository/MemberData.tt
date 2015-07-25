@@ -15,6 +15,8 @@
 <#@ import namespace="SharpDox.Plugins.Html.Steps" #>
 <#@ import namespace="CommonMark" #>
 
+<# var helper = new Helper(StepInput.SDProject); #>
+
 {
 	"id": "<#= Member.Identifier #>",
 	"shortIdentifier": "<#= Member.ShortIdentifier #>",
@@ -41,7 +43,8 @@
 		<#= documentationTemplate.TransformText() #>	
 	<# } #>
 
-	"syntax": "<#= Member.Syntax #>"
+	"syntax": "<#= Member.Syntax #>",
+	"linkedSyntax": "<#= Member.SyntaxTemplate.Transform(helper.TransformLinkToken).ToObjectString() #>"
 }
 
 <#+	public SDMember Member { get; set; } #>
