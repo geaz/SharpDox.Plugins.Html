@@ -7,6 +7,7 @@ using SharpDox.Model.Documentation.Article;
 using SharpDox.Plugins.Html.Templates;
 using SharpDox.Plugins.Html.Templates.Navigation;
 using SharpDox.Plugins.Html.Templates.Repository;
+using SharpDox.Model.Documentation;
 
 namespace SharpDox.Plugins.Html.Steps
 {
@@ -19,9 +20,9 @@ namespace SharpDox.Plugins.Html.Steps
             CreateProjectData();
             CreateStringData();
             CreateNavigationData();
+            CreateArticleData();
             CreateNamespaceData();
             CreateTypeData();
-            CreateArticleData();
         }
 
         private void CreateProjectData()
@@ -60,8 +61,8 @@ namespace SharpDox.Plugins.Html.Steps
                 {
                     ExecuteOnStepMessage(string.Format(StepInput.HtmlStrings.CreatingNamespaceData, targetFxNamespace.Key));
                     
-                    var namespaceString =   string.Join(",", targetFxNamespace.Value.Select(sdTargetNamespace =>
-                                            new NamespaceData { Namespace = sdTargetNamespace.Value, TargetFx = sdTargetNamespace.Key.TargetFx }.TransformText()));
+                    var namespaceString =   string.Format("{{{0}}}", string.Join(",", targetFxNamespace.Value.Select(sdTargetNamespace =>
+                                            new NamespaceData { Namespace = sdTargetNamespace.Value, TargetFx = sdTargetNamespace.Key.TargetFx }.TransformText())));
 
                     File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "namespaces", targetFxNamespace.Key + ".json"), namespaceString.MinifyJson()); 
                 }
@@ -77,8 +78,8 @@ namespace SharpDox.Plugins.Html.Steps
                 {
                     ExecuteOnStepMessage(string.Format(StepInput.HtmlStrings.CreatingTypeData, targetFxType.Key));
 
-                    var typeString =    string.Join(",", targetFxType.Value.Select(sdTargetType =>
-                                        new TypeData { Type = sdTargetType.Value, TargetFx = sdTargetType.Key.TargetFx, Repository = sdTargetType.Key}.TransformText()));
+                    var typeString =    string.Format("{{{0}}}", string.Join(",", targetFxType.Value.Select(sdTargetType =>
+                                        new TypeData { Type = sdTargetType.Value, TargetFx = sdTargetType.Key.TargetFx, Repository = sdTargetType.Key}.TransformText())));
 
                     File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "types", targetFxType.Key.RemoveIllegalPathChars() + ".json"), typeString.MinifyJson());
                 }
@@ -90,7 +91,7 @@ namespace SharpDox.Plugins.Html.Steps
             ExecuteOnStepProgress(90);
             ExecuteOnStepMessage(StepInput.HtmlStrings.CreatingArticleData);
 
-            var projectDescription = StepInput.SDProject.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage);
+            var projectDescription = StepInput.SDProject.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage) ?? new SDTemplate(string.Empty);
             var homeData = new ArticleData()
             {
                 Title = "Home",
@@ -99,10 +100,14 @@ namespace SharpDox.Plugins.Html.Steps
             };
             File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "articles", "home.json"), homeData.TransformText().MinifyJson());
 
-            foreach (var article in StepInput.SDProject.Articles.GetElementOrDefault(StepInput.CurrentLanguage))
+            var articles = StepInput.SDProject.Articles.GetElementOrDefault(StepInput.CurrentLanguage);
+            if(articles != null)
             {
-                AddArticle(article);
-            }
+                foreach (var article in articles)
+                {
+                    AddArticle(article);
+                }
+            }            
         }
 
         private void AddArticle(SDArticle sdArticle)

@@ -6,9 +6,29 @@
 <#@ import namespace="System.Net" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="SharpDox.Model" #>
+<#@ import namespace="SharpDox.Model.Repository" #>
 
-<# var sdNamespaces = SDSolution.Repositories.FirstOrDefault().GetAllNamespaces(); 
-foreach(var sdNamespace in sdNamespaces)
+<# 
+//First merge all namespace and types to create a navigation for all available targets
+var consolidatedNamespaces = new List<SDNamespace>();
+var targetNamespaces = SDSolution.GetAllNamespaces(); 
+foreach(var targetNamespace in targetNamespaces)
+{
+	var consolidatedNamespace = targetNamespace.Value.Values.First();
+	foreach(var sdNamespace in targetNamespace.Value.Values.Skip(1))
+	{
+		foreach(var sdType in sdNamespace.Types)
+		{
+			if(consolidatedNamespace.Types.SingleOrDefault(s => s.Identifier == sdType.Identifier) == null)
+			{
+				consolidatedNamespace.Types.Add(sdType);
+			}			
+		}
+	}
+	consolidatedNamespaces.Add(consolidatedNamespace);
+}
+
+foreach(var sdNamespace in consolidatedNamespaces)
 {
 	var namespaceNavTemplate = new NamespaceNavigation { Namespace = sdNamespace }; #>
 	{

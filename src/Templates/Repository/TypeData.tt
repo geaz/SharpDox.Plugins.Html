@@ -15,8 +15,7 @@
 
 <# var helper = new Helper(StepInput.SDProject); #>
 
-{
-	"<#= TargetFx.Name #>": { 
+"<#= TargetFx.Name #>": { 
 		"name": "<#= Type.Name #>",
 		"namespace": "<#= Type.Namespace.Fullname #>",
 		"syntax": "<#= Type.Syntax #>",
@@ -61,7 +60,6 @@
 		} #>
 		<#= string.Join(",", members) #>	
 	}
-}
 
 <#+	public SDType Type { get; set; } #>
 <#+	public SDTargetFx TargetFx { get; set; } #>

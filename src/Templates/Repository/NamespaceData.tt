@@ -13,8 +13,7 @@
 
 <# var helper = new Helper(StepInput.SDProject); #>
 
-{
-	"<#= TargetFx.Name #>": {
+"<#= TargetFx.Name #>": {
 		"name": "<#= Namespace.Fullname #>",
 		"assembly": "<#= Namespace.Assemblyname #>",
 		"description": "<#= Namespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage) != null ?
@@ -44,7 +43,6 @@
 			<#= string.Join(",", types) #>
 		]
 	}
-}
 
 <#+	public SDNamespace Namespace { get; set; } #>
 <#+	public SDTargetFx TargetFx { get; set; } #>
