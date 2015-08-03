@@ -38,7 +38,7 @@ namespace SharpDox.Plugins.Html.Templates.Navigation
  
 //First merge all namespace and types to create a navigation for all available targets
 var consolidatedNamespaces = new List<SDNamespace>();
-var targetNamespaces = SDSolution.GetAllNamespaces(); 
+var targetNamespaces = SDSolution.GetAllSolutionNamespaces(); 
 foreach(var targetNamespace in targetNamespaces)
 {
 	var consolidatedNamespace = targetNamespace.Value.Values.First();

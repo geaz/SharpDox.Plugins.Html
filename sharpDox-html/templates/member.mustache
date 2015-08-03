@@ -91,14 +91,24 @@
 	
 	  {{#exceptions.length}}
 	  <p class="member-box-title">{{strings.exceptions}}</p>
-	  <div class="member-doc-box markdown">
+	  <div class="table-box">
+	  <table>
+	    <thead>
+	      <tr>
+	        <td>{{strings.name}}</td>
+	        <td>{{strings.description}}</td>
+	      </tr>
+	    </thead>
+	    <tbody>
 	    {{#exceptions}}
-	    <p class="key">{{key}}</p>
-	    <div class="inline">
-	      <p>{{{value}}}</p>
-	    </div>
+	      <tr>
+	        <td>{{key}}</td>
+	        <td class="markdown">{{{value}}}</td>
+	      </tr>
 	    {{/exceptions}}
-	  </div>
+	    </tbody>
+	  </table>
+	</div>
 	  {{/exceptions.length}}
 	  
 	  {{#seeAlsos.length}}

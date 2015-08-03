@@ -84,7 +84,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             #line 23 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
  if(!Type.IsClassDiagramEmpty()) { 
 				var height = Type.GetClassDiagram().GetSvgSize().Height;
-				height = height > 400 ? 450 : height + 50; 
+				height = height > 300 ? 375 : height + 75; 
             
             #line default
             #line hidden

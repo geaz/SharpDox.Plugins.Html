@@ -71,7 +71,7 @@ thead, th{
   width: 15px;
 }
 
-.md-link{
+.md-link, .md-link:visited{
   cursor: pointer;
   color: #000000;
   text-decoration: underline;
@@ -140,7 +140,7 @@ thead, th{
 }
 
 .member-doc-box{
-	margin: 0px 25px;
+	margin: 0px 25px 0 0;
 }
 
 .member-doc-box p, .member-doc-box pre{

@@ -22,7 +22,7 @@
 		"linkedSyntax": "<#= Type.SyntaxTemplate.Transform(helper.TransformLinkToken).ToObjectString() #>",
 		<# if(!Type.IsClassDiagramEmpty()) { 
 				var height = Type.GetClassDiagram().GetSvgSize().Height;
-				height = height > 400 ? 450 : height + 50; #>
+				height = height > 300 ? 375 : height + 75; #>
 		"classDiagram": "<#= Type.GetClassDiagram().ToSvg().Transform(helper.TransformLinkToken).ToObjectString() #>",
 		"classDiagramHeight": "<#= height #>",
 		<# } if(Type.BaseTypes.Count > 0) { #>

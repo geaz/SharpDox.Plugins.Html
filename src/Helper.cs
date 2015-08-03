@@ -24,7 +24,7 @@ namespace SharpDox.Plugins.Html
             }
             else if(linkType == "type")
             {
-                link = string.Format("#!{0}/{1}", "type", identifier);
+                link = string.Format("#!{0}/{1}", "type", identifier.RemoveIllegalPathChars());
             }
             else if(linkType == "article")
             {

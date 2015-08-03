@@ -19,7 +19,6 @@
 
 {
 	"id": "<#= Member.Identifier #>",
-	"shortIdentifier": "<#= Member.ShortIdentifier #>",
 	"type": "<#= MemberType #>",
 	"accessibility": "<#= Member.Accessibility #>",
 

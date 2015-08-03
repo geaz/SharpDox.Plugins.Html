@@ -57,7 +57,7 @@ namespace SharpDox.Plugins.Html.Steps
             ExecuteOnStepProgress(30);
             foreach (var sdSolution in StepInput.SDProject.Solutions)
             {
-                foreach (var targetFxNamespace in sdSolution.Value.GetAllNamespaces())
+                foreach (var targetFxNamespace in sdSolution.Value.GetAllSolutionNamespaces())
                 {
                     ExecuteOnStepMessage(string.Format(StepInput.HtmlStrings.CreatingNamespaceData, targetFxNamespace.Key));
                     
@@ -74,7 +74,7 @@ namespace SharpDox.Plugins.Html.Steps
             ExecuteOnStepProgress(60);
             foreach (var sdSolution in StepInput.SDProject.Solutions)
             {
-                foreach (var targetFxType in sdSolution.Value.GetAllTypes())
+                foreach (var targetFxType in sdSolution.Value.GetAllSolutionTypes())
                 {
                     ExecuteOnStepMessage(string.Format(StepInput.HtmlStrings.CreatingTypeData, targetFxType.Key));
 
