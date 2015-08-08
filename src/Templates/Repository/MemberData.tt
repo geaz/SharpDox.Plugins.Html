@@ -26,6 +26,7 @@
 		var sdMethod = (SDMethod)Member; #>
 		"name": "<#= sdMethod.Signature #>",
 		<# if(!sdMethod.IsSequenceDiagramEmpty()) { #>
+		"diagramId": "<#= sdMethod.Guid #>",
 		"sequenceDiagram": "<#= sdMethod.GetSequenceDiagram(Repository).ToSvg().Transform(new Helper(StepInput.SDProject).TransformLinkToken).ToObjectString() #>",
 		<# }
 	} else { #>

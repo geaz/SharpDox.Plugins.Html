@@ -77,11 +77,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Templates\Navigation\TypeNavigation.cs">
-      <DependentUpon>TypeNavigation.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Templates\Repository\DocumentationData.cs">
       <DependentUpon>DocumentationData.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -144,10 +139,6 @@
     <None Include="Templates\Css.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>Css1.cs</LastGenOutput>
-    </None>
-    <None Include="Templates\Navigation\TypeNavigation.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>TypeNavigation.cs</LastGenOutput>
     </None>
     <None Include="Templates\Repository\MemberData.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

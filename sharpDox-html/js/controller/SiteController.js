@@ -25,7 +25,7 @@ export default class SiteController{
 
   bindEvents(){
     var that = this;
-    can.route.bind('change', function() {
+    can.route.bind('id', function() {
       that.setPageFromHash();
     });
   }
