@@ -1,12 +1,13 @@
 sd-loader{
-  position: fixed;
+	position: fixed;
 	left: 0px;
 	top: 0px;
 	width: 100%;
 	height: 100%;
 	z-index: 9999;
-  background: white;
-  text-align: center;
+	background: white;
+	text-align: center;
+	padding-top:250px;
 }
 
 sd-loader i{

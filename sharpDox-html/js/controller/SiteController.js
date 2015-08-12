@@ -32,10 +32,15 @@ export default class SiteController{
 
   showLoader(show, delegate){
     if(show){
-      $('sd-loader').css('left', $('#main').css('left'));
+      var left = $('#main').css('left');
+      if(left == 'auto'){
+        $('sd-loader').css('left', '300');
+      }
+      else {
+        $('sd-loader').css('left', left);
+      }
+      
       $('sd-loader').css('width', $('#main').css('width'));
-      $('sd-loader i').css('margin-top', (parseInt($('sd-loader').css('height'), 10) / 2) + "px");
-
       $('sd-loader').fadeIn(delegate);
     }
     else{
