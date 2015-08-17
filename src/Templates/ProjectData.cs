@@ -155,7 +155,7 @@ namespace SharpDox.Plugins.Html.Templates
             this.Write(" footerLine: \'");
             
             #line 21 "D:\Github\SharpDox.Plugins.Html\src\Templates\ProjectData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(CommonMarkConverter.Convert(StepInput.HtmlConfig.FooterLine)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(CommonMarkConverter.Convert(StepInput.HtmlConfig.FooterLine).ToObjectString()));
             
             #line default
             #line hidden
