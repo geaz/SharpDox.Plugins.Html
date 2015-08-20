@@ -102,16 +102,23 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             
             #line default
             #line hidden
-            this.Write("\",\r\n\t\t");
+            this.Write("\",\r\n\t\t\"fit\": \"");
             
             #line 28 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(height == 375));
+            
+            #line default
+            #line hidden
+            this.Write("\",\r\n\t\t");
+            
+            #line 29 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
  } if(Type.BaseTypes.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\t\t\"baseTypes\": [\r\n\t\t\t");
             
-            #line 30 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            #line 31 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(",", Type.BaseTypes.Select(baseType => 
 				string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", baseType.Identifier, baseType.Fullname)))));
             
@@ -119,14 +126,14 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             #line hidden
             this.Write("\r\n\t\t],\r\n\t\t");
             
-            #line 33 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            #line 34 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
  } if(Type.ImplementedInterfaces.Count > 0) { 
             
             #line default
             #line hidden
             this.Write("\t\t\"implements\": [\r\n\t\t\t");
             
-            #line 35 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            #line 36 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(",", Type.ImplementedInterfaces.Select(implementedInterface => 
 				string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", implementedInterface.Identifier, implementedInterface.Fullname)))));
             
@@ -134,7 +141,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             #line hidden
             this.Write("\r\n\t\t],\r\n\t\t");
             
-            #line 38 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            #line 39 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
  }
 		var documentation = Type.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
 		if(documentation != null){
@@ -144,14 +151,14 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             #line hidden
             this.Write("\t\t\t");
             
-            #line 42 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            #line 43 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(documentationTemplate.TransformText()));
             
             #line default
             #line hidden
             this.Write("\t\r\n\t\t");
             
-            #line 43 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            #line 44 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
  }
 
 		var members = new List<string>();
@@ -175,7 +182,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             #line hidden
             this.Write("\t\t");
             
-            #line 61 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+            #line 62 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(",", members)));
             
             #line default
@@ -184,19 +191,19 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 64 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+        #line 65 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
 	public SDType Type { get; set; } 
         
         #line default
         #line hidden
         
-        #line 65 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+        #line 66 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
 	public SDTargetFx TargetFx { get; set; } 
         
         #line default
         #line hidden
         
-        #line 66 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
+        #line 67 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
  public SDRepository Repository { get; set; } 
         
         #line default

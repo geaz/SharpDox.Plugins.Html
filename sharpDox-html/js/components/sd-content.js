@@ -52,8 +52,10 @@ export default can.Component.extend({
 		setSvg: function(){
 			$.each($('.svgpan'), function (index, value) {
 	            var parentId = $(value).attr('id');
+				var fit = $(value).attr('data-fit');
+
 	            var id = "#" + parentId + " svg";
-	            svgPanZoom(id, { fit: false });
+	            svgPanZoom(id, { fit: (fit == "True") });
 	        });
 		},
 		setSvgLinks: function(){
