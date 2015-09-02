@@ -34,6 +34,11 @@ sharpDox.navigationData = [
 				<# var articleNavTemplate = new ArticleNavigation { Article = article, IsPlaceholder = true }; #>
 				<#= articleNavTemplate.TransformText() #>
 			<# }
+			else if (article is SDArticleLink)
+			{ #>
+				<# var articleNavTemplate = new ArticleNavigation { Article = article, IsLink = true }; #>
+				<#= articleNavTemplate.TransformText() #>
+			<# }
 			else
 			{ #>
 				<# var articleNavTemplate = new ArticleNavigation { Article = article, IsPlaceholder = false }; #>		

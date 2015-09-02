@@ -12,6 +12,9 @@
 	text: '<#= Article.Title #>',
 	<# if(IsPlaceholder){ #>
 	icon: 'icon-folder-close',
+	<# } else if(IsLink){ #>
+	icon: 'icon-file-text',
+	a_attr: { href : '<#= Article.Link #>' },
 	<# } else { #>
 	icon: 'icon-file-text',
 	a_attr: { href : '#!article/<#= Article.Id #>' },
@@ -37,6 +40,11 @@
 				<# var articleNavTemplate = new ArticleNavigation { Article = article, IsPlaceholder = true }; #>
 				<#= articleNavTemplate.TransformText() #>
 			<# }
+			else if (article is SDArticleLink)
+			{ #>
+				<# var articleNavTemplate = new ArticleNavigation { Article = article, IsLink = true }; #>
+				<#= articleNavTemplate.TransformText() #>
+			<# }
 			else
 			{ #>
 				<# var articleNavTemplate = new ArticleNavigation { Article = article, IsPlaceholder = false }; #>		
@@ -48,3 +56,4 @@
 
 <#+	public SDArticle Article { get; set; } #>
 <#+	public bool IsPlaceholder { get; set; } #>
+<#+	public bool IsLink { get; set; } #>
