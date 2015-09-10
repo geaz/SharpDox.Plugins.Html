@@ -16,27 +16,25 @@ namespace SharpDox.Plugins.Html
             var link = string.Empty;
             if (linkType == "image")
             {
-                link = string.Format("../assets/{0}s/{1}", linkType, identifier);
+                link = string.Format("./data/{0}s/{1}", linkType, identifier);
             }
             else if(linkType == "namespace")
             {
-                link = string.Format("../{0}/{1}.html", linkType, identifier);
+                link = string.Format("#!{0}/{1}", linkType, identifier);
             }
             else if(linkType == "type")
             {
-                var sdType = _sdProject.GetTypeByIdentifier(identifier);
-                if(sdType != null)
-                    link = string.Format("../{0}/{1}.html", "type", sdType.ShortIdentifier);
+                link = string.Format("#!{0}/{1}", "type", identifier.RemoveIllegalPathChars());
             }
             else if(linkType == "article")
             {
-                link = string.Format("../{0}/{1}.html", linkType, identifier);
+                link = string.Format("#!{0}/{1}", linkType, identifier);
             }
             else // Member
             {
-                var sdMember = _sdProject.GetMemberByIdentifier(identifier);
-                if (sdMember != null)
-                    link = string.Format("../{0}/{1}.html#{2}", "type", sdMember.DeclaringType.ShortIdentifier, sdMember.ShortIdentifier);
+                //var sdMember = _sdProject.GetMemberByIdentifier(identifier);
+                //if (sdMember != null)
+                //    link = string.Format("../{0}/{1}.html#{2}", "type", sdMember.DeclaringType.ShortIdentifier, sdMember.ShortIdentifier);
             }
             return link;
         }

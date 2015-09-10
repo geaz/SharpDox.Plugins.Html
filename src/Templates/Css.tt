@@ -5,21 +5,20 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="SharpDox.Plugins.Html" #> 
 
-.ui-outer-north{
-    background: <#= HtmlConfig.HeaderBackground #>;
+.primary-background{
+    background: <#= HtmlConfig.PrimaryColor #>;
 }
 
-.ui-outer-resizer-north{
-    background: <#= HtmlConfig.HeaderBackground #>;
+.primary-foreground{
+    color: <#= HtmlConfig.PrimaryColor #>;
 }
 
-#sitetitle a{
-	color: <#= HtmlConfig.Color #>;
+.secondary-background{
+    background: <#= HtmlConfig.SecondaryColor #>;
 }
 
-#subtitle{
-	background: <#= HtmlConfig.SubHeaderBackground #>;
-	color: <#= HtmlConfig.Color #>;
+.secondary-foreground{
+    color: <#= HtmlConfig.SecondaryColor #>;
 }
 
 <#+	public HtmlConfig HtmlConfig { get; set; } #>

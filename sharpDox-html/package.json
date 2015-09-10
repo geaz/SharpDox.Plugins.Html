@@ -1,0 +1,28 @@
+{
+  "name": "sharpDox-html",
+  "version": "1.0.0",
+  "description": "The HTML application for the sharpdox HTML plugin.",
+  "main": "app",
+  "author": "Gerrit 'Geaz' Gazic",
+  "license": "MIT",
+  "system": {
+    "bundlesPath": "dist"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "steal": "steal-tools --bundleSteal",
+    "prebuild": "npm run clean",
+    "build": "npm run steal",
+    "predebugbuild": "npm run clean",
+    "debugbuild": "steal-tools --bundleSteal --debug true --sourceMaps true"
+  },
+  "dependencies": {
+    "can": "^2.2.4",
+    "jquery": "^2.1.3",
+    "steal": "^0.10.5",
+    "steal-tools": "^0.10"
+  },
+  "devDependencies": {
+    "rimraf": "^2.3.2"
+  }
+}

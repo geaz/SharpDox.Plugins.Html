@@ -1,0 +1,2 @@
+install:
+  - ps: Install-Product node 0

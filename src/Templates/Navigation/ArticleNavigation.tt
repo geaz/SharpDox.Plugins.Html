@@ -1,0 +1,59 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="SharpDox.Model.Documentation.Article" #>
+<#@ import namespace="SharpDox.Plugins.Html.Steps" #>
+
+{
+	id: '<#= Article.Id #>',
+	text: '<#= Article.Title #>',
+	<# if(IsPlaceholder){ #>
+	icon: 'icon-folder-close',
+	<# } else if(IsLink){ #>
+	icon: 'icon-file-text',
+	a_attr: { href : '<#= ((SDArticleLink)Article).Link #>' },
+	<# } else { #>
+	icon: 'icon-file-text',
+	a_attr: { href : '#!article/<#= Article.Id #>' },
+	<# } #>
+	children: [
+		<# for (int i = 0; i < Article.Children.Count; i++)
+		{
+			var article = Article.Children[i];
+			if (article is SDDocPlaceholder)
+			{ #>		
+				{
+					id: '<#= article.Id #>',
+					text: '<#= article.Title #>',
+					icon: 'icon-folder-close',
+					children: [
+						<# var apiNavTemplate = new ApiNavigation { SDSolution = StepInput.SDProject.Solutions[((SDDocPlaceholder)article).SolutionFile] }; #>						
+						<#= apiNavTemplate.TransformText() #>
+					]
+				}
+			<# }
+			else if (article is SDArticlePlaceholder)
+			{ #>
+				<# var articleNavTemplate = new ArticleNavigation { Article = article, IsPlaceholder = true }; #>
+				<#= articleNavTemplate.TransformText() #>
+			<# }
+			else if (article is SDArticleLink)
+			{ #>
+				<# var articleNavTemplate = new ArticleNavigation { Article = article, IsLink = true }; #>
+				<#= articleNavTemplate.TransformText() #>
+			<# }
+			else
+			{ #>
+				<# var articleNavTemplate = new ArticleNavigation { Article = article, IsPlaceholder = false }; #>		
+				<#= articleNavTemplate.TransformText() #>
+			<# }	
+		} #>
+	]
+},
+
+<#+	public SDArticle Article { get; set; } #>
+<#+	public bool IsPlaceholder { get; set; } #>
+<#+	public bool IsLink { get; set; } #>
