@@ -14,7 +14,7 @@
 	icon: 'icon-folder-close',
 	<# } else if(IsLink){ #>
 	icon: 'icon-file-text',
-	a_attr: { href : '<#= Article.Link #>' },
+	a_attr: { href : '<#= ((SDArticleLink)Article).Link #>' },
 	<# } else { #>
 	icon: 'icon-file-text',
 	a_attr: { href : '#!article/<#= Article.Id #>' },

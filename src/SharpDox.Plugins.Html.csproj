@@ -38,15 +38,15 @@
       <HintPath>packages\CommonMark.NET.0.9.1\lib\net40-client\CommonMark.dll</HintPath>
     </Reference>
     <Reference Include="SharpDox.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\sharpDoxSDK.0.9.11.14-beta\lib\net40\SharpDox.Model.dll</HintPath>
+      <HintPath>packages\sharpDoxSDK.1.0\lib\net40\SharpDox.Model.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SharpDox.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\sharpDoxSDK.0.9.11.14-beta\lib\net40\SharpDox.Sdk.dll</HintPath>
+      <HintPath>packages\sharpDoxSDK.1.0\lib\net40\SharpDox.Sdk.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SharpDox.UML, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\sharpDoxSDK.0.9.11.14-beta\lib\net40\SharpDox.UML.dll</HintPath>
+      <HintPath>packages\sharpDoxSDK.1.0\lib\net40\SharpDox.UML.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
