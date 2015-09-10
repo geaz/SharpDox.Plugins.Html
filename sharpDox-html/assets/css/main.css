@@ -1,0 +1,13 @@
+#main{
+	left: 300px;
+}
+
+#sidebar{
+	height: 100%;
+	width: 300px;
+}
+
+#divider {
+    left: 300px;
+    width: 2px;
+}

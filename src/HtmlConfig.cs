@@ -16,9 +16,10 @@ namespace SharpDox.Plugins.Html
         }
 
         private string _favIcon;
-        private string _headerBackground;
-        private string _subheaderBackground;
-        private string _color;
+        private string _theme;
+        private string _disqusShortName;
+        private string _primaryColor;
+        private string _secondaryColor;
         private bool _disableSequenceDiagrams;
         private string _footerLine;
 
@@ -34,39 +35,57 @@ namespace SharpDox.Plugins.Html
             }
         }
 
-        [Name(typeof(HtmlStrings), "HeaderBackground")]
-        [ConfigEditor(EditorType.Colorpicker)]
-        public string HeaderBackground
+        [Required]
+        [ConfigEditor(EditorType.ComboBox, typeof(ThemeList))]
+        [Name(typeof(HtmlStrings), "Theme")]
+        public string Theme
         {
-            get { return _headerBackground ?? "#3F72DB"; }
+            get { return _theme; }
             set
             {
-                _headerBackground = value;
-                OnPropertyChanged("HeaderBackground");
+                if (_theme != value)
+                {
+                    _theme = value;
+                    OnPropertyChanged("Theme");
+                }
             }
         }
 
-        [Name(typeof(HtmlStrings), "SubHeaderBackground")]
-        [ConfigEditor(EditorType.Colorpicker)]
-        public string SubHeaderBackground
+        [Name(typeof(HtmlStrings), "DisqusShortName")]
+        public string DisqusShortName
         {
-            get { return _subheaderBackground ?? "#2862db"; }
+            get { return _disqusShortName; }
             set
             {
-                _subheaderBackground = value;
-                OnPropertyChanged("SubheaderBackground");
+                if (_disqusShortName != value)
+                {
+                    _disqusShortName = value;
+                    OnPropertyChanged("DisqusShortName");
+                }
             }
         }
 
-        [Name(typeof(HtmlStrings), "Color")]
+        [Name(typeof(HtmlStrings), "PrimaryColor")]
         [ConfigEditor(EditorType.Colorpicker)]
-        public string Color
+        public string PrimaryColor
         {
-            get { return _color ?? "#FFFFFF"; }
+            get { return _primaryColor ?? "#F5F4F0"; }
             set
             {
-                _color = value;
-                OnPropertyChanged("Color");
+                _primaryColor = value;
+                OnPropertyChanged("PrimaryColor");
+            }
+        }
+
+        [Name(typeof(HtmlStrings), "SecondaryColor")]
+        [ConfigEditor(EditorType.Colorpicker)]
+        public string SecondaryColor
+        {
+            get { return _secondaryColor ?? "#F58026"; }
+            set
+            {
+                _secondaryColor = value;
+                OnPropertyChanged("SecondaryColor");
             }
         }
 
