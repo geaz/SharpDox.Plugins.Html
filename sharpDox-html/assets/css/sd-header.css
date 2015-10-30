@@ -9,6 +9,10 @@ sd-header a{
   text-align:center;
 }
 
+sd-header a img{
+  max-height:50px;
+}
+
 sd-header h1{
   margin:0;
   padding:0;
