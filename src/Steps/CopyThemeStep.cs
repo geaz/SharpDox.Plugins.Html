@@ -12,11 +12,13 @@ namespace SharpDox.Plugins.Html.Steps
 
         public override void RunStep()
         {
+            var themeList = new ThemeList();
+
             CreateDynamicCSS();
             CopyFavIcon();
 
             CopyFolder(Path.Combine(Path.GetDirectoryName(GetType().Assembly.Location), "app"), StepInput.OutputPath);
-            CopyFolder(StepInput.HtmlConfig.Theme, StepInput.OutputPath);
+            CopyFolder(themeList.GetThemeFolder(StepInput.HtmlConfig.Theme), StepInput.OutputPath);
             CopyImages(StepInput.SDProject.Images, Path.Combine(StepInput.OutputPath, "data"));
             CopyImage(StepInput.SDProject.LogoPath, Path.Combine(StepInput.OutputPath, "data"));
         }
