@@ -16,8 +16,9 @@ namespace SharpDox.Plugins.Html
             var themes = Directory.GetDirectories(themeFolder);
             foreach (var theme in themes)
             {
-                Add(theme, theme);
-                _themes.Add(Path.GetFileName(theme), theme);
+                var themeName = Path.GetFileName(theme);
+                Add(themeName, themeName);
+                _themes.Add(themeName, theme);
             }
         }
 
