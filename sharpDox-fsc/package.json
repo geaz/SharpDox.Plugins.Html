@@ -1,0 +1,26 @@
+{
+  "name": "sharpDox-html",
+  "version": "1.0.0",
+  "description": "The HTML application for the sharpdox HTML plugin.",
+  "main": "app",
+  "author": "Gerrit 'Geaz' Gazic",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --inline --content-base ."
+  },
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.3",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-register": "^6.5.2",
+    "expose-loader": "^0.7.1",
+    "riotjs-loader": "^1.1.3",    
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "riot": "^2.3.15"
+  }
+}

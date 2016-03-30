@@ -14,6 +14,9 @@ src/packages/*
 sharpDox-html/node_modules/*
 sharpDox-html/data/*
 sharpDox-html/dist/*
+sharpDox-fsc/node_modules/*
+sharpDox-fsc/data/*
+sharpDox-fsc/dist/*
 
 # Build results
 

@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+        <link rel="stylesheet" href="./assets/css/reset.css">
+        <link rel="stylesheet" href="./assets/css/font.css">
+        <link rel="stylesheet" href="./assets/css/typography.css">
+        <link rel="stylesheet" href="./assets/css/main.css">
+        <link rel="stylesheet" href="./vendor/splitter/jquery.splitter.css">
+        
+        <link rel="stylesheet" href="./data/dynamic.css">
+    </head>
+    <body>
+
+        <div id="wrapper" class="split-pane fixed-left">
+            <div id="sidebar" class="split-pane-component primary-background">
+                <sd-header></sd-header>
+                <sd-nav></sd-nav>
+            </div>
+            <div class="split-pane-divider secondary-background" id="divider"></div>
+            <div id="main" class="split-pane-component">
+                <sd-loader></sd-loader>
+                <sd-titlebar></sd-titlebar>
+                <sd-fxchanger></sd-fxchanger>
+                <sd-content></sd-content>
+                <sd-footer></sd-footer>
+            </div>
+        </div>
+
+        <script src="./data/Strings.js"></script>
+        <script src="./data/Project.js"></script>
+        <script src="./data/Navigation.js"></script>
+        <script src="./app.js"></script>
+
+    </body>
+</html>
