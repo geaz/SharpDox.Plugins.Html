@@ -34,9 +34,7 @@ export default class App{
         this._loaderPresenter = new LoaderPresenter('/templates/loader.tag', () => {
             self._stateContainer.registerSubscriber(self._loaderPresenter);
         });        
-        this._navPresenter = new NavPresenter('/templates/nav.tag', () => {
-            self._stateContainer.registerSubscriber(self._navPresenter);
-        });
+        this._navPresenter = new NavPresenter('/templates/nav.tag');
         this._contentPresenter = new ContentPresenter('/templates/content.tag', this._stateContainer, this._siteStateChanger);
         
         $('#wrapper').splitPane();
