@@ -13,8 +13,8 @@ export default class FxChangerPresenter{
     notify(state){
         for(let key in this._view.tags){
             this._view.tags[key].update({
-                selectedTargetFx: state.get("selectedTargetFx"),
-                currentPageTargetFxs: state.get("currentPageTargetFxs")
+                selectedTargetFx: state.get("SiteStateChanger.selectedTargetFx"),
+                currentPageTargetFxs: state.get("SiteStateChanger.currentPageTargetFxs")
             });
         }        
     }

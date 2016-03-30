@@ -6,5 +6,5 @@ import { StateContainer } from './vendor/FSC';
 import App from './js/App';
 
 /* Init the Application */
-let stateContainer = new StateContainer();
+let stateContainer = new StateContainer(null, true);
 let application = new App(stateContainer);

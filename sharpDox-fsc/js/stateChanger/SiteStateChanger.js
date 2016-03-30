@@ -48,8 +48,8 @@ export default class SiteStateChanger extends StateChanger{
             changes['gettingPage'] = false;
             changes['currentPageTargetFxs'] = Object.keys(namespace);
             
-            if(namespace[currentState.get('selectedTargetFx')] !== undefined){ 
-                changes['currentPageData'] = namespace[currentState.get('selectedTargetFx')];     
+            if(namespace[currentState.get('SiteStateChanger.selectedTargetFx')] !== undefined){ 
+                changes['currentPageData'] = namespace[currentState.get('SiteStateChanger.selectedTargetFx')];     
             }
             else{
                 changes['selectedTargetFx'] = Object.keys(namespace)[0];
@@ -73,8 +73,8 @@ export default class SiteStateChanger extends StateChanger{
             changes['gettingPage'] = false;
             changes['currentPageTargetFxs'] = Object.keys(type);
             
-            if(type[currentState.get('selectedTargetFx')] !== undefined){ 
-                changes['currentPageData'] = type[currentState.get('selectedTargetFx')];
+            if(type[currentState.get('SiteStateChanger.selectedTargetFx')] !== undefined){ 
+                changes['currentPageData'] = type[currentState.get('SiteStateChanger.selectedTargetFx')];
             }
             else{
                 changes['selectedTargetFx'] = Object.keys(type)[0];

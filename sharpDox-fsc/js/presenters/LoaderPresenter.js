@@ -10,7 +10,7 @@ export default class LoaderPresenter{
     notify(state){
         for(let key in this._view.tags){
             this._view.tags[key].update({
-                gettingPage: state.get("gettingPage")
+                gettingPage: state.get("SiteStateChanger.gettingPage")
             });
         }        
     }    

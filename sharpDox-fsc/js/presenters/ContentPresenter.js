@@ -15,7 +15,7 @@ export default class ContentPresenter{
     notify(state){
         for(let key in this._view.tags){
             this._view.tags[key].update({
-                currentPageType: state.get("currentPageType")
+                currentPageType: state.get("SiteStateChanger.currentPageType")
             });
         }        
     }
