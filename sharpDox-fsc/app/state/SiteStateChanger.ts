@@ -1,7 +1,16 @@
-import $ from 'jquery';
+declare var sharpDox;
+import {Injectable} from 'angular2/core';
 import { StateChanger } from '../../vendor/FSC';
+import { StateService } from './StateService';
 
-export default class SiteStateChanger extends StateChanger{       
+@Injectable()
+export class SiteStateChanger extends StateChanger{     
+    
+    constructor(private _stateService : StateService){
+        super();      
+        this._stateService.stateContainer.registerStateChanger(this);
+    }
+      
     setSelectedTargetFx(targetFx){
         this._triggerChange({'selectedTargetFx': targetFx});
     }
@@ -100,4 +109,5 @@ export default class SiteStateChanger extends StateChanger{
     }
     
     get name(){ return "SiteStateChanger"; }
+    
 };

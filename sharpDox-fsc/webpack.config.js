@@ -1,21 +1,36 @@
 var webpack = require('webpack');
 
+var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-    entry: "./index.js",
+    entry: {
+        'vendor': './app/vendor.ts',
+        'app': './app/app.ts'
+    },
     output: {
-        path: "./dist",
-        filename: "app.js"
+        path: "./build",
+        filename: "[name].[hash].js"
     },
     devtool: 'source-map',
+    resolve: {
+        extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+    },
+    plugins: [
+        new UglifyJsPlugin({
+            sourceMap: true,
+            minimize: true,
+            mangle: {
+                except: ['$super', '$', 'exports', 'require']
+            }
+        }),
+        new CommonsChunkPlugin("vendor", "vendor.[hash].js"),
+        new HtmlWebpackPlugin({ template: './index.html' }),
+    ],
     module: {
-        // Necessary for .tag precompilation - BasePresenter will compile it on runtime, for custom templating purposes
-        //preLoaders: [
-        //    { test: /\.tag$/, exclude: /node_modules/, loader: 'riotjs-loader', query: { type: 'none' } }
-        //],
         loaders: [
-            { test: require.resolve("jquery"), loader: "expose?$!expose?jQuery" },
-            { test: require.resolve("./node_modules/riot/riot+compiler"), loader: "expose?riot" },
-            { test: /\.js$|/, exclude: /node_modules/, loader: 'babel-loader' }
+            { test: /\.tsx?$/, loader: 'ts-loader' }
         ]
     }
 };

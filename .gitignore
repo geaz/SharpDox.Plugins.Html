@@ -17,6 +17,7 @@ sharpDox-html/dist/*
 sharpDox-fsc/node_modules/*
 sharpDox-fsc/data/*
 sharpDox-fsc/dist/*
+sharpDox-fsc/typings/*
 
 # Build results
 
