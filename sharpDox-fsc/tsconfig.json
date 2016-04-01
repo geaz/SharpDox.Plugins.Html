@@ -12,6 +12,7 @@
     "typings/main"
   ],
   "filesGlob": [
+    "typings/custom.d.ts",
     "typings/browser.d.ts"
   ]
 }

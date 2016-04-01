@@ -1,4 +1,3 @@
-declare var sharpDox;
 import {Injectable} from 'angular2/core';
 import { StateChanger } from '../../vendor/FSC';
 import { StateService } from './StateService';

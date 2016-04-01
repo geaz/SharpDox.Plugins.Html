@@ -5,6 +5,9 @@ export class StateContainer {
     
     registerStateChanger(stateChanger : StateChanger) : void;
     unregisterStateChanger(stateChanger : StateChanger) : void;
+    
+    registerSubscriber(subscriber : any) : void;
+    unregisterSubscriber(subscriber : any) :void;
 }
 export class HistoryStateContainer {}
 export class StateChanger {

@@ -7,7 +7,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: {
         'vendor': './app/vendor.ts',
-        'app': './app/app.ts'
+        'app': './app/main.ts'
     },
     output: {
         path: "./build",
@@ -17,20 +17,26 @@ module.exports = {
     resolve: {
         extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
     },
-    plugins: [
-        new UglifyJsPlugin({
-            sourceMap: true,
-            minimize: true,
-            mangle: {
-                except: ['$super', '$', 'exports', 'require']
-            }
-        }),
-        new CommonsChunkPlugin("vendor", "vendor.[hash].js"),
-        new HtmlWebpackPlugin({ template: './index.html' }),
-    ],
     module: {
         loaders: [
             { test: /\.tsx?$/, loader: 'ts-loader' }
         ]
-    }
+    },
+    plugins: [
+        new UglifyJsPlugin({
+            sourceMap: true,
+            minimize: true,
+            mangle: false, // { except: ['$super', '$', 'exports', 'require'] }
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery',
+            jquery: 'jquery'
+        }),
+        new CommonsChunkPlugin("vendor", "vendor.[hash].js"),
+        new HtmlWebpackPlugin({ template: './index.html' }),
+    ]
 };

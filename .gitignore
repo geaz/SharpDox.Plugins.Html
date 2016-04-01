@@ -18,6 +18,7 @@ sharpDox-fsc/node_modules/*
 sharpDox-fsc/data/*
 sharpDox-fsc/dist/*
 sharpDox-fsc/typings/*
+!sharpDox-fsc/typings/custom.d.ts
 
 # Build results
 

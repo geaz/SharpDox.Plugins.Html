@@ -9,7 +9,7 @@
     "start": "webpack-dev-server --inline --content-base ."
   },
   "devDependencies": {
-    "html-webpack-plugin": "^2.15.0",
+    "html-webpack-plugin": "^2.15.0",    
     "ts-loader": "^0.8.1",
     "typescript": "^1.8.9",
     "typings": "^0.7.11",

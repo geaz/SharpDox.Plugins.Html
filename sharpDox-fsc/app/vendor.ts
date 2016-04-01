@@ -11,5 +11,10 @@ import 'angular2/core';
 import 'angular2/router';
 import 'angular2/http';
 
-// Other vendors 
+// Jquery
 import 'jquery';
+import '../vendor/splitter/jquery.splitter';
+import '../vendor/jstree/jstree';
+
+// Other vendors
+import '../vendor/FSC'; 

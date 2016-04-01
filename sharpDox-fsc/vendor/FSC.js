@@ -1,5 +1,4 @@
 !function (t, e) {
-	console.log(t);
 	"object" == typeof exports && "object" == typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define([], e) : "object" == typeof exports ? exports.FSC = e() : t.FSC = e()
 }
 (this, function () {
