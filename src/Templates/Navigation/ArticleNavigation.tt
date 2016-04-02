@@ -17,7 +17,7 @@
 	a_attr: { href : '<#= ((SDArticleLink)Article).Link #>' },
 	<# } else { #>
 	icon: 'icon-file-text',
-	a_attr: { href : '#!article/<#= Article.Id #>' },
+	a_attr: { href : '#/article/<#= Article.Id #>' },
 	<# } #>
 	children: [
 		<# for (int i = 0; i < Article.Children.Count; i++)

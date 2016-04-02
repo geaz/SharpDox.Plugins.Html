@@ -12,7 +12,7 @@
 			id: '<#= sdType.Identifier.RemoveIllegalPathChars() #>',
 			text: '<#= sdType.Name #>',
 			icon: './assets/icons/<#= sdType.Kind #>_<#= sdType.Accessibility #>.png',
-			a_attr: { href : '#!type/<#= sdType.Identifier.RemoveIllegalPathChars() #>' }
+			a_attr: { href : '#/type/<#= sdType.Identifier.RemoveIllegalPathChars() #>' }
         },	
 <#	}	#>
 

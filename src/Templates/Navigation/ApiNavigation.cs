@@ -75,7 +75,7 @@ foreach(var sdNamespace in consolidatedNamespaces)
             
             #line default
             #line hidden
-            this.Write("\',\r\n\t\ticon: \'./assets/icons/namespace_public.png\',\r\n\t\ta_attr: { href : \'#!namespa" +
+            this.Write("\',\r\n\t\ticon: \'./assets/icons/namespace_public.png\',\r\n\t\ta_attr: { href : \'#/namespa" +
                     "ce/");
             
             #line 38 "D:\Github\SharpDox.Plugins.Html\src\Templates\Navigation\ApiNavigation.tt"

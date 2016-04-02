@@ -35,7 +35,7 @@ foreach(var sdNamespace in consolidatedNamespaces)
 		id: '<#= sdNamespace.Identifier #>',
 		text: '<#= sdNamespace.Fullname #>',
 		icon: './assets/icons/namespace_public.png',
-		a_attr: { href : '#!namespace/<#= sdNamespace.Identifier #>' },
+		a_attr: { href : '#/namespace/<#= sdNamespace.Identifier #>' },
 		children: [
 			<#= namespaceNavTemplate.TransformText() #>
 		]

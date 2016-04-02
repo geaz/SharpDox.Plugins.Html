@@ -20,15 +20,15 @@ namespace SharpDox.Plugins.Html
             }
             else if(linkType == "namespace")
             {
-                link = string.Format("#!{0}/{1}", linkType, identifier);
+                link = string.Format("#/{0}/{1}", linkType, identifier);
             }
             else if(linkType == "type")
             {
-                link = string.Format("#!{0}/{1}", "type", identifier.RemoveIllegalPathChars());
+                link = string.Format("#/{0}/{1}", "type", identifier.RemoveIllegalPathChars());
             }
             else if(linkType == "article")
             {
-                link = string.Format("#!{0}/{1}", linkType, identifier);
+                link = string.Format("#/{0}/{1}", linkType, identifier);
             }
             else // Member
             {
