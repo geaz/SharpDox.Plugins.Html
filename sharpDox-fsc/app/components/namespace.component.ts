@@ -17,12 +17,11 @@ export class NamespaceComponent extends ContentBase {
     public currentPageData : any = {};
     
     constructor(private _routeParams : RouteParams, 
-                private _stateService : StateService,
-                private _siteStateChanger : SiteStateChanger){ 
-        super("sd-namespace");
+                private _siteStateChanger : SiteStateChanger,                
+                _stateService : StateService){ 
+        super("sd-namespace", _stateService);
         this.strings = sharpDox.strings;
         this.disqusShortName = sharpDox.projectData.disqusShortName;
-        _stateService.stateContainer.registerSubscriber(this);
     }
     
     notify(state){

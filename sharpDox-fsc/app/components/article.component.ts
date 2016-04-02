@@ -12,17 +12,14 @@ import {SiteStateChanger} from '../state/SiteStateChanger';
 })
 export class ArticleComponent extends ContentBase { 
            
-    private _subscriberId : number;
-           
     public currentPageData : any = {};
     public disqusShortName : string;
     
     constructor(private _routeParams : RouteParams, 
-                private _stateService : StateService,
-                private _siteStateChanger : SiteStateChanger){ 
-        super("sd-article");
-        this.disqusShortName = sharpDox.projectData.disqusShortName;
-        this._subscriberId = this._stateService.stateContainer.registerSubscriber(this);
+                private _siteStateChanger : SiteStateChanger,
+                _stateService : StateService){ 
+        super("sd-article", _stateService);
+        this.disqusShortName = sharpDox.projectData.disqusShortName;        
     }
     
     notify(state){
@@ -32,10 +29,6 @@ export class ArticleComponent extends ContentBase {
     ngOnInit(){        
         let id = this._routeParams.get('id');
         this._siteStateChanger.setCurrentPageToArticle(id);     
-    }
-    
-    ngOnDestory(){
-        this._stateService.stateContainer.unregisterSubscriber(this._subscriberId);
     }
     
 }
