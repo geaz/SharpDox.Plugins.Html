@@ -9,10 +9,12 @@ import {StateService} from '../state/StateService';
 })
 export class TitleBarComponent{
     
+    public strings : any;
     public currentPageData : any;
     public currentPageType : string;
     
     constructor(private _stateService : StateService){
+        this.strings = sharpDox.strings;
         _stateService.stateContainer.registerSubscriber(this);
     }
     

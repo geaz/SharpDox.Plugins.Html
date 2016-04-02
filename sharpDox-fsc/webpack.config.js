@@ -19,7 +19,8 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.tsx?$/, loader: 'ts-loader' }
+            { test: /\.tsx?$/, loader: 'ts-loader' },
+            { test: /\.css$/, loader: "style-loader!css-loader?-url" }
         ]
     },
     plugins: [

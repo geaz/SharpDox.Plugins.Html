@@ -15,7 +15,7 @@ export class SiteStateChanger extends StateChanger{
     }
    
     setToHome(){
-        this._triggerChange({'gettingPage': true});
+        this._triggerChange({'gettingPage': true, 'currentPageData': {}});
         
         let that = this;
         $.getJSON("data/articles/home.json", function( data ) {  
@@ -31,7 +31,7 @@ export class SiteStateChanger extends StateChanger{
     }
    
     setCurrentPageToArticle(id){        
-        this._triggerChange({'gettingPage': true});
+        this._triggerChange({'gettingPage': true, 'currentPageData': {}});
         
         let that = this;
         $.getJSON("data/articles/" + id + ".json", function( data ) {            
@@ -47,11 +47,11 @@ export class SiteStateChanger extends StateChanger{
     } 
     
     setCurrentPageToNamespace(id){
-        this._triggerChange({'gettingPage': true});    
+        this._triggerChange({'gettingPage': true, 'currentPageData': {}});    
         
         let that = this;   
         $.getJSON("data/namespaces/" + id + ".json", function( namespace ) {           
-            let currentState = this._requestCurrentState();
+            let currentState = that._requestCurrentState();
             let changes = { };  
             changes['gettingPage'] = false;
             changes['currentPageTargetFxs'] = Object.keys(namespace);
@@ -72,11 +72,11 @@ export class SiteStateChanger extends StateChanger{
     } 
     
     setCurrentPageToType(id){
-        this._triggerChange({'gettingPage': true});      
+        this._triggerChange({'gettingPage': true, 'currentPageData': {}});      
         
         let that = this;  
         $.getJSON("data/types/" + id + ".json", function( type ) {
-            let currentState = this._requestCurrentState();            
+            let currentState = that._requestCurrentState();            
             let changes = { };  
             changes['gettingPage'] = false;
             changes['currentPageTargetFxs'] = Object.keys(type);

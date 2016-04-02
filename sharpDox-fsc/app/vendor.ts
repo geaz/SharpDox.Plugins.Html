@@ -1,5 +1,7 @@
 /// <reference path="../node_modules/angular2/typings/browser.d.ts" />
 
+import './vendor.css';
+
 // Angular 2
 import 'es6-shim/es6-shim.js';
 import 'zone.js/dist/zone';
@@ -17,4 +19,5 @@ import '../vendor/splitter/jquery.splitter';
 import '../vendor/jstree/jstree';
 
 // Other vendors
+import '../vendor/prism/prism';
 import '../vendor/FSC'; 

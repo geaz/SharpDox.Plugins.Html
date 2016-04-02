@@ -6,36 +6,34 @@ import {StateService} from '../state/StateService';
 import {SiteStateChanger} from '../state/SiteStateChanger';
 
 @Component({
-    selector: 'sd-article',
-    templateUrl: '/templates/content/article/article.html',
-    styleUrls: ['./templates/content/article/article.css']
+    selector: 'sd-namespace',
+    templateUrl: '/templates/content/namespace/namespace.html',
+    styleUrls: ['./templates/content/namespace/namespace.css']
 })
-export class ArticleComponent extends ContentBase { 
-           
-    private _subscriberId : number;
-           
-    public currentPageData : any = {};
+export class NamespaceComponent extends ContentBase { 
+    
+    public strings : any;
     public disqusShortName : string;
+    public currentPageData : any = {};
     
     constructor(private _routeParams : RouteParams, 
                 private _stateService : StateService,
                 private _siteStateChanger : SiteStateChanger){ 
-        super("sd-article");
+        super("sd-namespace");
+        this.strings = sharpDox.strings;
         this.disqusShortName = sharpDox.projectData.disqusShortName;
-        this._subscriberId = this._stateService.stateContainer.registerSubscriber(this);
+        _stateService.stateContainer.registerSubscriber(this);
     }
     
     notify(state){
         this.currentPageData = state.get("SiteStateChanger.currentPageData");
     }
     
-    ngOnInit(){        
+    ngAfterViewInit(){
         let id = this._routeParams.get('id');
-        this._siteStateChanger.setCurrentPageToArticle(id);     
-    }
-    
-    ngOnDestory(){
-        this._stateService.stateContainer.unregisterSubscriber(this._subscriberId);
+        this._siteStateChanger.setCurrentPageToNamespace(id);
+        
+        $('#main').scrollTop(0);        
     }
     
 }

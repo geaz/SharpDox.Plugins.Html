@@ -5,10 +5,12 @@
     </div>
     <div class="split-pane-divider secondary-background" id="divider"></div>
     <div id="main" class="split-pane-component">
-        <sd-loader></sd-loader>
-        <sd-titlebar></sd-titlebar>
-        <sd-fxchanger></sd-fxchanger>        
-        <router-outlet></router-outlet>
-        <sd-footer></sd-footer>        
+        <div id="content">
+            <sd-loader></sd-loader>
+            <sd-titlebar></sd-titlebar>
+            <sd-fxchanger></sd-fxchanger>        
+            <router-outlet></router-outlet>
+            <sd-footer></sd-footer> 
+        </div>       
     </div>
 </div>
