@@ -12,27 +12,17 @@ import {SiteStateChanger} from '../state/SiteStateChanger';
 })
 export class NamespaceComponent extends ContentBase { 
     
-    public strings : any;
-    public disqusShortName : string;
     public currentPageData : any = {};
     
-    constructor(private _routeParams : RouteParams, 
-                private _siteStateChanger : SiteStateChanger,                
+    constructor(_routeParams : RouteParams, 
+                _siteStateChanger : SiteStateChanger,                
                 _stateService : StateService){ 
-        super("sd-namespace", _stateService);
-        this.strings = sharpDox.strings;
-        this.disqusShortName = sharpDox.projectData.disqusShortName;
+        super("sd-namespace", _routeParams, _siteStateChanger, _stateService);   
     }
     
-    notify(state){
-        this.currentPageData = state.get("SiteStateChanger.currentPageData");
-    }
-    
-    ngAfterViewInit(){
+    ngOnInit(){
         let id = this._routeParams.get('id');
         this._siteStateChanger.setCurrentPageToNamespace(id);
-        
-        $('#main').scrollTop(0);        
     }
     
 }

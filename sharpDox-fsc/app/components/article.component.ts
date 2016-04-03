@@ -11,17 +11,11 @@ import {SiteStateChanger} from '../state/SiteStateChanger';
     styleUrls: ['./templates/content/article/article.css']
 })
 export class ArticleComponent extends ContentBase { 
-           
-    public currentPageData : any = {};
     
-    constructor(private _routeParams : RouteParams, 
-                private _siteStateChanger : SiteStateChanger,
+    constructor(_routeParams : RouteParams, 
+                _siteStateChanger : SiteStateChanger,
                 _stateService : StateService){ 
-        super("sd-article", _stateService);      
-    }
-    
-    notify(state){
-        this.currentPageData = state.get("SiteStateChanger.currentPageData");
+        super("sd-article", _routeParams, _siteStateChanger, _stateService);      
     }
     
     ngOnInit(){        

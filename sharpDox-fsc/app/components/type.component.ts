@@ -14,17 +14,13 @@ export class TypeComponent extends ContentBase {
     
     public currentPageData : any = {};
     
-    constructor(private _routeParams : RouteParams, 
-                private _siteStateChanger : SiteStateChanger,                
+    constructor(_routeParams : RouteParams, 
+                _siteStateChanger : SiteStateChanger,                
                 _stateService : StateService){ 
-        super("sd-type", _stateService);
+        super("sd-type", _routeParams, _siteStateChanger, _stateService);   
     }
     
-    notify(state){
-        this.currentPageData = state.get("SiteStateChanger.currentPageData");
-    }
-    
-    ngAfterViewInit(){
+    ngOnInit(){
         let id = this._routeParams.get('id');
         this._siteStateChanger.setCurrentPageToType(id);
     }

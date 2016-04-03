@@ -1,24 +1,35 @@
+import {RouteParams} from 'angular2/router';
+
 import {StateService} from './state/StateService';
+import {SiteStateChanger} from './state/SiteStateChanger';
 
 export class ContentBase {    
         
-    public disqusShortName : string;    
-    public strings : any;
+    public disqusShortName : string;   
+    public currentPageData : any = {}; 
+    public strings : any;    
     
     private _subscriberId : number;
-    private _lastContent : string;
-    private _contentChanged : boolean;
-        
-    constructor(private _selector : string, private _stateService : StateService){        
+    private _lastPageData : string;
+    private _contentChanged : boolean;        
+           
+    constructor(private _selector : string, 
+                protected _routeParams : RouteParams,
+                protected _siteStateChanger : SiteStateChanger,
+                private _stateService : StateService){        
         this.disqusShortName = sharpDox.projectData.disqusShortName;  
         this.strings = sharpDox.strings;
         this._subscriberId = this._stateService.stateContainer.registerSubscriber(this);
-    }    
+    }   
+    
+    notify(state){
+        this.currentPageData = state.get("SiteStateChanger.currentPageData");
+    } 
     
     ngDoCheck(){
         let currentContent = $(this._selector).html();
-        if(currentContent != this._lastContent){
-            this._lastContent = currentContent;
+        if(this.currentPageData != this._lastPageData){
+            this._lastPageData = this.currentPageData;
             this._contentChanged = true;
         }
     }
@@ -47,7 +58,6 @@ export class ContentBase {
         for(let i = 0; i < codeBlocks.length; i++){
             Prism.highlightElement(codeBlocks[i], false);
         } 
-        this._lastContent = $(this._selector).html();
     }
     
     private setLinks(){
@@ -87,7 +97,7 @@ export class ContentBase {
         
         var gotClicked = false;
         $('.save a').click(function (event) {
-            if ($(this).attr('href') == "#") //just create diagram one time
+            if ($(this).attr('href') == "#") //create diagram just one time
             {
                 event.preventDefault();
                 var svgPan = svgPanZoom("#" + $(this).parent().parent().prev().attr('id') + " svg");
