@@ -1,27 +1,26 @@
-
+@import url("../content.css");
 
 /* Members */
-
-.member{
+:host .member{
 	margin: 0 0 15px 5px;
 }
 
-.member-header-link{
+:host .member-header-link{
   cursor: pointer;
   color: #1382ce;
 }
 
-.member-header-link:hover{
+:host .member-header-link:hover{
   cursor: pointer;
   color: #f58026;
 }
 
-.member-header i{
+:host .member-header i{
 	float: left;
 	margin-top: 5px;
 }
 
-.member-header img{
+:host .member-header img{
 	float: left;
 	margin: 0 5px;
 	padding-top: 0px;
@@ -29,63 +28,63 @@
 	position: relative;
 }
 
-.member-header p{
+:host .member-header p{
 	margin: 0;
 	margin-left: 35px;
 }
 
-.member-header .summary{
+:host .member-header .summary{
 	font-family: 'OpenSansRegular';
 	margin: 0 35px;
 }
 
-.member-header .summary p{
+:host .member-header .summary p{
 	margin: 0;
 }
 
-.member-content{
+:host .member-content{
 	margin-left: 35px;
 }
 
-.member-content .syntax-box{
+:host .member-content .syntax-box{
 	margin: 0 35px;
 }
 
-.member-box-title{
+:host .member-box-title{
 	margin: 10px 0;
 	font-family: 'OpenSansSemiBold';	
 }
 
-.member-doc-box{
+:host .member-doc-box{
 	margin: 0px 25px 25px 0;
 }
 
-.member-doc-box p, .member-doc-box pre{
+:host .member-doc-box p, :host .member-doc-box pre{
 	margin: 0;
 }
 
-.member-doc-box .inline{
+:host .member-doc-box .inline{
 	margin: 0 35px 15px;
 }
 
-.member-doc-box small{
+:host .member-doc-box small{
 	margin: 0 35px;
 	font-size: 0.7em;
 	font-family: 'OpenSansSemiBold';
 	color: gray;
 }
 
-.member-doc-box .key{
+:host .member-doc-box .key{
 	font-style: italic;
 }
 
 /* Diagrams */
 
-.syntax-pre{
+:host .syntax-pre{
   margin-bottom:0!important;
 }
 
-.sd-sequence-diagram, #sd-class-diagram {
+:host .sd-sequence-diagram, :host #sd-class-diagram {
   border: 1px solid #DADADA;
   border-top:0;
   padding: 5px;
@@ -94,34 +93,34 @@
   resize: vertical;
 }
 
-.sd-sequence-diagram svg, #sd-class-diagram svg{
+:host .sd-sequence-diagram svg, :host #sd-class-diagram svg{
   width: 100%;
   height: 100%;
 }
 
-.legend p {
+:host .legend p {
     font-size: 0.7em;
 }
 
-.save, .resetZoom {
+:host .save, :host .resetZoom {
     float: right;
     cursor: pointer;
     color: #1382ce;
 }
 
-.save:hover, .resetZoom:hover{
+:host .save:hover, :host .resetZoom:hover{
   cursor: pointer;
   color: #f58026;
 }
 
-.save i, .resetZoom i {
+:host .save i, :host .resetZoom i {
     margin-right: 5px;
 }
 
-.save {
+:host .save {
     margin-left: 10px !important;
 }
 
-.resetZoom {
+:host .resetZoom {
     margin-right: 10px !important;
 }

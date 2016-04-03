@@ -3,14 +3,3 @@
 @import url('../assets/css/font-awesome.css');
 @import url('../assets/css/typography.css');
 @import url('../assets/css/markdown.css');
-
-.jstree-default a {
-        width: 100%;
-}
-
-.jstree-clicked, .jstree-hovered{
-    box-shadow:none!important;
-    background: #F58026!important;
-    border-radius: 0!important;
-    color:white!important;
-}

@@ -35,7 +35,8 @@ module.exports = {
         new webpack.ProvidePlugin({
             jQuery: 'jquery',
             $: 'jquery',
-            jquery: 'jquery'
+            jquery: 'jquery',
+            svgPanZoom: '../vendor/svg/svgPanZoom/svg-pan-zoom'
         }),
         new CommonsChunkPlugin("vendor", "vendor.[hash].js"),
         new HtmlWebpackPlugin({ template: './index.html' }),

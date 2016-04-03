@@ -9,6 +9,7 @@ import {TitleBarComponent} from './titlebar.component';
 import {NavComponent} from './nav.component';
 import {ArticleComponent} from './article.component';
 import {NamespaceComponent} from './namespace.component';
+import {TypeComponent} from './type.component';
 import {FooterComponent} from './footer.component';
 
 @Component({
@@ -24,7 +25,8 @@ import {FooterComponent} from './footer.component';
 @RouteConfig([
     { path:'/', redirectTo: ['Article', { id: 'home' }] },
     { path:'/article/:id', name: 'Article', component: ArticleComponent },
-    { path:'/namespace/:id', name: 'Namespace', component: NamespaceComponent }
+    { path:'/namespace/:id', name: 'Namespace', component: NamespaceComponent },
+    { path:'/type/:id', name: 'Type', component: TypeComponent }
 ])
 export class AppComponent { 
     

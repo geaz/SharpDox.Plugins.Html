@@ -6,27 +6,27 @@ import {StateService} from '../state/StateService';
 import {SiteStateChanger} from '../state/SiteStateChanger';
 
 @Component({
-    selector: 'sd-article',
-    templateUrl: '/templates/content/article/article.html',
-    styleUrls: ['./templates/content/article/article.css']
+    selector: 'sd-type',
+    templateUrl: '/templates/content/type/type.html',
+    styleUrls: ['./templates/content/type/type.css']
 })
-export class ArticleComponent extends ContentBase { 
-           
+export class TypeComponent extends ContentBase { 
+    
     public currentPageData : any = {};
     
     constructor(private _routeParams : RouteParams, 
-                private _siteStateChanger : SiteStateChanger,
+                private _siteStateChanger : SiteStateChanger,                
                 _stateService : StateService){ 
-        super("sd-article", _stateService);      
+        super("sd-type", _stateService);
     }
     
     notify(state){
         this.currentPageData = state.get("SiteStateChanger.currentPageData");
     }
     
-    ngOnInit(){        
+    ngAfterViewInit(){
         let id = this._routeParams.get('id');
-        this._siteStateChanger.setCurrentPageToArticle(id);     
+        this._siteStateChanger.setCurrentPageToType(id);
     }
     
 }

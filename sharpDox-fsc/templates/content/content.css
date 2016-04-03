@@ -71,18 +71,6 @@ thead, th{
   width: 15px;
 }
 
-.md-link, .md-link:visited{
-  cursor: pointer;
-  color: #000000;
-  text-decoration: underline;
-}
-
-.md-link:hover{
-  cursor: pointer;
-  color: #f58026;
-  text-decoration: underline;
-}
-
 #disqus_thread{
   margin-top: 25px;
   margin-bottom: 15px;
