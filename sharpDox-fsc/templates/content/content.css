@@ -16,10 +16,6 @@
   font-family: 'OpenSansSemiBold';
 }
 
-.hide{
-  display:none;
-}
-
 .list-box, .text-box, .table-box{
     margin: 0 0 1.5em 0;
 }
@@ -32,42 +28,42 @@
 
 /* Table */
 
-table {
+:host table {
   width: 100%;
 }
 
-th {
+:host th {
   background: #C2C2C2 !important;
 }
 
-.even {
+:host .even {
   background: #F6F5F1;
 }
 
-td, th {
+:host td, :host th {
 	text-align: left;
 }
 
-td{
+:host td{
   padding: 5px !important;
   border-top: 1px solid #DADADA !important;
 }
 
-thead td{  
+:host thead td{  
   padding: 0 5px !important;
 }
 
-td p {
+:host td p {
     margin: 0;
 }
 
-thead, th{
+:host thead, :host th{
   background: none repeat scroll 0 0 #f6f5f1;
   border-top: 1px solid #DADADA !important;
   font-family: OpenSansLight !important;
 }
 
-.iconColumn {
+:host .iconColumn {
   width: 15px;
 }
 

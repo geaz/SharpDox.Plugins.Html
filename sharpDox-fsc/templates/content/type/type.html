@@ -8,7 +8,6 @@
 
     <div class="markdown">
         <pre class="syntax-pre"><code id="syntax" class="language-csharp">{{currentPageData.linkedSyntax}}</code></pre>
-        <div id="dummy-syntax" class="hide">{{currentPageData.linkedSyntax}}</div>
     </div>
 
     <div *ngIf="currentPageData.classDiagram">
@@ -96,37 +95,27 @@
 
     <div *ngIf="currentPageData.fields">
     <h4>{{strings.fields}}</h4>
-    <!--{{#site.currentPage.fields}}
-    {{>templates/member}}
-    {{/site.currentPage.fields}}-->
+        <sd-member *ngFor="#field of currentPageData.fields" [member]="field"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.constructors">
     <h4>{{strings.constructors}}</h4>
-    <!--{{#site.currentPage.constructors}}
-    {{>templates/member}}
-    {{/site.currentPage.constructors}}-->
+    <sd-member *ngFor="#constructor of currentPageData.constructors" [member]="constructor"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.methods">
     <h4>{{strings.methods}}</h4>
-    <!-- {{#site.currentPage.methods}}
-    {{>templates/member}}
-    {{/site.currentPage.methods}}-->
+    <sd-member *ngFor="#method of currentPageData.methods" [member]="method"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.events">
     <h4>{{strings.events}}</h4>
-    <!-- {{#site.currentPage.events}}
-    {{>templates/member}}
-    {{/site.currentPage.events}}-->
+    <sd-member *ngFor="#event of currentPageData.events" [member]="event"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.properties">
     <h4>{{strings.properties}}</h4>
-    <!-- {{#site.currentPage.properties}}
-    {{>templates/member}}
-    {{/site.currentPage.properties}}-->
+    <sd-member *ngFor="#property of currentPageData.properties" [member]="property"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.seeAlsos">

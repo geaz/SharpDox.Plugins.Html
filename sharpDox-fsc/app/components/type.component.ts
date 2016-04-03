@@ -5,10 +5,13 @@ import {ContentBase} from '../ContentBase';
 import {StateService} from '../state/StateService';
 import {SiteStateChanger} from '../state/SiteStateChanger';
 
+import {MemberComponent} from './member.component';
+
 @Component({
     selector: 'sd-type',
     templateUrl: '/templates/content/type/type.html',
-    styleUrls: ['./templates/content/type/type.css']
+    styleUrls: ['./templates/content/type/type.css'],
+    directives: [MemberComponent]
 })
 export class TypeComponent extends ContentBase { 
     
