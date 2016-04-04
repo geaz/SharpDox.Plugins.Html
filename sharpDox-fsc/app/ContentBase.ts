@@ -22,7 +22,7 @@ export class ContentBase {
     }   
     
     notify(state, changedStates){
-        if(changedStates != null && changedStates.indexOf("SiteStateChanger.currentPageData") > -1){
+        if(changedStates.indexOf("SiteStateChanger.currentPageData") > -1){
             this.currentPageData = state.get("SiteStateChanger.currentPageData");
             this._contentChanged = true;
         }        

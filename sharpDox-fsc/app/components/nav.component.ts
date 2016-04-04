@@ -12,7 +12,7 @@ import {StateService} from '../state/StateService';
 export class NavComponent { 
     
     constructor(private _stateService : StateService){ 
-        _stateService.stateContainer.registerSubscriber(this, true);
+        _stateService.stateContainer.registerSubscriber(this);
     }
     
     ngAfterViewInit(){
@@ -34,7 +34,7 @@ export class NavComponent {
     
     notify(state, changedStates){
         let currentPageId = state.get('SiteStateChanger.currentPageId');
-        if(changedStates != null && changedStates.indexOf("SiteStateChanger.currentPageId") > -1 && currentPageId !== undefined){
+        if(changedStates.indexOf("SiteStateChanger.currentPageId") > -1 && currentPageId !== undefined){
             $('#nav').jstree('deselect_all');
             $('#nav').jstree('select_node', currentPageId);     
         }              
