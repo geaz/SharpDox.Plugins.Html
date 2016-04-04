@@ -15,7 +15,7 @@ export class SiteStateChanger extends StateChanger{
     }
    
     setToHome(){
-        this._triggerChange({'gettingPage': true, 'currentPageData': {}});
+        this._triggerChange({'gettingPage': true});
         
         let that = this;
         $.getJSON("data/articles/home.json", function( data ) {  

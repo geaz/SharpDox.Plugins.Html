@@ -1,4 +1,4 @@
-<div id="footer-left">{{ footerLine }}</div>
+<div id="footer-left" [innerHtml]="footerLine"></div>
 <div id="footer-right">
     <a *ngIf="homepage" href="{{ homepage }}" title="{{ projectName }}" target="_blank">{{ projectName }}</a>
     <span *ngIf="homepage == undefined">{{ projectName }}</span> {{ version }}

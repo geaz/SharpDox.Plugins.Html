@@ -83,3 +83,7 @@
 :host .member-doc-box .key{
 	font-style: italic;
 }
+
+:host .syntax-pre{
+    margin:0!important;
+}

@@ -10,7 +10,6 @@ export class ContentBase {
     public strings : any;    
     
     private _subscriberId : number;
-    private _lastPageData : string;
     private _contentChanged : boolean;        
            
     constructor(private _selector : string, 
@@ -22,17 +21,12 @@ export class ContentBase {
         this._subscriberId = this._stateService.stateContainer.registerSubscriber(this);
     }   
     
-    notify(state){
-        this.currentPageData = state.get("SiteStateChanger.currentPageData");
-    } 
-    
-    ngDoCheck(){
-        let currentContent = $(this._selector).html();
-        if(this.currentPageData != this._lastPageData){
-            this._lastPageData = this.currentPageData;
+    notify(state, changedStates){
+        if(changedStates != null && changedStates.indexOf("SiteStateChanger.currentPageData") > -1){
+            this.currentPageData = state.get("SiteStateChanger.currentPageData");
             this._contentChanged = true;
-        }
-    }
+        }        
+    } 
     
     ngAfterViewInit(){        
         $('#main').scrollTop(0);        
@@ -46,6 +40,7 @@ export class ContentBase {
             this.setLinks();
             this.setSvg();
             this.setSvgLinks(); 
+            this.hideMemberContents();
         }
     }
     
@@ -127,6 +122,10 @@ export class ContentBase {
                 });
             }
         });
+    }
+    
+    private hideMemberContents(){
+        $('.member-content').hide();
     }
     
 }

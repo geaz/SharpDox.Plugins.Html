@@ -206,7 +206,7 @@ SvgPanZoom.prototype.disableMouseWheelZoom = function() {
  * @param  {Event} evt
  */
 SvgPanZoom.prototype.handleMouseWheel = function(evt) {
-  if (!this.options.zoomEnabled || this.state !== 'none') {
+  if (!this.options.zoomEnabled || this.state !== 'none' || !evt.ctrlKey) {
     return;
   }
 

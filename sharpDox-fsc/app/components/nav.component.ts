@@ -1,5 +1,7 @@
-import {Component} from 'angular2/core';
+import {Component, Inject} from 'angular2/core';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
+
+import {StateService} from '../state/StateService';
 
 @Component({
     selector: 'sd-nav',
@@ -8,6 +10,10 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
     directives: [ROUTER_DIRECTIVES]
 })
 export class NavComponent { 
+    
+    constructor(private _stateService : StateService){ 
+        _stateService.stateContainer.registerSubscriber(this, true);
+    }
     
     ngAfterViewInit(){
         $('#nav').jstree({
@@ -24,6 +30,14 @@ export class NavComponent {
             data.instance.open_node(data.node);	
             return false;
         });
+    }
+    
+    notify(state, changedStates){
+        let currentPageId = state.get('SiteStateChanger.currentPageId');
+        if(changedStates != null && changedStates.indexOf("SiteStateChanger.currentPageId") > -1 && currentPageId !== undefined){
+            $('#nav').jstree('deselect_all');
+            $('#nav').jstree('select_node', currentPageId);     
+        }              
     }
     
 }

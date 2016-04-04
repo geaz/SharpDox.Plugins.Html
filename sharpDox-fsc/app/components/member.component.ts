@@ -16,9 +16,8 @@ export class MemberComponent{
     }
     
     toogleMember(event){
-        var body = $(event.target).next();
-        console.dir($(event.target));
-        body.slideToggle();
+        var content = $(event.target).parent().parent().next();
+        content.slideToggle();
     }
     
 }
