@@ -3,3 +3,14 @@
 @import url('../assets/css/font-awesome.css');
 @import url('../assets/css/typography.css');
 @import url('../assets/css/markdown.css');
+
+#preloader{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 21px;
+    height: 21px;
+    margin: auto;
+}

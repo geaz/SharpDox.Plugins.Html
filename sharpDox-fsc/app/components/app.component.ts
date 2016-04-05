@@ -7,9 +7,9 @@ import {SiteStateChanger} from '../state/SiteStateChanger';
 import {HeaderComponent} from './header.component';
 import {TitleBarComponent} from './titlebar.component';
 import {NavComponent} from './nav.component';
-import {ArticleComponent} from './article.component';
-import {NamespaceComponent} from './namespace.component';
-import {TypeComponent} from './type.component';
+import {ArticleComponent} from './content/article.component';
+import {NamespaceComponent} from './content/namespace.component';
+import {TypeComponent} from './content/type.component';
 import {FooterComponent} from './footer.component';
 
 @Component({

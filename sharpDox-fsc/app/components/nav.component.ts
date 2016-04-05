@@ -11,8 +11,10 @@ import {StateService} from '../state/StateService';
 })
 export class NavComponent { 
     
+    private _subscriberId : number;
+    
     constructor(private _stateService : StateService){ 
-        _stateService.stateContainer.registerSubscriber(this);
+        this._subscriberId = _stateService.stateContainer.registerSubscriber(this);
     }
     
     ngAfterViewInit(){
@@ -30,6 +32,10 @@ export class NavComponent {
             data.instance.open_node(data.node);	
             return false;
         });
+    }
+    
+    ngOnDestory(){
+        this._stateService.stateContainer.unregisterSubscriber(this._subscriberId);
     }
     
     notify(state, changedStates){

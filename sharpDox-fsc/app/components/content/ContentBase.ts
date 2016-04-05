@@ -1,7 +1,7 @@
 import {RouteParams} from 'angular2/router';
 
-import {StateService} from './state/StateService';
-import {SiteStateChanger} from './state/SiteStateChanger';
+import {StateService} from '../../state/StateService';
+import {SiteStateChanger} from '../../state/SiteStateChanger';
 
 export class ContentBase {    
         

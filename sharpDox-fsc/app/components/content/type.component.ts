@@ -1,9 +1,9 @@
 import {Component, Input} from 'angular2/core';
 import {RouteParams} from 'angular2/router';
 
-import {ContentBase} from '../ContentBase';
-import {StateService} from '../state/StateService';
-import {SiteStateChanger} from '../state/SiteStateChanger';
+import {ContentBase} from './ContentBase';
+import {StateService} from '../../state/StateService';
+import {SiteStateChanger} from '../../state/SiteStateChanger';
 
 import {MemberComponent} from './member.component';
 

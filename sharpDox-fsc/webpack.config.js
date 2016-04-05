@@ -36,7 +36,7 @@ module.exports = {
             jQuery: 'jquery',
             $: 'jquery',
             jquery: 'jquery',
-            svgPanZoom: '../vendor/svg/svgPanZoom/svg-pan-zoom'
+            svgPanZoom: '../../../vendor/svg/svgPanZoom/svg-pan-zoom'
         }),
         new CommonsChunkPlugin("vendor", "vendor.[hash].js"),
         new HtmlWebpackPlugin({ template: './index.html' }),
