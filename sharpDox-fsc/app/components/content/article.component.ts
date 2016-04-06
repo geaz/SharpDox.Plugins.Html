@@ -16,11 +16,9 @@ export class ArticleComponent extends ContentBase {
                 _siteStateChanger : SiteStateChanger,
                 _stateService : StateService){ 
         super("sd-article", _routeParams, _siteStateChanger, _stateService);      
-    }
-    
-    ngOnInit(){        
+        
         let id = this._routeParams.get('id');
-        this._siteStateChanger.setCurrentPageToArticle(id);     
+        this._siteStateChanger.setCurrentPageToArticle(id); 
     }
     
 }

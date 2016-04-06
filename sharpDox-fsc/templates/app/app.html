@@ -6,7 +6,10 @@
     <div class="split-pane-divider secondary-background" id="divider"></div>
     <div id="main" class="split-pane-component">
         <div id="content">
-            <sd-loader></sd-loader>
+            <div id="loader" [class.visible]="showLoader" [class.hidden]="!showLoader">
+                <div id="loader-content"><i class="icon-refresh icon-spin"></i></div>
+            </div>  
+            
             <sd-titlebar></sd-titlebar>
             <sd-fxchanger></sd-fxchanger>        
             <router-outlet></router-outlet>

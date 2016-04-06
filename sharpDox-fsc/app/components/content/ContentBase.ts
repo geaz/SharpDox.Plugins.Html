@@ -18,8 +18,31 @@ export class ContentBase {
                 private _stateService : StateService){        
         this.disqusShortName = sharpDox.projectData.disqusShortName;  
         this.strings = sharpDox.strings;
-        this._subscriberId = this._stateService.stateContainer.registerSubscriber(this);
     }   
+    
+    ngOnInit(){        
+        this._subscriberId = this._stateService.stateContainer.registerSubscriber(this);
+    }
+    
+    ngAfterViewInit(){        
+        $('#main').scrollTop(0);      
+    }  
+    
+    ngAfterViewChecked(){ 
+        if(this._contentChanged){
+            this._contentChanged = false;           
+            this.initDisqus();
+            this.setHighlighting();
+            this.setLinks();
+            this.setSvg();
+            this.setSvgLinks(); 
+            this.hideMemberContents(); 
+        }
+    }
+    
+    ngOnDestory(){
+        this._stateService.stateContainer.unregisterSubscriber(this._subscriberId);
+    }
     
     notify(state, changedStates){
         if(changedStates.indexOf("SiteStateChanger.currentPageData") > -1){
@@ -27,26 +50,6 @@ export class ContentBase {
             this._contentChanged = true;
         }        
     } 
-    
-    ngAfterViewInit(){        
-        $('#main').scrollTop(0);        
-    }  
-    
-    ngAfterViewChecked(){ 
-        if(this._contentChanged){
-            this._contentChanged = false;
-            this.initDisqus();
-            this.setHighlighting();
-            this.setLinks();
-            this.setSvg();
-            this.setSvgLinks(); 
-            this.hideMemberContents();
-        }
-    }
-    
-    ngOnDestory(){
-        this._stateService.stateContainer.unregisterSubscriber(this._subscriberId);
-    }
     
     private setHighlighting(){
         let codeBlocks = $('pre code');

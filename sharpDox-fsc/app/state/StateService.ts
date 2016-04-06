@@ -7,7 +7,7 @@ export class StateService {
     stateContainer : StateContainer;
        
     constructor(){     
-        this.stateContainer = new StateContainer(null, true);
+        this.stateContainer = new StateContainer();
     }
     
 }

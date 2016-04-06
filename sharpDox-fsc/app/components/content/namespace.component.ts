@@ -18,9 +18,7 @@ export class NamespaceComponent extends ContentBase {
                 _siteStateChanger : SiteStateChanger,                
                 _stateService : StateService){ 
         super("sd-namespace", _routeParams, _siteStateChanger, _stateService);   
-    }
-    
-    ngOnInit(){
+        
         let id = this._routeParams.get('id');
         this._siteStateChanger.setCurrentPageToNamespace(id);
     }

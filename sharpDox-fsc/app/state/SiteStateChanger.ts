@@ -10,27 +10,11 @@ export class SiteStateChanger extends StateChanger{
         this._stateService.stateContainer.registerStateChanger(this);
     }
       
-    setSelectedTargetFx(targetFx){
+    setSelectedTargetFx(targetFx : string) : void{
         this._triggerChange({'selectedTargetFx': targetFx});
     }
    
-    setToHome(){
-        this._triggerChange({'gettingPage': true});
-        
-        let that = this;
-        $.getJSON("data/articles/home.json", function( data ) {  
-            let changes = { };                      
-            changes['gettingPage'] = false;
-            changes['currentPageTargetFxs'] = sharpDox.projectData.targetFxs;
-            changes['currentPageType'] = 'article';
-            changes['currentPageId'] = undefined;
-            changes['currentPageData'] = data;
-            
-            that._triggerChange(changes);
-        });
-    }
-   
-    setCurrentPageToArticle(id){        
+    setCurrentPageToArticle(id : string) : void{     
         this._triggerChange({'gettingPage': true, 'currentPageData': {}});
         
         let that = this;
@@ -46,7 +30,7 @@ export class SiteStateChanger extends StateChanger{
         });
     } 
     
-    setCurrentPageToNamespace(id){
+    setCurrentPageToNamespace(id : string) : void{
         this._triggerChange({'gettingPage': true, 'currentPageData': {}});    
         
         let that = this;   
@@ -61,17 +45,16 @@ export class SiteStateChanger extends StateChanger{
             }
             else{
                 changes['selectedTargetFx'] = Object.keys(namespace)[0];
-                changes['currentPageData'] = namespace[0];    
+                changes['currentPageData'] = namespace[Object.keys(namespace)[0]];    
             }
             
             changes['currentPageType'] = 'namespace';
             changes['currentPageId'] = id;
-            
             that._triggerChange(changes);
         });
     } 
     
-    setCurrentPageToType(id){
+    setCurrentPageToType(id : string) : void{
         this._triggerChange({'gettingPage': true, 'currentPageData': {}});      
         
         let that = this;  
@@ -86,15 +69,24 @@ export class SiteStateChanger extends StateChanger{
             }
             else{
                 changes['selectedTargetFx'] = Object.keys(type)[0];
-                changes['currentPageData'] = type[0];      
+                changes['currentPageData'] = type[Object.keys(type)[0]];      
             }
             
             changes['currentPageType'] = 'type';
-            changes['currentPageId'] = id;
-            
+            changes['currentPageId'] = id;            
             that._triggerChange(changes);
         });
     } 
+    
+    resetCurrentPage() : void{
+        let currentState = this._requestCurrentState();
+        let currentPageType = currentState.get('SiteStateChanger.currentPageType');
+        let currentPageId = currentState.get('SiteStateChanger.currentPageId');
+        
+        if(currentPageType === 'article') { this.setCurrentPageToArticle(currentPageId); } 
+        else if(currentPageType === 'namespace') { this.setCurrentPageToNamespace(currentPageId); }  
+        else if(currentPageType === 'type') { this.setCurrentPageToType(currentPageId); }         
+    }
     
     get initialState(){
         return {            

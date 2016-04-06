@@ -13,9 +13,18 @@ export class TitleBarComponent{
     public currentPageData : any;
     public currentPageType : string;
     
+    private _subscriberId : number;
+    
     constructor(private _stateService : StateService){
         this.strings = sharpDox.strings;
-        _stateService.stateContainer.registerSubscriber(this);
+    }
+    
+    ngOnInit(){        
+        this._subscriberId = this._stateService.stateContainer.registerSubscriber(this);
+    }
+    
+    ngOnDestory(){
+        this._stateService.stateContainer.unregisterSubscriber(this._subscriberId);
     }
     
     notify(state){

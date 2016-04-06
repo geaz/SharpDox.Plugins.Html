@@ -6,6 +6,7 @@ import {SiteStateChanger} from '../state/SiteStateChanger';
 
 import {HeaderComponent} from './header.component';
 import {TitleBarComponent} from './titlebar.component';
+import {FxChangerComponent} from './fxChanger.component';
 import {NavComponent} from './nav.component';
 import {ArticleComponent} from './content/article.component';
 import {NamespaceComponent} from './content/namespace.component';
@@ -19,6 +20,7 @@ import {FooterComponent} from './footer.component';
     directives: [ROUTER_DIRECTIVES, 
                 HeaderComponent, 
                 TitleBarComponent,
+                FxChangerComponent,
                 NavComponent, 
                 FooterComponent]
 })
@@ -30,10 +32,28 @@ import {FooterComponent} from './footer.component';
 ])
 export class AppComponent { 
     
-    constructor(private _stateService : StateService, private _siteStateChanger : SiteStateChanger){ }
+    public showLoader : boolean;
+    
+    private _subscriberId : number;
+    
+    constructor(private _stateService : StateService, private _siteStateChanger : SiteStateChanger){}
+    
+    ngOnInit(){
+        this._subscriberId = this._stateService.stateContainer.registerSubscriber(this);
+    }
     
     ngAfterViewInit(){
         $('#wrapper').splitPane();
+    }
+    
+    ngOnDestory(){
+        this._stateService.stateContainer.unregisterSubscriber(this._subscriberId);
+    }
+    
+    notify(state, changedStates){
+        if(changedStates.indexOf("SiteStateChanger.gettingPage") > -1){       
+            this.showLoader = state.get("SiteStateChanger.gettingPage");
+        }
     }
     
 }

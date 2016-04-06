@@ -21,9 +21,7 @@ export class TypeComponent extends ContentBase {
                 _siteStateChanger : SiteStateChanger,                
                 _stateService : StateService){ 
         super("sd-type", _routeParams, _siteStateChanger, _stateService);   
-    }
-    
-    ngOnInit(){
+        
         let id = this._routeParams.get('id');
         this._siteStateChanger.setCurrentPageToType(id);
     }
