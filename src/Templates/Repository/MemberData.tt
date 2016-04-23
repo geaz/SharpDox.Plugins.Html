@@ -47,6 +47,6 @@
 	"linkedSyntax": "<#= Member.SyntaxTemplate.Transform(helper.TransformLinkToken).ToObjectString() #>"
 }
 
-<#+	public SDMember Member { get; set; } #>
+<#+	public SDMemberBase Member { get; set; } #>
 <#+	public string MemberType { get; set; } #>
 <#+ public SDRepository Repository { get; set; } #>

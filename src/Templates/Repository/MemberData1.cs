@@ -188,7 +188,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
         }
         
         #line 50 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
-	public SDMember Member { get; set; } 
+	public SDMemberBase Member { get; set; } 
         
         #line default
         #line hidden

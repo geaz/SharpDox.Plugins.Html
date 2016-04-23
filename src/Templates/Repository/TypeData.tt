@@ -29,12 +29,12 @@
 		<# } if(Type.BaseTypes.Count > 0) { #>
 		"baseTypes": [
 			<#= string.Join(",", Type.BaseTypes.Select(baseType => 
-				string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", baseType.Identifier, baseType.Fullname))) #>
+				string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", baseType.Type.Identifier, baseType.Type.Fullname))) #>
 		],
 		<# } if(Type.ImplementedInterfaces.Count > 0) { #>
 		"implements": [
 			<#= string.Join(",", Type.ImplementedInterfaces.Select(implementedInterface => 
-				string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", implementedInterface.Identifier, implementedInterface.Fullname))) #>
+				string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", implementedInterface.Type.Identifier, implementedInterface.Type.Fullname))) #>
 		],
 		<# }
 		var documentation = Type.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);

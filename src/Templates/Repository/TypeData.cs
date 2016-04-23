@@ -120,7 +120,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             
             #line 31 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(",", Type.BaseTypes.Select(baseType => 
-				string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", baseType.Identifier, baseType.Fullname)))));
+				string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", baseType.Type.Identifier, baseType.Type.Fullname)))));
             
             #line default
             #line hidden
@@ -135,7 +135,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             
             #line 36 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\TypeData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(",", Type.ImplementedInterfaces.Select(implementedInterface => 
-				string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", implementedInterface.Identifier, implementedInterface.Fullname)))));
+				string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", implementedInterface.Type.Identifier, implementedInterface.Type.Fullname)))));
             
             #line default
             #line hidden
