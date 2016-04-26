@@ -16,50 +16,57 @@
 <# var helper = new Helper(StepInput.SDProject); #>
 
 "<#= TargetFx.Name #>": { 
-		"name": "<#= Type.Name #>",
-		"namespace": "<#= Type.Namespace.Fullname #>",
-		"syntax": "<#= Type.Syntax #>",
-		"linkedSyntax": "<#= Type.SyntaxTemplate.Transform(helper.TransformLinkToken).ToObjectString() #>",
-		<# if(!Type.IsClassDiagramEmpty()) { 
-				var height = Type.GetClassDiagram().GetSvgSize().Height;
-				height = height > 300 ? 375 : height + 75; #>
-		"classDiagram": "<#= Type.GetClassDiagram().ToSvg().Transform(helper.TransformLinkToken).ToObjectString() #>",
-		"classDiagramHeight": "<#= height #>",
-		"fit": "<#= height == 375 #>",
-		<# } if(Type.BaseTypes.Count > 0) { #>
-		"baseTypes": [
-			<#= string.Join(",", Type.BaseTypes.Select(baseType => 
-				string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", baseType.Type.Identifier, baseType.Type.Fullname))) #>
-		],
-		<# } if(Type.ImplementedInterfaces.Count > 0) { #>
-		"implements": [
-			<#= string.Join(",", Type.ImplementedInterfaces.Select(implementedInterface => 
-				string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", implementedInterface.Type.Identifier, implementedInterface.Type.Fullname))) #>
-		],
-		<# }
+		<#
+		var properties = new List<string>();
+		properties.Add($"\"name\": \"{Type.Name}\"");
+		properties.Add($"\"namespace\": \"{Type.Namespace.Fullname}\"");
+		properties.Add($"\"syntax\": \"{Type.Syntax}\"");
+		properties.Add($"\"linkedSyntax\": \"{Type.SyntaxTemplate.Transform(helper.TransformLinkToken).ToObjectString()}\"");
+
+		if(!Type.IsClassDiagramEmpty()) { 
+			var height = Type.GetClassDiagram().GetSvgSize().Height;
+			height = height > 300 ? 375 : height + 75;
+
+			properties.Add($"\"classDiagram\": \"{Type.GetClassDiagram().ToSvg().Transform(helper.TransformLinkToken).ToObjectString()}\"");
+			properties.Add($"\"classDiagramHeight\": \"{height}\"");
+			properties.Add($"\"fit\": \"{height == 375}\"");
+		}
+		if(Type.BaseTypes.Count > 0) {
+			var baseTypes = string.Join(",", Type.BaseTypes.Select(baseType => 
+				string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", baseType.Type.Identifier, baseType.Type.Fullname)));
+
+			properties.Add($"\"baseTypes\": [ {baseTypes} ]");
+		} 
+		if(Type.ImplementedInterfaces.Count > 0) {
+			var implements = string.Join(",", Type.ImplementedInterfaces.Select(implementedInterface => 
+				string.Format("{{\"id\": \"{0}\",\"name\": \"{1}\"}}", implementedInterface.Type.Identifier, implementedInterface.Type.Fullname)));
+
+			properties.Add($"\"implements\": [ {implements} ]");
+		}
+
 		var documentation = Type.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
 		if(documentation != null){
-			var documentationTemplate = new DocumentationData { Documentation = documentation }; #>
-			<#= documentationTemplate.TransformText() #>	
-		<# }
-
-		var members = new List<string>();
+			var documentationTemplate = new DocumentationData { Documentation = documentation };
+			properties.Add(documentationTemplate.TransformText());
+		}
+		
 		if(Type.Fields.Count > 0) {
-			members.Add(string.Format("\"fields\": [{0}]", string.Join(",", Type.Fields.Select(sdField => new MemberData { Member = sdField, MemberType = "field", Repository = Repository }.TransformText()))));
+			properties.Add(string.Format("\"fields\": [{0}]", string.Join(",", Type.Fields.Select(sdField => new MemberData { Member = sdField, MemberType = "field", Repository = Repository }.TransformText()))));
 		} 
 		if(Type.Constructors.Count > 0) {
-			members.Add(string.Format("\"constructors\": [{0}]", string.Join(",", Type.Constructors.Select(sdContructor => new MemberData { Member = sdContructor, MemberType = "method", Repository = Repository }.TransformText()))));
+			properties.Add(string.Format("\"constructors\": [{0}]", string.Join(",", Type.Constructors.Select(sdContructor => new MemberData { Member = sdContructor, MemberType = "method", Repository = Repository }.TransformText()))));
 		}
 		if(Type.Methods.Count > 0) {
-			members.Add(string.Format("\"methods\": [{0}]", string.Join(",", Type.Methods.Select(sdMethod => new MemberData { Member = sdMethod, MemberType = "method", Repository = Repository }.TransformText()))));
+			properties.Add(string.Format("\"methods\": [{0}]", string.Join(",", Type.Methods.Select(sdMethod => new MemberData { Member = sdMethod, MemberType = "method", Repository = Repository }.TransformText()))));
 		}
 		if(Type.Events.Count > 0) {
-			members.Add(string.Format("\"events\": [{0}]", string.Join(",", Type.Events.Select(sdEvent => new MemberData { Member = sdEvent, MemberType = "event", Repository = Repository }.TransformText()))));
+			properties.Add(string.Format("\"events\": [{0}]", string.Join(",", Type.Events.Select(sdEvent => new MemberData { Member = sdEvent, MemberType = "event", Repository = Repository }.TransformText()))));
 		}
 		if(Type.Properties.Count > 0){
-			members.Add(string.Format("\"properties\": [{0}]", string.Join(",", Type.Properties.Select(sdProperty => new MemberData { Member = sdProperty, MemberType = "property", Repository = Repository }.TransformText()))));	
+			properties.Add(string.Format("\"properties\": [{0}]", string.Join(",", Type.Properties.Select(sdProperty => new MemberData { Member = sdProperty, MemberType = "property", Repository = Repository }.TransformText()))));	
 		} #>
-		<#= string.Join(",", members) #>	
+
+		<#= string.Join(",", properties) #>	
 	}
 
 <#+	public SDType Type { get; set; } #>

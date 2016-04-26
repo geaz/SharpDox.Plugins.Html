@@ -24,14 +24,14 @@ module.exports = {
         ]
     },
     plugins: [
-        new UglifyJsPlugin({
+       /* new UglifyJsPlugin({
             sourceMap: true,
             minimize: true,
             mangle: false, // { except: ['$super', '$', 'exports', 'require'] }
             compress: {
                 warnings: false
             }
-        }),
+        }),*/
         new webpack.ProvidePlugin({
             jQuery: 'jquery',
             $: 'jquery',
