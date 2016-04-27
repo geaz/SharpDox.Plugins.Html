@@ -4,8 +4,6 @@ import './vendor.css';
 
 // Angular 2
 import 'es6-shim/es6-shim.js';
-import '../node_modules/systemjs/dist/system-polyfills';
-import '../vendor/shims_for_IE';
 import 'zone.js/dist/zone';
 import 'reflect-metadata';
 

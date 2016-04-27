@@ -18,11 +18,9 @@ export class ContentBase {
                 private _stateService : StateService){        
         this.disqusShortName = sharpDox.projectData.disqusShortName;  
         this.strings = sharpDox.strings;
-    }   
-    
-    ngOnInit(){        
+        
         this._subscriberId = this._stateService.stateContainer.registerSubscriber(this);
-    }
+    }   
     
     ngAfterViewInit(){        
         $('#main').scrollTop(0);      

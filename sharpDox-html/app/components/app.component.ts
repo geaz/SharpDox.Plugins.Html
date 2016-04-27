@@ -32,7 +32,7 @@ import {FooterComponent} from './footer.component';
 ])
 export class AppComponent { 
     
-    public showLoader : boolean;
+    public hideLoader : boolean;
     
     private _subscriberId : number;
     
@@ -51,8 +51,10 @@ export class AppComponent {
     }
     
     notify(state, changedStates){
-        if(changedStates.indexOf("SiteStateChanger.gettingPage") > -1){       
-            this.showLoader = state.get("SiteStateChanger.gettingPage");
+        if(changedStates.indexOf("SiteStateChanger.gettingPage") > -1){ 
+            $('#loader').css('left', $('#main').css('left'));      
+            $('#loader').css('width', $('#main').css('width'));   
+            this.hideLoader = !state.get("SiteStateChanger.gettingPage"); //negate it to get the loader shown on initial page load
         }
     }
     

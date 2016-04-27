@@ -6,7 +6,7 @@
     <div class="split-pane-divider secondary-background" id="divider"></div>
     <div id="main" class="split-pane-component">
         <div id="content">
-            <div id="loader" [class.visible]="showLoader" [class.hidden]="!showLoader">
+            <div id="loader" [class.visible]="!hideLoader" [class.hidden]="hideLoader">
                 <div id="loader-content"><i class="icon-refresh icon-spin"></i></div>
             </div>  
             
