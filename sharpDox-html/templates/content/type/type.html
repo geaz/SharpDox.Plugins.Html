@@ -12,7 +12,7 @@
 
     <div *ngIf="currentPageData.classDiagram">
         <div id="sd-class-diagram" class="svgpan" 
-            style="height:{{currentPageData.classDiagramHeight}}px;" 
+            attr.style="height:{{currentPageData.classDiagramHeight}}px;" 
             attr.data-fit="{{currentPageData.fit}}"
             [innerHtml]="currentPageData.classDiagram">
         </div>
