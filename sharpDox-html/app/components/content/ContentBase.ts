@@ -34,11 +34,11 @@ export class ContentBase {
             this.setLinks();
             this.setSvg();
             this.setSvgLinks(); 
-            this.hideMemberContents(); 
+            this.hideMemberContents();
         }
     }
     
-    ngOnDestory(){
+    ngOnDestroy(){
         this._stateService.stateContainer.unregisterSubscriber(this._subscriberId);
     }
     
