@@ -23,6 +23,9 @@ export class TypeComponent extends ContentBase {
         super("sd-type", _routeParams, _siteStateChanger, _stateService);   
         
         let id = this._routeParams.get('id');
+        if(id.indexOf('-m:') > -1){
+            id = id.split('-m:')[0];
+        }
         this._siteStateChanger.setCurrentPageToType(id);
     }
     

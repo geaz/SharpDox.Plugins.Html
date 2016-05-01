@@ -12,7 +12,7 @@ import {StateService} from '../state/StateService';
 export class NavComponent { 
     
     private _subscriberId : number;
-    private _lastPageId : string;
+    private _autoSelect : boolean;
     
     constructor(private _stateService : StateService){ }
     
@@ -23,13 +23,17 @@ export class NavComponent {
             }
         });
         
+        var self = this;
         $("#nav").bind("select_node.jstree", function(e, data) {
-            var href = data.instance.get_node(data.node, true).children('a').attr('href');
-            if (href != "#")
-                document.location = href;
+            if(!self._autoSelect){
+                var href = data.instance.get_node(data.node, true).children('a').attr('href');
+                if (href != "#")
+                    document.location = href;
 
-            data.instance.open_node(data.node);	
-            return false;
+                data.instance.open_node(data.node);	
+                return false;
+            }
+            else { self._autoSelect = false; }
         });
         
         this._subscriberId = this._stateService.stateContainer.registerSubscriber(this);
@@ -42,10 +46,9 @@ export class NavComponent {
     notify(state, changedStates){
         let currentPageId = state.get('SiteStateChanger.currentPageId');
         if((changedStates === null || changedStates.indexOf("SiteStateChanger.currentPageId") > -1) 
-            && currentPageId !== undefined
-            && currentPageId !== this._lastPageId){
+            && currentPageId !== undefined){
                 
-            this._lastPageId = currentPageId;
+            this._autoSelect = true;
             $('#nav').jstree('deselect_all');
             $('#nav').jstree('select_node', currentPageId);  
                

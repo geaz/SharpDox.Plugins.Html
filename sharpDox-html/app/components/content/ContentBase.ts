@@ -131,13 +131,12 @@ export class ContentBase {
     }
     
     private scrollToMember(){        
-        let memberId = this._routeParams.get('member');
-        if(memberId !== null && $('#' + memberId) !== null){
-            $('#' + memberId + ' .member-content').show();
-           /* $('html, body').animate({
-                scrollTop: $('#' + memberId).offset().top
-            }, 2000);*/
-        }        
+        let id = this._routeParams.get('id');
+        if(id.indexOf('-m:') > -1){
+            let memberId = id.split('-m:')[1].split('.').join('\\.');
+            $('#' + memberId + ' .member-content').show();            
+            $('html, body').scrollTop = $('#' + memberId).offsetTop;
+        }       
     }
     
 }

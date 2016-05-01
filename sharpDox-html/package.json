@@ -1,12 +1,12 @@
 {
-  "name": "sharpDox-html",
+  "name": "sharpDox",
   "version": "1.0.0",
   "description": "The HTML application for the sharpdox HTML plugin.",
   "main": "app",
   "author": "Gerrit 'Geaz' Gazic",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --inline --content-base ."
+    "start": "webpack-dev-server --content-base ."
   },
   "devDependencies": {
     "css-loader": "^0.23.1",
