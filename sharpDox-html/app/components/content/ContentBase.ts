@@ -135,7 +135,7 @@ export class ContentBase {
         if(id.indexOf('-m:') > -1){
             let memberId = id.split('-m:')[1].split('.').join('\\.');
             $('#' + memberId + ' .member-content').show();            
-            $('html, body').scrollTop = $('#' + memberId).offsetTop;
+            $('html, body').scrollTop($('#' + memberId).offsetTop);
         }       
     }
     
