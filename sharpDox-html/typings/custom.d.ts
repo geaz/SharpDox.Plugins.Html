@@ -9,6 +9,7 @@ interface HTMLElement{
 }
 
 interface JQuery { 
+    offsetTop;
     splitPane(); 
     bind(element: any, func : any)
 }
