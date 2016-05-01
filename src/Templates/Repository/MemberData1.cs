@@ -70,7 +70,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             this.Write("\",\r\n\r\n\t");
             
             #line 25 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
- if(Member is SDMethod) { 
+ if(Member is SDMethod) {
 		var sdMethod = (SDMethod)Member; 
             
             #line default
@@ -135,7 +135,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             this.Write("\t\t\"constantValue\":\" ");
             
             #line 37 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\MemberData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(((SDField)Member).ConstantValue));
+            this.Write(this.ToStringHelper.ToStringWithCulture(((SDField)Member).ConstantValue.ToObjectString()));
             
             #line default
             #line hidden

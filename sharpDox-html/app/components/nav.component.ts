@@ -12,6 +12,7 @@ import {StateService} from '../state/StateService';
 export class NavComponent { 
     
     private _subscriberId : number;
+    private _lastPageId : string;
     
     constructor(private _stateService : StateService){ }
     
@@ -40,9 +41,14 @@ export class NavComponent {
     
     notify(state, changedStates){
         let currentPageId = state.get('SiteStateChanger.currentPageId');
-        if((changedStates === null || changedStates.indexOf("SiteStateChanger.currentPageId") > -1) && currentPageId !== undefined){
+        if((changedStates === null || changedStates.indexOf("SiteStateChanger.currentPageId") > -1) 
+            && currentPageId !== undefined
+            && currentPageId !== this._lastPageId){
+                
+            this._lastPageId = currentPageId;
             $('#nav').jstree('deselect_all');
-            $('#nav').jstree('select_node', currentPageId);     
+            $('#nav').jstree('select_node', currentPageId);  
+               
         }              
     }
     

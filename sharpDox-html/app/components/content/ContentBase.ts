@@ -35,6 +35,7 @@ export class ContentBase {
             this.setSvg();
             this.setSvgLinks(); 
             this.hideMemberContents();
+            this.scrollToMember();
         }
     }
     
@@ -127,6 +128,16 @@ export class ContentBase {
     
     private hideMemberContents(){
         $('.member-content').hide();
+    }
+    
+    private scrollToMember(){        
+        let memberId = this._routeParams.get('member');
+        if(memberId !== null && $('#' + memberId) !== null){
+            $('#' + memberId + ' .member-content').show();
+           /* $('html, body').animate({
+                scrollTop: $('#' + memberId).offset().top
+            }, 2000);*/
+        }        
     }
     
 }

@@ -28,6 +28,7 @@ import {FooterComponent} from './footer.component';
     { path:'/', redirectTo: ['Article', { id: 'home' }] },
     { path:'/article/:id', name: 'Article', component: ArticleComponent },
     { path:'/namespace/:id', name: 'Namespace', component: NamespaceComponent },
+    { path:'/type/:id/:member', name: 'Member', component: TypeComponent },
     { path:'/type/:id', name: 'Type', component: TypeComponent }
 ])
 export class AppComponent { 

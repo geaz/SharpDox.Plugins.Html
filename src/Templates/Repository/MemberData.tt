@@ -22,7 +22,7 @@
 	"type": "<#= MemberType #>",
 	"accessibility": "<#= Member.Accessibility #>",
 
-	<# if(Member is SDMethod) { 
+	<# if(Member is SDMethod) {
 		var sdMethod = (SDMethod)Member; #>
 		"name": "<#= sdMethod.Signature #>",
 		<# if(!sdMethod.IsSequenceDiagramEmpty()) { #>
@@ -34,7 +34,7 @@
 	<# } #> 
 	
 	<# if(Member is SDField && !string.IsNullOrEmpty(((SDField)Member).ConstantValue)) { #>
-		"constantValue":" <#= ((SDField)Member).ConstantValue #>", 
+		"constantValue":" <#= ((SDField)Member).ConstantValue.ToObjectString() #>", 
 	<# } #>
 
 	<#	var documentation = Member.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
