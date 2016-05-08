@@ -5,7 +5,7 @@ import {SiteStateChanger} from '../state/SiteStateChanger';
 
 @Component({
     selector: 'sd-fxchanger',
-    templateUrl: '/templates/fxChanger/fxChanger.html',
+    templateUrl: './templates/fxChanger/fxChanger.html',
     styleUrls: ['./templates/fxChanger/fxChanger.css']
 })
 export class FxChangerComponent{

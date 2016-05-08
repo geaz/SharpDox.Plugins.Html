@@ -3,7 +3,7 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 @Component({
     selector: 'sd-header',
-    templateUrl: '/templates/header/header.html',
+    templateUrl: './templates/header/header.html',
     styleUrls: ['./templates/header/header.css'],
     directives: [ROUTER_DIRECTIVES]
 })

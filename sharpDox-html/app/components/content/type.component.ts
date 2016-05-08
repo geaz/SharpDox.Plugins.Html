@@ -9,7 +9,7 @@ import {MemberComponent} from './member.component';
 
 @Component({
     selector: 'sd-type',
-    templateUrl: '/templates/content/type/type.html',
+    templateUrl: './templates/content/type/type.html',
     styleUrls: ['./templates/content/type/type.css'],
     directives: [MemberComponent]
 })

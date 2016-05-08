@@ -7,7 +7,7 @@ import {SiteStateChanger} from '../../state/SiteStateChanger';
 
 @Component({
     selector: 'sd-namespace',
-    templateUrl: '/templates/content/namespace/namespace.html',
+    templateUrl: './templates/content/namespace/namespace.html',
     styleUrls: ['./templates/content/namespace/namespace.css']
 })
 export class NamespaceComponent extends ContentBase { 

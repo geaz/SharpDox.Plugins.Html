@@ -3,7 +3,7 @@ import {RouteParams} from 'angular2/router';
 
 @Component({
     selector: 'sd-footer',
-    templateUrl: '/templates/footer/footer.html',
+    templateUrl: './templates/footer/footer.html',
     styleUrls: ['./templates/footer/footer.css']
 })
 export class FooterComponent { 

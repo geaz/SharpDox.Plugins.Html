@@ -4,7 +4,7 @@ import {StateService} from '../state/StateService';
 
 @Component({
     selector: 'sd-titlebar',
-    templateUrl: '/templates/titlebar/titlebar.html',
+    templateUrl: './templates/titlebar/titlebar.html',
     styleUrls: ['./templates/titlebar/titlebar.css']
 })
 export class TitleBarComponent{

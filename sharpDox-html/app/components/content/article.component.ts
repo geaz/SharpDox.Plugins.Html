@@ -7,7 +7,7 @@ import {SiteStateChanger} from '../../state/SiteStateChanger';
 
 @Component({
     selector: 'sd-article',
-    templateUrl: '/templates/content/article/article.html',
+    templateUrl: './templates/content/article/article.html',
     styleUrls: ['./templates/content/article/article.css']
 })
 export class ArticleComponent extends ContentBase { 

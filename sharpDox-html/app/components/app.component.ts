@@ -15,7 +15,7 @@ import {FooterComponent} from './footer.component';
 
 @Component({
     selector: 'sharpdox-app',
-    templateUrl: '/templates/app/app.html',
+    templateUrl: './templates/app/app.html',
     styleUrls: ['./templates/app/app.css'],
     directives: [ROUTER_DIRECTIVES, 
                 HeaderComponent, 

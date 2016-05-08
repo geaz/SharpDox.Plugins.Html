@@ -5,7 +5,7 @@ import {StateService} from '../state/StateService';
 
 @Component({
     selector: 'sd-nav',
-    templateUrl: '/templates/nav/nav.html',
+    templateUrl: './templates/nav/nav.html',
     styleUrls: ['./templates/nav/nav.css'],
     directives: [ROUTER_DIRECTIVES]
 })
