@@ -63,7 +63,7 @@ if(Documentation.SeeAlsos.Count > 0 ){
 	documentation.Add(string.Format("\"seeAlsos\":[{0}]", string.Join(",", seeAlsos)));
 } #>
 
-<#= string.Join(",", documentation) + "," #>
+<#= string.Join(",", documentation) #>
 
 
 <#+	public SDDocumentation Documentation { get; set; } #>

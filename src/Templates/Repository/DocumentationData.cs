@@ -95,7 +95,7 @@ if(Documentation.SeeAlsos.Count > 0 ){
             this.Write("\r\n");
             
             #line 66 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\DocumentationData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(",", documentation) + ","));
+            this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(",", documentation)));
             
             #line default
             #line hidden
