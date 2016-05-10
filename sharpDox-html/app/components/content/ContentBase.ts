@@ -44,7 +44,8 @@ export class ContentBase {
     }
     
     notify(state, changedStates){
-        if(changedStates.indexOf("SiteStateChanger.currentPageData") > -1){
+        var currentPagId = state.get("SiteStateChanger.currentPageData");
+        if(changedStates.indexOf("SiteStateChanger.currentPageData") > -1 && currentPagId !== undefined){
             this.currentPageData = state.get("SiteStateChanger.currentPageData");
             this._contentChanged = true;
         }        
@@ -131,12 +132,12 @@ export class ContentBase {
     }
     
     private scrollToMember(){        
-        let id = this._routeParams.get('id');
-        if(id.indexOf('-m:') > -1){
-            let memberId = id.split('-m:')[1].split('.').join('\\.');
+        let member = this._routeParams.get('member');
+        if(member){
+            let memberId = member.split('.').join('\\.');
             $('#' + memberId + ' .member-content').show();            
             $('html, body').scrollTop($('#' + memberId).offsetTop);
-        }       
+        }      
     }
     
 }

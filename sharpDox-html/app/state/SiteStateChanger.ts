@@ -15,7 +15,7 @@ export class SiteStateChanger extends StateChanger{
     }
    
     setCurrentPageToArticle(id : string) : void{     
-        this._triggerChange({'gettingPage': true, 'currentPageData': {}});
+        this._triggerChange({'gettingPage': true, 'currentPageId': undefined});
         
         let that = this;
         $.getJSON("data/articles/" + id + ".json", function( data ) {            
@@ -31,7 +31,7 @@ export class SiteStateChanger extends StateChanger{
     } 
     
     setCurrentPageToNamespace(id : string) : void{
-        this._triggerChange({'gettingPage': true, 'currentPageData': {}});    
+        this._triggerChange({'gettingPage': true, 'currentPageId': undefined});    
         
         let that = this;   
         $.getJSON("data/namespaces/" + id + ".json", function( namespace ) {           
@@ -55,7 +55,7 @@ export class SiteStateChanger extends StateChanger{
     } 
     
     setCurrentPageToType(id : string) : void{
-        this._triggerChange({'gettingPage': true, 'currentPageData': {}});      
+        this._triggerChange({'gettingPage': true, 'currentPageId': undefined});      
         
         let that = this;  
         $.getJSON("data/types/" + id + ".json", function( type ) {
