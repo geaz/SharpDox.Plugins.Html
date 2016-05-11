@@ -44,5 +44,7 @@
 		]
 	}
 
-<#+	public SDNamespace Namespace { get; set; } #>
-<#+	public SDTargetFx TargetFx { get; set; } #>
+<#+	
+public SDNamespace Namespace { get; set; }
+public SDTargetFx TargetFx { get; set; } 
+#>
