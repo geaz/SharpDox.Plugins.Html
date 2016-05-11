@@ -16,37 +16,44 @@
 <#@ import namespace="CommonMark" #>
 
 <# var helper = new Helper(StepInput.SDProject); #>
-
 {
-	"id": "<#= Member.Identifier #>",
-	"type": "<#= MemberType #>",
-	"accessibility": "<#= Member.Accessibility #>",
+	<#
+	var properties = new List<string>();
+	properties.Add($"\"id\": \"{Member.Identifier}\"");
+	properties.Add($"\"type\": \"{MemberType}\""); 
+	properties.Add($"\"accessibility\": \"{Member.Accessibility}\"");
 
-	<# if(Member is SDMethod) {
-		var sdMethod = (SDMethod)Member; #>
-		"name": "<#= sdMethod.Signature #>",
-		<# if(!sdMethod.IsSequenceDiagramEmpty()) { #>
-		"diagramId": "<#= sdMethod.Guid #>",
-		"sequenceDiagram": "<#= sdMethod.GetSequenceDiagram(Repository).ToSvg().Transform(new Helper(StepInput.SDProject).TransformLinkToken).ToObjectString() #>",
-		<# }
-	} else { #>
-		"name": "<#= Member.Name #>",
-	<# } #> 
-	
-	<# if(Member is SDField && !string.IsNullOrEmpty(((SDField)Member).ConstantValue)) { #>
-		"constantValue":" <#= ((SDField)Member).ConstantValue.ToObjectString() #>", 
-	<# } #>
+	if(Member is SDMethod) {
+		var sdMethod = (SDMethod)Member;
+		properties.Add($"\"name\": \"{sdMethod.Signature}\"");
 
-	<#	var documentation = Member.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
+		if(!sdMethod.IsSequenceDiagramEmpty()) {
+			properties.Add($"\"diagramId\": \"{sdMethod.Guid}\"");
+			properties.Add($"\"sequenceDiagram\": \"{sdMethod.GetSequenceDiagram(Repository).ToSvg().Transform(new Helper(StepInput.SDProject).TransformLinkToken).ToObjectString()}\"");
+		}
+	} else {
+		properties.Add($"\"name\": \"{Member.Name}\"");
+	}
+
+	if(Member is SDField && !string.IsNullOrEmpty(((SDField)Member).ConstantValue)) {
+		properties.Add($"\"constantValue\": \"{((SDField)Member).ConstantValue.ToObjectString()}\"");
+	}
+
+	var documentation = Member.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
 	if(documentation != null){
-		var documentationTemplate = new DocumentationData { Documentation = documentation }; #>
-		<#= documentationTemplate.TransformText() #>	
-	<# } #>
+		var documentationTemplate = new DocumentationData { Documentation = documentation };
+		var documentationText = documentationTemplate.TransformText();
+		if(!string.IsNullOrWhiteSpace(documentationText)) properties.Add(documentationText);
+	}
 
-	"syntax": "<#= Member.Syntax #>",
-	"linkedSyntax": "<#= Member.SyntaxTemplate.Transform(helper.TransformLinkToken).ToObjectString() #>"
+	properties.Add($"\"syntax\": \"{Member.Syntax}\"");
+	properties.Add($"\"linkedSyntax\": \"{Member.SyntaxTemplate.Transform(helper.TransformLinkToken).ToObjectString()}\"");
+	#>
+	<#= string.Join(",", properties) #>		
 }
 
-<#+	public SDMemberBase Member { get; set; } #>
-<#+	public string MemberType { get; set; } #>
-<#+ public SDRepository Repository { get; set; } #>
+<#+
+public SDMemberBase Member { get; set; }
+public string MemberType { get; set; }
+public SDRepository Repository { get; set; } 
+#>

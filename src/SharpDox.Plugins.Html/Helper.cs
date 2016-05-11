@@ -41,7 +41,7 @@ namespace SharpDox.Plugins.Html
 
                 var regEx = new Regex(@"\.(?![^\(]*\))");
                 var splittedId = regEx.Split(identifierWithoutPrefix);
-                link = $"#/type/{string.Join(".", splittedId.Take(splittedId.Length - 1)).Trim('.')}/{identifier}";
+                link = $"#/type/{string.Join(".", splittedId.Take(splittedId.Length - 1)).Trim('.')}/{identifier}".RemoveIllegalPathChars();
             }
             return link;
         }

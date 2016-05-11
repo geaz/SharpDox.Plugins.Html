@@ -12,7 +12,7 @@
     </thead>
     <tbody>
         <tr *ngFor="#type of currentPageData.types">
-            <td class="iconColumn"><img src="./assets/icons/class_{{type.accessibility}}.png"/></td>
+            <td class="iconColumn"><img src="./assets/icons/{{type.kind}}_{{type.accessibility}}.png"/></td>
             <td><a href="#/type/{{type.id}}">{{type.name}}</a></td>
             <td class="markdown" [innerHtml]="type.summary"></td>
         </tr>

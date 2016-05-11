@@ -47,7 +47,8 @@
 		var documentation = Type.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
 		if(documentation != null){
 			var documentationTemplate = new DocumentationData { Documentation = documentation };
-			properties.Add(documentationTemplate.TransformText());
+			var documentationText = documentationTemplate.TransformText();
+			if(!string.IsNullOrWhiteSpace(documentationText)) properties.Add(documentationText);
 		}
 		
 		if(Type.Fields.Count > 0) {
@@ -69,6 +70,8 @@
 		<#= string.Join(",", properties) #>	
 	}
 
-<#+	public SDType Type { get; set; } #>
-<#+	public SDTargetFx TargetFx { get; set; } #>
-<#+ public SDRepository Repository { get; set; } #>
+<#+	
+public SDType Type { get; set; }
+public SDTargetFx TargetFx { get; set; }
+public SDRepository Repository { get; set; } 
+#>
