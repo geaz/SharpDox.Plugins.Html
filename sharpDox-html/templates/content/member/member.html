@@ -1,4 +1,4 @@
-<div id="{{member.id}}" class="member">
+<div id="{{member.urlId}}" class="member">
     <div class="member-header">		
         <a class="member-header-link" (click)="toogleMember($event)"><img src="./assets/icons/{{member.type}}_{{member.accessibility}}.png"/> <p>{{member.name}}</p></a>
         <div *ngIf="member.summary" class="summary markdown" [innerHtml]="member.summary"></div>

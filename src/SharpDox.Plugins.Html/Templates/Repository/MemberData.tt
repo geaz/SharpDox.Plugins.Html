@@ -20,6 +20,7 @@
 	<#
 	var properties = new List<string>();
 	properties.Add($"\"id\": \"{Member.Identifier}\"");
+	properties.Add($"\"urlId\": \"{Member.Identifier.RemoveIllegalHtmlIdChars()}\"");
 	properties.Add($"\"type\": \"{MemberType}\""); 
 	properties.Add($"\"accessibility\": \"{Member.Accessibility}\"");
 

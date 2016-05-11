@@ -30,7 +30,17 @@ namespace SharpDox.Plugins.Html
 
         public static string RemoveIllegalPathChars(this string text)
         {
-            string invalid = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+            var invalid = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+            foreach (char c in invalid)
+            {
+                text = text.Replace(c.ToString(), "");
+            }
+            return text;
+        }
+
+        public static string RemoveIllegalHtmlIdChars(this string text)
+        {
+            var invalid = new [] { '.' , '(', ')', '<', '>', '[', ']', '{', '}' };
             foreach (char c in invalid)
             {
                 text = text.Replace(c.ToString(), "");

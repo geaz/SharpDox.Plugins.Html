@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using SharpDox.Model;
 
@@ -41,7 +42,7 @@ namespace SharpDox.Plugins.Html
 
                 var regEx = new Regex(@"\.(?![^\(]*\))");
                 var splittedId = regEx.Split(identifierWithoutPrefix);
-                link = $"#/type/{string.Join(".", splittedId.Take(splittedId.Length - 1)).Trim('.')}/{identifier}".RemoveIllegalPathChars();
+                link = $"#/type/{string.Join(".", splittedId.Take(splittedId.Length - 1)).Trim('.').RemoveIllegalPathChars()}/{identifier.RemoveIllegalHtmlIdChars()}";
             }
             return link;
         }

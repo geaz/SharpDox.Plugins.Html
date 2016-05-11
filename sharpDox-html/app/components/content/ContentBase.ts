@@ -134,9 +134,8 @@ export class ContentBase {
     private scrollToMember(){        
         let member = this._routeParams.get('member');
         if(member){
-            let memberId = member.split('.').join('\\.');
-            $('#' + memberId + ' .member-content').show();            
-            $('html, body').scrollTop($('#' + memberId).offsetTop);
+            $('#' + member + ' .member-content').show();            
+            $('#main').scrollTop($('#' + member).offsetTop);
         }      
     }
     
