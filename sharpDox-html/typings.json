@@ -1,0 +1,7 @@
+{
+  "ambientDependencies": {
+    "jquery": "registry:dt/jquery#1.10.0+20160316155526",
+    "jstree": "registry:dt/jstree#0.0.0+20160316155526",
+    "prism": "registry:dt/prism#1.4.4+20160321233308"
+  }
+}
