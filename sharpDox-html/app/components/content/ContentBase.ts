@@ -28,6 +28,9 @@ export class ContentBase {
     
     ngAfterViewChecked(){ 
         if(this._contentChanged){
+            if (this.currentPageData.title) (<any>document).title = this.currentPageData.title;
+            else if (this.currentPageData.name) (<any>document).title = this.currentPageData.name;
+            
             this._contentChanged = false;           
             this.initDisqus();
             this.setHighlighting();
