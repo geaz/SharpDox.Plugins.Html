@@ -135,7 +135,7 @@ export class ContentBase {
         let member = this._routeParams.get('member');
         if(member){
             $('#' + member + ' .member-content').show();            
-            $('#main').scrollTop($('#' + member).offsetTop);
+            $('#main').scrollTop($('#' + member).offset().top);
         }      
     }
     

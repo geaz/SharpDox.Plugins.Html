@@ -46,7 +46,7 @@ export class NavComponent {
     notify(state, changedStates){
         let currentPageId = state.get('SiteStateChanger.currentPageId');
         if((changedStates === null || changedStates.indexOf("SiteStateChanger.currentPageId") > -1) 
-            && currentPageId !== undefined){
+            && currentPageId !== undefined && currentPageId !== 'home'){
                 
             this._autoSelect = true;
             $('#nav').jstree('deselect_all');

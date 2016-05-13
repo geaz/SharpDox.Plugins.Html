@@ -40,12 +40,12 @@ namespace SharpDox.Plugins.Html
 
         public static string RemoveIllegalHtmlIdChars(this string text)
         {
-            var invalid = new [] { '.' , '(', ')', '<', '>', '[', ']', '{', '}' };
+            var invalid = new [] { '.' , '(', ')', '<', '>', '[', ']', '{', '}', ',' };
             foreach (char c in invalid)
             {
                 text = text.Replace(c.ToString(), "");
             }
-            return text;
+            return text.Replace(" ", "");
         }
 
         public static string MinifyJson(this string json)
