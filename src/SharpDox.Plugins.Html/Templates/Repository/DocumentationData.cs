@@ -25,7 +25,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\DocumentationData.tt"
+    #line 1 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\DocumentationData.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class DocumentationData : DocumentationDataBase
     {
@@ -38,7 +38,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             this.Write("\r\n");
             this.Write("\r\n");
             
-            #line 15 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\DocumentationData.tt"
+            #line 15 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\DocumentationData.tt"
  var helper = new Helper(StepInput.SDProject);
 
 var documentation = new List<string>();
@@ -76,16 +76,7 @@ if(Documentation.SeeAlsos.Count > 0 ){
 	var seeAlsos = new List<string>();
 	foreach(var sdToken in Documentation.SeeAlsos){
 		var seeAlso = (SDSeeToken)sdToken;
-		if(!string.IsNullOrEmpty(seeAlso.DeclaringType))
-		{
-			var identifier = string.Format("{0}.{1}", seeAlso.DeclaringType, seeAlso.Name);
-			seeAlsos.Add(string.Format("{{\"type\":\"\", \"id\":\"{0}\", \"name\":\"{1}\"}}", identifier, seeAlso.Name));
-        }
-		else
-		{
-			var identifier = string.Format("{0}.{1}", seeAlso.Namespace, seeAlso.Name);
-			seeAlsos.Add(string.Format("{{\"type\":\"\", \"id\":\"{0}\", \"name\":\"{1}\"}}", identifier, seeAlso.Name)); 
-		} 	
+		seeAlsos.Add(string.Format("{{\"type\":\"type\", \"id\":\"{0}\", \"name\":\"{1}\"}}", seeAlso.Identifier, seeAlso.Name));		
     }
 	documentation.Add(string.Format("\"seeAlsos\":[{0}]", string.Join(",", seeAlsos)));
 } 
@@ -94,7 +85,7 @@ if(Documentation.SeeAlsos.Count > 0 ){
             #line hidden
             this.Write("\r\n");
             
-            #line 66 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\DocumentationData.tt"
+            #line 57 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\DocumentationData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(",", documentation)));
             
             #line default
@@ -103,7 +94,7 @@ if(Documentation.SeeAlsos.Count > 0 ){
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 69 "D:\Github\SharpDox.Plugins.Html\src\Templates\Repository\DocumentationData.tt"
+        #line 60 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\DocumentationData.tt"
 	public SDDocumentation Documentation { get; set; } 
         
         #line default

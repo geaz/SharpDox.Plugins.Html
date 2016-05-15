@@ -49,16 +49,7 @@ if(Documentation.SeeAlsos.Count > 0 ){
 	var seeAlsos = new List<string>();
 	foreach(var sdToken in Documentation.SeeAlsos){
 		var seeAlso = (SDSeeToken)sdToken;
-		if(!string.IsNullOrEmpty(seeAlso.DeclaringType))
-		{
-			var identifier = string.Format("{0}.{1}", seeAlso.DeclaringType, seeAlso.Name);
-			seeAlsos.Add(string.Format("{{\"type\":\"\", \"id\":\"{0}\", \"name\":\"{1}\"}}", identifier, seeAlso.Name));
-        }
-		else
-		{
-			var identifier = string.Format("{0}.{1}", seeAlso.Namespace, seeAlso.Name);
-			seeAlsos.Add(string.Format("{{\"type\":\"\", \"id\":\"{0}\", \"name\":\"{1}\"}}", identifier, seeAlso.Name)); 
-		} 	
+		seeAlsos.Add(string.Format("{{\"type\":\"type\", \"id\":\"{0}\", \"name\":\"{1}\"}}", seeAlso.Identifier, seeAlso.Name));		
     }
 	documentation.Add(string.Format("\"seeAlsos\":[{0}]", string.Join(",", seeAlsos)));
 } #>

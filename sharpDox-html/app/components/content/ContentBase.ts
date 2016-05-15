@@ -28,6 +28,9 @@ export class ContentBase {
     
     ngAfterViewChecked(){ 
         if(this._contentChanged){
+            if (this.currentPageData.title) (<any>document).title = sharpDox.projectData.name + " - " + this.currentPageData.title;
+            else if (this.currentPageData.name) (<any>document).title = sharpDox.projectData.name + " - " + this.currentPageData.name;
+            
             this._contentChanged = false;           
             this.initDisqus();
             this.setHighlighting();
@@ -65,9 +68,13 @@ export class ContentBase {
     }
     
     private initDisqus() {
-        if(this.disqusShortName != null){
-            (<any>window).disqus_title = document.title;
-            (<any>window).disqus_url = window.location.href;
+        if(this.disqusShortName != null){            
+            (<any>window).disqus_config = function () {
+                this.page.url = window.location.href;
+                this.page.identifier = document.title;
+                this.page.title = document.title;
+            };
+            
             var dsq = document.createElement('script'); 
             dsq.type = 'text/javascript'; 
             dsq.async = true;
