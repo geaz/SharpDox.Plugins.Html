@@ -18,14 +18,25 @@ export class TypeComponent extends ContentBase {
     
     public currentPageData : any = {};
     
+    private _routeSubscription : any;
+    
     constructor(_route : ActivatedRoute,
                 _sanitizer: DomSanitizationService, 
                 _siteStateChanger : SiteStateChanger,                
                 _stateService : StateService){ 
         super("sd-type", _sanitizer, _route, _siteStateChanger, _stateService);   
-        
-        let id = this._route.snapshot.params['id'];
-        this._siteStateChanger.setCurrentPageToType(id);
+    }
+
+    ngOnInit(){    
+        this._routeSubscription = this._route.params.subscribe(params => {
+            let id = params['id'];
+            this._siteStateChanger.setCurrentPageToType(id);
+        });
+    }
+
+    ngOnDestroy(){
+        this._routeSubscription.unsubscribe();
+        super.ngOnDestroy();
     }
     
 }

@@ -15,14 +15,25 @@ export class NamespaceComponent extends ContentBase {
     
     public currentPageData : any = {};
     
+    private _routeSubscription : any;
+    
     constructor(_route : ActivatedRoute, 
                 _sanitizer: DomSanitizationService,
                 _siteStateChanger : SiteStateChanger,                
                 _stateService : StateService){ 
-        super("sd-namespace", _sanitizer, _route, _siteStateChanger, _stateService);   
-        
-        let id = this._route.snapshot.params['id'];
-        this._siteStateChanger.setCurrentPageToNamespace(id);
+        super("sd-namespace", _sanitizer, _route, _siteStateChanger, _stateService);
+    }
+
+    ngOnInit(){    
+        this._routeSubscription = this._route.params.subscribe(params => {
+            let id = params['id'];
+            this._siteStateChanger.setCurrentPageToNamespace(id);
+        });
+    }
+
+    ngOnDestroy(){
+        this._routeSubscription.unsubscribe();
+        super.ngOnDestroy();
     }
     
 }
