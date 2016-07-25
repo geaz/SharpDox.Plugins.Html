@@ -15,14 +15,17 @@ export class MemberComponent{
     constructor(private _sanitizer: DomSanitizationService){
         this.strings = sharpDox.strings;
     }
+
+    ngOnInit(){
+        this.member.linkedSyntaxSanitized = this._sanitizer.bypassSecurityTrustHtml(this.member.linkedSyntax);
+
+        if(this.member.type == "method"){
+            this.member.sequenceDiagramSanitized = this._sanitizer.bypassSecurityTrustHtml(this.member.sequenceDiagram);
+        }
+    }
     
     toogleMember(event){
         var content = $(event.target).parent().parent().next();
         content.slideToggle();
-    }
-
-    getSanitized(value){
-        return this._sanitizer.bypassSecurityTrustHtml(value);
-    }
-    
+    }    
 }

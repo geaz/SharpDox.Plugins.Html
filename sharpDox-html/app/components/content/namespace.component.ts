@@ -14,14 +14,14 @@ import {SiteStateChanger} from '../../state/SiteStateChanger';
 export class NamespaceComponent extends ContentBase { 
     
     public currentPageData : any = {};
-    
+
     private _routeSubscription : any;
     
-    constructor(_route : ActivatedRoute, 
-                _sanitizer: DomSanitizationService,
+    constructor(private _sanitizer: DomSanitizationService,
+                _route : ActivatedRoute,                 
                 _siteStateChanger : SiteStateChanger,                
                 _stateService : StateService){ 
-        super("sd-namespace", _sanitizer, _route, _siteStateChanger, _stateService);
+        super("sd-namespace", _route, _siteStateChanger, _stateService);
     }
 
     ngOnInit(){    
@@ -35,5 +35,12 @@ export class NamespaceComponent extends ContentBase {
         this._routeSubscription.unsubscribe();
         super.ngOnDestroy();
     }
-    
+
+    notify(state, changedStates){
+        var currentPagId = state.get("SiteStateChanger.currentPageData");
+        if(changedStates.indexOf("SiteStateChanger.currentPageData") > -1 && currentPagId !== undefined){
+            this.currentPageData = state.get("SiteStateChanger.currentPageData");
+            super.contentChanged();
+        }        
+    } 
 }

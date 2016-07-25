@@ -17,14 +17,14 @@ import {MemberComponent} from './member.component';
 export class TypeComponent extends ContentBase { 
     
     public currentPageData : any = {};
-    
+
     private _routeSubscription : any;
     
-    constructor(_route : ActivatedRoute,
-                _sanitizer: DomSanitizationService, 
+    constructor(private _sanitizer: DomSanitizationService, 
+                _route : ActivatedRoute,
                 _siteStateChanger : SiteStateChanger,                
                 _stateService : StateService){ 
-        super("sd-type", _sanitizer, _route, _siteStateChanger, _stateService);   
+        super("sd-type", _route, _siteStateChanger, _stateService);   
     }
 
     ngOnInit(){    
@@ -38,5 +38,14 @@ export class TypeComponent extends ContentBase {
         this._routeSubscription.unsubscribe();
         super.ngOnDestroy();
     }
-    
+        
+    notify(state, changedStates){
+        var currentPagId = state.get("SiteStateChanger.currentPageData");
+        if(changedStates.indexOf("SiteStateChanger.currentPageData") > -1 && currentPagId !== undefined){
+            this.currentPageData = state.get("SiteStateChanger.currentPageData");
+            this.currentPageData.linkedSyntaxSanitized = this._sanitizer.bypassSecurityTrustHtml(this.currentPageData.linkedSyntax);
+            this.currentPageData.classDiagramSanitized = this._sanitizer.bypassSecurityTrustHtml(this.currentPageData.classDiagram);
+            super.contentChanged();
+        }        
+    } 
 }

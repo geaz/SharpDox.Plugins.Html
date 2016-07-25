@@ -15,11 +15,11 @@ export class ArticleComponent extends ContentBase {
            
     private _routeSubscription : any;
     
-    constructor(_route : ActivatedRoute, 
-                _sanitizer: DomSanitizationService,
+    constructor(private _sanitizer: DomSanitizationService,
+                _route : ActivatedRoute,                 
                 _siteStateChanger : SiteStateChanger,
                 _stateService : StateService){ 
-        super("sd-article", _sanitizer, _route, _siteStateChanger, _stateService);
+        super("sd-article", _route, _siteStateChanger, _stateService);
     }
     
     ngOnInit(){    
@@ -33,4 +33,13 @@ export class ArticleComponent extends ContentBase {
         this._routeSubscription.unsubscribe();
         super.ngOnDestroy();
     }
+
+    notify(state, changedStates){
+        var currentPagId = state.get("SiteStateChanger.currentPageData");
+        if(changedStates.indexOf("SiteStateChanger.currentPageData") > -1 && currentPagId !== undefined){
+            this.currentPageData = state.get("SiteStateChanger.currentPageData");
+            this.currentPageData.contentSanitized = this._sanitizer.bypassSecurityTrustHtml(this.currentPageData.content);
+            super.contentChanged();
+        }        
+    } 
 }

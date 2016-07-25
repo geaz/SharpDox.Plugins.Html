@@ -1,5 +1,5 @@
 <div class="markdown content">
-	<div [innerHtml]="currentPageData.content"></div>
+	<div [innerHtml]="currentPageData.contentSanitized"></div>
 	
 	<div *ngIf="disqusShortName">
 	   <div id="disqus_thread"></div>

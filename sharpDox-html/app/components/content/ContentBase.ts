@@ -1,5 +1,4 @@
 import {ActivatedRoute} from '@angular/router';
-import {DomSanitizationService} from '@angular/platform-browser';
 
 import {StateService} from '../../state/StateService';
 import {SiteStateChanger} from '../../state/SiteStateChanger';
@@ -14,7 +13,6 @@ export class ContentBase {
     private _contentChanged : boolean;    
 
     constructor(private _selector : string, 
-                private _sanitizer: DomSanitizationService,
                 protected _route : ActivatedRoute,
                 protected _siteStateChanger : SiteStateChanger,
                 private _stateService : StateService){        
@@ -47,17 +45,9 @@ export class ContentBase {
     ngOnDestroy(){
         this._stateService.stateContainer.unregisterSubscriber(this._subscriberId);
     }
-    
-    notify(state, changedStates){
-        var currentPagId = state.get("SiteStateChanger.currentPageData");
-        if(changedStates.indexOf("SiteStateChanger.currentPageData") > -1 && currentPagId !== undefined){
-            this.currentPageData = state.get("SiteStateChanger.currentPageData");
-            this._contentChanged = true;
-        }        
-    } 
-    
-    getSanitized(value){
-        return this._sanitizer.bypassSecurityTrustHtml(value);
+
+    contentChanged(){
+        this._contentChanged = true;
     }
 
     private setHighlighting(){
