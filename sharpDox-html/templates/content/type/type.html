@@ -12,9 +12,9 @@
 
     <div *ngIf="currentPageData.classDiagram">
         <div id="sd-class-diagram" class="svgpan" 
-            attr.style="height:{{currentPageData.classDiagramHeight}}px;" 
+            [style.height]="currentPageData.classDiagramHeight+'px'"
             attr.data-fit="{{currentPageData.fit}}"
-            [innerHtml]="currentPageData.classDiagram">
+            [innerHtml]="getSanitized(currentPageData.classDiagram)">
         </div>
         <div class="legend">
             <p class="save"><a href="#"><i class="icon-save"></i>{{strings.save}}</a></p>
@@ -44,7 +44,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="#exception of currentPageData.exceptions">
+            <tr *ngFor="let exception of currentPageData.exceptions">
                 <td>{{exception.key}}</td>
                 <td class="markdown" [innerHtml]="exception.value"></td>
             </tr>
@@ -64,7 +64,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="#param of currentPageData.params">
+            <tr *ngFor="let param of currentPageData.params">
                 <td>{{param.key}}</td>
                 <td class="markdown" [innerHtml]="param.value"></td>
             </tr>
@@ -84,7 +84,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="#typeParam of currentPageData.typeParams">
+            <tr *ngFor="let typeParam of currentPageData.typeParams">
                 <td>{{typeParam.key}}</td>
                 <td class="markdown" [innerHtml]="typeParam.value"></td>
             </tr>
@@ -95,34 +95,34 @@
 
     <div *ngIf="currentPageData.fields">
     <h4>{{strings.fields}}</h4>
-        <sd-member *ngFor="#field of currentPageData.fields" [member]="field"></sd-member>
+        <sd-member *ngFor="let field of currentPageData.fields" [member]="field"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.constructors">
     <h4>{{strings.constructors}}</h4>
-    <sd-member *ngFor="#constructor of currentPageData.constructors" [member]="constructor"></sd-member>
+    <sd-member *ngFor="let constructor of currentPageData.constructors" [member]="constructor"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.methods">
     <h4>{{strings.methods}}</h4>
-    <sd-member *ngFor="#method of currentPageData.methods" [member]="method"></sd-member>
+    <sd-member *ngFor="let method of currentPageData.methods" [member]="method"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.events">
     <h4>{{strings.events}}</h4>
-    <sd-member *ngFor="#event of currentPageData.events" [member]="event"></sd-member>
+    <sd-member *ngFor="let event of currentPageData.events" [member]="event"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.properties">
     <h4>{{strings.properties}}</h4>
-    <sd-member *ngFor="#property of currentPageData.properties" [member]="property"></sd-member>
+    <sd-member *ngFor="let property of currentPageData.properties" [member]="property"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.seeAlsos">
     <h4>{{strings.seeAlso}}</h4>
     <div class="list-box">
     <ul>
-        <li *ngFor="#seeAlso of currentPageData.seeAlsos"><a href="#/{{seeAlso.type}}/{{seeAlso.id}}">{{seeAlso.name}}</a></li>
+        <li *ngFor="let seeAlso of currentPageData.seeAlsos"><a href="#/{{seeAlso.type}}/{{seeAlso.id}}">{{seeAlso.name}}</a></li>
     </ul>
     </div>
     </div>
@@ -131,7 +131,7 @@
     <h4>{{strings.uses}}</h4>
     <div class="list-box">
     <ul>
-        <li *ngFor="#use of currentPageData.uses"><a href="#/type/{{use.id}}">{{use.name}}</a></li>
+        <li *ngFor="let use of currentPageData.uses"><a href="#/type/{{use.id}}">{{use.name}}</a></li>
     </ul>
     </div>
     </div>
@@ -140,7 +140,7 @@
     <h4>{{strings.usedBy}}</h4>
     <div class="list-box">
     <ul>
-        <li *ngFor="#used of currentPageData.usedBy"><a href="#/type/{{used.id}}">{{used.name}}</a></li>
+        <li *ngFor="let used of currentPageData.usedBy"><a href="#/type/{{used.id}}">{{used.name}}</a></li>
     </ul>
     </div>
     </div>

@@ -1,5 +1,4 @@
-import {Component} from 'angular2/core';
-import {RouteParams} from 'angular2/router';
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'sd-footer',

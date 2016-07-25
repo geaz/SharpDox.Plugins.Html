@@ -1,5 +1,5 @@
-import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Component} from '@angular/core';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 
 import {StateService} from '../state/StateService';
 import {SiteStateChanger} from '../state/SiteStateChanger';
@@ -22,15 +22,9 @@ import {FooterComponent} from './footer.component';
                 TitleBarComponent,
                 FxChangerComponent,
                 NavComponent, 
-                FooterComponent]
+                FooterComponent],
+    precompile: [ArticleComponent, NamespaceComponent, TypeComponent]
 })
-@RouteConfig([
-    { path:'/', redirectTo: ['Article', { id: 'home' }] },
-    { path:'/article/:id', name: 'Article', component: ArticleComponent },
-    { path:'/namespace/:id', name: 'Namespace', component: NamespaceComponent },
-    { path:'/type/:id', name: 'Type', component: TypeComponent },
-    { path:'/type/:id/:member', name: 'Member', component: TypeComponent }
-])
 export class AppComponent { 
     
     public hideLoader : boolean;

@@ -1,4 +1,5 @@
-import {RouteParams} from 'angular2/router';
+import {ActivatedRoute} from '@angular/router';
+import {DomSanitizationService} from '@angular/platform-browser';
 
 import {StateService} from '../../state/StateService';
 import {SiteStateChanger} from '../../state/SiteStateChanger';
@@ -10,10 +11,11 @@ export class ContentBase {
     public strings : any;    
     
     private _subscriberId : number;
-    private _contentChanged : boolean;        
-           
+    private _contentChanged : boolean;    
+
     constructor(private _selector : string, 
-                protected _routeParams : RouteParams,
+                private _sanitizer: DomSanitizationService,
+                protected _route : ActivatedRoute,
                 protected _siteStateChanger : SiteStateChanger,
                 private _stateService : StateService){        
         this.disqusShortName = sharpDox.projectData.disqusShortName;  
@@ -21,7 +23,7 @@ export class ContentBase {
         
         this._subscriberId = this._stateService.stateContainer.registerSubscriber(this);
     }   
-    
+
     ngAfterViewInit(){        
         $('#main').scrollTop(0);      
     }  
@@ -54,6 +56,10 @@ export class ContentBase {
         }        
     } 
     
+    getSanitized(value){
+        return this._sanitizer.bypassSecurityTrustHtml(value);
+    }
+
     private setHighlighting(){
         let codeBlocks = $('pre code');
         for(let i = 0; i < codeBlocks.length; i++){
@@ -139,7 +145,7 @@ export class ContentBase {
     }
     
     private scrollToMember(){        
-        let member = this._routeParams.get('member');
+        let member = this._route.snapshot.params['member'];
         if(member){
             $('#' + member + ' .member-content').show();            
             $('#main').scrollTop($('#' + member).offset().top);
