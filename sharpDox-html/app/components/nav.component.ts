@@ -17,26 +17,27 @@ export class NavComponent {
     constructor(private _stateService : StateService){ }
     
     ngAfterViewInit(){
+        var self = this;
+        $('#nav').bind('ready.jstree', function(e, data) {
+            $("#nav").bind("select_node.jstree", function(e, data) {
+                if(!self._autoSelect){
+                    var href = data.instance.get_node(data.node, true).children('a').attr('href');
+                    if (href != "#")
+                        document.location = href;
+
+                    data.instance.open_node(data.node);	
+                    return false;
+                }
+                else { self._autoSelect = false; }
+            });            
+            self._subscriberId = self._stateService.stateContainer.registerSubscriber(self, true);
+        });
+
         $('#nav').jstree({
             'core' : {
                 'data' : sharpDox.navigationData
             }
         });
-        
-        var self = this;
-        $("#nav").bind("select_node.jstree", function(e, data) {
-            if(!self._autoSelect){
-                var href = data.instance.get_node(data.node, true).children('a').attr('href');
-                if (href != "#")
-                    document.location = href;
-
-                data.instance.open_node(data.node);	
-                return false;
-            }
-            else { self._autoSelect = false; }
-        });
-        
-        this._subscriberId = this._stateService.stateContainer.registerSubscriber(this);
     }
     
     ngOnDestory(){
