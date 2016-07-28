@@ -11,6 +11,7 @@ import {NavComponent} from './nav.component';
 import {ArticleComponent} from './content/article.component';
 import {NamespaceComponent} from './content/namespace.component';
 import {TypeComponent} from './content/type.component';
+import {CodeComponent} from './content/code.component';
 import {FooterComponent} from './footer.component';
 
 @Component({
@@ -23,7 +24,7 @@ import {FooterComponent} from './footer.component';
                 FxChangerComponent,
                 NavComponent, 
                 FooterComponent],
-    precompile: [ArticleComponent, NamespaceComponent, TypeComponent]
+    precompile: [ArticleComponent, NamespaceComponent, TypeComponent, CodeComponent]
 })
 export class AppComponent { 
     

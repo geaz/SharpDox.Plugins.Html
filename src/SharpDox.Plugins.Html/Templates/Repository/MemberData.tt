@@ -40,6 +40,10 @@
 		properties.Add($"\"constantValue\": \"{((SDField)Member).ConstantValue.ToObjectString()}\"");
 	}
 
+	if(Member.Region != null){
+		properties.Add($"\"region\": {{\"start\": \"{Member.Region.Start}\", \"end\": \"{Member.Region.End}\", \"filename\": \"{Member.Region.Filename.ToObjectString()}\"}}");
+	}	
+
 	var documentation = Member.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
 	if(documentation != null){
 		var documentationTemplate = new DocumentationData { Documentation = documentation };

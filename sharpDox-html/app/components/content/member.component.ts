@@ -9,7 +9,8 @@ import {DomSanitizationService} from '@angular/platform-browser';
 export class MemberComponent{
     
     @Input() public member : any;
-    
+    @Input() public last : boolean;
+
     public strings : any;
     
     constructor(private _sanitizer: DomSanitizationService){

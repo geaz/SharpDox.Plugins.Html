@@ -1,3 +1,6 @@
+<a *ngIf="currentPageType == 'type'" [class.active]="currentRoute == 'type'" href="#!/type/{{currentPageId}}" title="Documentation"><i class="icon-file-text-alt"></i></a>
+<a *ngIf="currentPageType == 'type'" [class.active]="currentRoute == 'code'" href="#!/code/{{currentPageId}}" title="Code"><i class="icon-code"></i></a>
+
 <select (change)="setTargetFx($event)" [(ngModel)]="selectedTargetFx">
     <option *ngFor="let targetFx of currentPageTargetFxs" [value]="targetFx">{{targetFx}}</option>
 </select>

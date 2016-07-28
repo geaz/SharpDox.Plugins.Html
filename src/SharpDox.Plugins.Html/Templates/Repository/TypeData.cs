@@ -26,7 +26,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\gazic0\Downloads\SharpDox.Plugins.Html-dev\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
+    #line 1 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class TypeData : TypeDataBase
     {
@@ -36,35 +36,24 @@ namespace SharpDox.Plugins.Html.Templates.Repository
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\n");
-            this.Write("\n\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n\n");
+            this.Write("\r\n");
+            this.Write("\r\n");
             
-            #line 1 "C:\Users\gazic0\Downloads\SharpDox.Plugins.Html-dev\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
+            #line 16 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
  var helper = new Helper(StepInput.SDProject); 
             
             #line default
             #line hidden
-            this.Write("\n\n\"");
+            this.Write("\r\n\"");
             
-            #line 1 "C:\Users\gazic0\Downloads\SharpDox.Plugins.Html-dev\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
+            #line 18 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(TargetFx.Name));
             
             #line default
             #line hidden
-            this.Write("\": { \n\t\t");
+            this.Write("\": { \r\n\t\t");
             
-            #line 1 "C:\Users\gazic0\Downloads\SharpDox.Plugins.Html-dev\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
+            #line 19 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
 
 		var properties = new List<string>();
 		properties.Add($"\"name\": \"{Type.Name}\"");
@@ -93,6 +82,14 @@ namespace SharpDox.Plugins.Html.Templates.Repository
 			properties.Add($"\"implements\": [ {implements} ]");
 		}
 
+		if(Type.Regions.Count > 0){
+			var allRegions = new List<string>();
+			foreach(var region in Type.Regions){
+				allRegions.Add($"{{\"start\": \"{region.Start}\", \"end\": \"{region.End}\", \"filepath\": \"{region.FilePath.ToObjectString()}\", \"filename\": \"{region.Filename.ToObjectString()}\", \"content\": \"{region.Content.ToObjectString().Replace("\t", "    ")}\"}}");
+			}
+			properties.Add($"\"regions\": [{string.Join(",", allRegions)}]");
+		}		
+
 		var documentation = Type.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
 		if(documentation != null){
 			var documentationTemplate = new DocumentationData { Documentation = documentation };
@@ -118,18 +115,18 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t");
+            this.Write("\r\n\t\t");
             
-            #line 1 "C:\Users\gazic0\Downloads\SharpDox.Plugins.Html-dev\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
+            #line 78 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(",", properties)));
             
             #line default
             #line hidden
-            this.Write("\t\n\t}\n\n");
+            this.Write("\t\r\n\t}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\gazic0\Downloads\SharpDox.Plugins.Html-dev\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
+        #line 81 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
 	
 public SDType Type { get; set; }
 public SDTargetFx TargetFx { get; set; }

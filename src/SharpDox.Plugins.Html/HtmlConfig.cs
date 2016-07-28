@@ -18,6 +18,7 @@ namespace SharpDox.Plugins.Html
         private string _favIcon;
         private string _theme;
         private string _disqusShortName;
+        private string _scmBaseUrl;
         private string _primaryColor;
         private string _secondaryColor;
         private bool _disableSequenceDiagrams;
@@ -61,6 +62,20 @@ namespace SharpDox.Plugins.Html
                 {
                     _disqusShortName = value;
                     OnPropertyChanged("DisqusShortName");
+                }
+            }
+        }
+
+        [Name(typeof(HtmlStrings), "SCMBaseUrl")]
+        public string ScmBaseUrl
+        {
+            get { return _scmBaseUrl; }
+            set
+            {
+                if (_scmBaseUrl != value)
+                {
+                    _scmBaseUrl = value;
+                    OnPropertyChanged("SCMBaseUrl");
                 }
             }
         }

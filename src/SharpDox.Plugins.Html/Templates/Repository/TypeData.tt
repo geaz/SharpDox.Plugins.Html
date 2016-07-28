@@ -44,6 +44,14 @@
 			properties.Add($"\"implements\": [ {implements} ]");
 		}
 
+		if(Type.Regions.Count > 0){
+			var allRegions = new List<string>();
+			foreach(var region in Type.Regions){
+				allRegions.Add($"{{\"start\": \"{region.Start}\", \"end\": \"{region.End}\", \"filepath\": \"{region.FilePath.ToObjectString()}\", \"filename\": \"{region.Filename.ToObjectString()}\", \"content\": \"{region.Content.ToObjectString().Replace("\t", "    ")}\"}}");
+			}
+			properties.Add($"\"regions\": [{string.Join(",", allRegions)}]");
+		}		
+
 		var documentation = Type.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
 		if(documentation != null){
 			var documentationTemplate = new DocumentationData { Documentation = documentation };

@@ -1,11 +1,24 @@
 /* Members */
 :host .member{
+	margin: 0 0 0 5px;
+}
+
+:host .member-last{
 	margin: 0 0 15px 5px;
 }
 
 :host .member-header{
     border: 1px solid #dadada;
-    padding:10px;
+    border-bottom: 0;
+	padding:10px;
+}
+
+:host .member-header-last{
+	border-bottom: 1px solid #dadada;
+}
+
+:host .member-last-header{
+	border-bottom: 1px solid #dadada;
 }
 
 :host .member-header-link{
@@ -48,8 +61,13 @@
 :host .member-content{
 	border: 1px solid #dadada;
     border-left: 10px solid #1F6FB0;
-    border-top: 0;
+    border-bottom: 0;
     padding: 10px 10px 10px 35px;   
+}
+
+:host .member-content-last{
+    border-top: 0; 
+    border-bottom: 1px solid #dadada;
 }
 
 .member-content .syntax-box{

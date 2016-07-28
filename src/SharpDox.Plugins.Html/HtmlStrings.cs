@@ -12,6 +12,7 @@ namespace SharpDox.Plugins.Html
         private string _footerLine = "Footer Line";
         private string _favIcon = "Favicon";
         private string _disqusShortName = "Disqus (Short Name)";
+        private string _scmBaseUrl = "SCM Base URL";
 
         private string _themeMissing = "Theme missing!";
 
@@ -99,6 +100,12 @@ namespace SharpDox.Plugins.Html
         {
             get { return _disqusShortName; }
             set { _disqusShortName = value; }
+        }
+
+        public string SCMBaseUrl
+        {
+            get { return _scmBaseUrl; }
+            set { _scmBaseUrl = value; }
         }
 
         public string ThemeMissing
