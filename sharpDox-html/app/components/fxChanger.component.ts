@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Router, NavigationEnd} from '@angular/router';
+import {MappingSubscriber} from 'fsc';
 
 import {StateService} from '../state/StateService';
 import {SiteStateChanger} from '../state/SiteStateChanger';
@@ -9,7 +10,7 @@ import {SiteStateChanger} from '../state/SiteStateChanger';
     templateUrl: './templates/fxChanger/fxChanger.html',
     styleUrls: ['./templates/fxChanger/fxChanger.css']
 })
-export class FxChangerComponent{
+export class FxChangerComponent implements MappingSubscriber{
     
     public currentRoute : string;
     public currentPageType : any;
@@ -17,17 +18,16 @@ export class FxChangerComponent{
     public currentPageTargetFxs : any;
     public selectedTargetFx : string;
     
-    private _subscriberId : number;
-    private _routeSubscription : any;
+    private subscriberId : number;
+    private routeSubscription : any;
     
-    constructor(private _router : Router,
-                private _stateService : StateService, 
-                private _siteStateChanger : SiteStateChanger){
-        this._subscriberId = this._stateService.stateContainer.registerSubscriber(this);
-    }
+    constructor(private router : Router,
+                private stateService : StateService, 
+                private siteStateChanger : SiteStateChanger){ }
 
     ngOnInit(){    
-        this._routeSubscription = this._router.events.subscribe(event => {
+        this.subscriberId = this.stateService.stateContainer.registerSubscriber(this);
+        this.routeSubscription = this.router.events.subscribe(event => {
             if(event instanceof NavigationEnd){
                 if(event.url.startsWith("/code")){
                     this.currentRoute = "code";
@@ -40,19 +40,20 @@ export class FxChangerComponent{
     }
     
     ngOnDestory(){
-        this._stateService.stateContainer.unregisterSubscriber(this._subscriberId);
-    }
-    
-    notify(state, changedStates){
-        this.currentPageTargetFxs = state.get("SiteStateChanger.currentPageTargetFxs");
-        this.selectedTargetFx = state.get("SiteStateChanger.selectedTargetFx");
-        this.currentPageType = state.get("SiteStateChanger.currentPageType");
-        this.currentPageId = state.get("SiteStateChanger.currentPageId");
+        this.stateService.stateContainer.unregisterSubscriber(this.subscriberId);
     }
     
     setTargetFx(data){
-        this._siteStateChanger.setSelectedTargetFx(data.target.selectedOptions[0].innerText);
-        this._siteStateChanger.resetCurrentPage();
+        this.siteStateChanger.setSelectedTargetFx(data.target.selectedOptions[0].innerText);
+        this.siteStateChanger.resetCurrentPage();
     }
-    
+        
+    get mappings(){
+        return {
+            "SiteStateChanger.currentPageTargetFxs" : "currentPageTargetFxs",
+            "SiteStateChanger.selectedTargetFx" : "selectedTargetFx",
+            "SiteStateChanger.currentPageType" : "currentPageType",
+            "SiteStateChanger.currentPageId" : "currentPageId"
+        } as { [stateKey:string] : string }
+    }
 }

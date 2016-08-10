@@ -1,6 +1,10 @@
 <div id="{{member.urlId}}" class="member" [class.member-last]="last == true">
     <div class="member-header" [class.member-header-last]="last == true">		
-        <a class="member-header-link" (click)="toogleMember($event)"><img src="./assets/icons/{{member.type}}_{{member.accessibility}}.png"/> <p>{{member.name}}</p></a>
+        <a class="member-header-link" (click)="toogleMember($event)">
+            <img src="./assets/icons/{{member.type}}_{{member.accessibility}}.png"/> 
+            <a class="member-header-code" href="#" title="Code"><i class="icon-code"></i></a>
+            <p>{{member.name}}</p>            
+        </a>
         <div *ngIf="member.summary" class="summary markdown" [innerHtml]="member.summary"></div>
 	</div>
 	<div class="member-content" [class.member-content-last]="last == true">

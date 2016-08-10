@@ -5,49 +5,61 @@ import {SiteStateChanger} from '../../state/SiteStateChanger';
 
 export class ContentBase {    
         
-    public disqusShortName : string;   
     public currentPageData : any = {}; 
     public strings : any;    
     
-    private _subscriberId : number;
-    private _contentChanged : boolean;    
+    private subscriberId : number;
+    private contentChanged : boolean;    
+    private routeChanged : boolean;
+    private routeSubscription : any; 
 
-    constructor(private _selector : string, 
-                protected _route : ActivatedRoute,
-                protected _siteStateChanger : SiteStateChanger,
-                private _stateService : StateService){        
-        this.disqusShortName = sharpDox.projectData.disqusShortName;  
-        this.strings = sharpDox.strings;
-        
-        this._subscriberId = this._stateService.stateContainer.registerSubscriber(this);
-    }   
+    constructor(private contentType : string,
+                protected route : ActivatedRoute,
+                protected siteStateChanger : SiteStateChanger,
+                private stateService : StateService){ }   
+
+    ngOnInit(){
+        this.strings = sharpDox.strings;        
+        this.subscriberId = this.stateService.stateContainer.registerSubscriber(this);
+        this.routeSubscription = this.route.params.subscribe(params => {
+            let id = params['id'];
+            if(!this.siteStateChanger.setCurrentPage(id, this.contentType)){
+                this.routeChanged = true;
+            }
+        });
+    }
 
     ngAfterViewInit(){        
         $('#main').scrollTop(0);      
     }  
     
     ngAfterViewChecked(){ 
-        if(this._contentChanged){
+        if(this.contentChanged){
             if (this.currentPageData.title) (<any>document).title = sharpDox.projectData.name + " - " + this.currentPageData.title;
             else if (this.currentPageData.name) (<any>document).title = sharpDox.projectData.name + " - " + this.currentPageData.name;
             
-            this._contentChanged = false;           
-            this.initDisqus();
+            this.contentChanged = false;        
             this.setHighlighting();
             this.setLinks();
             this.setSvg();
             this.setSvgLinks(); 
             this.hideMemberContents();
             this.scrollToMember();
+            this.siteStateChanger.showLoader(false);
+        }
+        else if(this.routeChanged){
+            this.routeChanged = false;
+            this.scrollToMember();
         }
     }
     
     ngOnDestroy(){
-        this._stateService.stateContainer.unregisterSubscriber(this._subscriberId);
+        this.stateService.stateContainer.unregisterSubscriber(this.subscriberId);
+        this.routeSubscription.unsubscribe();
     }
 
-    contentChanged(){
-        this._contentChanged = true;
+    setChanged(){
+        this.contentChanged = true;
     }
 
     private setHighlighting(){
@@ -61,22 +73,6 @@ export class ContentBase {
         $('a').filter(function() {
             return this.hostname && this.hostname !== location.hostname;
         }).attr("target","_blank");
-    }
-    
-    private initDisqus() {
-        if(this.disqusShortName != null){            
-            (<any>window).disqus_config = function () {
-                this.page.url = window.location.href;
-                this.page.identifier = document.title;
-                this.page.title = document.title;
-            };
-            
-            var dsq = document.createElement('script'); 
-            dsq.type = 'text/javascript'; 
-            dsq.async = true;
-            dsq.src = 'http://' + sharpDox.projectData.disqusShortName + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        }
     }
     
     private setSvg(){
@@ -135,11 +131,10 @@ export class ContentBase {
     }
     
     private scrollToMember(){        
-        let member = this._route.snapshot.params['member'];
+        let member = this.route.snapshot.params['member'];
         if(member){
             $('#' + member + ' .member-content').show();            
             $('#main').scrollTop($('#' + member).offset().top);
         }      
-    }
-    
+    }    
 }

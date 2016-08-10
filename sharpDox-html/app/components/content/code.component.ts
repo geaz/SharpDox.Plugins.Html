@@ -28,7 +28,7 @@ export class CodeComponent {
     ngOnInit(){    
         this._routeSubscription = this._route.params.subscribe(params => {
             let id = params['id'];
-            this._siteStateChanger.setCurrentPageToType(id);            
+            this._siteStateChanger.setCurrentPage(id, 'type');            
         });
     }
 

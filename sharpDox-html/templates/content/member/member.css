@@ -8,17 +8,7 @@
 }
 
 :host .member-header{
-    border: 1px solid #dadada;
-    border-bottom: 0;
 	padding:10px;
-}
-
-:host .member-header-last{
-	border-bottom: 1px solid #dadada;
-}
-
-:host .member-last-header{
-	border-bottom: 1px solid #dadada;
 }
 
 :host .member-header-link{
@@ -29,6 +19,15 @@
 :host .member-header-link:hover{
   cursor: pointer;
   color: #f58026;
+}
+
+:host .member-header-code{
+	display: none;
+	float:right;
+}
+
+:host .member-header-link:hover .member-header-code{
+  display: block;
 }
 
 :host .member-header i{
@@ -59,15 +58,9 @@
 }
 
 :host .member-content{
-	border: 1px solid #dadada;
-    border-left: 10px solid #1F6FB0;
-    border-bottom: 0;
-    padding: 10px 10px 10px 35px;   
-}
-
-:host .member-content-last{
-    border-top: 0; 
-    border-bottom: 1px solid #dadada;
+    border-left: 2px solid #1F6FB0;
+    margin-left: 25px;
+    padding-left: 15px;
 }
 
 .member-content .syntax-box{

@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 
+var DedupePlugin = webpack.optimize.DedupePlugin;
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -24,13 +25,12 @@ module.exports = {
         ]
     },
     plugins: [
+        new DedupePlugin(),
         new UglifyJsPlugin({
-            sourceMap: true,
-            minimize: true,
-            mangle: false, // { except: ['$super', '$', 'exports', 'require'] }
-            compress: {
-                warnings: false
-            }
+            beautify: false, //prod
+            mangle: { screw_ie8 : true }, //prod
+            compress: { screw_ie8: true }, //prod
+            comments: false //prod
         }),
         new webpack.ProvidePlugin({
             jQuery: 'jquery',

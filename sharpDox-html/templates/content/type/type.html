@@ -94,59 +94,54 @@
     </div>
 
     <div *ngIf="currentPageData.fields">
-    <h4>{{strings.fields}}</h4>
+        <h4>{{strings.fields}}</h4>
         <sd-member *ngFor="let field of currentPageData.fields; let l=last" [last]="l" [member]="field"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.constructors">
-    <h4>{{strings.constructors}}</h4>
-    <sd-member *ngFor="let constructor of currentPageData.constructors; let l=last" [last]="l" [member]="constructor"></sd-member>
+        <h4>{{strings.constructors}}</h4>
+        <sd-member *ngFor="let constructor of currentPageData.constructors; let l=last" [last]="l" [member]="constructor"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.methods">
-    <h4>{{strings.methods}}</h4>
-    <sd-member *ngFor="let method of currentPageData.methods; let l=last" [last]="l" [member]="method"></sd-member>
+        <h4>{{strings.methods}}</h4>
+        <sd-member *ngFor="let method of currentPageData.methods; let l=last" [last]="l" [member]="method"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.events">
-    <h4>{{strings.events}}</h4>
-    <sd-member *ngFor="let event of currentPageData.events; let l=last" [last]="l" [member]="event"></sd-member>
+        <h4>{{strings.events}}</h4>
+        <sd-member *ngFor="let event of currentPageData.events; let l=last" [last]="l" [member]="event"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.properties">
-    <h4>{{strings.properties}}</h4>
-    <sd-member *ngFor="let property of currentPageData.properties; let l=last" [last]="l" [member]="property"></sd-member>
+        <h4>{{strings.properties}}</h4>
+        <sd-member *ngFor="let property of currentPageData.properties; let l=last" [last]="l" [member]="property"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.seeAlsos">
-    <h4>{{strings.seeAlso}}</h4>
-    <div class="list-box">
-    <ul>
-        <li *ngFor="let seeAlso of currentPageData.seeAlsos"><a href="#/{{seeAlso.type}}/{{seeAlso.id}}">{{seeAlso.name}}</a></li>
-    </ul>
-    </div>
+        <h4>{{strings.seeAlso}}</h4>
+        <div class="list-box">
+            <ul>
+                <li *ngFor="let seeAlso of currentPageData.seeAlsos"><a href="#/{{seeAlso.type}}/{{seeAlso.id}}">{{seeAlso.name}}</a></li>
+            </ul>
+        </div>
     </div>
 
     <div *ngIf="currentPageData.uses">
-    <h4>{{strings.uses}}</h4>
-    <div class="list-box">
-    <ul>
-        <li *ngFor="let use of currentPageData.uses"><a href="#/type/{{use.id}}">{{use.name}}</a></li>
-    </ul>
-    </div>
+        <h4>{{strings.uses}}</h4>
+        <div class="list-box">
+            <ul>
+                <li *ngFor="let use of currentPageData.uses"><a href="#/type/{{use.id}}">{{use.name}}</a></li>
+            </ul>
+        </div>
     </div>
 
     <div *ngIf="currentPageData.usedBy">
-    <h4>{{strings.usedBy}}</h4>
-    <div class="list-box">
-    <ul>
-        <li *ngFor="let used of currentPageData.usedBy"><a href="#/type/{{used.id}}">{{used.name}}</a></li>
-    </ul>
-    </div>
-    </div>
-
-    <div *ngIf="disqusShortName">
-        <div id="disqus_thread"></div>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <h4>{{strings.usedBy}}</h4>
+        <div class="list-box">
+            <ul>
+                <li *ngFor="let used of currentPageData.usedBy"><a href="#/type/{{used.id}}">{{used.name}}</a></li>
+            </ul>
+        </div>
     </div>
 </div>

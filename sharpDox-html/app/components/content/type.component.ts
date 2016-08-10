@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DomSanitizationService} from '@angular/platform-browser';
+import {State, NotifySubscriber} from 'fsc';
 
 import {ContentBase} from './ContentBase';
 import {StateService} from '../../state/StateService';
@@ -14,38 +15,24 @@ import {MemberComponent} from './member.component';
     styleUrls: ['./templates/content/type/type.css'],
     directives: [MemberComponent]
 })
-export class TypeComponent extends ContentBase { 
+export class TypeComponent extends ContentBase implements NotifySubscriber{ 
     
     public currentPageData : any = {};
-
-    private _routeSubscription : any;
     
-    constructor(private _sanitizer: DomSanitizationService, 
-                _route : ActivatedRoute,
-                _siteStateChanger : SiteStateChanger,                
-                _stateService : StateService){ 
-        super("sd-type", _route, _siteStateChanger, _stateService);   
-    }
-
-    ngOnInit(){    
-        this._routeSubscription = this._route.params.subscribe(params => {
-            let id = params['id'];
-            this._siteStateChanger.setCurrentPageToType(id);
-        });
-    }
-
-    ngOnDestroy(){
-        this._routeSubscription.unsubscribe();
-        super.ngOnDestroy();
+    constructor(private sanitizer: DomSanitizationService, 
+                route : ActivatedRoute,
+                siteStateChanger : SiteStateChanger,                
+                stateService : StateService){ 
+        super('type', route, siteStateChanger, stateService);   
     }
         
-    notify(state, changedStates){
-        var currentPagId = state.get("SiteStateChanger.currentPageData");
-        if(changedStates.indexOf("SiteStateChanger.currentPageData") > -1 && currentPagId !== undefined){
-            this.currentPageData = state.get("SiteStateChanger.currentPageData");
-            this.currentPageData.linkedSyntaxSanitized = this._sanitizer.bypassSecurityTrustHtml(this.currentPageData.linkedSyntax);
-            this.currentPageData.classDiagramSanitized = this._sanitizer.bypassSecurityTrustHtml(this.currentPageData.classDiagram);
-            super.contentChanged();
+    notify(state : State) : void {
+        let currentPageData = state["SiteStateChanger.currentPageData"];
+        if(state.changedKeys.indexOf("SiteStateChanger.currentPageData") > -1 && currentPageData !== undefined){
+            this.currentPageData = state["SiteStateChanger.currentPageData"];
+            this.currentPageData.linkedSyntaxSanitized = this.sanitizer.bypassSecurityTrustHtml(this.currentPageData.linkedSyntax);
+            this.currentPageData.classDiagramSanitized = this.sanitizer.bypassSecurityTrustHtml(this.currentPageData.classDiagram);
+            super.setChanged();
         }        
     } 
 }

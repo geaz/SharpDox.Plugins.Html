@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DomSanitizationService} from '@angular/platform-browser';
+import {State, NotifySubscriber} from 'fsc';
 
 import {ContentBase} from './ContentBase';
 import {StateService} from '../../state/StateService';
@@ -11,36 +12,21 @@ import {SiteStateChanger} from '../../state/SiteStateChanger';
     templateUrl: './templates/content/namespace/namespace.html',
     styleUrls: ['./templates/content/namespace/namespace.css']
 })
-export class NamespaceComponent extends ContentBase { 
-    
+export class NamespaceComponent extends ContentBase implements NotifySubscriber{ 
+        
     public currentPageData : any = {};
-
-    private _routeSubscription : any;
     
-    constructor(private _sanitizer: DomSanitizationService,
-                _route : ActivatedRoute,                 
-                _siteStateChanger : SiteStateChanger,                
-                _stateService : StateService){ 
-        super("sd-namespace", _route, _siteStateChanger, _stateService);
+    constructor(route : ActivatedRoute,                 
+                siteStateChanger : SiteStateChanger,                
+                stateService : StateService){ 
+        super('namespace', route, siteStateChanger, stateService);
     }
 
-    ngOnInit(){    
-        this._routeSubscription = this._route.params.subscribe(params => {
-            let id = params['id'];
-            this._siteStateChanger.setCurrentPageToNamespace(id);
-        });
-    }
-
-    ngOnDestroy(){
-        this._routeSubscription.unsubscribe();
-        super.ngOnDestroy();
-    }
-
-    notify(state, changedStates){
-        var currentPagId = state.get("SiteStateChanger.currentPageData");
-        if(changedStates.indexOf("SiteStateChanger.currentPageData") > -1 && currentPagId !== undefined){
-            this.currentPageData = state.get("SiteStateChanger.currentPageData");
-            super.contentChanged();
+    notify(state : State) : void {
+        var currentPagId = state["SiteStateChanger.currentPageData"];
+        if(state.changedKeys.indexOf("SiteStateChanger.currentPageData") > -1 && currentPagId !== undefined){
+            this.currentPageData = state["SiteStateChanger.currentPageData"];
+            super.setChanged();
         }        
     } 
 }
