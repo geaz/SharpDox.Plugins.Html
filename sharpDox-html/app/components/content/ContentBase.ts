@@ -34,22 +34,23 @@ export class ContentBase {
     }  
     
     ngAfterViewChecked(){ 
-        if(this.contentChanged){
+        if(this.contentChanged || this.routeChanged){
             if (this.currentPageData.title) (<any>document).title = sharpDox.projectData.name + " - " + this.currentPageData.title;
             else if (this.currentPageData.name) (<any>document).title = sharpDox.projectData.name + " - " + this.currentPageData.name;
-            
-            this.contentChanged = false;        
+                 
             this.setHighlighting();
             this.setLinks();
             this.setSvg();
             this.setSvgLinks(); 
             this.hideMemberContents();
             this.scrollToMember();
-            this.siteStateChanger.showLoader(false);
-        }
-        else if(this.routeChanged){
+
+            if(this.contentChanged){
+                this.siteStateChanger.showLoader(false);
+            }
+            
+            this.contentChanged = false;   
             this.routeChanged = false;
-            this.scrollToMember();
         }
     }
     
@@ -132,7 +133,7 @@ export class ContentBase {
     
     private scrollToMember(){        
         let member = this.route.snapshot.params['member'];
-        if(member){
+        if(member && member != 'index' && member != 'code'){
             $('#' + member + ' .member-content').show();            
             $('#main').scrollTop($('#' + member).offset().top);
         }      
