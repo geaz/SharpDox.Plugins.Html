@@ -13,21 +13,19 @@
 <#@ import namespace="SharpDox.UML" #>
 <#@ import namespace="CommonMark" #>
 
-<# var helper = new Helper(StepInput.SDProject); #>
-
 "<#= TargetFx.Name #>": { 
 		<#
 		var properties = new List<string>();
 		properties.Add($"\"name\": \"{Type.Name}\"");
 		properties.Add($"\"namespace\": \"{Type.Namespace.Fullname}\"");
 		properties.Add($"\"syntax\": \"{Type.Syntax}\"");
-		properties.Add($"\"linkedSyntax\": \"{Type.SyntaxTemplate.Transform(helper.TransformLinkToken).ToObjectString()}\"");
+		properties.Add($"\"linkedSyntax\": \"{Type.SyntaxTemplate.Transform(Helper.TransformLinkToken).ToObjectString()}\"");
 
 		if(!Type.IsClassDiagramEmpty()) { 
 			var height = Type.GetClassDiagram().GetSvgSize().Height;
 			height = height > 300 ? 375 : height + 75;
 
-			properties.Add($"\"classDiagram\": \"{Type.GetClassDiagram().ToSvg().Transform(helper.TransformLinkToken).ToObjectString()}\"");
+			properties.Add($"\"classDiagram\": \"{Type.GetClassDiagram().ToSvg().Transform(Helper.TransformLinkToken).ToObjectString()}\"");
 			properties.Add($"\"classDiagramHeight\": \"{height}\"");
 			properties.Add($"\"fit\": \"{height == 375}\"");
 		}

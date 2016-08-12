@@ -37,35 +37,28 @@ namespace SharpDox.Plugins.Html.Templates.Repository
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\n");
-            
-            #line 16 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
- var helper = new Helper(StepInput.SDProject); 
-            
-            #line default
-            #line hidden
             this.Write("\r\n\"");
             
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
+            #line 16 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(TargetFx.Name));
             
             #line default
             #line hidden
             this.Write("\": { \r\n\t\t");
             
-            #line 19 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
+            #line 17 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
 
 		var properties = new List<string>();
 		properties.Add($"\"name\": \"{Type.Name}\"");
 		properties.Add($"\"namespace\": \"{Type.Namespace.Fullname}\"");
 		properties.Add($"\"syntax\": \"{Type.Syntax}\"");
-		properties.Add($"\"linkedSyntax\": \"{Type.SyntaxTemplate.Transform(helper.TransformLinkToken).ToObjectString()}\"");
+		properties.Add($"\"linkedSyntax\": \"{Type.SyntaxTemplate.Transform(Helper.TransformLinkToken).ToObjectString()}\"");
 
 		if(!Type.IsClassDiagramEmpty()) { 
 			var height = Type.GetClassDiagram().GetSvgSize().Height;
 			height = height > 300 ? 375 : height + 75;
 
-			properties.Add($"\"classDiagram\": \"{Type.GetClassDiagram().ToSvg().Transform(helper.TransformLinkToken).ToObjectString()}\"");
+			properties.Add($"\"classDiagram\": \"{Type.GetClassDiagram().ToSvg().Transform(Helper.TransformLinkToken).ToObjectString()}\"");
 			properties.Add($"\"classDiagramHeight\": \"{height}\"");
 			properties.Add($"\"fit\": \"{height == 375}\"");
 		}
@@ -117,7 +110,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             #line hidden
             this.Write("\r\n\t\t");
             
-            #line 78 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
+            #line 76 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(",", properties)));
             
             #line default
@@ -126,7 +119,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 81 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
+        #line 79 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
 	
 public SDType Type { get; set; }
 public SDTargetFx TargetFx { get; set; }

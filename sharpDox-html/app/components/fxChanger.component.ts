@@ -29,10 +29,10 @@ export class FxChangerComponent implements MappingSubscriber{
         this.subscriberId = this.stateService.stateContainer.registerSubscriber(this);
         this.routeSubscription = this.router.events.subscribe(event => {
             if(event instanceof NavigationEnd){
-                if(event.url.startsWith("/type") && !event.url.endsWith("/code")){
+                if(event.url.startsWith("/type") && event.url.indexOf("/code") == -1){
                     this.currentRoute = "type";
                 }
-                else if(event.url.endsWith("/code")){
+                else if(event.url.indexOf("/code") > -1){
                     this.currentRoute = "code";
                 }                              
             }

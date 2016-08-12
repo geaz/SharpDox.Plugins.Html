@@ -39,16 +39,9 @@ namespace SharpDox.Plugins.Html.Templates.Repository
         public virtual string TransformText()
         {
             this.Write("\r\n");
-            this.Write("\r\n");
+            this.Write("\r\n{\r\n\t");
             
-            #line 18 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\MemberData.tt"
- var helper = new Helper(StepInput.SDProject); 
-            
-            #line default
-            #line hidden
-            this.Write("{\r\n\t");
-            
-            #line 20 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\MemberData.tt"
+            #line 19 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\MemberData.tt"
 
 	var properties = new List<string>();
 	properties.Add($"\"id\": \"{Member.Identifier}\"");
@@ -62,7 +55,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
 
 		if(!sdMethod.IsSequenceDiagramEmpty()) {
 			properties.Add($"\"diagramId\": \"{sdMethod.Guid}\"");
-			properties.Add($"\"sequenceDiagram\": \"{sdMethod.GetSequenceDiagram(Repository).ToSvg().Transform(new Helper(StepInput.SDProject).TransformLinkToken).ToObjectString()}\"");
+			properties.Add($"\"sequenceDiagram\": \"{sdMethod.GetSequenceDiagram(Repository).ToSvg().Transform(Helper.TransformLinkToken).ToObjectString()}\"");
 		}
 	} else {
 		properties.Add($"\"name\": \"{Member.Name}\"");
@@ -84,14 +77,14 @@ namespace SharpDox.Plugins.Html.Templates.Repository
 	}
 
 	properties.Add($"\"syntax\": \"{Member.Syntax}\"");
-	properties.Add($"\"linkedSyntax\": \"{Member.SyntaxTemplate.Transform(helper.TransformLinkToken).ToObjectString()}\"");
+	properties.Add($"\"linkedSyntax\": \"{Member.SyntaxTemplate.Transform(Helper.TransformLinkToken).ToObjectString()}\"");
 	
             
             #line default
             #line hidden
             this.Write("\t");
             
-            #line 57 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\MemberData.tt"
+            #line 56 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\MemberData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(",", properties)));
             
             #line default
@@ -100,7 +93,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 60 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\MemberData.tt"
+        #line 59 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\MemberData.tt"
 
 public SDMemberBase Member { get; set; }
 public string MemberType { get; set; }
