@@ -28,22 +28,19 @@ export class ContentBase {
             }
         });
     }
-
-    ngAfterViewInit(){        
-        $('#main').scrollTop(0);      
-    }  
     
     ngAfterViewChecked(){ 
         if(this.contentChanged || this.routeChanged){
             if (this.currentPageData.title) (<any>document).title = sharpDox.projectData.name + " - " + this.currentPageData.title;
             else if (this.currentPageData.name) (<any>document).title = sharpDox.projectData.name + " - " + this.currentPageData.name;
-                 
+                             
+            $('#main').scrollTop(0); 
             this.setHighlighting();
             this.setLinks();
             this.setSvg();
             this.setSvgLinks(); 
             this.hideMemberContents();
-            this.scrollToMember();
+            this.scrollToMember(); 
 
             if(this.contentChanged){
                 this.siteStateChanger.showLoader(false);
@@ -61,6 +58,10 @@ export class ContentBase {
 
     setChanged(){
         this.contentChanged = true;
+    }
+
+    getCodeId(filename : string) : string{
+        return filename.split(".")[0];
     }
 
     private setHighlighting(){

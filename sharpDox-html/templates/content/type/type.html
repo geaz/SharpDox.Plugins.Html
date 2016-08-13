@@ -1,7 +1,7 @@
 <div *ngIf="showCode == true" class="markdown content">
 	<div *ngFor="let region of currentPageData.regions">
 		<div class="code-fileheader"><i class="icon-file-text-alt"></i> {{region.filename}}</div>
-		<pre id="getCodeId()"><code class="language-csharp line-numbers" [innerHtml]="region.contentSanitized"></code></pre>
+		<pre id="{{getCodeId(region.filename)}}"><code class="language-csharp line-numbers" [innerHtml]="region.contentSanitized"></code></pre>
 	</div>
 </div>
 
@@ -102,27 +102,27 @@
 
     <div *ngIf="currentPageData.fields">
         <h4>{{strings.fields}}</h4>
-        <sd-member *ngFor="let field of currentPageData.fields; let l=last" [last]="l" [member]="field"></sd-member>
+        <sd-member *ngFor="let field of currentPageData.fields; let l=last" [last]="l" [member]="field" [currentPageId]="currentPageId"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.constructors">
         <h4>{{strings.constructors}}</h4>
-        <sd-member *ngFor="let constructor of currentPageData.constructors; let l=last" [last]="l" [member]="constructor"></sd-member>
+        <sd-member *ngFor="let constructor of currentPageData.constructors; let l=last" [last]="l" [member]="constructor" [currentPageId]="currentPageId"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.methods">
         <h4>{{strings.methods}}</h4>
-        <sd-member *ngFor="let method of currentPageData.methods; let l=last" [last]="l" [member]="method"></sd-member>
+        <sd-member *ngFor="let method of currentPageData.methods; let l=last" [last]="l" [member]="method"> [currentPageId]="currentPageId"</sd-member>
     </div>
 
     <div *ngIf="currentPageData.events">
         <h4>{{strings.events}}</h4>
-        <sd-member *ngFor="let event of currentPageData.events; let l=last" [last]="l" [member]="event"></sd-member>
+        <sd-member *ngFor="let event of currentPageData.events; let l=last" [last]="l" [member]="event" [currentPageId]="currentPageId"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.properties">
         <h4>{{strings.properties}}</h4>
-        <sd-member *ngFor="let property of currentPageData.properties; let l=last" [last]="l" [member]="property"></sd-member>
+        <sd-member *ngFor="let property of currentPageData.properties; let l=last" [last]="l" [member]="property" [currentPageId]="currentPageId"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.seeAlsos">

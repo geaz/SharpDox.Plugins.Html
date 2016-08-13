@@ -2,7 +2,7 @@
     <div class="member-header" [class.member-header-last]="last == true">		
         <a class="member-header-link" (click)="toogleMember($event)">
             <img src="./assets/icons/{{member.type}}_{{member.accessibility}}.png"/> 
-            <a class="member-header-code" href="#" title="Code"><i class="icon-code"></i></a>
+            <a class="member-header-code" href="#!/type/{{currentPageId}}/code#{{getCodeId(member.region.filename)}}.{{member.region.start}}-{{member.region.end}}" title="Code"><i class="icon-code"></i></a>
             <p>{{member.name}}</p>            
         </a>
         <div *ngIf="member.summary" class="summary markdown" [innerHtml]="member.summary"></div>

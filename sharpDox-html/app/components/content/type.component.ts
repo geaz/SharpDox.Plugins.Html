@@ -17,6 +17,7 @@ import {MemberComponent} from './member.component';
 })
 export class TypeComponent extends ContentBase implements NotifySubscriber{ 
     
+    public currentPageId : string;
     public currentPageData : any = {};
     public showCode : boolean = false;
     
@@ -48,6 +49,7 @@ export class TypeComponent extends ContentBase implements NotifySubscriber{
     notify(state : State) : void {
         let currentPageData = state["SiteStateChanger.currentPageData"];
         if(state.changedKeys.indexOf("SiteStateChanger.currentPageData") > -1 && currentPageData !== undefined){
+            this.currentPageId = state["SiteStateChanger.currentPageId"];
             this.currentPageData = state["SiteStateChanger.currentPageData"];
             this.currentPageData.linkedSyntaxSanitized = this.sanitizer.bypassSecurityTrustHtml(this.currentPageData.linkedSyntax);
             this.currentPageData.classDiagramSanitized = this.sanitizer.bypassSecurityTrustHtml(this.currentPageData.classDiagram);

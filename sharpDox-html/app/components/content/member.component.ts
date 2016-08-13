@@ -7,7 +7,8 @@ import {DomSanitizationService} from '@angular/platform-browser';
     styleUrls: ['./templates/content/member/member.css']
 })
 export class MemberComponent{
-    
+
+    @Input() public currentPageId : string;    
     @Input() public member : any;
     @Input() public last : boolean;
 
@@ -28,5 +29,9 @@ export class MemberComponent{
     toogleMember(event){
         var content = $(event.target).parent().parent().next();
         content.slideToggle();
-    }    
+    }  
+
+    getCodeId(filename : string) : string{
+        return filename.split(".")[0];
+    }  
 }

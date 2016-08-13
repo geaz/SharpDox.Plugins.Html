@@ -78,7 +78,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
 		if(Type.Regions.Count > 0){
 			var allRegions = new List<string>();
 			foreach(var region in Type.Regions){
-				allRegions.Add($"{{\"start\": \"{region.Start}\", \"end\": \"{region.End}\", \"filepath\": \"{region.FilePath.ToObjectString()}\", \"filename\": \"{region.Filename.ToObjectString()}\", \"content\": \"{region.Content.ToObjectString().Replace("\t", "    ")}\"}}");
+				allRegions.Add($"{{\"start\": \"{region.StartLine}\", \"end\": \"{region.EndLine}\", \"filepath\": \"{region.FilePath.ToObjectString()}\", \"filename\": \"{region.Filename.ToObjectString()}\", \"content\": \"{region.Content.ToObjectString().Replace("\t", "    ")}\"}}");
 			}
 			properties.Add($"\"regions\": [{string.Join(",", allRegions)}]");
 		}		

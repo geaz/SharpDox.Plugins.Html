@@ -66,7 +66,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
 	}
 
 	if(Member.Region != null){
-		properties.Add($"\"region\": {{\"start\": \"{Member.Region.Start}\", \"end\": \"{Member.Region.End}\", \"filename\": \"{Member.Region.Filename.ToObjectString()}\"}}");
+		properties.Add($"\"region\": {{\"start\": \"{Member.Region.StartLine}\", \"end\": \"{Member.Region.EndLine}\", \"filename\": \"{Member.Region.Filename.ToObjectString()}\"}}");
 	}	
 
 	var documentation = Member.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
