@@ -12,13 +12,13 @@ namespace SharpDox.Plugins.Html
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+            handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private string _favIcon;
         private string _theme;
         private string _disqusShortName;
-        private string _scmBaseUrl;
+        private string _showCode;
         private string _primaryColor;
         private string _secondaryColor;
         private bool _disableSequenceDiagrams;
@@ -66,16 +66,16 @@ namespace SharpDox.Plugins.Html
             }
         }
 
-        [Name(typeof(HtmlStrings), "SCMBaseUrl")]
-        public string ScmBaseUrl
+        [Name(typeof(HtmlStrings), "ShowCode")]
+        public string ShowCode
         {
-            get { return _scmBaseUrl; }
+            get { return _showCode; }
             set
             {
-                if (_scmBaseUrl != value)
+                if (_showCode != value)
                 {
-                    _scmBaseUrl = value;
-                    OnPropertyChanged("SCMBaseUrl");
+                    _showCode = value;
+                    OnPropertyChanged("ShowCode");
                 }
             }
         }

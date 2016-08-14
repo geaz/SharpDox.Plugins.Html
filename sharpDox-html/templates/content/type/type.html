@@ -112,7 +112,7 @@
 
     <div *ngIf="currentPageData.methods">
         <h4>{{strings.methods}}</h4>
-        <sd-member *ngFor="let method of currentPageData.methods; let l=last" [last]="l" [member]="method"> [currentPageId]="currentPageId"</sd-member>
+        <sd-member *ngFor="let method of currentPageData.methods; let l=last" [last]="l" [member]="method" [currentPageId]="currentPageId"></sd-member>
     </div>
 
     <div *ngIf="currentPageData.events">

@@ -18,6 +18,7 @@ sharpDox.projectData = {
   <# if(!string.IsNullOrEmpty(StepInput.SDProject.Author)) { #> author: '<#= StepInput.SDProject.Author #>', <# } #>
   <# if(!string.IsNullOrEmpty(StepInput.SDProject.AuthorUrl)) { #> authorHomepage: '<#= StepInput.SDProject.AuthorUrl #>', <# } #>
   <# if(!string.IsNullOrEmpty(StepInput.HtmlConfig.DisqusShortName)) { #> disqusShortName: '<#= StepInput.HtmlConfig.DisqusShortName #>', <# } #>
+  showCode: <#= StepInput.SDProject.ShowCode #>,
   <# if(!string.IsNullOrEmpty(StepInput.HtmlConfig.FooterLine)) { #> footerLine: '<#= CommonMarkConverter.Convert(StepInput.HtmlConfig.FooterLine).ToObjectString() #>', <# } #>
   hasLogo: <#= string.IsNullOrEmpty(StepInput.SDProject.LogoPath) ? "false" : "true" #>,
   targetFxs: [
