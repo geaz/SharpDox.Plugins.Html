@@ -17,6 +17,7 @@ export class FxChangerComponent implements MappingSubscriber{
     public currentPageId : string;
     public currentPageTargetFxs : any;
     public selectedTargetFx : string;
+    public showCode : boolean;
     
     private subscriberId : number;
     private routeSubscription : any;
@@ -26,6 +27,7 @@ export class FxChangerComponent implements MappingSubscriber{
                 private siteStateChanger : SiteStateChanger){ }
 
     ngOnInit(){    
+        this.showCode = sharpDox.projectData.showCode;
         this.subscriberId = this.stateService.stateContainer.registerSubscriber(this);
         this.routeSubscription = this.router.events.subscribe(event => {
             if(event instanceof NavigationEnd){

@@ -18,7 +18,7 @@ namespace SharpDox.Plugins.Html
         private string _favIcon;
         private string _theme;
         private string _disqusShortName;
-        private string _showCode;
+        private bool _showCode;
         private string _primaryColor;
         private string _secondaryColor;
         private bool _disableSequenceDiagrams;
@@ -67,7 +67,7 @@ namespace SharpDox.Plugins.Html
         }
 
         [Name(typeof(HtmlStrings), "ShowCode")]
-        public string ShowCode
+        public bool ShowCode
         {
             get { return _showCode; }
             set

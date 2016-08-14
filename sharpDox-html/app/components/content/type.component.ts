@@ -32,10 +32,10 @@ export class TypeComponent extends ContentBase implements NotifySubscriber{
     }
         
     ngOnInit(){    
-        this.showCode = this.router.url.indexOf("/code") > -1;  
+        this.showCode = this.router.url.indexOf("/code") > -1 && sharpDox.projectData.showCode;  
         this.routerSubscription = this.router.events.subscribe(event => {
             if(event instanceof NavigationEnd){
-                this.showCode = event.url.indexOf("/code") > -1;                          
+                this.showCode = event.url.indexOf("/code") > -1 && sharpDox.projectData.showCode;                          
             }
         });
         super.ngOnInit();
