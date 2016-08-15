@@ -12,6 +12,8 @@ export class MemberComponent{
     @Input() public member : any;
     @Input() public last : boolean;
 
+    public showCode : boolean;
+
     public strings : any;
     
     constructor(private _sanitizer: DomSanitizationService){
@@ -19,6 +21,7 @@ export class MemberComponent{
     }
 
     ngOnInit(){
+        this.showCode = sharpDox.projectData.showCode;
         this.member.linkedSyntaxSanitized = this._sanitizer.bypassSecurityTrustHtml(this.member.linkedSyntax);
 
         if(this.member.type == "method"){

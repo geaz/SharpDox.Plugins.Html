@@ -148,7 +148,7 @@ namespace SharpDox.Plugins.Html.Templates
             this.Write("  showCode: ");
             
             #line 21 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\ProjectData.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlConfig.ShowCode));
+            this.Write(this.ToStringHelper.ToStringWithCulture(StepInput.HtmlConfig.ShowCode ? "true" : "false"));
             
             #line default
             #line hidden

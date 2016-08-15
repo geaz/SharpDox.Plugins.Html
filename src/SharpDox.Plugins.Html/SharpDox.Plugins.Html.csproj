@@ -41,15 +41,15 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="SharpDox.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\sharpDoxSDK.1.1.2\lib\net40\SharpDox.Model.dll</HintPath>
+      <HintPath>..\packages\sharpDoxSDK.1.2.0\lib\net40\SharpDox.Model.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SharpDox.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\sharpDoxSDK.1.1.2\lib\net40\SharpDox.Sdk.dll</HintPath>
+      <HintPath>..\packages\sharpDoxSDK.1.2.0\lib\net40\SharpDox.Sdk.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="SharpDox.UML, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\sharpDoxSDK.1.1.2\lib\net40\SharpDox.UML.dll</HintPath>
+      <HintPath>..\packages\sharpDoxSDK.1.2.0\lib\net40\SharpDox.UML.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
