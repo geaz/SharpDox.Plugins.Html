@@ -1,5 +1,5 @@
-import {Injectable} from 'angular2/core';
-import {StateContainer} from '../../vendor/FSC';
+import {Injectable} from '@angular/core';
+import {StateContainer} from 'fsc';
 
 @Injectable()
 export class StateService {

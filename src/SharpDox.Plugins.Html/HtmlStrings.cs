@@ -12,6 +12,7 @@ namespace SharpDox.Plugins.Html
         private string _footerLine = "Footer Line";
         private string _favIcon = "Favicon";
         private string _disqusShortName = "Disqus (Short Name)";
+        private string _showCode = "Show Code";
 
         private string _themeMissing = "Theme missing!";
 
@@ -24,8 +25,6 @@ namespace SharpDox.Plugins.Html
         
         private string _description = "Description";
         private string _seeAlso = "See Also";
-        private string _baseType = "Base Type";
-        private string _implements = "Implements";
         private string _types = "Types";
         private string _name = "Name";
         private string _assembly = "Assembly";
@@ -99,6 +98,12 @@ namespace SharpDox.Plugins.Html
         {
             get { return _disqusShortName; }
             set { _disqusShortName = value; }
+        }
+
+        public string ShowCode
+        {
+            get { return _showCode; }
+            set { _showCode = value; }
         }
 
         public string ThemeMissing

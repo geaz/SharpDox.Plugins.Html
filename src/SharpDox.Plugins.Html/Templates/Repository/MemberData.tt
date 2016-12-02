@@ -15,7 +15,6 @@
 <#@ import namespace="SharpDox.Plugins.Html.Steps" #>
 <#@ import namespace="CommonMark" #>
 
-<# var helper = new Helper(StepInput.SDProject); #>
 {
 	<#
 	var properties = new List<string>();
@@ -30,7 +29,7 @@
 
 		if(!sdMethod.IsSequenceDiagramEmpty()) {
 			properties.Add($"\"diagramId\": \"{sdMethod.Guid}\"");
-			properties.Add($"\"sequenceDiagram\": \"{sdMethod.GetSequenceDiagram(Repository).ToSvg().Transform(new Helper(StepInput.SDProject).TransformLinkToken).ToObjectString()}\"");
+			properties.Add($"\"sequenceDiagram\": \"{sdMethod.GetSequenceDiagram(Repository).ToSvg().Transform(Helper.TransformLinkToken).ToObjectString()}\"");
 		}
 	} else {
 		properties.Add($"\"name\": \"{Member.Name}\"");
@@ -40,6 +39,10 @@
 		properties.Add($"\"constantValue\": \"{((SDField)Member).ConstantValue.ToObjectString()}\"");
 	}
 
+	if(Member.Region != null){
+		properties.Add($"\"region\": {{\"start\": \"{Member.Region.StartLine}\", \"end\": \"{Member.Region.EndLine}\", \"filename\": \"{Member.Region.Filename.ToObjectString()}\"}}");
+	}	
+
 	var documentation = Member.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
 	if(documentation != null){
 		var documentationTemplate = new DocumentationData { Documentation = documentation };
@@ -48,7 +51,7 @@
 	}
 
 	properties.Add($"\"syntax\": \"{Member.Syntax}\"");
-	properties.Add($"\"linkedSyntax\": \"{Member.SyntaxTemplate.Transform(helper.TransformLinkToken).ToObjectString()}\"");
+	properties.Add($"\"linkedSyntax\": \"{Member.SyntaxTemplate.Transform(Helper.TransformLinkToken).ToObjectString()}\"");
 	#>
 	<#= string.Join(",", properties) #>		
 }

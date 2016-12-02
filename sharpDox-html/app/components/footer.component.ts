@@ -1,5 +1,4 @@
-import {Component} from 'angular2/core';
-import {RouteParams} from 'angular2/router';
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'sd-footer',
@@ -14,6 +13,7 @@ export class FooterComponent {
     public version : string;
     public footerLine : string;
     public footerText : string;
+    public generatedBy : string;
     
     constructor(){ 
         this.projectName = sharpDox.projectData.name;
@@ -22,6 +22,7 @@ export class FooterComponent {
         this.version = sharpDox.projectData.version;
         this.footerLine = sharpDox.projectData.footerLine;
         this.footerText = sharpDox.strings.footerText;   
+        this.generatedBy = sharpDox.strings.generatedBy;
     }
     
 }

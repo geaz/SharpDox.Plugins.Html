@@ -11,13 +11,11 @@
 <#@ import namespace="SharpDox.Plugins.Html.Steps" #>
 <#@ import namespace="CommonMark" #>
 
-<# var helper = new Helper(StepInput.SDProject); #>
-
 "<#= TargetFx.Name #>": {
 		"name": "<#= Namespace.Fullname #>",
 		"assembly": "<#= Namespace.Assemblyname #>",
 		"description": "<#= Namespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage) != null ?
-						CommonMarkConverter.Convert(Namespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(helper.TransformLinkToken)).ToObjectString()
+						CommonMarkConverter.Convert(Namespace.Descriptions.GetElementOrDefault(StepInput.CurrentLanguage).Transform(Helper.TransformLinkToken)).ToObjectString()
 						: string.Empty #>", 
 		<# if(Namespace.UsedBy.Count > 0) { #>
 		"usedBy": [
@@ -35,7 +33,7 @@
 			foreach(var sdType in Namespace.Types){
 				var documentation = sdType.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
 				var docString = documentation != null ? 
-								CommonMarkConverter.Convert(documentation.Summary.ToMarkdown(StepInput.SDProject.Tokens).Transform(helper.TransformLinkToken)).ToObjectString() :
+								CommonMarkConverter.Convert(documentation.Summary.ToMarkdown(StepInput.SDProject.Tokens).Transform(Helper.TransformLinkToken)).ToObjectString() :
 								string.Empty;
 				types.Add(string.Format("{{\"id\":\"{0}\",\"kind\":\"{1}\",\"accessibility\":\"{2}\",\"name\":\"{3}\",\"summary\":\"{4}\"}}",
 							sdType.Identifier.RemoveIllegalPathChars(), sdType.Kind, sdType.Accessibility, sdType.Name, docString));

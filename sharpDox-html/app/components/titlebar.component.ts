@@ -1,4 +1,5 @@
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
+import {MappingSubscriber} from 'fsc';
 
 import {StateService} from '../state/StateService';
 
@@ -7,29 +8,29 @@ import {StateService} from '../state/StateService';
     templateUrl: './templates/titlebar/titlebar.html',
     styleUrls: ['./templates/titlebar/titlebar.css']
 })
-export class TitleBarComponent{
+export class TitleBarComponent implements MappingSubscriber{
     
     public strings : any;
     public currentPageData : any;
     public currentPageType : string;
     
-    private _subscriberId : number;
+    private subscriberId : number;
     
-    constructor(private _stateService : StateService){
-        this.strings = sharpDox.strings;
-    }
+    constructor(private stateService : StateService){ }
     
-    ngOnInit(){        
-        this._subscriberId = this._stateService.stateContainer.registerSubscriber(this);
+    ngOnInit(){     
+        this.strings = sharpDox.strings;   
+        this.subscriberId = this.stateService.stateContainer.registerSubscriber(this);
     }
     
     ngOnDestory(){
-        this._stateService.stateContainer.unregisterSubscriber(this._subscriberId);
+        this.stateService.stateContainer.unregisterSubscriber(this.subscriberId);
     }
-    
-    notify(state){
-        this.currentPageData = state.get("SiteStateChanger.currentPageData");
-        this.currentPageType = state.get("SiteStateChanger.currentPageType");
-    }
-    
+
+    get mappings(){
+        return {
+            "SiteStateChanger.currentPageData" : "currentPageData",
+            "SiteStateChanger.currentPageType" : "currentPageType"
+        } as {[stateKey:string]:string}
+    }   
 }

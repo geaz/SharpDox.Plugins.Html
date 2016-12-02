@@ -1,59 +1,69 @@
-import {RouteParams} from 'angular2/router';
+import {ActivatedRoute} from '@angular/router';
 
 import {StateService} from '../../state/StateService';
 import {SiteStateChanger} from '../../state/SiteStateChanger';
 
 export class ContentBase {    
         
-    public disqusShortName : string;   
     public currentPageData : any = {}; 
     public strings : any;    
     
-    private _subscriberId : number;
-    private _contentChanged : boolean;        
-           
-    constructor(private _selector : string, 
-                protected _routeParams : RouteParams,
-                protected _siteStateChanger : SiteStateChanger,
-                private _stateService : StateService){        
-        this.disqusShortName = sharpDox.projectData.disqusShortName;  
-        this.strings = sharpDox.strings;
-        
-        this._subscriberId = this._stateService.stateContainer.registerSubscriber(this);
-    }   
-    
-    ngAfterViewInit(){        
-        $('#main').scrollTop(0);      
-    }  
+    private subscriberId : number;
+    private contentChanged : boolean;    
+    private routeChanged : boolean;
+    private routeSubscription : any; 
+
+    constructor(private contentType : string,
+                protected route : ActivatedRoute,
+                protected siteStateChanger : SiteStateChanger,
+                private stateService : StateService){ }   
+
+    ngOnInit(){
+        this.strings = sharpDox.strings;        
+        this.subscriberId = this.stateService.stateContainer.registerSubscriber(this);
+        this.routeSubscription = this.route.params.subscribe(params => {
+            let id = params['id'];
+            if(!this.siteStateChanger.setCurrentPage(id, this.contentType)){
+                this.routeChanged = true;
+            }
+        });
+    }
     
     ngAfterViewChecked(){ 
-        if(this._contentChanged){
+        if(this.contentChanged || this.routeChanged){
             if (this.currentPageData.title) (<any>document).title = sharpDox.projectData.name + " - " + this.currentPageData.title;
             else if (this.currentPageData.name) (<any>document).title = sharpDox.projectData.name + " - " + this.currentPageData.name;
-            
-            this._contentChanged = false;           
-            this.initDisqus();
+                             
+            $('#main').scrollTop(0); 
             this.setHighlighting();
             this.setLinks();
             this.setSvg();
             this.setSvgLinks(); 
             this.hideMemberContents();
-            this.scrollToMember();
+            this.scrollToMember(); 
+
+            if(this.contentChanged){
+                this.siteStateChanger.showLoader(false);
+            }
+            
+            this.contentChanged = false;   
+            this.routeChanged = false;
         }
     }
     
     ngOnDestroy(){
-        this._stateService.stateContainer.unregisterSubscriber(this._subscriberId);
+        this.stateService.stateContainer.unregisterSubscriber(this.subscriberId);
+        this.routeSubscription.unsubscribe();
     }
-    
-    notify(state, changedStates){
-        var currentPagId = state.get("SiteStateChanger.currentPageData");
-        if(changedStates.indexOf("SiteStateChanger.currentPageData") > -1 && currentPagId !== undefined){
-            this.currentPageData = state.get("SiteStateChanger.currentPageData");
-            this._contentChanged = true;
-        }        
-    } 
-    
+
+    setChanged(){
+        this.contentChanged = true;
+    }
+
+    getCodeId(filename : string) : string{
+        return filename.split(".")[0];
+    }
+
     private setHighlighting(){
         let codeBlocks = $('pre code');
         for(let i = 0; i < codeBlocks.length; i++){
@@ -65,22 +75,6 @@ export class ContentBase {
         $('a').filter(function() {
             return this.hostname && this.hostname !== location.hostname;
         }).attr("target","_blank");
-    }
-    
-    private initDisqus() {
-        if(this.disqusShortName != null){            
-            (<any>window).disqus_config = function () {
-                this.page.url = window.location.href;
-                this.page.identifier = document.title;
-                this.page.title = document.title;
-            };
-            
-            var dsq = document.createElement('script'); 
-            dsq.type = 'text/javascript'; 
-            dsq.async = true;
-            dsq.src = 'http://' + sharpDox.projectData.disqusShortName + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        }
     }
     
     private setSvg(){
@@ -139,11 +133,10 @@ export class ContentBase {
     }
     
     private scrollToMember(){        
-        let member = this._routeParams.get('member');
-        if(member){
+        let member = this.route.snapshot.params['member'];
+        if(member && member != 'index' && member != 'code'){
             $('#' + member + ' .member-content').show();            
             $('#main').scrollTop($('#' + member).offset().top);
         }      
-    }
-    
+    }    
 }

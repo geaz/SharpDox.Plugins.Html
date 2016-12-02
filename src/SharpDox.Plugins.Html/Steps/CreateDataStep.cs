@@ -96,7 +96,7 @@ namespace SharpDox.Plugins.Html.Steps
             {
                 Title = "Home",
                 SubTitle = StepInput.HtmlStrings.Description,
-                Content = CommonMarkConverter.Convert(projectDescription.Transform(new Helper(StepInput.SDProject).TransformLinkToken)).ToObjectString()
+                Content = CommonMarkConverter.Convert(projectDescription.Transform(Helper.TransformLinkToken)).ToObjectString()
             };
             File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "articles", "home.json"), homeData.TransformText().MinifyJson());
 
@@ -117,7 +117,7 @@ namespace SharpDox.Plugins.Html.Steps
                 var articleData = new ArticleData
                 {
                     Title = sdArticle.Title,
-                    Content = CommonMarkConverter.Convert(sdArticle.Content.Transform(new Helper(StepInput.SDProject).TransformLinkToken)).ToObjectString()
+                    Content = CommonMarkConverter.Convert(sdArticle.Content.Transform(Helper.TransformLinkToken)).ToObjectString()
                 };
                 File.WriteAllText(Path.Combine(StepInput.OutputPath, "data", "articles", sdArticle.Id + ".json"), articleData.TransformText().MinifyJson());
             }

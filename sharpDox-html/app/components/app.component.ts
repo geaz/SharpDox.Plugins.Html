@@ -1,9 +1,7 @@
-import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {Component} from '@angular/core';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 
-import {StateService} from '../state/StateService';
-import {SiteStateChanger} from '../state/SiteStateChanger';
-
+import {LoaderComponent} from './loader.component';
 import {HeaderComponent} from './header.component';
 import {TitleBarComponent} from './titlebar.component';
 import {FxChangerComponent} from './fxChanger.component';
@@ -18,45 +16,36 @@ import {FooterComponent} from './footer.component';
     templateUrl: './templates/app/app.html',
     styleUrls: ['./templates/app/app.css'],
     directives: [ROUTER_DIRECTIVES, 
+                LoaderComponent,
                 HeaderComponent, 
                 TitleBarComponent,
                 FxChangerComponent,
                 NavComponent, 
-                FooterComponent]
+                FooterComponent],
+    precompile: [ArticleComponent, NamespaceComponent, TypeComponent]
 })
-@RouteConfig([
-    { path:'/', redirectTo: ['Article', { id: 'home' }] },
-    { path:'/article/:id', name: 'Article', component: ArticleComponent },
-    { path:'/namespace/:id', name: 'Namespace', component: NamespaceComponent },
-    { path:'/type/:id', name: 'Type', component: TypeComponent },
-    { path:'/type/:id/:member', name: 'Member', component: TypeComponent }
-])
-export class AppComponent { 
-    
-    public hideLoader : boolean;
-    
-    private _subscriberId : number;
-    
-    constructor(private _stateService : StateService, private _siteStateChanger : SiteStateChanger){}
-    
-    ngOnInit(){
-        this._subscriberId = this._stateService.stateContainer.registerSubscriber(this);
-    }
-    
+export class AppComponent {  
+
+    public disqusShortName : string = sharpDox.projectData.disqusShortName;
+
     ngAfterViewInit(){
         $('#wrapper').splitPane();
-    }
-    
-    ngOnDestory(){
-        this._stateService.stateContainer.unregisterSubscriber(this._subscriberId);
-    }
-    
-    notify(state, changedStates){
-        if(changedStates.indexOf("SiteStateChanger.gettingPage") > -1){ 
-            $('#loader').css('left', $('#main').css('left'));      
-            $('#loader').css('width', $('#main').css('width'));   
-            this.hideLoader = !state.get("SiteStateChanger.gettingPage"); //negate it to get the loader shown on initial page load
+        this.initDisqus();
+    }    
+
+    private initDisqus() {
+        if(this.disqusShortName != null){            
+            (<any>window).disqus_config = function () {
+                this.page.url = window.location.href;
+                this.page.identifier = document.title;
+                this.page.title = document.title;
+            };
+            
+            var dsq = document.createElement('script'); 
+            dsq.type = 'text/javascript'; 
+            dsq.async = true;
+            dsq.src = 'https://' + this.disqusShortName + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }
     }
-    
 }

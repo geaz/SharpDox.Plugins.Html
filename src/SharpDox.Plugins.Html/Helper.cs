@@ -1,20 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Text.RegularExpressions;
-using SharpDox.Model;
 
 namespace SharpDox.Plugins.Html
 {
-    public class Helper
+    public static class Helper
     {
-        private readonly SDProject _sdProject;
-
-        public Helper(SDProject sdProject)
-        {
-            _sdProject = sdProject;
-        }
-
-        public string TransformLinkToken(string linkType, string identifier)
+        public static string TransformLinkToken(string linkType, string identifier)
         {
             var link = string.Empty;
             if (linkType == "image")
@@ -27,7 +18,7 @@ namespace SharpDox.Plugins.Html
             }
             else if(linkType == "type")
             {
-                link = $"#/{linkType}/{identifier.RemoveIllegalPathChars()}";
+                link = $"#/{linkType}/{identifier.RemoveIllegalPathChars()}/index";
             }
             else if(linkType == "article")
             {

@@ -26,7 +26,7 @@ namespace SharpDox.Plugins.Html.Templates.Repository
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\gazic0\Downloads\SharpDox.Plugins.Html-dev\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
+    #line 1 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class TypeData : TypeDataBase
     {
@@ -36,47 +36,29 @@ namespace SharpDox.Plugins.Html.Templates.Repository
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\n");
-            this.Write("\n\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n");
-            this.Write("\n\n");
+            this.Write("\r\n");
+            this.Write("\r\n\"");
             
-            #line 1 "C:\Users\gazic0\Downloads\SharpDox.Plugins.Html-dev\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
- var helper = new Helper(StepInput.SDProject); 
-            
-            #line default
-            #line hidden
-            this.Write("\n\n\"");
-            
-            #line 1 "C:\Users\gazic0\Downloads\SharpDox.Plugins.Html-dev\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
+            #line 16 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(TargetFx.Name));
             
             #line default
             #line hidden
-            this.Write("\": { \n\t\t");
+            this.Write("\": { \r\n\t\t");
             
-            #line 1 "C:\Users\gazic0\Downloads\SharpDox.Plugins.Html-dev\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
+            #line 17 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
 
 		var properties = new List<string>();
 		properties.Add($"\"name\": \"{Type.Name}\"");
 		properties.Add($"\"namespace\": \"{Type.Namespace.Fullname}\"");
 		properties.Add($"\"syntax\": \"{Type.Syntax}\"");
-		properties.Add($"\"linkedSyntax\": \"{Type.SyntaxTemplate.Transform(helper.TransformLinkToken).ToObjectString()}\"");
+		properties.Add($"\"linkedSyntax\": \"{Type.SyntaxTemplate.Transform(Helper.TransformLinkToken).ToObjectString()}\"");
 
 		if(!Type.IsClassDiagramEmpty()) { 
 			var height = Type.GetClassDiagram().GetSvgSize().Height;
 			height = height > 300 ? 375 : height + 75;
 
-			properties.Add($"\"classDiagram\": \"{Type.GetClassDiagram().ToSvg().Transform(helper.TransformLinkToken).ToObjectString()}\"");
+			properties.Add($"\"classDiagram\": \"{Type.GetClassDiagram().ToSvg().Transform(Helper.TransformLinkToken).ToObjectString()}\"");
 			properties.Add($"\"classDiagramHeight\": \"{height}\"");
 			properties.Add($"\"fit\": \"{height == 375}\"");
 		}
@@ -92,6 +74,14 @@ namespace SharpDox.Plugins.Html.Templates.Repository
 
 			properties.Add($"\"implements\": [ {implements} ]");
 		}
+
+		if(Type.Regions.Count > 0 && StepInput.HtmlConfig.ShowCode){
+			var allRegions = new List<string>();
+			foreach(var region in Type.Regions){
+				allRegions.Add($"{{\"start\": \"{region.StartLine}\", \"end\": \"{region.EndLine}\", \"filepath\": \"{region.FilePath.ToObjectString()}\", \"filename\": \"{region.Filename.ToObjectString()}\", \"content\": \"{region.Content.ToObjectString().Replace("\t", "    ")}\"}}");
+			}
+			properties.Add($"\"regions\": [{string.Join(",", allRegions)}]");
+		}		
 
 		var documentation = Type.Documentations.GetElementOrDefault(StepInput.CurrentLanguage);
 		if(documentation != null){
@@ -118,18 +108,18 @@ namespace SharpDox.Plugins.Html.Templates.Repository
             
             #line default
             #line hidden
-            this.Write("\n\n\t\t");
+            this.Write("\r\n\t\t");
             
-            #line 1 "C:\Users\gazic0\Downloads\SharpDox.Plugins.Html-dev\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
+            #line 76 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Join(",", properties)));
             
             #line default
             #line hidden
-            this.Write("\t\n\t}\n\n");
+            this.Write("\t\r\n\t}\r\n\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\gazic0\Downloads\SharpDox.Plugins.Html-dev\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
+        #line 79 "D:\Github\SharpDox.Plugins.Html\src\SharpDox.Plugins.Html\Templates\Repository\TypeData.tt"
 	
 public SDType Type { get; set; }
 public SDTargetFx TargetFx { get; set; }

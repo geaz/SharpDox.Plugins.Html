@@ -12,12 +12,13 @@ namespace SharpDox.Plugins.Html
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+            handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private string _favIcon;
         private string _theme;
         private string _disqusShortName;
+        private bool _showCode;
         private string _primaryColor;
         private string _secondaryColor;
         private bool _disableSequenceDiagrams;
@@ -61,6 +62,20 @@ namespace SharpDox.Plugins.Html
                 {
                     _disqusShortName = value;
                     OnPropertyChanged("DisqusShortName");
+                }
+            }
+        }
+
+        [Name(typeof(HtmlStrings), "ShowCode")]
+        public bool ShowCode
+        {
+            get { return _showCode; }
+            set
+            {
+                if (_showCode != value)
+                {
+                    _showCode = value;
+                    OnPropertyChanged("ShowCode");
                 }
             }
         }
