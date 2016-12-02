@@ -44,7 +44,7 @@ export class AppComponent {
             var dsq = document.createElement('script'); 
             dsq.type = 'text/javascript'; 
             dsq.async = true;
-            dsq.src = 'http://' + this.disqusShortName + '.disqus.com/embed.js';
+            dsq.src = location.protocol + '://' + this.disqusShortName + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         }
     }
